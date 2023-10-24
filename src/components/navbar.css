@@ -22,11 +22,6 @@
     font-family: Poppins;
     font-weight: 600;
   }
-  
-  .logo span{
-    color: #5928E5;
-  }
-  
   .categories {
     display: flex;
     align-items: center;

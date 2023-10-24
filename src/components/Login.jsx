@@ -1,4 +1,5 @@
 import React from 'react';
+import Login_form from './Login_form';
 import './login.css';
 import logImg from '../assets/log.svg'
 function Login() {
@@ -9,22 +10,12 @@ function Login() {
     </div>
     <div className='login_section'>
       <div className='login-statement'>
-        Log in to <span>i</span>
+      Log in to <span>i</span>Learn
+      <div className='login-statement1'>
+        Enter your registered email id and password to continue
       </div>
-    <div className="input-field">
-    <input type="email"
-    name='email'
-    placeholder='Enter Email'
-    required /> 
-    <label>Email</label>
-  </div>
-  <div className="input-field">
-    <input type="text"
-    name='password'
-    placeholder='Enter Password'
-    required /> 
-    <label>Password</label>
-  </div>
+      </div>
+    <Login_form/>
     </div>
     </>
   )
