@@ -1,6 +1,6 @@
 import React from 'react';
 import './navbar.css'
-import searchIcon from '../assets/search.svg'
+import searchIcon from '../../assets/search.svg'
 function Navbar() {
   return (
    <div className="navbar-box">

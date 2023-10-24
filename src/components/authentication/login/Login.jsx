@@ -1,7 +1,7 @@
 import React from 'react';
 import Login_form from './Login_form';
 import './login.css';
-import logImg from '../assets/log.svg'
+import logImg from '../../../assets/log.svg'
 function Login() {
   return (
     <>
