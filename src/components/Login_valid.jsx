@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = () =>{
+const Login_valid = () =>{
 const [inputs, setInputs] = useState({
     email:"",
     password:""
@@ -40,4 +40,4 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return { handleChange, inputs, handleSubmit, error };
 };
 
-export default Form;
+export default Login_valid;

@@ -1,7 +1,7 @@
 import React from 'react'
-import login_valid from './Login_valid';
+import Login_valid from './Login_valid';
 function Login_form() {
-  const { handleChange, inputs, handleSubmit, error} = login_valid();
+  const { handleChange, inputs, handleSubmit, error} = Login_valid();
   return (
       <form onSubmit={handleSubmit}> 
       <div className='form'>

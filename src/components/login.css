@@ -51,10 +51,11 @@ color:#5928E5;
     width: 42vw;
     height: 8vh;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 1.2rem;
     padding: 0 2vw;
     border: 2px solid black;
     outline: none;
+    box-sizing: border-box;
   }
   .input-field> input::placeholder{
     font-family: Work Sans;
@@ -84,8 +85,18 @@ button{
   width: 42vw;
   height: 8vh;
   border-radius: 20px;
-  font-size: 18px;
+  font-size: 1.2rem;
   padding: 0 2vw;
-  outline: none;
+  box-sizing: border-box;
+  border: 2px solid #5928E5;
+  color: white;
 background: #5928E5;
+opacity: 0.8;
+cursor:pointer
+}
+button:active,button:hover {
+  opacity:1;
+}
+button:active{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

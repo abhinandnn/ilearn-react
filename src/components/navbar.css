@@ -18,7 +18,7 @@
   }
   
   .logo {
-    font-size: 2.5vw;
+    font-size: 2.6vw;
     font-family: Poppins;
     font-weight: 600;
   }
@@ -27,7 +27,7 @@
     align-items: center;
     gap: 0.4vw;
     color: black;
-    font-size: 1.4vw;
+    font-size: 1.5vw;
     font-family: Sofia Sans;
     font-weight: 700;
   }
@@ -58,7 +58,7 @@
   .search-bar>input {
     width: 80%;
     color: #414141;
-    font-size: 1.4vw;
+    font-size: 1.5vw;
     font-family: Sofia Sans;
     font-weight: 400;
     border: none;
@@ -69,8 +69,11 @@
   }
   
   .popular-courses,.teach,.sign-up {
-    font-size: 1.4vw;
+    font-size: 1.5vw;
     font-family: Sofia Sans;
     font-weight: 700;
+  }
+  .sign-up{
+    color:#5928E5
   }
   
