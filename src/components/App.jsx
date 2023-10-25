@@ -1,15 +1,13 @@
 import React from 'react';
 import Navbar from './navbar/Navbar';
 import Login from './authentication/login/Login';
-import LoginOTP from './authentication/login/LoginOTP.jsx';
-// import Signup from './authentication/signup/Signup';
+import { Outlet } from 'react-router-dom';
 function App() {
 
   return (
     <div>
       <Navbar />
-      {/* <Signup/> */}
-      <LoginOTP />
+      <Outlet />
     </div>
   )
 }

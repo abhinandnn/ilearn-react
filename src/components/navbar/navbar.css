@@ -42,20 +42,23 @@
   .search-bar {
     width: 25vw;
     padding: 0.8vh 1.6vw;
-    border-radius: 15px;
+    border-radius: 16px;
     border: 2px #5928E5 solid;
     display: flex;
     gap: 1.4vw;
     align-items: center;
+    position: relative;
   }
   
-  .search-icon>img {
+  .search-icon {
+    position: absolute;
     width: 2.7vw;
     height: 2.7vh;
-    margin-top: 0.5vh;
+    left:3%;
   }
   
   .search-bar>input {
+    padding-left:2vw;
     width: 80%;
     color: #414141;
     font-size: 1.5vw;
@@ -76,4 +79,10 @@
   .sign-up{
     color:#5928E5
   }
-  
+  .navLink{
+  text-decoration: none;
+  color:#5928E5
+  }
+  .navLink:active{
+    color:#5928E5
+  }

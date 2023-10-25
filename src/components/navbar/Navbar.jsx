@@ -1,7 +1,10 @@
 import React from 'react';
 import './navbar.css'
 import searchIcon from '../../assets/search.svg'
+import { NavLink, useLocation } from 'react-router-dom';
 function Navbar() {
+    const location = useLocation();
+  const isSignup = location.pathname === '/signup';
   return (
    <div className="navbar-box">
             <div className="innerbox">
@@ -16,12 +19,18 @@ function Navbar() {
                     <div className="arrow"></div>
                 </div>
                 <div className="search-bar">
-                    <div className="search-icon"><img src={searchIcon}/></div>
-                    <input type='textarea'></input>
+                    <img className={"search-icon"} src={searchIcon}/>
+                    <input type='textarea'
+                    placeholder='What do you want to Learn'></input>
                 </div>
                 <div className="popular-courses">Popular courses</div>
                 <div className="teach">Teach on ilearn</div>
-                <div className="sign-up">Sign up</div>
+                <div className="sign-up">{isSignup ? (
+            <NavLink className={"navLink"} to="/login">Log in</NavLink>
+          ) : (
+            <NavLink className={"navLink"} to="/signup">Sign Up</NavLink>
+          )}
+</div>
             </div>
         </div>
   )

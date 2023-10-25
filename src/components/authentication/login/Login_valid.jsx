@@ -15,13 +15,13 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       ...inputs,
       [e.target.name]: e.target.value
     });
+    setError( {
+      email: !email_valid.test(inputs.email.trim())? 'Enter a valid email' : '',
+    })
+      
   };
   const handleSubmit = e => {
     e.preventDefault();
-    setError( {
-    email: !email_valid.test(inputs.email.trim())? 'Enter a valid email' : '',
-    password: (inputs.password.trim() === '')? 'This field is required' : '',
-  })
     
       let hasErrors = false;
       for (const i in error) {

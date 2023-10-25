@@ -56,6 +56,7 @@ function LoginOTP() {
             renderInput={renderInput}
           />
           </div>
+          <button className='logButton'>Verify</button>
         </div>
       </div>
     </>

@@ -10,9 +10,10 @@
     justify-content: center;
 }
 .sign{
-    margin-left: 13vw;
+    margin-left: 12vw;
     margin-right: 0vw;
-    height:50vh;
+    margin-top: 2vw;
+    height:65vh;
     width:40vw;
     position:relative;
     left:3vw;
