@@ -18,9 +18,9 @@
   }
   
   .logo {
-    font-size: 2.6vw;
+    font-size: 2vw;
     font-family: Poppins;
-    font-weight: 600;
+    font-weight: 700;
   }
   .categories {
     display: flex;
@@ -29,7 +29,7 @@
     color: black;
     font-size: 1.5vw;
     font-family: Sofia Sans;
-    font-weight: 700;
+    font-weight: 400;
   }
 
   
@@ -41,17 +41,17 @@
   
   .search-bar {
     width: 25vw;
-    padding: 1.2vh 1.6vw;
+    padding: 0.8vh 1.6vw;
     border-radius: 15px;
-    border: 0.4px #5928E5 solid;
+    border: 2px #5928E5 solid;
     display: flex;
     gap: 1.4vw;
     align-items: center;
   }
   
   .search-icon>img {
-    width: 2vw;
-    height: 2vh;
+    width: 2.7vw;
+    height: 2.7vh;
     margin-top: 0.5vh;
   }
   
@@ -71,7 +71,7 @@
   .popular-courses,.teach,.sign-up {
     font-size: 1.5vw;
     font-family: Sofia Sans;
-    font-weight: 700;
+    font-weight: 400;
   }
   .sign-up{
     color:#5928E5

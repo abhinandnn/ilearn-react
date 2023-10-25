@@ -44,59 +44,93 @@ color:#5928E5;
     font-family: Work Sans;
     font-weight: 400;
 }
-.input-field{
-    position: relative;
-  }
-  .input-field> input{
-    width: 42vw;
-    height: 8vh;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    padding: 0 2vw;
-    border: 2px solid black;
-    outline: none;
-    box-sizing: border-box;
-  }
-  .input-field> input::placeholder{
-    font-family: Work Sans;
-  }
-  .input-field> label{
-    position: absolute;
-    left: 18px;
-    font-size: 0.8rem;
-    padding: 0 0.3rem;
-    transform: translateY(-50%);
-    font-family:Sofia Sans ;
-    font-weight: 800;
-    background: white;
-  }
-  .error-label{
-    color: red;
-  }
-  .error-message {
-    position: absolute;
-    font-family: Sofia Sans;
-    top: 110%; 
-    left: 20px;
-    color: red;
-    font-size: 0.8rem;
+.input-login{
+  position: relative;
 }
-button{
+.input-login> input{
   width: 42vw;
   height: 8vh;
   border-radius: 20px;
   font-size: 1.2rem;
   padding: 0 2vw;
+  border: 2px solid black;
+  outline: none;
   box-sizing: border-box;
-  border: 2px solid #5928E5;
-  color: white;
+}
+#pwd{
+width:42vw;
+padding-right: 4vw;
+}
+.input-login> input::placeholder{
+  font-family: Work Sans;
+}
+.input-login> label{
+  position: absolute;
+  left: 18px;
+  font-size: 0.8rem;
+  padding: 0 0.3rem;
+  transform: translateY(-50%);
+  font-family:Sofia Sans ;
+  font-weight: 800;
+  background: white;
+}
+.error-label{
+  color: red;
+}
+.error-message {
+  position: absolute;
+  font-family: Sofia Sans;
+  top: 110%; 
+  left: 20px;
+  color: red;
+  font-size: 0.8rem;
+}
+.logButton{
+width: 42vw;
+height: 8vh;
+border-radius: 20px;
+font-size: 1.2rem;
+padding: 0 2vw;
+box-sizing: border-box;
+border: 2px solid #5928E5;
+color: white;
 background: #5928E5;
 opacity: 0.8;
 cursor:pointer
 }
-button:active,button:hover {
-  opacity:1;
+.logButton:active,.logButton:hover {
+opacity:1;
 }
-button:active{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.logButton:active{
+background: #3F1F9B;
+border: 2px solid #3F1F9B;
+}
+.icon-button {
+  position: absolute;
+  right:25%;
+  top: 50%;
+  transform: translateY(-42%);
+  cursor: pointer;
+  border:none;
+  background: transparent;
+}
+#otpsec{
+  margin-top: 4vh;
+}
+#otpstate{
+font-size: 2.5rem;
+}
+#otpstate2{
+  margin-top:2vh;
+  font-weight: 600;
+}
+#otemail{
+  text-decoration: underline;
+  color:#1D7AE8;
+}
+#otpp
+{
+  margin-top:10vh;
+  font-size: 1.5rem;
+  font-weight: 500;
 }

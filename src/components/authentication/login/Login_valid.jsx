@@ -32,6 +32,7 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
       if (!hasErrors) {
         console.log('Form submitted:', inputs);
+        localStorage.setItem("loginemail",inputs.email);
       }
       else
       console.log('fill all the details correctly!',error);

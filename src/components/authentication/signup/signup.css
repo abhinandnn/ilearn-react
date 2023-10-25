@@ -88,7 +88,7 @@ color:#5928E5;
     color: red;
     font-size: 0.8rem;
 }
-button{
+.signButton{
   width: 42vw;
   height: 8vh;
   border-radius: 20px;
@@ -101,11 +101,12 @@ background: #5928E5;
 opacity: 0.8;
 cursor:pointer
 }
-button:active,button:hover {
+.signButton:active,.signButton:hover {
   opacity:1;
 }
-button:active{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.signButton:active{
+  background: #3F1F9B;
+  border: 2px solid #3F1F9B;
 }
 .nameSignup{
   display:flex;
@@ -137,4 +138,14 @@ button:active{
   font-family:Sofia Sans ;
   font-weight: 800;
   background: white;
+}
+
+.icon-button {
+  position: absolute;
+  right:25%;
+  top: 50%;
+  transform: translateY(-42%);
+  cursor: pointer;
+  border:none;
+  background: transparent;
 }
