@@ -15,7 +15,7 @@ const Signup_valid = () => {
   });
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const validText=/^[a-zA-Z]*$/;
-  const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}/;
+  const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs({
@@ -41,7 +41,7 @@ const Signup_valid = () => {
           : name === "password"
           ? passwordValid.test(value.trim())
             ? ""
-            : "Password must be at least 6 characters and include one letter and one number"
+            : "Password must be at least 8 characters and include one letter and one number"
           : "",
     }));
 
@@ -57,7 +57,11 @@ const Signup_valid = () => {
 
     if (!hasErrors) {
       console.log("Form submitted:", inputs);
-      localStorage.setItem("signupName",inputs.firstname+inputs.lastname);
+      localStorage.setItem("signupFname",inputs.firstname);
+    
+      localStorage.setItem("signupLname",inputs.lastname);
+      localStorage.setItem("signupEmail",inputs.email);
+      localStorage.setItem("signupPwd",inputs.password);
     } else console.log("fill all the details correctly!", error);
 
   };

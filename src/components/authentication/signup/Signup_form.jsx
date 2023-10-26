@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import Signup_valid from './Signup_valid';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
+import { Link } from 'react-router-dom';
 function Signup_form() {
   const { handleChange, inputs, handleSubmit, error} = Signup_valid();
   const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +65,7 @@ function Signup_form() {
     <label className={error.password ? "error-label":""}>Password</label>
     <span className="error-message">{error.password}</span>
   </div>
-  <button className='signButton'>Sign up</button>
+  <Link to={'/otp'}><button className='signButton'>Sign up</button></Link>
   </div>
   </form>
   )

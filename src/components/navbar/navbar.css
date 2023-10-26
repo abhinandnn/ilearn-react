@@ -54,14 +54,14 @@
     position: absolute;
     width: 2.7vw;
     height: 2.7vh;
-    left:3%;
+    left:2.5%;
   }
   
   .search-bar>input {
     padding-left:2vw;
     width: 80%;
     color: #414141;
-    font-size: 1.5vw;
+    font-size: 1rem;
     font-family: Sofia Sans;
     font-weight: 400;
     border: none;

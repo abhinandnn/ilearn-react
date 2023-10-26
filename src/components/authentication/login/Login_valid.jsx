@@ -9,16 +9,22 @@ const [error,setError]  =  useState({
     email:"",
     password:""
 })
-const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const handleChange = e => {
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value
-    });
-    setError( {
-      email: !email_valid.test(inputs.email.trim())? 'Enter a valid email' : '',
-    })
-      
+    if(e.target.name="email"&&!email_valid.test(e.target.value))
+ { setError((error) =>{return {
+      ...error,
+      email: 'Enter a valid email'
+    }})
+  }
+  else
+  {
+    setError((error) =>{return {
+      ...error,
+      email: ''
+    }})
+  }
   };
   const handleSubmit = e => {
     e.preventDefault();
@@ -32,6 +38,7 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
       if (!hasErrors) {
         console.log('Form submitted:', inputs);
+        console.log(inputs.email)
         localStorage.setItem("loginemail",inputs.email);
       }
       else

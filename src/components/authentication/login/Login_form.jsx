@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Login_valid from './Login_valid';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
+import { Link } from 'react-router-dom';
 function Login_form() {
   const { handleChange, inputs, handleSubmit, error} = Login_valid();
   const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +16,6 @@ function Login_form() {
     name='email'
     maxLength={100}
     placeholder='Enter Email'
-    value={inputs.email}
     onChange={handleChange}
     style={{ border: error.email ? "2px solid red" : "2px solid black"}}
     required /> 
@@ -28,7 +28,6 @@ function Login_form() {
     name='password'
     maxLength={100}
     placeholder='Enter Password'
-    value={inputs.password}
     onChange={handleChange}
     style={{ border: error.password ? "2px solid red" : "2px solid black"}}
     required /> 
@@ -39,6 +38,7 @@ function Login_form() {
     <span className="error-message">{error.password}</span>
   </div>
   <button className='logButton'>Log in</button>
+  <Link to="/forgot">Forgot Password?</Link>
   </div>
   </form>
   )

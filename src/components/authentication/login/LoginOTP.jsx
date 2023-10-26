@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import './login.css';
 import logImg from '../../../assets/log.svg';
+import { Link } from 'react-router-dom';
 
 function LoginOTP() {
   const [otp, setotp] = useState("");
