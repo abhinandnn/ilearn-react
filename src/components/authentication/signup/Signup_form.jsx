@@ -4,7 +4,7 @@ import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
 import { Link } from 'react-router-dom';
 function Signup_form() {
-  const { handleChange, inputs, handleSubmit, error} = Signup_valid();
+  const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName } = Signup_valid();
   const [showPassword, setShowPassword] = useState(false);
   const passwordShow = () => {
     setShowPassword(!showPassword);
@@ -15,27 +15,27 @@ function Signup_form() {
         <div className='nameSignup'>
         <div className="input-signup-name">
     <input type="text"
-    name='firstname'
+    name='username'
     maxLength={100}
     placeholder='Enter First Name'
-    value={inputs.firstname}
+    //username}
     onChange={handleChange}
-    style={{ border: error.firstname ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorUserName ? "2px solid red" : "2px solid black"}}
     required /> 
-    <label className={error.firstname ? "error-label":""}>First Name</label>
-    <span className="error-message">{error.firstname}</span>
+    <label className={errorUserName ? "error-label":""}>Username</label>
+    <span className="error-message">{errorUserName}</span>
    </div>
    <div className="input-signup-name">
     <input type="text"
-    name='lastname'
+    name='name'
     maxLength={100}
     placeholder='Enter Last Name'
-    value={inputs.lastname}
+    //name}
     onChange={handleChange}
-    style={{ border: error.lastname ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorName ? "2px solid red" : "2px solid black"}}
     required /> 
-    <label className={error.lastname ? "error-label":""}>Last Name</label>
-    <span className="error-message">{error.lastname}</span>
+    <label className={errorName ? "error-label":""}>Name</label>
+    <span className="error-message">{errorName}</span>
    </div>
         </div>
        <div className="input-signup">
@@ -43,29 +43,29 @@ function Signup_form() {
     name='email'
     maxLength={100}
     placeholder='Enter Email'
-    value={inputs.email}
+    //email}
     onChange={handleChange}
-    style={{ border: error.email ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorEmail ? "2px solid red" : "2px solid black"}}
     required /> 
-    <label className={error.email ? "error-label":""}>Email</label>
-    <span className="error-message">{error.email}</span>
+    <label className={errorEmail ? "error-label":""}>Email</label>
+    <span className="error-message">{errorEmail}</span>
    </div>
   <div className="input-signup">
     <input type={showPassword?"text":"password"}
     name='password'
     maxLength={100}
     placeholder='Enter Password'
-    value={inputs.password}
+    //password}
     onChange={handleChange}
-    style={{ border: error.password ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
     <button type='button' className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
       </button>
-    <label className={error.password ? "error-label":""}>Password</label>
-    <span className="error-message">{error.password}</span>
+    <label className={errorPassword ? "error-label":""}>Password</label>
+    <span className="error-message">{errorPassword}</span>
   </div>
-  <Link to={'/otp'}><button className='signButton'>Sign up</button></Link>
+  <button className='signButton'>Sign up</button>
   </div>
   </form>
   )

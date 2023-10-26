@@ -3,27 +3,21 @@ import axios from "../../../api/axios";
 const LOGIN_URL ='https://udemy-nx1v.onrender.com/sign-in'
 const Login_valid = () =>{
 const[email,setEmail]=useState("");
-const[password,setPwd]=useState("")
-const [error,setError]  =  useState({
-    email:"",
-})
+const[password,setPwd]=useState("");
+const [error,setError]  =  useState("");
 const [approve,setApprove]=useState(false);
-
-const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const[errorPassword,setErrorPassword]=useState("");
+const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   const handleChange = e => {
     if(e.target.name==="email")
     {
     if(!email_valid.test(e.target.value))
- { setError( {
-      email: 'Enter a valid email'
-    })
+ { setError('Enter a valid email')
     
   }
   else
   {
-    setError( {
-      email: ''
-    })
+    setError("")
     setEmail(e.target.value);
   }}
   else{
@@ -43,22 +37,19 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
       if (!hasErrors) {
         console.log(email,password);
   try{
-    const response = await axios.post(LOGIN_URL,
-      JSON.stringify({email:email,password:password}),
-      {
-        headers:{'Content-Type':'application/json'},
-        withCredentials: true
-      }
-
-  );
-  console.log(JSON.stringify(response?.data))
+    const response = await axios.post(LOGIN_URL,{email:email,password:password},
+      {headers:{'Content-Type':'application/json; charset=utf-8'},
+        withCredentials: false});
+        const authToken= response.data.token;
+        localStorage.setItem("authId",authToken);
 }catch(err){
-if(!err?.response)
-console.log('No Server Response');
-
-else if(err.response?.status===401)
-  console.log('No id');
+if(err.response){
+console.log('Server responded');
+setError(err.response.data.message);
+}
+else
+  console.log('No Server response');
 }}}
-  return { handleChange, handleSubmit, error ,approve ,setPwd,setEmail};
+  return { handleChange, handleSubmit, error ,approve ,errorPassword};
 };
 export default Login_valid;

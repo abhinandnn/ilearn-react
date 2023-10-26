@@ -4,7 +4,7 @@ import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
 import { Link } from 'react-router-dom';
 function Login_form() {
-  const { handleChange, handleSubmit, error} = Login_valid();
+  const { handleChange, handleSubmit, error,errorPassword} = Login_valid();
   const [showPassword, setShowPassword] = useState(false);
   const passwordShow = () => {
     setShowPassword(!showPassword);}
@@ -17,10 +17,10 @@ function Login_form() {
     maxLength={100}
     placeholder='Enter Email'
     onChange={handleChange}
-    style={{ border: error.email ? "2px solid red" : "2px solid black"}}
+    style={{ border: error? "2px solid red" : "2px solid black"}}
     required /> 
-    <label className={error.email ? "error-label":""}>Email</label>
-    <span className="error-message">{error.email}</span>
+    <label className={error ? "error-label":""}>Email</label>
+    <span className="error-message">{error}</span>
    </div>
   <div className="input-login">
     <input type={showPassword?"text":"password"}
@@ -29,13 +29,13 @@ function Login_form() {
     maxLength={100}
     placeholder='Enter Password'
     onChange={handleChange}
-    style={{ border: error.password ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
     <button type='button' className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
       </button>
-    <label className={error.password ? "error-label":""}>Password</label>
-    <span className="error-message">{error.password}</span>
+    <label className={errorPassword ? "error-label":""}>Password</label>
+    <span className="error-message">{errorPassword}</span>
   </div>
   <button className='logButton'>Log in</button>
   <Link to="/forgot">Forgot Password?</Link>

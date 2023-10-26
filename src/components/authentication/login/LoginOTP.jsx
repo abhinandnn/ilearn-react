@@ -40,7 +40,7 @@ function LoginOTP() {
         <div className='login-statement' id='otpstate'>
           Verify Yourself
           <div className='login-statement1' id='otpstate2'>
-            We have sent a 6 digit otp to<br></br>
+            We have sent a 4 digit otp to<br></br>
             <span id='otemail'> {localStorage.getItem("loginemail")}</span>
           </div>
           <div id='otpp'>
@@ -48,7 +48,7 @@ function LoginOTP() {
           <OtpInput
             value={otp}
             onChange={handleChange}
-            numInputs={6}
+            numInputs={4}
             separator={<span style={{ width: "8px" }}></span>}
             isInputNum={true}
             shouldAutoFocus={true}

@@ -4,7 +4,7 @@ import searchIcon from '../../assets/search.svg'
 import { NavLink, useLocation } from 'react-router-dom';
 function Navbar() {
     const location = useLocation();
-  const isSignup = location.pathname === '/signup';
+  const isSignup = (location.pathname === '/signup');
   return (
    <div className="navbar-box">
             <div className="innerbox">
