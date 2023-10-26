@@ -4,7 +4,7 @@ import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
 import { Link } from 'react-router-dom';
 function Login_form() {
-  const { handleChange, inputs, handleSubmit, error} = Login_valid();
+  const { handleChange, handleSubmit, error} = Login_valid();
   const [showPassword, setShowPassword] = useState(false);
   const passwordShow = () => {
     setShowPassword(!showPassword);}

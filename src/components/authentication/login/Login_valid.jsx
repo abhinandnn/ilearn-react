@@ -1,32 +1,36 @@
 import React, { useState } from "react";
-
+import axios from "../../../api/axios";
+const LOGIN_URL ='https://udemy-nx1v.onrender.com/sign-in'
 const Login_valid = () =>{
-const [inputs, setInputs] = useState({
-    email:"",
-    password:""
-});
+const[email,setEmail]=useState("");
+const[password,setPwd]=useState("")
 const [error,setError]  =  useState({
     email:"",
-    password:""
 })
+const [approve,setApprove]=useState(false);
 
 const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const handleChange = e => {
-    if(e.target.name="email"&&!email_valid.test(e.target.value))
- { setError((error) =>{return {
-      ...error,
+    if(e.target.name==="email")
+    {
+    if(!email_valid.test(e.target.value))
+ { setError( {
       email: 'Enter a valid email'
-    }})
+    })
+    
   }
   else
   {
-    setError((error) =>{return {
-      ...error,
+    setError( {
       email: ''
-    }})
+    })
+    setEmail(e.target.value);
+  }}
+  else{
+    setPwd(e.target.value);
   }
   };
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
       let hasErrors = false;
@@ -37,15 +41,24 @@ const email_valid= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
       }
   
       if (!hasErrors) {
-        console.log('Form submitted:', inputs);
-        console.log(inputs.email)
-        localStorage.setItem("loginemail",inputs.email);
+        console.log(email,password);
+  try{
+    const response = await axios.post(LOGIN_URL,
+      JSON.stringify({email:email,password:password}),
+      {
+        headers:{'Content-Type':'application/json'},
+        withCredentials: true
       }
-      else
-      console.log('fill all the details correctly!',error);
-  };
 
-  return { handleChange, inputs, handleSubmit, error };
+  );
+  console.log(JSON.stringify(response?.data))
+}catch(err){
+if(!err?.response)
+console.log('No Server Response');
+
+else if(err.response?.status===401)
+  console.log('No id');
+}}}
+  return { handleChange, handleSubmit, error ,approve ,setPwd,setEmail};
 };
-
 export default Login_valid;
