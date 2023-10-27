@@ -20,8 +20,9 @@ function LoginOTP() {
       {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
         console.log(response.data.message);
-        if(response.data.success)
-         navigate('/login');
+        if(response.data.success){
+          console.log(response.data.message);
+         navigate('/login');}
 
 }catch(err){
 if(err.response){
@@ -37,9 +38,9 @@ else
         <img className='log' src={logImg} alt="Logo" />
       </div>
       <div className='login_section' id='otpsec'>
-        <div className='login-statement' id='otpstate'>
+        <div className='loginStatement' id='otpstate'>
           Verify Yourself
-          <div className='login-statement1' id='otpstate2'>
+          <div className='loginStatement1' id='otpstate2'>
             We have sent a 4 digit otp to<br></br>
             <span id='otemail'> {localStorage.getItem(em)}</span>
           </div>

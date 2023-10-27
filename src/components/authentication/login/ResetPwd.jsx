@@ -12,13 +12,13 @@ function ResetPwd() {
     const[password2,setPassword2]=useState("");
     const [errorPassword,setErrorPassword]  =  useState("");
     const [errorPassword2,setErrorPassword2]  =  useState("");
-    // useEffect(() => {
-    //       if(password !== password2)
-    //       {setErrorPassword2("Passwords do not match.");}
-    //     else
-    //     setErrorPassword2("");
-    // }
-    //     , [password, password2]);
+    useEffect(() => {
+          if(password !== password2)
+          {setErrorPassword2("Passwords do not match.");}
+        else
+        setErrorPassword2("");
+    }
+        , [password, password2]);
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
   const passwordShow = () => {
@@ -30,23 +30,15 @@ function ResetPwd() {
       const handleChange = e => {
         const { name, value } = e.target;
         let errorMessage = "";
-        let errorMessage2 = "";
-
         if (name === "password") {
             if (!passwordValid.test(value)&&value!=="") {
               errorMessage = "Password should be at least 8 characters long and contain at least one letter and one number";
-            }setErrorPassword(errorMessage);
             }
-            if (name === 'password2'||name==='password')
-            {if(password !== password2) {
-                errorMessage2 = "Passwords don't match.";}
-                setErrorPassword2(errorMessage2);
-              }
-            if(name==="password")
+            setErrorPassword(errorMessage);}
+            if(name==="password"&&value!=="")
             setPassword(value);
-            else if(name==="password2")
+            else if(name==="password2"&&value!=="")
             setPassword2(value);
-        console.log(password,password2)
           };
       const handleSubmit = e => {
         e.preventDefault();
@@ -54,8 +46,6 @@ function ResetPwd() {
           let hasErrors = false;
           if(!(errorPassword||errorPassword2))
     {hasErrors=false}
-          
-      
           if (!hasErrors) {
             console.log('Form submitted:');
             localStorage.setItem("loginemail");
@@ -69,9 +59,9 @@ function ResetPwd() {
     <img className='log' src={logImg}/>
     </div>
     <div className='login_section'>
-      <div className='login-statement' id="forgorlog">
+      <div className='loginStatement' id="forgorlog">
       Reset your password
-      <div className='login-statement1'id='forgotlog'>
+      <div className='loginStatement1'id='forgotlog'>
         Create a strong password, and confirm it
       </div></div>
       <form onSubmit={handleSubmit}>

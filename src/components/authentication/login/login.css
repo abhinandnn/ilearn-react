@@ -30,16 +30,16 @@
     flex-direction: column;
     gap:5vh;
 }
-.login-statement{
+.loginStatement{
     font-size: 2rem;
     font-family: Sofia Sans ;
     font-weight: 700;
     margin-top: 15vh;
 }
-.login-statement span{
+.loginStatement span{
 color:#5928E5;
 }
-.login-statement1{
+.loginStatement1{
     font-size:1rem;
     font-family: Work Sans;
     font-weight: 400;

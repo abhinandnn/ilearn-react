@@ -9,9 +9,9 @@ function Login() {
     <img className='log' src={logImg}/>
     </div>
     <div className='login_section'>
-      <div className='login-statement'>
+      <div className='loginStatement'>
       Log in to <span>i</span>Learn
-      <div className='login-statement1'>
+      <div className='loginStatement1'>
         Enter your registered email id and password to continue
       </div>
       </div>
