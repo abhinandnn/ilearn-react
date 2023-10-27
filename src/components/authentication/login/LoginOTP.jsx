@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import OtpInput from 'react-otp-input';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 import logImg from '../../../assets/log.svg';
-import { Link } from 'react-router-dom';
+import OTP from './OTP.jsx'
+import InputOTP from './InputOTP'
+import axios from "../../../api/axios";
+const OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
 
 function LoginOTP() {
-  const [otp, setotp] = useState("");
+  const navigate = useNavigate();
+  const em=localStorage.getItem("signupEmail");
+  const {otp,handleOtpComplete} = OTP();
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+      // if (!hasErrors) {
+      //   console.log(email,password);
+  try{
+    const response = await axios.post(OTP_URL,{email:em,otp:otp},
+      {headers:{'Content-Type':'application/json; charset=utf-8'},
+        withCredentials: false});
+        console.log(response.data.message);
+        if(response.data.success)
+         navigate('/login');
 
-  const handleChange = (otp) =>
-  { setotp(otp);
-  }
-
-  const renderInput = (inputProps, index) => {
-    return (
-      <input
-        {...inputProps}
-        key={index}
-        style={{
-          width: '48px',
-          height: '48px',
-          margin: '8px',
-          fontSize: '24px',
-          textAlign: 'center',
-          borderRadius: '16px',
-          border: '2px solid black',
-          fontFamily:'Sofia Sans',
-          fontWeight:700
-        }}
-      />
-    );
-  };
-
+}catch(err){
+if(err.response){
+console.log('Server responded');
+console.log(err.response.data.message);
+}
+else
+  console.log('No Server response');
+}}
   return (
     <>
       <div className='sidestrip'>
@@ -41,23 +41,15 @@ function LoginOTP() {
           Verify Yourself
           <div className='login-statement1' id='otpstate2'>
             We have sent a 4 digit otp to<br></br>
-            <span id='otemail'> {localStorage.getItem("loginemail")}</span>
+            <span id='otemail'> {localStorage.getItem(em)}</span>
           </div>
           <div id='otpp'>
             Enter OTP
-          <OtpInput
-            value={otp}
-            onChange={handleChange}
-            numInputs={4}
-            separator={<span style={{ width: "8px" }}></span>}
-            isInputNum={true}
-            shouldAutoFocus={true}
-            inputStyle="otp-input"
-            containerStyle="otp-container"
-            renderInput={renderInput}
-          />
+            <div>
+      <InputOTP numInputs={4} onComplete={handleOtpComplete} />
+    </div>
           </div>
-          <button className='logButton'>Verify</button>
+          <button className='logButton' onClick={handleSubmit}>Verify</button>
         </div>
       </div>
     </>

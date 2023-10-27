@@ -149,3 +149,19 @@ font-size: 2.5rem;
   margin-top:0;
   gap:5vh;
 }
+#otpCont{
+  
+}
+#otpOK
+{
+  font-family: Sofia Sans;
+  font-size: 2rem;
+  border:2px solid black;
+  width:3.5vw;
+  height:3.5vw;
+  border-radius: 1.2vw;
+  margin:0 1vw;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

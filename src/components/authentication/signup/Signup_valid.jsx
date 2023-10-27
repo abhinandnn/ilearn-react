@@ -55,7 +55,8 @@ const Signup_valid = () => {
   else if(name==="email")
   setEmail(value);
   else if(name==="password")
-  setPassword(value);}
+  setPassword(value);
+}
   }
   const navigate = useNavigate();
   const handleSubmit = async(e) => {
@@ -67,10 +68,12 @@ const Signup_valid = () => {
 
     if (!hasErrors) {
     console.log("Form submitted:");
+    localStorage.setItem("signupEmail",email);
     try{
       const response = await axios.post(SIGNUP_URL,{username:username,name:name,email:email,password:password},
         {headers:{'Content-Type':'application/json; charset=utf-8'},
           withCredentials: false});
+          console.log("success");
           success=response.data.success;
   }catch(err){
   if(err.response){

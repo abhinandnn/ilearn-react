@@ -7,21 +7,18 @@ import Fahid from '../../../assets/fa-hidden.svg';
 import { Link } from 'react-router-dom';
 
 function ResetPwd() {
-    const [inputs, setInputs] = useState({
-        password:"",
-        password2:""
-    });
-    const [error,setError]  =  useState({
-        password:"",
-        password2:""
-    })
-    useEffect(() => {
-        setError(error => ({
-          ...error,
-           password2:inputs.password !== inputs.password2 ? "Passwords do not match." : ""
-          }))
-    }
-        , [inputs.password, inputs.password2]);
+    const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
+    const[password,setPassword]=useState("");
+    const[password2,setPassword2]=useState("");
+    const [errorPassword,setErrorPassword]  =  useState("");
+    const [errorPassword2,setErrorPassword2]  =  useState("");
+    // useEffect(() => {
+    //       if(password !== password2)
+    //       {setErrorPassword2("Passwords do not match.");}
+    //     else
+    //     setErrorPassword2("");
+    // }
+    //     , [password, password2]);
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
   const passwordShow = () => {
@@ -30,38 +27,42 @@ function ResetPwd() {
   const passwordShow2 = () => {
     setShowPassword2(!showPassword2);
   };
-    const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
-      const handleChange = e => {setError( {
-        ...error,
-        password: !passwordValid.test(inputs.password.trim())? 'Password must be at least 8 characters and include one letter and one number' : '',
-      })
-        setInputs({
-          ...inputs,
-          [e.target.name]: e.target.value
-        });
-        // setError( {
-        //   ...error,
-        //   password: !passwordValid.test(inputs.password.trim())? 'Password must be at least 8 characters and include one letter and one number' : '',
-        // })
-          
-      };
+      const handleChange = e => {
+        const { name, value } = e.target;
+        let errorMessage = "";
+        let errorMessage2 = "";
+
+        if (name === "password") {
+            if (!passwordValid.test(value)&&value!=="") {
+              errorMessage = "Password should be at least 8 characters long and contain at least one letter and one number";
+            }setErrorPassword(errorMessage);
+            }
+            if (name === 'password2'||name==='password')
+            {if(password !== password2) {
+                errorMessage2 = "Passwords don't match.";}
+                setErrorPassword2(errorMessage2);
+              }
+            if(name==="password")
+            setPassword(value);
+            else if(name==="password2")
+            setPassword2(value);
+        console.log(password,password2)
+          };
       const handleSubmit = e => {
         e.preventDefault();
         
           let hasErrors = false;
-          for (const i in error) {
-            if (error[i] !== '') {
-              hasErrors = true;
-            }
-          }
+          if(!(errorPassword||errorPassword2))
+    {hasErrors=false}
+          
       
           if (!hasErrors) {
-            console.log('Form submitted:', inputs);
-            localStorage.setItem("loginemail",inputs.email);
+            console.log('Form submitted:');
+            localStorage.setItem("loginemail");
           }
           else
-          console.log('fill all the details correctly!',error);
-      };
+          console.log('fill all the details correctly!');
+        }
   return (
     <>
     <div className='sidestrip'>
@@ -81,32 +82,32 @@ function ResetPwd() {
     name='password'
     maxLength={100}
     placeholder='Enter New Password'
-    value={inputs.password}
+    //}
     onChange={handleChange}
-    style={{ border: error.password ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
     <button type='button' className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
       </button>
-    <label className={error.password ? "error-label":""}>New Password</label>
-    <span className="error-message">{error.password}</span>
+    <label className={errorPassword ? "error-label":""}>New Password</label>
+    <span className="error-message">{errorPassword}</span>
     </div>
     <div className="input-signup">
     <input type={showPassword2?"text":"password"}
     name='password2'
     maxLength={100}
     placeholder='Re-Enter New Password'
-    value={inputs.password2}
+    //2}
     onChange={handleChange}
-    style={{ border: error.password2 ? "2px solid red" : "2px solid black"}}
+    style={{ border: errorPassword2 ? "2px solid red" : "2px solid black"}}
     required /> 
     <button type='button' className="icon-button" onClick={passwordShow2}>
         <img src={showPassword2?Fa:Fahid} />
       </button>
-    <label className={error.password2 ? "error-label":""}>Confirm Password</label>
-    <span className="error-message">{error.password2}</span>
+    <label className={errorPassword2 ? "error-label":""}>Confirm Password</label>
+    <span className="error-message">{errorPassword2}</span>
     </div>
-    <Link to={"/login"}><button className='logButton'>Verify</button></Link>
+    <button className='logButton'>Next</button>
     
     </div>
     </form>
