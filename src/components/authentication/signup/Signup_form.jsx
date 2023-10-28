@@ -2,9 +2,8 @@ import React , {useState} from 'react'
 import Signup_valid from './Signup_valid';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
-import { Link } from 'react-router-dom';
 function Signup_form() {
-  const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName } = Signup_valid();
+  const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength} = Signup_valid();
   const [showPassword, setShowPassword] = useState(false);
   const passwordShow = () => {
     setShowPassword(!showPassword);
@@ -64,6 +63,13 @@ function Signup_form() {
       </button>
     <label className={errorPassword ? "error-label":""}>Password</label>
     <span className="error-message">{errorPassword}</span>
+  </div>
+  <div className='pwdStrength'>Password Strength
+    <div className="strengthBar1"><div style={{background:strength===1?"#FF0000":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}}className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div></div>
   </div>
   <button className='signButton'>Sign up</button>
   </div>

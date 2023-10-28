@@ -6,7 +6,7 @@ import check from '../../../assets/check.svg'
 import uncheck from '../../../assets/uncheck.svg'
 import { Link } from 'react-router-dom';
 function Login_form() {
-  const { handleChange, handleSubmit, error,errorPassword,r} = Login_valid();
+  const { handleChange, handleSubmit, error,errorPassword} = Login_valid();
   const [showPassword, setShowPassword] = useState(false);
   const [show, setShow] = useState(true);
   const Show = () => {

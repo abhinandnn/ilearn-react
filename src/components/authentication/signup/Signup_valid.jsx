@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
+import PasswordStrength from "./passwordStrength";
 const SIGNUP_URL ='https://udemy-nx1v.onrender.com/sign-up'
+
 const Signup_valid = () => {
+  const {strength,calculateStrength}=PasswordStrength();
   let success=false;
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
@@ -55,7 +58,8 @@ const Signup_valid = () => {
   else if(name==="email")
   setEmail(value);
   else if(name==="password")
-  setPassword(value);
+  {setPassword(value);
+    calculateStrength(value)}
 }
   }
   const navigate = useNavigate();
@@ -88,7 +92,7 @@ const Signup_valid = () => {
     navigate('/otp');
   };
 
-  return { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName};
+  return { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength};
 };
 
 export default Signup_valid;

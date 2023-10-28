@@ -150,3 +150,23 @@ cursor:pointer
   border:none;
   background: transparent;
 }
+.pwdStrength{
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #6B6D7C;
+}
+.strengthBar1{
+  display: flex;
+width: 20vw;
+height: 0.25rem;
+align-items: flex-start;
+gap: 0.5rem;
+}
+.strengthBar{
+  width:6vw ;
+height: 0.25rem;
+flex-shrink: 0;
+border-radius: 4rem;
+background-color: #6B6D7C;
+}
