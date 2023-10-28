@@ -36,7 +36,7 @@
     font-weight: 700;
     margin-top: 15vh;
 }
-.loginStatement span{
+.loginStatement >span{
 color:#5928E5;
 }
 .loginStatement1{
@@ -56,6 +56,23 @@ color:#5928E5;
   border: 2px solid black;
   outline: none;
   box-sizing: border-box;
+}
+.belowButton{
+  font-family: Sofia Sans;
+  display: flex;
+  justify-content: space-between;
+  width:42vw;
+}
+.fort{
+  text-decoration: none;
+  color:#1D7AE8;
+}
+#checkbox{
+width:1rem;
+height: 1rem;
+/* position: absolute; */
+margin-right: 3px;
+transform: translateY(20%) ;
 }
 #pwd{
 width:42vw;

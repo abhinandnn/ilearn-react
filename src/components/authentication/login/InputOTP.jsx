@@ -16,8 +16,6 @@ const InputOTP = ({ numInputs, onComplete }) => {
     if (value && index < numInputs - 1) {
       inputRefs.current[index + 1].focus();
     }
-
-    // Check if all OTP inputs are filled
     if (!newOtp.includes("")) {
       onComplete(newOtp.join(""));
     }
@@ -33,7 +31,7 @@ const InputOTP = ({ numInputs, onComplete }) => {
           maxLength="1"
           value={digit}
           onChange={(e) => handleChange(e, index)}
-          ref={(el) => (inputRefs.current[index] = el)}
+          ref={(inputDigit) => (inputRefs.current[index] = inputDigit)}
         />
       ))}
     </div>

@@ -42,7 +42,7 @@ else
           Verify Yourself
           <div className='loginStatement1' id='otpstate2'>
             We have sent a 4 digit otp to<br></br>
-            <span id='otemail'> {localStorage.getItem(em)}</span>
+            <span id='otemail'> {em}</span>
           </div>
           <div id='otpp'>
             Enter OTP

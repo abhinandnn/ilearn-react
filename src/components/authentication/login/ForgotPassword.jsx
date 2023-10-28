@@ -3,7 +3,7 @@ import './login.css';
 import logImg from '../../../assets/log.svg'
 import { useNavigate } from 'react-router-dom';
 import axios from "../../../api/axios";
-const FORGOT_URL ='https://udemy-nx1v.onrender.com/forgot-password'
+const FORGOT_URL ='https://udemy-nx1v.onrender.com/forget-password'
 const ForgotPassword = () =>{
 const[email,setEmail]=useState("");
 const [error,setError]  =  useState("");
