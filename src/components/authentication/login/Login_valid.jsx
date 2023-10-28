@@ -47,8 +47,10 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
     const response = await axios.post(LOGIN_URL,{email:email,password:password},
       {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
-        const authToken= response.data.token;
-        localStorage.setItem("authId",authToken);
+        console.log("login success",response.data.data.token)
+        localStorage.setItem("authId",response.data.data.token);
+        localStorage.setItem("LoggedinUsername",response.data.data.username);
+        localStorage.setItem("role",response.data.data.role);
 }catch(err){
 if(err.response){
 console.log('Server responded');

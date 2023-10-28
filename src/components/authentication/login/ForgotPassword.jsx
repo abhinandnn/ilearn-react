@@ -10,36 +10,30 @@ const [error,setError]  =  useState("");
 const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
 const navigate=useNavigate();
   const handleChange = e => {
-
-    if(e.target.name==="email")
-    {
-    if(!email_valid.test(e.target.value))
- { setError('Enter a valid email')  }
-  else
-  {
-    setError("")
     setEmail(e.target.value);
-  }}
+    if(!email_valid.test(e.target.value)&&e.target.value!=="")
+    setError('Enter a valid email')
+    else
+    setError("")
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
     
       let hasErrors = false;
-      for (const i in error) {
-        if (error[i] !== '') {
+        if (error !== '') {
           hasErrors = true;
         }
-      }
-  
       if (!hasErrors) {
+        localStorage.setItem("forgetEmail",email);
         console.log(email);
   try{
     const response = await axios.post(FORGOT_URL,{email:email},
-      {headers:{'Content-Type':'application/json; charset=utf-8'},
+      {headers:{'Content-Type':'application/json; charset=utf-8',
+    'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2NlYmU5NTRjNjBhMzViMGFmYTNmZSIsInVpZCI6IndUVDdRWGx6bCIsImlhdCI6MTY5ODQ5MjA5MCwiZXhwIjoxNjk4NjY0ODkwfQ.lrvu9UW2gdCSgDGL9mYFXCHtfurhXN72_xZHQIVuciI'},
         withCredentials: false});
         if(response.data.success)
         {
-        navigate('/otp')
+        navigate('/forgot/otp')
         console.log(response.data.message);}
 }catch(err){
 if(err.response){
@@ -63,7 +57,7 @@ else
       </div>
       <form onSubmit={handleSubmit}> 
       <div className='form'>
-       <div className="input-login">
+    <div className="input-login">
     <input type="email"
     name='email'
     maxLength={100}
@@ -71,10 +65,10 @@ else
     onChange={handleChange}
     style={{ border: error ? "2px solid red" : "2px solid black"}}
     required /> 
-    <label className={error ? "error-label":""}>Email</label>
+    <label id="lb" className={error ? "error-label":""}>Email</label>
     <span className="error-message" style={{color:"red"}}>{error}</span>
-   </div>
-   <button className='logButton'>Next</button>
+    </div>
+      <button className='logButton'>Next</button>
    </div>
    </form>
       </div>

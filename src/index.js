@@ -11,7 +11,8 @@ const router=createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<App />}>
         <Route path='login' element={<Login/>}/>
-        <Route path='otp' element={<LoginOTP/>}/>
+        <Route path='forgot/otp' element={<LoginOTP/>}/>
+        <Route path='signup/otp' element={<LoginOTP/>}/>
         <Route path='signup' element={<Signup />}/>
         <Route path='forgot' element={<ForgotPassword/>}/>
         <Route path='resetpwd' element={<ResetPwd/>}/>

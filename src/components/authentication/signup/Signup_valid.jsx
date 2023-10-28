@@ -80,7 +80,7 @@ const Signup_valid = () => {
       const response = await axios.post(SIGNUP_URL,{username:username,name:name,email:email,password:password},
         {headers:{'Content-Type':'application/json; charset=utf-8'},
           withCredentials: false});
-          console.log("success");
+          console.log("signup success");
           success=response.data.success;
   }catch(err){
   if(err.response){
@@ -95,7 +95,7 @@ setErrorUsername(err.response.data.message);
   }
     }
     if(success)
-    navigate('/otp');
+    navigate('/signup/otp');
   };
 
   return { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength};

@@ -5,8 +5,12 @@ import { useState, useEffect } from 'react';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
 import PasswordStrength from '../signup/passwordStrength';
-
+import { useNavigate } from 'react-router-dom';
+import axios from '../../../api/axios';
+const RESET_URL = 'https://udemy-nx1v.onrender.com/change-password'
 function ResetPwd() {
+    const Navigate=useNavigate();
+    const Ftoken=localStorage.getItem("Ftoken")
     const{strength,calculateStrength}=PasswordStrength();
     const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
     const[password,setPassword]=useState("");
@@ -42,7 +46,7 @@ function ResetPwd() {
             else if(name==="password2")
             setPassword2(value);
           };
-      const handleSubmit = e => {
+      const handleSubmit = async(e) => {
         e.preventDefault();
         
           let hasErrors = false;
@@ -50,11 +54,24 @@ function ResetPwd() {
     {hasErrors=false}
           if (!hasErrors) {
             console.log('Form submitted:');
-            localStorage.setItem("loginemail");
+            localStorage.setItem("resetPassword",password);
+            try{
+              const response = await axios.post(RESET_URL,{newPassword:password},
+                {headers:{'Authorization':`Bearer ${Ftoken}`},
+                  withCredentials: false});
+                  if(response.data.success)
+                  {
+                  Navigate('/login')
+                  console.log(response.data.message);}
+          }catch(err){
+          if(err.response){
+          console.log('Server responded');
+          console.log(err.response.data.message);
           }
           else
-          console.log('fill all the details correctly!');
-        }
+            console.log('No Server response');
+          }}
+          }
   return (
     <>
     <div className='sidestrip'>
