@@ -4,9 +4,10 @@ import logImg from '../../../assets/log.svg'
 import { useState, useEffect } from 'react';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
-import { Link } from 'react-router-dom';
+import PasswordStrength from '../signup/passwordStrength';
 
 function ResetPwd() {
+    const{strength,calculateStrength}=PasswordStrength();
     const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
     const[password,setPassword]=useState("");
     const[password2,setPassword2]=useState("");
@@ -35,9 +36,10 @@ function ResetPwd() {
               errorMessage = "Password should be at least 8 characters long and contain at least one letter and one number";
             }
             setErrorPassword(errorMessage);}
-            if(name==="password"&&value!=="")
-            setPassword(value);
-            else if(name==="password2"&&value!=="")
+            if(name==="password")
+            {setPassword(value);
+              calculateStrength(value);}
+            else if(name==="password2")
             setPassword2(value);
           };
       const handleSubmit = e => {
@@ -97,6 +99,13 @@ function ResetPwd() {
     <label className={errorPassword2 ? "error-label":""}>Confirm Password</label>
     <span className="error-message">{errorPassword2}</span>
     </div>
+    <div className='pwdStrength'>Password Strength
+    <div className="strengthBar1"><div style={{background:strength===1?"#FF0000":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}}className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
+      </div></div>
+  </div>
     <button className='logButton'>Next</button>
     
     </div>

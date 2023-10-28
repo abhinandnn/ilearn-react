@@ -16,7 +16,7 @@ function Signup_form() {
     <input type="text"
     name='username'
     maxLength={100}
-    placeholder='Enter First Name'
+    placeholder='Enter Username'
     //username}
     onChange={handleChange}
     style={{ border: errorUserName ? "2px solid red" : "2px solid black"}}
@@ -28,7 +28,7 @@ function Signup_form() {
     <input type="text"
     name='name'
     maxLength={100}
-    placeholder='Enter Last Name'
+    placeholder='Enter Name'
     //name}
     onChange={handleChange}
     style={{ border: errorName ? "2px solid red" : "2px solid black"}}
