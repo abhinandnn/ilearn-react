@@ -10,10 +10,11 @@ const[errorPassword,setErrorPassword]=useState("");
 let r=true;
 const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   const handleChange = e => {
-    r=true;
+    setErrorPassword("");
+
     if(e.target.name==="email")
     {
-    if(!email_valid.test(e.target.value))
+    if(!email_valid.test(e.target.value)&&e.target.value!=="")
  { setError('Enter a valid email')
     
   }
@@ -25,6 +26,7 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   else{
     setPwd(e.target.value);
   }
+
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
