@@ -15,7 +15,7 @@ function Signup_form() {
         <div className="input-signup-name">
     <input type="text"
     name='username'
-    maxLength={100}
+    maxLength={30}
     placeholder='Enter Username'
     //username}
     onChange={handleChange}
@@ -27,7 +27,7 @@ function Signup_form() {
    <div className="input-signup-name">
     <input type="text"
     name='name'
-    maxLength={100}
+    maxLength={50}
     placeholder='Enter Name'
     //name}
     onChange={handleChange}
@@ -52,7 +52,7 @@ function Signup_form() {
   <div className="input-signup">
     <input type={showPassword?"text":"password"}
     name='password'
-    maxLength={100}
+    maxLength={50}
     placeholder='Enter Password'
     //password}
     onChange={handleChange}

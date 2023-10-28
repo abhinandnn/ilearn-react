@@ -72,7 +72,10 @@ const Signup_valid = () => {
 
     if (!hasErrors) {
     console.log("Form submitted:");
+    localStorage.setItem("username",username)
+    localStorage.setItem("name",name)
     localStorage.setItem("signupEmail",email);
+    localStorage.setItem("signupPassword",password);
     try{
       const response = await axios.post(SIGNUP_URL,{username:username,name:name,email:email,password:password},
         {headers:{'Content-Type':'application/json; charset=utf-8'},
@@ -82,7 +85,10 @@ const Signup_valid = () => {
   }catch(err){
   if(err.response){
   console.log('Server responded');
-  setErrorUsername(err.response.data.message);
+  if(err.response.data.message==="User with the same email already exists")
+  setErrorEmail(err.response.data.message);
+else
+setErrorUsername(err.response.data.message);
   }
   else
     console.log('No Server response');
