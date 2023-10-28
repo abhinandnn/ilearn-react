@@ -28,7 +28,7 @@ function Navbar() {
                 <div className="sign-up" >{isSignup ? (
             <NavLink className={"navLink"} to="/login">Log in</NavLink>
           ) : (
-            <NavLink className={"navLink"} to="/signup">Sign Up</NavLink>
+            <NavLink className={"navLink"} to="/signup">Sign up</NavLink>
           )}
 </div>
             </div>

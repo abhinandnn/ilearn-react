@@ -22,13 +22,7 @@
     width:55vw;
     display: flex;
     flex-direction: column;
-    gap:5vh;
 
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    gap:5vh;
 }
 .loginStatement{
     font-size: 2rem;
@@ -46,10 +40,11 @@ color:#5928E5;
 }
 .input-login{
   position: relative;
+  width: 42vw;
 }
 .input-login> input{
   width: 42vw;
-  height: 8vh;
+  height: 3.6rem;
   border-radius: 20px;
   font-size: 1.2rem;
   padding: 0 2vw;
@@ -104,7 +99,7 @@ padding-right: 4vw;
 }
 .logButton{
 width: 42vw;
-height: 8vh;
+height: 3.6rem;
 border-radius: 20px;
 font-size: 1.2rem;
 padding: 0 2vw;
@@ -121,15 +116,6 @@ opacity:1;
 .logButton:active{
 background: #3F1F9B;
 border: 2px solid #3F1F9B;
-}
-.icon-button {
-  position: absolute;
-  right:25%;
-  top: 50%;
-  transform: translateY(-42%);
-  cursor: pointer;
-  border:none;
-  background: transparent;
 }
 #otpsec{
   margin-top: 4vh;
@@ -163,7 +149,7 @@ font-size: 2.5rem;
 #forg{
   display: flex;
   flex-direction: column;
-  margin-top:0;
+  margin-top:2rem;
   gap:5vh;
 }
 #otpCont{
@@ -185,10 +171,18 @@ font-size: 2.5rem;
 #lb{
   transform: translateY(-20%);
 }
-/* body{
-  overflow-y: hidden;
-} */
-passwordStrengthBar{
+body{
+  overflow-y:hidden;
+}
+.success{
+  background: #5928E5;
+    /* color: #fff; */
+    font-size: 20px;
+    font-family: SOFIA SANS;
+    width: 20vw;
+    margin: 10px;
+}
+.passwordStrengthBar{
 width:1rem;
 height:0.04rem;
 background-color: #6B6D7C;

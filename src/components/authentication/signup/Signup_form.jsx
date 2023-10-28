@@ -58,14 +58,14 @@ function Signup_form() {
     onChange={handleChange}
     style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
-    <button type='button' className="icon-button" onClick={passwordShow}>
+    <div className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
-      </button>
+      </div>
     <label className={errorPassword ? "error-label":""}>Password</label>
     <span className="error-message">{errorPassword}</span>
   </div>
   <div className='pwdStrength'>Password Strength
-    <div className="strengthBar1"><div style={{background:strength===1?"#FF0000":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}}className="strengthBar">
+    <div className="strengthBar1"><div style={{background:strength===0?"#6B6D7C":strength===1?"#FF0000":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}}className="strengthBar">
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#DEE223":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">

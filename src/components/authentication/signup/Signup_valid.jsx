@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import PasswordStrength from "./passwordStrength";
+import { toast } from "react-toastify";
 const SIGNUP_URL ='https://udemy-nx1v.onrender.com/sign-up'
 
 const Signup_valid = () => {
@@ -33,10 +34,12 @@ const Signup_valid = () => {
         errorMessage = "Invalid email";
       }
       setErrorEmail(errorMessage);
-    } else if (name === "password"&&value!=="") {
+    } else if (name === "password") {
       if (!passwordValid.test(value)) {
         errorMessage = "Password should be at least 8 characters long and contain at least one letter and one number";
       }
+      if(value==="")
+      errorMessage="";
       setErrorPassword(errorMessage);
     } else if (name === "username") {
       if (!validUsername.test(value)&&invalidUsername.test(value)) {
@@ -50,8 +53,7 @@ const Signup_valid = () => {
       }
       setErrorUsername(errorMessage);
     }
-    if(value!=="")
-    {if(name==="name")
+    if(name==="name")
     setName(value);
   else if(name==="username")
   setUsername(value);
@@ -60,7 +62,6 @@ const Signup_valid = () => {
   else if(name==="password")
   {setPassword(value);
     calculateStrength(value)}
-}
   }
   const navigate = useNavigate();
   const handleSubmit = async(e) => {
@@ -81,6 +82,7 @@ const Signup_valid = () => {
         {headers:{'Content-Type':'application/json; charset=utf-8'},
           withCredentials: false});
           console.log("signup success");
+          toast.info("Verify your email");
           success=response.data.success;
   }catch(err){
   if(err.response){

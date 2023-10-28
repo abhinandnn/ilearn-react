@@ -14,6 +14,7 @@ function Login_form() {
   const passwordShow = () => {
     setShowPassword(!showPassword);}
   return (
+    <>
       <form onSubmit={handleSubmit}> 
       <div className='form'>
        <div className="input-login">
@@ -36,9 +37,9 @@ function Login_form() {
     onChange={handleChange}
     style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
-    <button type='button' className="icon-button" onClick={passwordShow}>
+    <div className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
-      </button>
+      </div>
     <label className={errorPassword ? "error-label":""}>Password</label>
     <span className="error-message">{errorPassword}</span>
   </div>
@@ -50,6 +51,7 @@ function Login_form() {
   
   </div>
   </form>
+  </>
   )
 }
 

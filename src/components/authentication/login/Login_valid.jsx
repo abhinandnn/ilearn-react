@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "../../../api/axios";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 const LOGIN_URL ='https://udemy-nx1v.onrender.com/sign-in'
+
 const Login_valid = () =>{
 const[email,setEmail]=useState("");
 const[password,setPwd]=useState("");
@@ -30,7 +33,6 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
-    
       let hasErrors = false;
       for (const i in error) {
         if (error[i] !== '') {
@@ -48,6 +50,7 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
       {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
         console.log("login success",response.data.data.token)
+        toast.success("Login Successful")
         localStorage.setItem("authId",response.data.data.token);
         localStorage.setItem("LoggedinUsername",response.data.data.username);
         localStorage.setItem("role",response.data.data.role);
@@ -63,6 +66,6 @@ setErrorPassword(err.response.data.message);
 else
   console.log('No Server response');
 }}}
-  return { handleChange, handleSubmit, error ,approve ,errorPassword,r};
+  return { handleChange, handleSubmit, error ,approve ,errorPassword,ToastContainer};
 };
 export default Login_valid;

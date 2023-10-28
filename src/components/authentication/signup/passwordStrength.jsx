@@ -3,7 +3,7 @@ import { useState } from "react";
  function PasswordStrength() {
     const[strength,setStrength]=useState()
   const calculateStrength = (password) => {
-    if(password.length<8)
+    if(password.length<8&&password.length!==0)
     {setStrength(1)}
     const regex = [/[A-Z]/, /[a-z]/, /[0-9]/, /[$@$!%*#?&]/];
     let passed = 0;
@@ -13,7 +13,7 @@ import { useState } from "react";
         passed++;
       }
     });
-    if(password.length>=8){
+    if(password.length>=8||password.length==0){
     switch (passed) {
       case 1:
         setStrength(1);
@@ -26,14 +26,15 @@ import { useState } from "react";
         break;
       case 4:
         setStrength(4);
-
         break;
       default:
-        setStrength()
+        setStrength(0);
         break;
     }
+   
+  };
+ }
 
-  };}
 
   return{strength,calculateStrength}
 };

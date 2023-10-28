@@ -3,6 +3,7 @@ import Login_form from './Login_form';
 import './login.css';
 import logImg from '../../../assets/log.svg'
 function Login() {
+  
   return (
     <>
     <div className='sidestrip'>

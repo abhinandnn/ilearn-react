@@ -7,6 +7,7 @@ import Fahid from '../../../assets/fa-hidden.svg';
 import PasswordStrength from '../signup/passwordStrength';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../../api/axios';
+import { ToastContainer,toast } from 'react-toastify';
 const RESET_URL = 'https://udemy-nx1v.onrender.com/change-password'
 function ResetPwd() {
     const Navigate=useNavigate();
@@ -56,11 +57,13 @@ function ResetPwd() {
             console.log('Form submitted:');
             localStorage.setItem("resetPassword",password);
             try{
-              const response = await axios.post(RESET_URL,{newPassword:password},
+              console.log(password);
+              const response = await axios.post(RESET_URL,{password:password},
                 {headers:{'Authorization':`Bearer ${Ftoken}`},
                   withCredentials: false});
                   if(response.data.success)
                   {
+                    toast.success("Password updated!")
                   Navigate('/login')
                   console.log(response.data.message);}
           }catch(err){
@@ -95,9 +98,9 @@ function ResetPwd() {
     onChange={handleChange}
     style={{ border: errorPassword ? "2px solid red" : "2px solid black"}}
     required /> 
-    <button type='button' className="icon-button" onClick={passwordShow}>
+    <div className="icon-button" onClick={passwordShow}>
         <img src={showPassword?Fa:Fahid} />
-      </button>
+      </div>
     <label className={errorPassword ? "error-label":""}>New Password</label>
     <span className="error-message">{errorPassword}</span>
     </div>
@@ -110,9 +113,9 @@ function ResetPwd() {
     onChange={handleChange}
     style={{ border: errorPassword2 ? "2px solid red" : "2px solid black"}}
     required /> 
-    <button type='button' className="icon-button" onClick={passwordShow2}>
-        <img src={showPassword2?Fa:Fahid} />
-      </button>
+    <div className="icon-button" onClick={passwordShow2}>
+     <img src={showPassword2?Fa:Fahid} />
+      </div>
     <label className={errorPassword2 ? "error-label":""}>Confirm Password</label>
     <span className="error-message">{errorPassword2}</span>
     </div>

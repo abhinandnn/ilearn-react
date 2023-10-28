@@ -3,6 +3,7 @@ import './login.css';
 import logImg from '../../../assets/log.svg'
 import { useNavigate } from 'react-router-dom';
 import axios from "../../../api/axios";
+import { ToastContainer,toast } from 'react-toastify';
 const FORGOT_URL ='https://udemy-nx1v.onrender.com/forget-password'
 const ForgotPassword = () =>{
 const[email,setEmail]=useState("");
@@ -33,7 +34,8 @@ const navigate=useNavigate();
         withCredentials: false});
         if(response.data.success)
         {
-        navigate('/forgot/otp')
+          toast.success("sent OTP!")
+          navigate('/forgot/otp')
         console.log(response.data.message);}
 }catch(err){
 if(err.response){

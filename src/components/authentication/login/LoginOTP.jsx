@@ -5,6 +5,7 @@ import logImg from '../../../assets/log.svg';
 import OTP from './OTP.jsx'
 import InputOTP from './InputOTP'
 import axios from "../../../api/axios";
+import { ToastContainer,toast } from 'react-toastify';
 let OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
 
 function LoginOTP() {
@@ -12,11 +13,11 @@ function LoginOTP() {
   const location = useLocation();
   const navigate = useNavigate();
   if(location.pathname==='/forgot/otp')
-  { console.log("helloo")
+  { 
     em=localStorage.getItem("forgetEmail");
 OTP_URL='https://udemy-nx1v.onrender.com/verify-otp'}
   else
-  { console.log("lol")
+  {
   console.log(location)
     em=localStorage.getItem("signupEmail");
 sign=true}
@@ -30,6 +31,7 @@ sign=true}
         withCredentials: false});
         // console.log(response.data.message);
         if(response.data.success){
+        toast.success("OTP verified!")
           if(!sign)
         {token=response.data.data.token;
         localStorage.setItem("Ftoken",token);}

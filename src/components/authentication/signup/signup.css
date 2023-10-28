@@ -19,7 +19,7 @@
     left:3vw;
 }
 .signup_section{
-    margin-top: 11vh;
+    margin-top: 7rem;
     float:right;
     height:100vh;
     width:55vw;
@@ -31,14 +31,13 @@
 .form{
     display: flex;
     flex-direction: column;
-    margin-top:5vh;
-    gap:5vh;
+    margin-top:2rem;
+    gap:2rem;
 }
 .signup-statement{
     font-size: 2rem;
     font-family: Sofia Sans ;
     font-weight: 700;
-    margin-top: 0;
 }
 .signup-statement>span{
 color:#5928E5;
@@ -50,12 +49,13 @@ color:#5928E5;
 }
 .input-signup{
     position: relative;
+    width:42vw
   }
   .input-signup> input{
     width: 42vw;
-    height: 8vh;
+    height: 3.5rem;
     border-radius: 20px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0 2vw;
     border: 2px solid black;
     outline: none;
@@ -75,7 +75,6 @@ color:#5928E5;
     background: white;
   }
   .progressBar{
-  margin-top: 5vh;
   width:42vw
   }
   .error-label{
@@ -84,14 +83,14 @@ color:#5928E5;
   .error-message {
     position: absolute;
     font-family: Sofia Sans;
-    top: 110%; 
+    top: 100%; 
     left: 20px;
     color: red;
     font-size: 0.8rem;
 }
 .signButton{
   width: 42vw;
-  height: 8vh;
+  height: 3.6rem;
   border-radius: 20px;
   font-size: 1.2rem;
   padding: 0 2vw;
@@ -119,9 +118,9 @@ cursor:pointer
 }
 .input-signup-name> input{
   width: 20vw;
-  height: 8vh;
+  height: 3.5rem;
   border-radius: 20px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 0 2vw;
   border: 2px solid black;
   outline: none;
@@ -143,12 +142,13 @@ cursor:pointer
 
 .icon-button {
   position: absolute;
-  right:25%;
+  right:3%;
   top: 50%;
-  transform: translateY(-42%);
+  transform: translateY(-48%);
+  padding:0.05rem 0;
   cursor: pointer;
   border:none;
-  background: transparent;
+
 }
 .pwdStrength{
   font-family: Poppins;
