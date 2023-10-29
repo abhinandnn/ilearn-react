@@ -34,7 +34,7 @@ const navigate=useNavigate();
         withCredentials: false});
         if(response.data.success)
         {
-          toast.success("sent OTP!")
+          toast.info("OTP sent successfully!")
           navigate('/forgot/otp')
         console.log(response.data.message);}
 }catch(err){

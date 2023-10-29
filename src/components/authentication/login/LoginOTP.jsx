@@ -12,6 +12,7 @@ function LoginOTP() {
   let token,em,sign=false;
   const location = useLocation();
   const navigate = useNavigate();
+  console.log("lol")
   if(location.pathname==='/forgot/otp')
   { 
     em=localStorage.getItem("forgetEmail");
@@ -44,6 +45,7 @@ sign=true}
 }}catch(err){
 if(err.response){
 console.log('Server responded');
+toast.error("OTP is invalid");
 console.log(err.response.data.message);
 }
 else

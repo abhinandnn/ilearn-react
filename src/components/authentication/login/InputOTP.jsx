@@ -16,7 +16,7 @@ const InputOTP = ({ numInputs, onComplete }) => {
     newOtp[index] = value;
     setOtp(newOtp);
    if( index < numInputs - 1)
-   setError("Invalid OTP");
+   setError("OTP must contain 4 digits");
     if (value && index < numInputs - 1) {
       inputRefs.current[index + 1].focus();
 
@@ -46,7 +46,6 @@ const InputOTP = ({ numInputs, onComplete }) => {
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           ref={(inputDigit) => (inputRefs.current[index] = inputDigit)}
-          onComplete={handleOtpComplete}
           style={{ border: error? "2px solid red" : "2px solid black"}}
         />
       ))}
