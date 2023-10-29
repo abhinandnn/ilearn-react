@@ -10,7 +10,7 @@ import LoginOTP from './components/authentication/login/LoginOTP.jsx';
 const router=createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<App />}>
-        <Route path='login' element={<Login/>}/>
+        <Route path='' element={<Login/>}/>
         <Route path='forgot/otp' element={<LoginOTP/>}/>
         <Route path='signup/otp' element={<LoginOTP/>}/>
         <Route path='signup' element={<Signup />}/>

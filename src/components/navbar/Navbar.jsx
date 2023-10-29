@@ -26,7 +26,7 @@ function Navbar() {
                 <div className="popular-courses">Popular courses</div>
                 <div className="teach">Teach on ilearn</div>
                 <div className="sign-up" >{isSignup ? (
-            <NavLink className={"navLink"} to="/login">Log in</NavLink>
+            <NavLink className={"navLink"} to="/">Log in</NavLink>
           ) : (
             <NavLink className={"navLink"} to="/signup">Sign up</NavLink>
           )}
