@@ -51,8 +51,8 @@ function ResetPwd() {
         e.preventDefault();
         
           let hasErrors = false;
-          if(!(errorPassword||errorPassword2))
-    {hasErrors=false}
+          if((errorPassword||errorPassword2))
+    {hasErrors=true}
           if (!hasErrors) {
             console.log('Form submitted:');
             localStorage.setItem("resetPassword",password);
@@ -64,7 +64,7 @@ function ResetPwd() {
                   if(response.data.success)
                   {
                     toast.success("Password updated!")
-                  Navigate('/login')
+                  Navigate('/')
                   console.log(response.data.message);}
           }catch(err){
           if(err.response){

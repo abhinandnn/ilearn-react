@@ -38,7 +38,7 @@ sign=true}
         localStorage.setItem("Ftoken",token);}
           console.log(response.data.message);
           if(sign)
-          navigate('/login');
+          navigate('/');
         else
             navigate('/resetpwd')          
 
