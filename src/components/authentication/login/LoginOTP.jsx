@@ -6,6 +6,7 @@ import OTP from './OTP.jsx'
 import InputOTP from './InputOTP'
 import axios from "../../../api/axios";
 import { ToastContainer,toast } from 'react-toastify';
+import ResendOtp from './ResendOtp';
 let OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
 
 function LoginOTP() {
@@ -13,7 +14,7 @@ function LoginOTP() {
   const location = useLocation();
   const navigate = useNavigate();
   const [error,setError]=useState("");
-  console.log("lol")
+  console.log("lolol")
   if(location.pathname==='/forgot/otp')
   { 
     em=localStorage.getItem("forgetEmail");
@@ -74,8 +75,10 @@ else
             <div>
       <InputOTP handleError={handleError} error1 = {error}numInputs={4} onComplete={handleOtpComplete} />
     </div>
+    <ResendOtp email={em}/>
           </div>
           <button className='logButton' onClick={handleSubmit}>Verify</button>
+          
         </div>
       </div>
     </>
