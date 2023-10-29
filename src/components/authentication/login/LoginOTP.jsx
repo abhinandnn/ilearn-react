@@ -56,11 +56,11 @@ else
       </div>
       <div className='login_section' id='otpsec'>
         <div className='loginStatement' id='otpstate'>
-          Verify Yourself
+          <div className='otpstate2'>Verify Yourself
           <div className='loginStatement1' id='otpstate2'>
             We have sent a 4 digit otp to<br></br>
             <span id='otemail'>{em}</span>
-          </div>
+          </div></div>
           <div id='otpp'>
             Enter OTP
             <div>

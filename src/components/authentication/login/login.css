@@ -134,7 +134,7 @@ font-size: 2.5rem;
 #otpp
 {
   margin-top:10vh;
-  margin-bottom: 3vh;
+  margin-bottom: 10vh;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -153,26 +153,30 @@ font-size: 2.5rem;
   gap:5vh;
 }
 #otpCont{
-  
+  position: relative;
+  margin:1vw 0vw
 }
 #otpOK
 {
   font-family: Sofia Sans;
   font-size: 2rem;
-  border:2px solid black;
-  width:3.5vw;
-  height:3.5vw;
-  border-radius: 1.2vw;
+  width:3rem;
+  height:3rem;
+  border-radius: 1rem;
   margin:0 1vw;
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+  outline: none;
 }
 #lb{
   transform: translateY(-20%);
 }
 body{
-  overflow-x:hidden;
+  margin:0;
+  padding: 0;
+  overflow-y: hidden;
 }
 .success{
   background: #5928E5;
