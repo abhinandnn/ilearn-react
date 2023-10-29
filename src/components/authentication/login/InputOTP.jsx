@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-
-const InputOTP = ({ numInputs, onComplete }) => {
+const InputOTP = ({ numInputs, onComplete,error1 ,handleError}) => {
   const [otp, setOtp] = useState(Array(numInputs).fill(""));
   const[error,setError]=useState("")
   const inputRefs = useRef([]);
@@ -24,12 +23,13 @@ const InputOTP = ({ numInputs, onComplete }) => {
     if (!newOtp.includes("")) {
       onComplete(newOtp.join(""));
       setError("");
+      handleError();
     }
   };
   const handleKeyDown = (e, index) => {
     if (e.key === 'Backspace' && index > 0 && otp[index] === '') {
       inputRefs.current[index - 1].focus();
-      setError("Invalid OTP");
+      
     }
   };
 
@@ -46,10 +46,10 @@ const InputOTP = ({ numInputs, onComplete }) => {
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           ref={(inputDigit) => (inputRefs.current[index] = inputDigit)}
-          style={{ border: error? "2px solid red" : "2px solid black"}}
+          style={{ border: error||error1? "2px solid red" : "2px solid black"}}
         />
       ))}
-      <p className="error-message">{error}</p>
+      <p id='otpError'className="error-message">{error||error1}</p>
     </div>
 
   );}

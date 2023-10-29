@@ -171,6 +171,10 @@ flex-shrink: 0;
 border-radius: 4rem;
 background-color: #6B6D7C;
 }
+#otpError
+{
+  transform: translateY(-25%);
+}
 @media screen and (max-width:800px) {
   body{
     overflow-x: hidden ;
@@ -278,7 +282,10 @@ background-color: #6B6D7C;
     margin:2rem 0;
   }
   #otpstate2{
-    width:80vw
+    width:100vw;
+    font-size: 1rem;
+  text-align: center;
+  align-items:center;
   }
   #otpCont{
     width:90vw;
@@ -293,6 +300,21 @@ background-color: #6B6D7C;
   font-size: 1.8rem;
   margin-right: 4rem;
   text-align: left;
+}
+.otpstate2{
+  font-size: 2rem;
+  text-align: center;
+  width:100vw;
+  align-items:center;
+}
+#otestate2{
+  font-size: 2rem;
+  text-align: center;
+  width:80vw;
+  align-items:center;
+}
+#otemail>span{
+  width:20vw
 }
 .loginStatement1{
   font-size: 1rem;
@@ -362,4 +384,8 @@ background-color: #6B6D7C;
   .signButton{
     margin-bottom: 2vh;
   }
+  #otpError
+{
+  transform: translateY(-30%);
+}
 }

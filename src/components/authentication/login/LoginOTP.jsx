@@ -12,6 +12,7 @@ function LoginOTP() {
   let token,em,sign=false;
   const location = useLocation();
   const navigate = useNavigate();
+  const [error,setError]=useState("");
   console.log("lol")
   if(location.pathname==='/forgot/otp')
   { 
@@ -23,6 +24,10 @@ OTP_URL='https://udemy-nx1v.onrender.com/verify-otp'}
     em=localStorage.getItem("signupEmail");
 sign=true}
   const {otp,handleOtpComplete} = OTP();
+  const handleError=()=> {
+    setError("");
+
+  }
   const handleSubmit = async(e) => {
     e.preventDefault();
     
@@ -46,6 +51,7 @@ sign=true}
 if(err.response){
 console.log('Server responded');
 toast.error("OTP is invalid");
+setError("Invalid OTP");
 console.log(err.response.data.message);
 }
 else
@@ -60,13 +66,13 @@ else
         <div className='loginStatement' id='otpstate'>
           <div className='otpstate2'>Verify Yourself
           <div className='loginStatement1' id='otpstate2'>
-            We have sent a 4 digit otp to<br></br>
+            We have sent a 4 digit otp to<br/>
             <span id='otemail'>{em}</span>
           </div></div>
           <div id='otpp'>
             Enter OTP
             <div>
-      <InputOTP numInputs={4} onComplete={handleOtpComplete} />
+      <InputOTP handleError={handleError} error1 = {error}numInputs={4} onComplete={handleOtpComplete} />
     </div>
           </div>
           <button className='logButton' onClick={handleSubmit}>Verify</button>
