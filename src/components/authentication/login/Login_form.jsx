@@ -48,7 +48,7 @@ function Login_form() {
   <Link to="/forgot" className='fort'>Forgot Password?</Link>
   </div>
   <button className='logButton'>Log in</button>
-  
+  <div className='authFooter'>Need an account? <Link to={"/signup"}className='fort'>Sign up</Link></div>
   </div>
   </form>
   </>

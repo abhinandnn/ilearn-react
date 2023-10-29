@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import Signup_valid from './Signup_valid';
 import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
+import { Link } from 'react-router-dom';
 function Signup_form() {
   const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength} = Signup_valid();
   const [showPassword, setShowPassword] = useState(false);
@@ -70,8 +71,13 @@ function Signup_form() {
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#1D7AE8":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div></div>
-  </div>
+  <div id='signB'>
   <button className='signButton'>Sign up</button>
+  <div className='authFooter'>Already have an account? <Link to={"/"}className='fort'>Log in</Link></div>
+  </div>
+
+</div>
+
   </div>
   </form>
   )

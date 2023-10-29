@@ -4,6 +4,7 @@ import logImg from '../../../assets/log.svg'
 import { useNavigate } from 'react-router-dom';
 import axios from "../../../api/axios";
 import { ToastContainer,toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 const FORGOT_URL ='https://udemy-nx1v.onrender.com/forget-password'
 const ForgotPassword = () =>{
 const[email,setEmail]=useState("");
@@ -51,7 +52,7 @@ else
     <div className='sidestrip'>
     <img className='log' src={logImg}/>
     </div>
-    <div className='login_section'>
+    <div id="forgot_section" className='login_section'>
       <div className='loginStatement' id="forgorlog">
       Forgot Password?
       <div className='loginStatement1'id='forgotlog'>
@@ -71,6 +72,7 @@ else
     <span className="error-message" style={{color:"red"}}>{error}</span>
     </div>
       <button className='logButton'>Next</button>
+      <div id="forgotFooter" className='authFooter'>Need an account? <Link to={"/signup"}className='fort'>Sign up</Link></div>
    </div>
    </form>
       </div>

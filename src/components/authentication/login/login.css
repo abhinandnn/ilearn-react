@@ -134,7 +134,7 @@ font-size: 2.5rem;
 }
 #otpp
 {
-  margin:5vw 0vw;
+  margin:3vw 0vw;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -192,16 +192,38 @@ height:0.04rem;
 background-color: #6B6D7C;
 }
 .countdown{
-  font-size: 1rem;
-
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
+}
+#resend{
+  align-items: center;
+  width: 40vw;
 }
 #resendButton{
+  display: flex;
+  flex-direction: column;
   font-family: Work Sans;
   font-weight: 600;
  color: #1D7AE8;
  background-color: transparent;
+ height:2rem;
+ align-items: center;
+ justify-content: center;
  margin:0;
  padding:0;
  border: none;
+ cursor: pointer;
  text-decoration: underline;
+}
+.authFooter{
+  font-family: Sofia Sans;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width:42vw;
+  color:black;
+  text-align: center;
+  padding-top: 1rem;
+  border-top:2px solid grey;
+  margin-bottom: 1rem;
 }

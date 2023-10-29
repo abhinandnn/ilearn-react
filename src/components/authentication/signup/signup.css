@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
     margin-top:2rem;
-    gap:2rem;
+    gap:1.5rem;
 }
 .signup-statement{
     font-size: 2rem;
@@ -163,6 +163,7 @@ width: 20vw;
 height: 0.25rem;
 align-items: flex-start;
 gap: 0.5rem;
+margin-bottom: 1rem;
 }
 .strengthBar{
   width:6vw ;
@@ -174,6 +175,18 @@ background-color: #6B6D7C;
 #otpError
 {
   transform: translateY(-25%);
+}
+#sigUp{
+  gap:2rem
+}
+#signB{
+  display: flex;
+  flex-direction: column;
+ gap:1rem;
+
+}
+#forgotFooter{
+  margin-top: 10rem;
 }
 @media screen and (max-width:800px) {
   body{
@@ -211,7 +224,7 @@ background-color: #6B6D7C;
   top :12%;
 }
 .login_section{
-  margin-top:3vh;
+  margin-top:5rem;
   padding:0;
   width:100vw;
   height:70vh;
@@ -219,7 +232,7 @@ background-color: #6B6D7C;
   align-items: center;
 }
 .signup_section{
-  margin-top:7rem;
+  margin-top:10rem;
   padding:0;
   width:100vw;
   height:70vh;
@@ -228,11 +241,14 @@ background-color: #6B6D7C;
   align-items: center;
 
 }
+#forgot_section{
+  margin-top:4rem;
+}
 .signup-statement{
   font-size: 1.8rem;
   text-align: left;
   margin:0 3vw;
-  margin-left: 5vw;
+  margin-left: 3vw;
 }
 .signup-statement1{
   width: 65vw;
@@ -277,7 +293,7 @@ background-color: #6B6D7C;
 }
   
   #otpp{
-    width:90vw;
+    width:92vw;
     align-items: center;
     margin:2rem 0;
   }
@@ -335,7 +351,7 @@ background-color: #6B6D7C;
   }
   #forgorlog{
     font-size: 1.8rem;
-    width: 90vw;
+    width: 80vw;
     margin:3vw 3vw;
     padding: auto;
     justify-content: center;
@@ -373,6 +389,9 @@ background-color: #6B6D7C;
     width:80vw;
     font-size: 0.8rem;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    
   }
   .strengthBar1{
     width:26rem
@@ -384,8 +403,28 @@ background-color: #6B6D7C;
   .signButton{
     margin-bottom: 2vh;
   }
+  #signB{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width:80vw;
+   gap:1rem;
+
+  }
   #otpError
 {
   transform: translateY(-30%);
+}
+#resend{
+  align-items: center;
+  width: 90vw;
+}
+.authFooter{
+  width:80vw;
+  font-size: 1rem;
+}
+#forgotFooter{
+  margin-top: 5rem;
 }
 }

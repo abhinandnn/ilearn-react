@@ -26,7 +26,7 @@ const Signup_valid = () => {
     let errorMessage = "";
     if (name === "name") {
       if (!validText.test(value.trim())&&value!=="") {
-        errorMessage = "The name should only contain letters";
+        errorMessage = "Name should only contain letters";
       }
       setErrorName(errorMessage);
     } else if (name === "email") {
