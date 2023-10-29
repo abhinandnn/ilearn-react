@@ -10,7 +10,7 @@ function Signup_form() {
   };
   return (
       <form onSubmit={handleSubmit}> 
-      <div className='form'>
+      <div className='form' id='sigUp'>
         <div className='nameSignup'>
         <div className="input-signup-name">
     <input type="text"

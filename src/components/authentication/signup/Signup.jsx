@@ -5,7 +5,7 @@ import signImg from '../../../assets/sign.svg'
 import Progress from '../../../assets/progressbar.svg'
 function Signup() {
   return (
-    <>
+    <div className='top'>
     <div className='sidestrip'>
     <img className='sign' src={signImg}/>
     </div>
@@ -19,7 +19,7 @@ function Signup() {
       <Signup_form/>
       </div>
     </div>
-    </>
+    </div>
   )
 }
 

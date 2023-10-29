@@ -36,7 +36,7 @@ const Signup_valid = () => {
       setErrorEmail(errorMessage);
     } else if (name === "password") {
       if (!passwordValid.test(value)) {
-        errorMessage = "Password should be at least 8 characters long and contain at least one letter and one number";
+        errorMessage = "Password must contain 8 characters and at least one letter and number";
       }
       if(value==="")
       errorMessage="";

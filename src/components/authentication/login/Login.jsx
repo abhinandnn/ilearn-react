@@ -5,7 +5,7 @@ import logImg from '../../../assets/log.svg'
 function Login() {
   
   return (
-    <>
+    <div>
     <div className='sidestrip'>
     <img className='log' src={logImg}/>
     </div>
@@ -18,7 +18,7 @@ function Login() {
       </div>
     <Login_form/>
     </div>
-    </>
+    </div>
   )
 }
 

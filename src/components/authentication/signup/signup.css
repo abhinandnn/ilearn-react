@@ -75,7 +75,8 @@ color:#5928E5;
     background: white;
   }
   .progressBar{
-  width:42vw
+  width:42vw;
+  display: none;
   }
   .error-label{
     color: red;
@@ -142,7 +143,7 @@ cursor:pointer
 
 .icon-button {
   position: absolute;
-  right:3%;
+  right:0.65rem;
   top: 50%;
   transform: translateY(-48%);
   padding:0.05rem 0;
@@ -169,4 +170,166 @@ height: 0.25rem;
 flex-shrink: 0;
 border-radius: 4rem;
 background-color: #6B6D7C;
+}
+@media screen and (max-width:800px) {
+  #root{
+    /* overflow-x: hidden;
+    overflow-y:auto;
+    margin: 0;
+    padding: 0; */
+  }
+  .sidestrip{
+    width:100vw;
+    height:25vh; 
+    background: white;
+    position: relative;
+    background-image: url('../../../assets/bgPhone.svg');
+  }
+  .top{
+  }
+.navbar-box{
+  display: none;
+}
+.log{
+  width:100vw;
+  height:30vh;
+  justify-content: center;
+  margin: 0;
+  position:absolute;
+  top :10%;
+}
+.sign{
+  width:100vw;
+  height:27vh;
+  justify-content: center;
+  margin: 0;
+  position:absolute;
+  left:-3%;
+  top :20%;
+}
+.login_section{
+  margin-top:3vh;
+  padding:0;
+  width:100vw;
+  height:70vh;
+  justify-content: center;
+  align-items: center;
+}
+.signup_section{
+  margin-top:5rem;
+  padding:0;
+  width:100vw;
+  height:70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.signup-statement{
+  font-size: 1.8rem;
+  text-align: left;
+  margin:0 3vw;
+  margin-left: 5vw;
+}
+.input-signup-name{
+  width:80vw;
+}
+.input-signup-name>input{
+  width:80vw;
+  padding:0 1.2rem
+}
+
+.nameSignup{
+  flex-direction: column;
+  gap:2rem
+}
+#sigUp{
+  margin-top: 2vh;
+  gap:1rem
+}
+.form{
+   width: 80vw;
+   align-items: center;
+   padding: 0;
+   gap:1.5rem;
+   justify-content: center;
+   /* margin:3vh; */
+}
+#pwd{
+  width:80vw
+}
+.loginStatement{
+  margin:1.2rem;
+  font-size: 1.8rem;
+  margin-right: 4rem;
+  text-align: left;
+}
+.loginStatement1{
+  font-size: 1rem;
+  width:70vw
+}
+.belowButton{
+  width:80vw;
+}
+.input-login{
+  width:80vw;
+}
+.input-login>input{
+  width:80vw;
+  padding:0 1.2rem
+}
+  #forgotlog{
+    width:80vw
+  }
+  #forgorlog{
+    font-size: 1.8rem;
+    width: 90vw;
+    margin:3vw 3vw;
+    padding: auto;
+    justify-content: center;
+
+  }
+  #forg{
+    width: 80vw;
+   align-items: center;
+   gap:1.5rem;
+   justify-content: center;
+   margin:0;
+
+  }
+  .icon-button{
+    transform: translateY(-42%);
+  }
+.progressBar{
+  display: none;
+}
+  form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-signup{
+    width:80vw;
+    margin-top:1.2rem;
+  }
+  .input-signup>input{
+    width:80vw;
+    padding:0 1rem
+  }
+  .pwdStrength{
+    margin-right: 0vw;
+    width:80vw;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+  .strengthBar1{
+    width:26rem
+
+  }
+  .strengthBar{
+    width:3rem
+  }
+  .signButton{
+    margin-bottom: 2vh;
+  }
 }
