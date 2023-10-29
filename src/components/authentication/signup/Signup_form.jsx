@@ -4,8 +4,9 @@ import Fa from '../../../assets/fa.svg';
 import Fahid from '../../../assets/fa-hidden.svg';
 import { Link } from 'react-router-dom';
 function Signup_form() {
-  const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength} = Signup_valid();
+  const { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength,loading} = Signup_valid();
   const [showPassword, setShowPassword] = useState(false);
+ 
   const passwordShow = () => {
     setShowPassword(!showPassword);
   };
@@ -72,7 +73,11 @@ function Signup_form() {
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div></div>
   <div id='signB'>
-  <button className='signButton'>Sign up</button>
+  <button className='signButton'>
+    {loading? (<svg width="30"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45"/>
+</svg>)
+    :("Sign up")}</button>
   <div className='authFooter'>Already have an account? <Link to={"/"}className='fort'>Log in</Link></div>
   </div>
 

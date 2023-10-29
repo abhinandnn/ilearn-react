@@ -18,9 +18,10 @@ const Signup_valid = () => {
   const [errorUserName,setErrorUsername]  =  useState("");
   const emailValid = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   const validText=/^[a-zA-Z]+([\s][a-zA-Z]+)*$/;
-  const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/;
+  const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{8,}/;
   const validUsername=/^[a-z_.\d]{1,30}$/;
   const invalidUsername=/^(?=.*[A-Z])[A-Za-z_.\d]{1,}$/;
+  const[loading,setLoading]=useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
@@ -66,6 +67,7 @@ const Signup_valid = () => {
   const navigate = useNavigate();
   const handleSubmit = async(e) => {
     e.preventDefault();
+   
   console.log(username)
     let hasErrors = true;
     if(!(errorUserName||errorPassword||errorEmail||errorName))
@@ -78,6 +80,7 @@ const Signup_valid = () => {
     localStorage.setItem("signupEmail",email);
     localStorage.setItem("signupPassword",password);
     try{
+      setLoading(true);
       const response = await axios.post(SIGNUP_URL,{username:username,name:name,email:email,password:password},
         {headers:{'Content-Type':'application/json; charset=utf-8'},
           withCredentials: false});
@@ -85,22 +88,25 @@ const Signup_valid = () => {
           toast.info("Verify your email");
           success=response.data.success;
   }catch(err){
+    setLoading(false);
   if(err.response){
   console.log('Server responded');
-  if(err.response.data.message==="User with the same email already exists")
+  if(err.response.data.message==="User with the same email already exists"||err.response.data.message===`"email" must be a valid email`)
   setErrorEmail(err.response.data.message);
 else
 setErrorUsername(err.response.data.message);
   }
   else
-    console.log('No Server response');
+  {  console.log('No Server response');
+    toast.error("No server response");}
+    setLoading(false);
   }
     }
     if(success)
     navigate('/signup/otp');
   };
 
-  return { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength};
+  return { handleChange, handleSubmit,errorEmail,errorName,errorPassword,errorUserName,strength,loading};
 };
 
 export default Signup_valid;

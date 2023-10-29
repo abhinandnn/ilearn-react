@@ -13,7 +13,7 @@ function ResetPwd() {
     const Navigate=useNavigate();
     const Ftoken=localStorage.getItem("Ftoken")
     const{strength,calculateStrength}=PasswordStrength();
-    const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@#$%*&!^]{8,}/;
+    const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#^?&-]{8,}/;
     const[password,setPassword]=useState("");
     const[password2,setPassword2]=useState("");
     const [errorPassword,setErrorPassword]  =  useState("");
