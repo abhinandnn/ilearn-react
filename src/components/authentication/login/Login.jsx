@@ -7,6 +7,7 @@ function Login() {
   return (
     <div>
     <div className='sidestrip'>
+    <div className='logoMobile'><span>i</span>Learn</div>
     <img className='log' src={logImg}/>
     </div>
     <div className='login_section'>

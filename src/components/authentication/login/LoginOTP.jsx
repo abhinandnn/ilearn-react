@@ -61,6 +61,7 @@ else
   return (
     <>
       <div className='sidestrip'>
+      <div className='logoMobile'><span>i</span>Learn</div>
         <img className='log' src={logImg} alt="Logo" />
       </div>
       <div className='login_section' id='otpsec'>

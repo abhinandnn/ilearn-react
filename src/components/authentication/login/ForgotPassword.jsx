@@ -50,6 +50,7 @@ else
   return (
     <>
     <div className='sidestrip'>
+    <div className='logoMobile'><span>i</span>Learn</div>
     <img className='log' src={logImg}/>
     </div>
     <div id="forgot_section" className='login_section'>

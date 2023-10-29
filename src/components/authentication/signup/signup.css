@@ -188,14 +188,26 @@ background-color: #6B6D7C;
 #forgotFooter{
   margin-top: 10rem;
 }
-@media screen and (max-width:800px) {
+@media screen and (max-width:768px) {
+  .logoMobile{
+    display:block;
+    position: absolute;
+    left:2%;
+    top: 5%;
+    font-family: Poppins;
+    font-size:1.5rem;
+    font-weight: 600;
+  }
+  .logoMobile>span{
+    color:#5928E5;
+  }
   body{
     overflow-x: hidden ;
    overflow-y: auto;
   }
   .sidestrip{
     width:100vw;
-    height:25vh; 
+    height:10rem; 
     background: white;
     position: relative;
     background-image: url('../../../assets/bgPhone.svg');
@@ -208,7 +220,7 @@ background-color: #6B6D7C;
 }
 .log{
   width:100vw;
-  height:30vh;
+  height:12rem;
   justify-content: center;
   margin: 0;
   position:absolute;
@@ -216,7 +228,7 @@ background-color: #6B6D7C;
 }
 .sign{
   width:100vw;
-  height:32vh;
+  height:13rem;
   justify-content: center;
   margin: 0;
   position:absolute;
@@ -227,7 +239,7 @@ background-color: #6B6D7C;
   margin-top:5rem;
   padding:0;
   width:100vw;
-  height:70vh;
+  height:26rem;
   justify-content: center;
   align-items: center;
 }
@@ -235,7 +247,7 @@ background-color: #6B6D7C;
   margin-top:10rem;
   padding:0;
   width:100vw;
-  height:70vh;
+  height:27.2rem;
   display: flex;
   justify-content: center;
   align-items: center;

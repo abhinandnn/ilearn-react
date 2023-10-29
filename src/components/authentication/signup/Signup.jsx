@@ -7,6 +7,7 @@ function Signup() {
   return (
     <div className='top'>
     <div className='sidestrip'>
+    <div className='logoMobile'><span>i</span>Learn</div>
     <img className='sign' src={signImg}/>
     </div>
     <div className='signup_section'>
