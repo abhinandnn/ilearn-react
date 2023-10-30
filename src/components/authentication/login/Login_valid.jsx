@@ -9,6 +9,7 @@ const[email,setEmail]=useState("");
 const[password,setPwd]=useState("");
 const [error,setError]  =  useState("");
 const [approve,setApprove]=useState(false);
+const[loading,setLoading]=useState(false)
 const[errorPassword,setErrorPassword]=useState("");
 let r=true;
 const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
@@ -46,6 +47,7 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
         localStorage.setItem("loginPassword",password);
 
   try{
+    setLoading(true)
     const response = await axios.post(LOGIN_URL,{email:email,password:password},
       {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
@@ -65,7 +67,8 @@ setErrorPassword(err.response.data.message);
 }
 else
   console.log('No Server response');
+setLoading(false);
 }}}
-  return { handleChange, handleSubmit, error ,approve ,errorPassword,ToastContainer};
+  return { handleChange, handleSubmit, error ,approve ,errorPassword,ToastContainer,loading};
 };
 export default Login_valid;

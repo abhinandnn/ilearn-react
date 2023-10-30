@@ -207,7 +207,7 @@ background-color: #6B6D7C;
   font-weight: 600;
  color: #1D7AE8;
  background-color: transparent;
- height:2rem;
+ height:1.2rem;
  align-items: center;
  justify-content: center;
  margin:0;
@@ -227,6 +227,10 @@ background-color: #6B6D7C;
   border-top:2px solid grey;
   margin-bottom: 1rem;
 }
+#resendButton:disabled{
+  cursor:not-allowed;
+}
+
 .logoMobile{
   position: absolute;
   display:none;
@@ -279,5 +283,9 @@ circle {
   }
 }
 .sv{
-  margin-top:6px;
+  margin-top:5px;
+  
+}
+.logButton:disabled{
+  cursor: not-allowed;
 }

@@ -4,7 +4,7 @@ import { ToastContainer ,toast} from 'react-toastify';
 let RESEND_URL ='https://udemy-nx1v.onrender.com/resend-otp'
 function ResendOtp({email}) {
     const [otp, setOtp] = useState("");
-const [seconds, setSeconds] = useState(30);
+const [seconds, setSeconds] = useState(59);
 useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
@@ -17,7 +17,7 @@ useEffect(() => {
     };
   }, [seconds]);
   const handleResendOtp=async()=>{
-  setSeconds(30);
+  setSeconds(59);
   try{
     const response = await axios.post(RESEND_URL,{email:email},
       {headers:{'Content-Type':'application/json; charset=utf-8'},

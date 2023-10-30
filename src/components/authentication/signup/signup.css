@@ -109,6 +109,11 @@ cursor:pointer
   background: #3F1F9B;
   border: 2px solid #3F1F9B;
 }
+.signButton:disabled{
+cursor: not-allowed;
+background: #3F1F9B;
+  border: 2px solid #3F1F9B;
+}
 .nameSignup{
   display:flex;
   flex-direction: row;

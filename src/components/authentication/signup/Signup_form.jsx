@@ -73,7 +73,8 @@ function Signup_form() {
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div></div>
   <div id='signB'>
-  <button className='signButton'>
+  <button className='signButton'
+  disabled={loading}>
     {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="45"/>
 </svg>)
