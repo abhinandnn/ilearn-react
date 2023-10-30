@@ -14,7 +14,7 @@ const router=createBrowserRouter(
         <Route path='/' element={<App />}>
         <Route path='' element={<Login/>}/>
         <Route path='forgot/otp' element={<LoginOTP/>}/>
-        <Route path='signup/otp' element={allowedPaths.includes(window.location.pathname)?<LoginOTP/>:<Login/>}/>
+        <Route path='signup/otp' element={<LoginOTP/>}/>
         <Route path='signup' element={<Signup />}/>
         <Route path='forgot' element={<ForgotPassword/>}/>
         <Route path='resetpwd' element={<ResetPwd/>}/>

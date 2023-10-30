@@ -10,6 +10,7 @@ import axios from '../../../api/axios';
 import { ToastContainer,toast } from 'react-toastify';
 const RESET_URL = 'https://udemy-nx1v.onrender.com/change-password'
 function ResetPwd() {
+  const[loading,setLoading]=useState(false);
     const Navigate=useNavigate();
     const Ftoken=localStorage.getItem("Ftoken")
     const{strength,calculateStrength}=PasswordStrength();
@@ -57,16 +58,19 @@ function ResetPwd() {
             console.log('Form submitted:');
             localStorage.setItem("resetPassword",password);
             try{
+              setLoading(true);
               console.log(password);
               const response = await axios.post(RESET_URL,{password:password},
                 {headers:{'Authorization':`Bearer ${Ftoken}`},
                   withCredentials: false});
                   if(response.data.success)
                   {
+                    setLoading(false);
                     toast.success("Password updated!")
                   Navigate('/')
                   console.log(response.data.message);}
           }catch(err){
+            setLoading(false)
           if(err.response){
           console.log('Server responded');
           console.log(err.response.data.message);
@@ -127,7 +131,11 @@ function ResetPwd() {
       </div><div style={{background:strength===1?"#6B6D7C":strength===2?"#6B6D7C":strength===3?"#6B6D7C":strength===4?"#1FE627":"#6B6D7C"}} className="strengthBar">
       </div></div>
   </div>
-    <button className='logButton'>Next</button>
+    <button className='logButton'disabled= {loading}>
+   {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <circle cx="50" cy="50" r="45"/>
+</svg>)
+   :("Next")}</button>
     
     </div>
     </form>

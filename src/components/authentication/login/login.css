@@ -298,5 +298,7 @@ circle {
   
 }
 .logButton:disabled{
+  background: #5928E5;
+border: 2px solid #5928E5;
   cursor: not-allowed;
 }

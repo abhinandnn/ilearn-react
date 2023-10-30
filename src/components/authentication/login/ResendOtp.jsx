@@ -31,7 +31,8 @@ useEffect(() => {
   }
   return (
     <div id='resend' className='belowButton'>
-        <button id="resendButton"
+        <button type='button'
+        id="resendButton"
         disabled={seconds > 0}
         style={{
           color: seconds > 0 ? "grey" : "",

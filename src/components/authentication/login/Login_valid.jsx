@@ -11,7 +11,6 @@ const [error,setError]  =  useState("");
 const [approve,setApprove]=useState(false);
 const[loading,setLoading]=useState(false)
 const[errorPassword,setErrorPassword]=useState("");
-let r=true;
 const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   const handleChange = e => {
     setErrorPassword("");
@@ -61,11 +60,12 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
 if(err.response){
 console.log('Server responded');
 if(err.response.status===400)
-{r=false;
+{
   setError(err.response.data.message)
 }
+else{
 setErrorPassword(err.response.data.message);
-}
+}}
 else
   console.log('No Server response');
 setLoading(false);

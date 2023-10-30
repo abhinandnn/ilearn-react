@@ -26,7 +26,7 @@ function Login_form() {
     style={{ border: error? "2px solid red" : "2px solid black"}}
     required /> 
     <label className={error? "error-label":""}>Email</label>
-    {error!="No user found "&&(<span className="error-message">{error}</span>)}
+    <span className="error-message">{error}</span>
    </div>
   <div className="input-login">
     <input type={showPassword?"text":"password"}

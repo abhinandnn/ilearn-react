@@ -11,6 +11,7 @@ let OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
 
 function LoginOTP() {
   let token,em,sign=false;
+  const [loading,setLoading]=useState();
   const location = useLocation();
   const navigate = useNavigate();
   const [error,setError]=useState("");
@@ -33,11 +34,13 @@ sign=true}
     e.preventDefault();
     
   try{
+    setLoading(true);
     const response = await axios.post(OTP_URL,{email:em,otp:otp},
       {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
         // console.log(response.data.message);
         if(response.data.success){
+          setLoading(false);
         toast.success("OTP verified!")
           if(!sign)
         {token=response.data.data.token;
@@ -49,6 +52,7 @@ sign=true}
             navigate('/resetpwd')          
 
 }}catch(err){
+  setLoading(false)
 if(err.response){
 console.log('Server responded');
 toast.error("OTP is invalid");
@@ -71,15 +75,21 @@ else
             We have sent a 4 digit otp to<br/>
             <span id='otemail'>{em}</span>
           </div></div>
+          <form onSubmit={handleSubmit}>
           <div id='otpp'>
             Enter OTP
             <div>
+              
       <InputOTP handleError={handleError} error1 = {error}numInputs={4} onComplete={handleOtpComplete} />
     </div>
     <ResendOtp email={em}/>
           </div>
-          <button className='logButton' onClick={handleSubmit}>Verify</button>
-          
+          <button className='logButton'disabled={loading}>
+   {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <circle cx="50" cy="50" r="45"/>
+</svg>)
+   :("Verify")}</button>
+          </form>
         </div>
       </div>
     </>
