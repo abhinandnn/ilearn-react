@@ -92,6 +92,8 @@ const Signup_valid = () => {
   console.log('Server responded');
   if(err.response.data.message==="User with the same email already exists"||err.response.data.message===`"email" must be a valid email`)
   setErrorEmail(err.response.data.message);
+else if(`"password" must only contain alpha-numeric characters`)
+setErrorPassword(err.response.data.message);
 else
 setErrorUsername(err.response.data.message);
   }
