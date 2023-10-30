@@ -47,6 +47,7 @@ const InputOTP = ({ numInputs, onComplete,error1 ,handleError}) => {
           onKeyDown={(e) => handleKeyDown(e, index)}
           ref={(inputDigit) => (inputRefs.current[index] = inputDigit)}
           style={{ border: error||error1? "2px solid red" : "2px solid black"}}
+          required
         />
       ))}
       <p id='otpError'className="error-message">{error||error1}</p>
