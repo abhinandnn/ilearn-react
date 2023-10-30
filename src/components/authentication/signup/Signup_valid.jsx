@@ -88,7 +88,6 @@ const Signup_valid = () => {
           toast.info("Verify your email");
           success=response.data.success;
   }catch(err){
-    setLoading(false);
   if(err.response){
   console.log('Server responded');
   if(err.response.data.message==="User with the same email already exists"||err.response.data.message===`"email" must be a valid email`)

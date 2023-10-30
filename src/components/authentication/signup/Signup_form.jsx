@@ -74,7 +74,7 @@ function Signup_form() {
       </div></div>
   <div id='signB'>
   <button className='signButton'>
-    {loading? (<svg width="30"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="45"/>
 </svg>)
     :("Sign up")}</button>
