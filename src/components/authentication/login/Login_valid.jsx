@@ -56,6 +56,7 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
         localStorage.setItem("authId",response.data.data.token);
         localStorage.setItem("LoggedinUsername",response.data.data.username);
         localStorage.setItem("role",response.data.data.role);
+        setLoading(false);
 }catch(err){
 if(err.response){
 console.log('Server responded');

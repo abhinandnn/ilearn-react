@@ -20,7 +20,7 @@ const navigate=useNavigate();
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
-    
+    console.log(window.location.pathname)
       let hasErrors = false;
         if (error !== '') {
           hasErrors = true;

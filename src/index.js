@@ -7,12 +7,14 @@ import Signup from './components/authentication/signup/Signup.jsx';
 import ForgotPassword from './components/authentication/login/ForgotPassword.jsx';
 import ResetPwd from './components/authentication/login/ResetPwd.jsx';
 import LoginOTP from './components/authentication/login/LoginOTP.jsx';
+// import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
+const allowedPaths=["/forgot","/signup"]
 const router=createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<App />}>
         <Route path='' element={<Login/>}/>
         <Route path='forgot/otp' element={<LoginOTP/>}/>
-        <Route path='signup/otp' element={<LoginOTP/>}/>
+        <Route path='signup/otp' element={allowedPaths.includes(window.location.pathname)?<LoginOTP/>:<Login/>}/>
         <Route path='signup' element={<Signup />}/>
         <Route path='forgot' element={<ForgotPassword/>}/>
         <Route path='resetpwd' element={<ResetPwd/>}/>
