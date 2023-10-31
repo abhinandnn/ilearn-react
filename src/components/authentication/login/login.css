@@ -159,6 +159,7 @@ font-size: 2.5rem;
   width:100%;
   position: relative;
   display: flex;
+  gap:3vw;
 }
 #otpOK
 {
@@ -167,7 +168,7 @@ font-size: 2.5rem;
   width:3rem;
   height:3rem;
   border-radius: 1rem;
-  margin:0 1vw;
+  /* margin:0 1vw;n */
   align-items: center;
   justify-content: center;
   text-align: center;

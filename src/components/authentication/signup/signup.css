@@ -179,7 +179,7 @@ background-color: #6B6D7C;
 }
 #otpError
 {
-  left:1.5rem;
+  left:1.2rem;
   transform: translateY(50%);
 }
 #sigUp{
@@ -444,7 +444,7 @@ background-color: #6B6D7C;
   #otpError
 {
   left:7%;
-  transform: translateY(30%);
+  transform: translateY(40%);
 }
 #resend{
   align-items: center;

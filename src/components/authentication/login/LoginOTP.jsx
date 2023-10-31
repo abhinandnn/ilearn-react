@@ -32,7 +32,6 @@ sign=true}
   }
   const handleSubmit = async(e) => {
     e.preventDefault();
-    
   try{
     setLoading(true);
     const response = await axios.post(OTP_URL,{email:em,otp:otp},
