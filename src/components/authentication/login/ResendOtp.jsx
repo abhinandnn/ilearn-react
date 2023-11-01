@@ -31,6 +31,7 @@ useEffect(() => {
   }
   return (
     <div id='resend' className='belowButton'>
+       <div className="countdown">
         <button type='button'
         id="resendButton"
         disabled={seconds > 0}
@@ -41,13 +42,13 @@ useEffect(() => {
       >
         Resend OTP
       </button>
-    <div className="countdown">
+   
     {seconds > 0 ? (
       <p>
-        Time Remaining : {seconds} seconds
+         &nbsp; in {seconds} seconds
       </p>
     ) : (
-      <p>Did't recieve the OTP?</p>
+      <p></p>
       
     )}</div>
     

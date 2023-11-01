@@ -14,7 +14,7 @@ function ResetPwd() {
     const Navigate=useNavigate();
     const Ftoken=localStorage.getItem("Ftoken")
     const{strength,calculateStrength}=PasswordStrength();
-    const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#^?&-]{8,}/;
+    const passwordValid=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#^?&])[A-Za-z\d@$!%*#^?&-]{8,}/;
     const[password,setPassword]=useState("");
     const[password2,setPassword2]=useState("");
     const [errorPassword,setErrorPassword]  =  useState("");
@@ -39,7 +39,7 @@ function ResetPwd() {
         let errorMessage = "";
         if (name === "password") {
             if (!passwordValid.test(value)&&value!=="") {
-              errorMessage = "Password must contain 8 characters and at least one letter and number";
+              errorMessage = "Password must contain 8 characters with full strength";
             }
             setErrorPassword(errorMessage);}
             if(name==="password")

@@ -1,0 +1,53 @@
+.homePage{
+    padding-top:4rem
+}
+#cardImg{
+    width: 15rem;
+height: 8.9375rem;
+border-radius: 1rem ;
+}
+.cardCont{
+    font-family:Sofia Sans;
+    font-size:1.5rem;
+    font-weight: 800;
+    width: 16rem;
+height: 18.6875rem;
+display: flex;
+flex-direction: column;
+padding:0.5rem;
+box-sizing: border-box;
+position:relative
+/* align-items: center; */
+/* text-align: left; */
+/* flex-shrink: 0; */
+}
+.creatorName{
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+.star{
+    height:0.9rem;
+    position:absolute
+}
+.rating{
+    margin-top: 0.3rem;
+}
+.costCard{
+position:absolute;
+bottom:0.5rem;
+left:0.75rem
+}
+.homeButton{
+    width: 5.25rem;
+height: 1.875rem;
+border-radius: 20px;
+font-size: 0.5rem;
+box-sizing: border-box;
+border: none;
+color: white;
+background: #5928E5;
+cursor:pointer;
+position: absolute;
+bottom:0.5rem;
+right:0.75rem;
+}

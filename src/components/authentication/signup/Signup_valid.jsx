@@ -18,7 +18,7 @@ const Signup_valid = () => {
   const [errorUserName,setErrorUsername]  =  useState("");
   const emailValid = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
   const validText=/^[a-zA-Z]+([\s][a-zA-Z]+)*$/;
-  const passwordValid=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{8,}/;
+  const passwordValid=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#^?&])[A-Za-z\d@$!%*#^?&-]{8,}/;
   const validUsername=/^[a-z_.\d]{1,30}$/;
   const invalidUsername=/^(?=.*[A-Z])[A-Za-z_.\d]{1,}$/;
   const[loading,setLoading]=useState(false);
@@ -37,8 +37,7 @@ const Signup_valid = () => {
       setErrorEmail(errorMessage);
     } else if (name === "password") {
       if (!passwordValid.test(value)) {
-        errorMessage = "Password must contain 8 characters and at least one letter and number";
-      }
+        errorMessage = "Password must contain 8 characters with full strength";}
       if(value==="")
       errorMessage="";
       setErrorPassword(errorMessage);

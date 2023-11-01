@@ -7,6 +7,7 @@ import Signup from './components/authentication/signup/Signup.jsx';
 import ForgotPassword from './components/authentication/login/ForgotPassword.jsx';
 import ResetPwd from './components/authentication/login/ResetPwd.jsx';
 import LoginOTP from './components/authentication/login/LoginOTP.jsx';
+import Home from './components/home/Home.jsx';
 // import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
 const allowedPaths=["/forgot","/signup"]
 const router=createBrowserRouter(
@@ -18,6 +19,7 @@ const router=createBrowserRouter(
         <Route path='signup' element={<Signup />}/>
         <Route path='forgot' element={<ForgotPassword/>}/>
         <Route path='resetpwd' element={<ResetPwd/>}/>
+        <Route path='home' element={<Home/>}/>
           </Route>
     )
 )
