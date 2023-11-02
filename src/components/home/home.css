@@ -49,7 +49,7 @@ left:0.75rem
     width: 5.25rem;
 height: 1.875rem;
 border-radius: 20px;
-font-size: 0.5rem;
+font-size: 0.625rem;
 box-sizing: border-box;
 border: none;
 color: white;
@@ -66,6 +66,9 @@ right:0.75rem;
     width:100vw;
     height:21rem;
     position : relative;
+    display: flex;
+    /* gap:10vw; */
+    justify-content: space-between;
 }
 .bannerText{
     font-size: 2.7rem;
@@ -88,8 +91,71 @@ right:0.75rem;
     left:10vw;
 }
 #bannerImg{
-    position: absolute;
-    right:4rem;
     width:32vw;
-    top:18%;
+    padding-right: 6vw;
 }
+.categoriesDisplay{
+    font-weight: 400;
+    margin-top:5rem;
+    padding-left: 10vw;
+    font-size: 1rem;
+}
+.subHeadingHome{
+    font-size: 1.8rem;
+    color: #29185B;
+    font-weight: 700;
+}
+.catBar{
+    padding-left: 0;
+    margin:0;
+    display: flex;
+    gap:3rem;
+    
+    font-weight: 700;
+    margin-top: 2rem;
+    height:1.8rem;
+    align-items:flex-end;
+}
+.catItem{
+    font-size: 1.2rem;
+    list-style-type: none;
+}
+.catLink{
+    text-decoration: none;
+    color:black;
+    background-color: white;
+    border-bottom:2px solid transparent ;
+    position: relative;
+}
+  .catLink:hover::before, .catLink:focus::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2.8%;
+    border-bottom: 2px solid black;
+    width: 95%;
+ }
+ .catLink:hover, .catLink:focus{
+    color: #5928E5;}
+    .popularCourse
+    {
+        margin-top: 2rem;
+        height:30rem;
+        display:flex;
+        flex-direction: column;
+        gap:0.5rem
+    }
+    .popularButton{
+        font-family: Sofia Sans;
+    width: 5.25rem;
+height: 1.875rem;
+border-radius: 20px;
+font-size: 0.625rem;
+box-sizing: border-box;
+border: none;
+color: white;
+background: #5928E5;
+cursor:pointer;
+
+
+    }

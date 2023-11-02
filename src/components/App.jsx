@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      
       <ToastContainer
         position='top-center'
         autoClose={5000}
@@ -20,6 +20,7 @@ function App() {
         pauseOnHover
         theme='light'
       />
+      <Navbar />
       <Outlet />
     </div>
   )
