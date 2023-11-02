@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Integral CF';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+      url('../../assets/Fontspring-DEMO-integralcf-heavy.otf') format('opentype');
+  }
 .homePage{
     padding-top:4rem
 }
@@ -38,6 +45,7 @@ bottom:0.5rem;
 left:0.75rem
 }
 .homeButton{
+    font-family: Sofia Sans;
     width: 5.25rem;
 height: 1.875rem;
 border-radius: 20px;
@@ -50,4 +58,38 @@ cursor:pointer;
 position: absolute;
 bottom:0.5rem;
 right:0.75rem;
+}
+.homePage{
+ font-family: Sofia Sans;
+}
+.topBanner{
+    width:100vw;
+    height:21rem;
+    position : relative;
+}
+.bannerText{
+    font-size: 2.7rem;
+    width:25rem;
+    color:#29185B;
+    font-family: 'Integral CF';
+    padding-top: 2.5rem;
+    padding-left:10vw
+}
+.bannerText2{
+    font-size: 1.2rem;
+    width:20rem;
+    padding-top: 1rem;
+    padding-left:10vw;
+}
+#bannerButton{
+    width:8rem;
+    height:2.5rem;
+    font-size: 0.85rem;
+    left:10vw;
+}
+#bannerImg{
+    position: absolute;
+    right:4rem;
+    width:32vw;
+    top:18%;
 }

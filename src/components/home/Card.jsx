@@ -1,16 +1,21 @@
 import React from 'react'
 import star from "../../assets/star.svg"
-function Card() {
+import { useNavigate } from 'react-router-dom'
+function Card({imgSrc,title,creator,rating,cost,link}) {
+  const navigate=useNavigate();
+  const navigateTo=()=>{
+  navigate('/signup');
+  }
   return (
     <div className='cardCont'>
-        <img id='cardImg' src='https://picsum.photos/200/150'/>
-        <div>Lorem ispsum is simply dummy text</div>
+        <img id='cardImg' src={imgSrc}/>
+        <div>{title}</div>
         <div className='creatorName'>
-            Abhinandan Pandey
-            <p className='rating'>4.8<img className='star' src={star}/></p>
+            {creator}
+            <p className='rating'>{rating}<img className='star' src={star}/></p>
         </div>
-        <p className='costCard'>₹899</p>
-        <button className='homeButton'>Know more</button>
+        <p className='costCard'>₹{cost}</p>
+        <button className='homeButton' onClick={navigateTo}>Know more</button>
     </div>
   )
 }
