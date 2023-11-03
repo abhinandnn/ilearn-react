@@ -1,3 +1,6 @@
+::root{
+    --primary:#5928E5;
+}
 @font-face {
     font-family: 'Integral CF';
     font-style: normal;
@@ -6,24 +9,28 @@
       url('../../assets/Fontspring-DEMO-integralcf-heavy.otf') format('opentype');
   }
 .homePage{
-    padding-top:4rem
+    padding-top:4rem;
+    overflow-x: hidden;
 }
 #cardImg{
-    width: 15rem;
-height: 8.9375rem;
-border-radius: 1rem ;
+    width: 96%;
+    min-width: 10rem;
+height: 7.5rem;
+border-radius: 0.8rem ;
 }
 .cardCont{
     font-family:Sofia Sans;
-    font-size:1.5rem;
+    font-size:1.2rem;
     font-weight: 800;
-    width: 16rem;
-height: 18.6875rem;
+    width: 100%;
+    min-width: 12rem;
+height: 17rem;
 display: flex;
 flex-direction: column;
 padding:0.5rem;
 box-sizing: border-box;
-position:relative
+position:relative;
+gap:0.2rem;
 /* align-items: center; */
 /* text-align: left; */
 /* flex-shrink: 0; */
@@ -34,10 +41,10 @@ position:relative
 }
 .star{
     height:0.9rem;
-    position:absolute
 }
 .rating{
     margin-top: 0.3rem;
+    display: flex;
 }
 .costCard{
 position:absolute;
@@ -53,7 +60,7 @@ font-size: 0.625rem;
 box-sizing: border-box;
 border: none;
 color: white;
-background: #5928E5;
+background: var(--primary);
 cursor:pointer;
 position: absolute;
 bottom:0.5rem;
@@ -92,7 +99,7 @@ right:0.75rem;
 }
 #bannerImg{
     width:32vw;
-    padding-right: 6vw;
+    padding-right: 8vw;
 }
 .categoriesDisplay{
     font-weight: 400;
@@ -150,7 +157,7 @@ right:0.75rem;
     width: 5.25rem;
 height: 1.875rem;
 border-radius: 20px;
-font-size: 0.625rem;
+font-size: 0.65rem;
 box-sizing: border-box;
 border: none;
 color: white;
@@ -158,4 +165,124 @@ background: #5928E5;
 cursor:pointer;
 
 
+    }
+    .carouselItem{
+        padding-right: 1rem;
+    } 
+    .slid{
+        width:100vw
+    }
+    .slick-slider.slick-initialized {
+        width: 80vw;
+        position: relative;
+      }
+      button.slick-next {
+        height:3rem;
+        width:3rem;
+        background-image: url('../../assets/nextButton.svg')!important;
+background-position: center center!important;
+background-repeat: no-repeat!important;
+background-size: contain!important;
+
+      }
+      button.slick-next:active{
+        height:3rem;
+        width:3rem;
+        background: url('../../assets/nextButtonC.svg')!important;
+        background-position: center center!important;
+        background-repeat: no-repeat!important;
+background-size: contain!important;
+    }
+        .slick-next::before {
+        display: none;
+        }
+        button.slick-prev {
+            height:3rem;
+            width:3rem;
+            background-image: url('../../assets/nextButton.svg')!important;
+            transform: scaleX(-1);
+            position: absolute;
+            top:41.5%;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+    background-size: contain!important;
+    z-index:1;
+    
+          }
+          button.slick-prev:active{
+            height:3rem;
+            width:3rem;
+            transform: rotate(180deg);
+            background: url('../../assets/nextButtonC.svg')!important;
+            background-position: center center!important;
+            background-repeat: no-repeat!important;
+    background-size: contain!important;
+        }
+            .slick-prev::before {
+            display: none;
+            }
+#tite{
+    /* height:10rem */
+}
+.whyIlearn{
+  
+    font-family: 'Integral CF';
+    font-size: 1.6rem;
+    color:#29185B;
+    padding-left:8vw;
+    border-top: 2px solid transparent ;
+    padding-right: 6vw;
+
+}
+    .whyIlearn::before{
+        content:'';
+        border-top: 2px solid grey;
+        width:95%;
+       
+    }
+    .ansSec{
+        display:flex;
+        position: relative;
+        padding-top:10rem ;
+        justify-content: space-between;
+        align-items: center;   }
+    .ansText{
+        flex-direction: column;
+        width:24rem;
+        z-index: 1;
+        padding-left: 7.5rem;
+        
+
+    }
+    .ansImg{
+        width:30vw;
+        height:16rem;
+        
+    }
+    .bigNum{
+        font-size: 28rem;
+        font-family: Sofia Sans;
+        font-weight: 700;
+        color: white;
+        text-shadow: -2px 2px 0 #FCEDF2, 
+                        2px 2px 0 #FCEDF2, 
+                        2px -2px 0 #FCEDF2, 
+                        -2px -2px 0 #FCEDF2;
+        position: absolute;
+        line-height: 28rem;
+        left:0%
+    }
+    .writings{
+        font-family: Sofia Sans;
+        font-size: 1rem;
+        color: black;
+        width:23rem;
+        /* line-height: 0rem; */
+        
+    }
+    #big2{
+        left:60%
+    }
+    .userSay{
+        
     }

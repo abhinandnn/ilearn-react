@@ -4,6 +4,7 @@ import Card from './Card'
 import PopularCourses from './PopularCourses'
 import bannerImg from '../../assets/bannerImg.svg'
 import { Link } from 'react-router-dom'
+import WhyIlearn from './WhyIlearn'
 function Home() {
   return (
     <div className="homePage">
@@ -35,13 +36,7 @@ function Home() {
       </ul>
       <PopularCourses courseName={"Python"}/>
       </div>
-        <Card
-        cost='899'
-        title='lksncjds clkdsnlcnsd ckdncknsd lwknd'
-        creator='Abhinandan'
-        rating='4.2'
-        imgSrc='https://picsum.photos/200/150'
-        />
+        <WhyIlearn/>
     </div>
   )
 }
