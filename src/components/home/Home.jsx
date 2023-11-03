@@ -1,6 +1,6 @@
 import React from 'react'
 import './home.css'
-import Card from './Card'
+import Card2 from './Card2'
 import PopularCourses from './PopularCourses'
 import bannerImg from '../../assets/bannerImg.svg'
 import { Link } from 'react-router-dom'

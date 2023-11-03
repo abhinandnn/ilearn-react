@@ -10,7 +10,7 @@
     max-width: 100%;
     position: fixed;
     top:0;
-    z-index:1;
+    z-index:2;
   }
   
   .innerbox {
@@ -43,7 +43,7 @@
   
   .search-bar {
     width: 25vw;
-    padding: 0.8vh 1.6vw;
+    padding: 0.4rem 0.8rem;
     border-radius: 16px;
     border: 2px #5928E5 solid;
     display: flex;
@@ -54,9 +54,9 @@
   
   .search-icon {
     position: absolute;
-    width: 2.7vw;
-    height: 2.7vh;
-    left:2.5%;
+    width: 1rem;
+    height: 1rem;
+    left:3.5%;
   }
   
   .search-bar>input {

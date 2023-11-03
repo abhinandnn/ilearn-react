@@ -4,7 +4,6 @@ import Card from './Card';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import './home.css'
-import Arrow from './Arrow';
 function PopularCourses({courseName,course}) {
         var settings = {
           dots: false,
@@ -116,11 +115,12 @@ function PopularCourses({courseName,course}) {
     <div className='popularCourse'>
     <div className='subHeadingHome'>Top selling {courseName} courses</div>
     <button className='popularButton'>Explore all</button>
-    
-    <Slider className='slid'{...settings}>
+    <div className='slid'>
+    <Slider className=''{...settings}>
      {pythonCourses.map(course=>(
      <Card imgSrc={course.courseImage} title={course.courseTitle} creator={course.creator} rating={course.rating} cost={course.cost}/>))}
 </Slider>
+</div>
     </div>
   )
 }

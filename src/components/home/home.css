@@ -60,7 +60,7 @@ font-size: 0.625rem;
 box-sizing: border-box;
 border: none;
 color: white;
-background: var(--primary);
+background: #5928E5;
 cursor:pointer;
 position: absolute;
 bottom:0.5rem;
@@ -92,10 +92,12 @@ right:0.75rem;
     padding-left:10vw;
 }
 #bannerButton{
+    position: static;
     width:8rem;
     height:2.5rem;
     font-size: 0.85rem;
-    left:10vw;
+    margin-left:7rem ;
+    margin-top: 2rem;
 }
 #bannerImg{
     width:32vw;
@@ -147,7 +149,7 @@ right:0.75rem;
     .popularCourse
     {
         margin-top: 2rem;
-        height:30rem;
+        height:25rem;
         display:flex;
         flex-direction: column;
         gap:0.5rem
@@ -173,7 +175,7 @@ cursor:pointer;
         width:100vw
     }
     .slick-slider.slick-initialized {
-        width: 80vw;
+        width: 100%;
         position: relative;
       }
       button.slick-next {
@@ -229,17 +231,20 @@ background-size: contain!important;
     font-family: 'Integral CF';
     font-size: 1.6rem;
     color:#29185B;
-    padding-left:8vw;
-    border-top: 2px solid transparent ;
-    padding-right: 6vw;
-
+    padding-left:14vw;
+    border-top: 1.8px solid transparent ;
+    padding-right: 14vw;
 }
-    .whyIlearn::before{
-        content:'';
-        border-top: 2px solid grey;
-        width:95%;
-       
-    }
+   .yIlearn{
+    padding: 5rem 0;
+    border-top: 1.8px solid transparent;
+    border-image: linear-gradient(to right, white,black,white);
+    border-image-slice: 1;
+    border-bottom: 1.8px solid transparent;
+    border-image: linear-gradient(to right, white,black,white);
+    border-image-slice: 1;
+
+   }
     .ansSec{
         display:flex;
         position: relative;
@@ -250,14 +255,14 @@ background-size: contain!important;
         flex-direction: column;
         width:24rem;
         z-index: 1;
-        padding-left: 7.5rem;
+        padding-left: 5rem;
         
 
     }
     .ansImg{
         width:30vw;
         height:16rem;
-        
+
     }
     .bigNum{
         font-size: 28rem;
@@ -270,19 +275,107 @@ background-size: contain!important;
                         -2px -2px 0 #FCEDF2;
         position: absolute;
         line-height: 28rem;
-        left:0%
+        left:-4%
     }
     .writings{
         font-family: Sofia Sans;
         font-size: 1rem;
         color: black;
         width:23rem;
-        /* line-height: 0rem; */
-        
+        padding-top: 0.4rem;
     }
     #big2{
         left:60%
     }
     .userSay{
-        
+        margin-top: 5rem;
+    }
+    #userSaywritings{
+        width:24rem;
+        padding-top: 0.8rem;
+    }
+    .cardCont2{
+        font-family:Sofia Sans;
+        font-size:0.95rem;
+        font-weight: 500;
+        min-width: 14rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    padding:1.2rem;
+    box-sizing: border-box;
+    position:relative;
+    gap:0.2rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+    justify-content: center;
+    border-radius: 0.8rem;
+
+    }
+    .Card2{
+        min-width:15rem;
+        height: 18rem;
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+    }
+    .textCard2{
+        height:8rem;
+        z-index: 1;
+        padding-bottom: 0.2rem;
+    }
+    .userNameCard2{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    /* justify-content: center; */
+    font-weight: 800;
+    gap:0.4rem
+    }
+    .lowCard2{
+        border-top: 1.8px solid black;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        display: flex;
+        gap:0.4rem
+    }
+    .titleCard2{
+        color:#5928E5;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+    .creatorNameCard2{
+        padding-top: 0.2rem;
+        font-size:0.6rem
+    }
+    #dc{
+        position:absolute;
+        top:0%;
+        left:0%
+    }
+    #reviewSlide{
+    /* margin-right:2rem; */
+    padding:2rem 0rem;
+    }
+    .slid{
+        width:84%
+    }
+    #eduC{
+        padding-top: 6rem;
+        border-top: 1.8px solid transparent;
+    border-image: linear-gradient(to right, white,black,white);
+    border-image-slice: 1;
+    }
+    #eduButton{
+        position: static;
+    width:8rem;
+    height:2.5rem;
+    font-size: 0.85rem;
+    margin-top: 2.5rem;
+    }
+    #eduE>p{
+        width:16rem;
+        padding: 0;
+    }
+    #eduW{
+        width:18rem;
     }
