@@ -83,30 +83,31 @@ right:0.75rem;
     color:#29185B;
     font-family: 'Integral CF';
     padding-top: 2.5rem;
-    padding-left:10vw
+    padding-left:12vw ;
 }
 .bannerText2{
     font-size: 1.2rem;
     width:20rem;
     padding-top: 1rem;
-    padding-left:10vw;
+    padding-left:12vw ;
 }
 #bannerButton{
     position: static;
     width:8rem;
     height:2.5rem;
     font-size: 0.85rem;
-    margin-left:7rem ;
+    margin-left:12vw ;
     margin-top: 2rem;
 }
 #bannerImg{
     width:32vw;
+    height:21rem;
     padding-right: 8vw;
 }
 .categoriesDisplay{
     font-weight: 400;
     margin-top:5rem;
-    padding-left: 10vw;
+    padding-left:12vw ;
     font-size: 1rem;
 }
 .subHeadingHome{
@@ -149,7 +150,7 @@ right:0.75rem;
     .popularCourse
     {
         margin-top: 2rem;
-        height:25rem;
+        height:27rem;
         display:flex;
         flex-direction: column;
         gap:0.5rem
@@ -231,7 +232,7 @@ background-size: contain!important;
     font-family: 'Integral CF';
     font-size: 1.6rem;
     color:#29185B;
-    padding-left:14vw;
+    padding-left:12vw ;
     border-top: 1.8px solid transparent ;
     padding-right: 14vw;
 }
@@ -373,9 +374,185 @@ background-size: contain!important;
     margin-top: 2.5rem;
     }
     #eduE>p{
-        width:16rem;
+        font-size: 2.5rem;
+        width:20rem;
         padding: 0;
     }
     #eduW{
-        width:18rem;
+        width:22rem;
+        font-size: 1.2rem;
     }
+    .step{
+        color: #5928E5;
+        display: flex;
+        gap:10.8rem
+    }
+    .stepBar{
+        padding-top: 4.5rem;
+        padding-bottom: 7.5rem;
+        padding-left: 12vw;
+        font-family: 'Integral CF';
+    font-size: 1.6rem;
+    }
+    .stepBar>img{
+        
+    }
+    .stepText{
+        font-family: Sofia Sans;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: black;
+        display: flex;
+        gap:4.7rem
+    }
+    .stepText>p{
+        width:12.5rem
+    }
+    .foot{
+        background-color: #5928E5;
+        height:16rem;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 14vw;
+    }
+    .footer{
+        
+        color:white;
+        display: flex;
+        padding:4rem 9rem;
+        gap:7.8rem;
+        padding-top: 5rem;
+        
+    }
+    .footLogo{
+        font-family: Poppins;
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+    /* padding-right: 14vw; */
+    }
+    .footIcon{
+        display: flex;
+        gap:1.8rem
+    }
+    @media screen and (max-width: 900px) {
+        .topBanner{
+            flex-direction: column-reverse;
+            height:30rem;
+            width: 80vw;
+            justify-content: center;
+            align-items: center;
+            padding-left:10vw;
+            padding-right: 10vw;
+            gap:1rem
+        }
+        #bannerImg{
+            width:80vw;
+            padding: 0;
+            height: 12rem;
+        }
+        .bannerText,.bannerText2{
+            padding-left: 0;
+            width: 80vw;
+        }
+        .bannerText{
+            font-size: 2rem;
+            padding-top: 0;
+        }
+        #bannerButton{
+            margin-left: 0;
+        }
+        #phoneSubHeading{
+            font-size: 1.4rem;
+        }
+        .categoriesDisplay{
+            width:80vw;
+            padding-right:10vw;
+            padding-left: 10vw ;
+            font-size: 0.8rem;
+            margin-top: 3rem;
+        }
+        .catLink{
+            font-size: 1rem;
+        }
+        .subHeadingHome{
+            font-size:1.2rem;
+        }
+        .catBar{
+            gap:5vw;
+            margin-top: 1rem;
+        }
+        .popularCourse{
+            width:80vw;
+            margin-top: 1rem;
+        }
+        .slid{
+            width:80vw
+        }
+        .bigNum{
+            display: none;
+        }
+        .whyIlearn{
+            width:80vw;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            font-size: 1.2rem;
+            ;
+        }
+        .ansText{
+            padding:0
+        }
+        .ansSec{
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+        .ansText{
+            width:80vw
+        }
+        .writings{
+            width:80vw;
+            font-size: 0.9rem;
+        }
+        .ansImg{
+            width:80vw;
+            height:30vw
+
+        }
+        #userSaywritings{
+            width:80vw
+        }
+        #ansSec2{
+            flex-direction: column-reverse;
+        }
+        #eduE>p{
+            width: 80vw;
+            font-size: 1.4rem;
+        }
+        #eduW{
+            width:80vw;
+            font-size:1rem
+        }
+        #eduC{
+            gap:1rem;
+            padding-top:2rem
+        }
+        #eduButton{
+            margin-top: 1.5rem;
+            height:2.2rem;
+            width:6rem
+        }
+        .foot{
+            display: none;
+        }
+        .stepBar{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 670px) {
+        #catItem2{
+            display: none;
+        }}

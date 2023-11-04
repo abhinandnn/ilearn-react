@@ -27,7 +27,7 @@ function WhyIlearn() {
             }
           },
           {
-            breakpoint: 800,
+            breakpoint: 750,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,
@@ -60,7 +60,7 @@ function WhyIlearn() {
             </div>
             <img className='ansImg'src={ans1}/>
         </div>
-        <div className='ansSec'>
+        <div className='ansSec' id='ansSec2'>
         <img className='ansImg'src={ans2}/>
             <span className='bigNum' id='big2'>
                 2
@@ -94,10 +94,10 @@ function WhyIlearn() {
         </div>
         <div id='reviewSlide'>
         <Slider className='slide' {...settings}>
-        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Abhinandan"}/>
-        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Abhinandan"}/>
-        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Abhinandan"}/>
-        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Abhinandan"}/>
+        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
+        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
+        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
+        <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
         </Slider>
     </div>
     </div>
@@ -113,8 +113,7 @@ function WhyIlearn() {
         Learn more
       </button>
             </div>
-        </div>
-
+            </div>
         </div>
   )
 }
