@@ -7,7 +7,7 @@ function Card({imgSrc,title,creator,rating,cost,link,index}) {
   navigate('/signup');
   }
   return (
-    <div className='cardCont' key={index}>
+    <div className='cardCont' id='cardC' key={index}>
         <div id='cardI'><img id='cardImg' src={"https://picsum.photos/200/150"}/></div>
         <div id='tite'>{title}</div>
         <div className='creatorName'>

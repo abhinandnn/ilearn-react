@@ -8,6 +8,7 @@ import ForgotPassword from './components/authentication/login/ForgotPassword.jsx
 import ResetPwd from './components/authentication/login/ResetPwd.jsx';
 import LoginOTP from './components/authentication/login/LoginOTP.jsx';
 import Home from './components/home/Home.jsx';
+import CourseVariety from './components/home/CourseVariety.jsx';
 // import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
 const allowedPaths=["/forgot","/signup"]
 const router=createBrowserRouter(
@@ -20,6 +21,7 @@ const router=createBrowserRouter(
         <Route path='forgot' element={<ForgotPassword/>}/>
         <Route path='resetpwd' element={<ResetPwd/>}/>
         <Route path='home' element={<Home/>}/>
+        <Route path='courses' element={<CourseVariety/>}/>
           </Route>
     )
 )

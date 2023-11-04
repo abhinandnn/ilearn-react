@@ -76,11 +76,12 @@ right:0.75rem;
  font-family: Sofia Sans;
 }
 .topBanner{
-    width:100vw;
+    width:80vw;
     height:21rem;
     position : relative;
     display: flex;
     /* gap:10vw; */
+    padding:0 12vw ;
     justify-content: space-between;
 }
 .bannerText{
@@ -89,35 +90,35 @@ right:0.75rem;
     color:#29185B;
     font-family: 'Integral CF';
     padding-top: 2.5rem;
-    padding-left:12vw ;
+    /* padding-left:12vw ; */
 }
 .bannerText2{
     font-size: 1.2rem;
     width:20rem;
     padding-top: 1rem;
-    padding-left:12vw ;
+    /* padding-left:12vw ; */
 }
 #bannerButton{
     position: static;
     width:8rem;
     height:2.5rem;
     font-size: 0.85rem;
-    margin-left:12vw ;
+    /* margin-left:12vw ; */
     margin-top: 2rem;
 }
 #bannerImg{
-    width:32vw;
-    height:21rem;
-    padding-right: 8vw;
+    width:36vw;
+    padding-top: 2rem;
+    padding-right: 4vw;
 }
 .categoriesDisplay{
     font-weight: 400;
     margin-top:5rem;
     padding-left:12vw ;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .subHeadingHome{
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #29185B;
     font-weight: 700;
 }
@@ -471,7 +472,7 @@ background-size: contain!important;
     @media screen and (max-width: 900px) {
         .topBanner{
             flex-direction: column-reverse;
-            height:30rem;
+            height:28rem;
             width: 80vw;
             justify-content: center;
             align-items: center;
@@ -644,8 +645,8 @@ background-size: contain!important;
             padding: 5px;
             transform: rotate(45deg);
             position: absolute;
-            left:-10.2%;
-            bottom:1.8%
+            left:-10%;
+            bottom:1.3%;
           }
     }
     @media screen and (max-width: 670px) {
@@ -720,3 +721,43 @@ background-size: contain!important;
     bottom:0.5rem;
     right:0.75rem;
     }}
+    .courseVar{
+        font-family: Sofia Sans;
+        padding: 4rem 12vw;
+    }
+    .courseHead{
+        margin-top: 3rem;
+        font-size: 1.2rem;
+
+    }
+    .catChip{
+        /* width: 42vw; */
+height: 2.3rem;
+border-radius: 20px;
+font-size: 0.92rem;
+font-weight: 500;
+padding: 0.5rem 1.15rem;
+margin: 0.2rem;
+border: 1px solid #5928E5;
+color: black;
+background: white;
+cursor:pointer
+    }
+    .catChips{
+        margin:1.8rem 0;
+    }
+    #cardC{
+        width:14rem
+    }
+    #slid1{
+        height:auto;
+        display:flex
+    }
+    #popularCourse1{
+        height:auto
+    }
+    .cateName{
+        text-decoration: underline;
+        color: #5928E5;
+    }
+
