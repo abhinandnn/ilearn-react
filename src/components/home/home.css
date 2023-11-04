@@ -13,10 +13,15 @@
     overflow-x: hidden;
 }
 #cardImg{
-    width: 96%;
+    width: 100%;
     min-width: 10rem;
 height: 7.5rem;
 border-radius: 0.8rem ;
+
+}
+#cardI{
+    width:96%;
+    padding: 0 2%;
 }
 .cardCont{
     font-family:Sofia Sans;
@@ -31,13 +36,14 @@ padding:0.5rem;
 box-sizing: border-box;
 position:relative;
 gap:0.2rem;
-/* align-items: center; */
+align-items: center;
 /* text-align: left; */
 /* flex-shrink: 0; */
 }
 .creatorName{
     font-weight: 400;
     font-size: 0.75rem;
+    width: 100%;
 }
 .star{
     height:0.9rem;
@@ -208,7 +214,7 @@ background-size: contain!important;
             top:41.5%;
     background-position: center center!important;
     background-repeat: no-repeat!important;
-    background-size: contain!important;
+    background-size: contain !important;
     z-index:1;
     
           }
@@ -473,7 +479,7 @@ background-size: contain!important;
             width:80vw;
             padding-right:10vw;
             padding-left: 10vw ;
-            font-size: 0.8rem;
+            font-size:0.92rem;
             margin-top: 3rem;
         }
         .catLink{
@@ -489,6 +495,7 @@ background-size: contain!important;
         .popularCourse{
             width:80vw;
             margin-top: 1rem;
+            height: 24rem;
         }
         .slid{
             width:80vw
@@ -555,4 +562,72 @@ background-size: contain!important;
     @media screen and (max-width: 670px) {
         #catItem2{
             display: none;
-        }}
+        }
+        button.slick-next
+    {
+        background-size: 75% 75% !important;
+    }
+    button.slick-next:active{
+        background-size: 75% 75% !important;
+    }
+    button.slick-prev
+    {
+        background-size: 75% 75% !important;
+    }
+    button.slick-prev:active{
+        background-size: 75% 75% !important;
+    }
+    #cardImg{
+        width: 100%;
+        min-width: 10rem;
+    height: 7.5rem;
+    border-radius: 0.8rem ;
+    }
+    .cardCont{
+        font-family:Sofia Sans;
+        font-size:0.92rem;
+        font-weight: 800;
+        width: 100%;
+        min-width: 8rem;
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    padding:0.5rem;
+    box-sizing: border-box;
+    position:relative;
+    gap:0.2rem;
+    /* align-items: center; */
+    /* text-align: left; */
+    /* flex-shrink: 0; */
+    }
+    .creatorName{
+        font-weight: 400;
+        font-size: 0.7rem;
+    }
+    .star{
+        height:0.85rem;
+    }
+    .rating{
+        margin-top: 0.3rem;
+        display: flex;
+    }
+    .costCard{
+    position:absolute;
+    bottom:0.5rem;
+    left:0.75rem
+    }
+    .homeButton{
+        font-family: Sofia Sans;
+        width: 5.25rem;
+    height: 1.875rem;
+    border-radius: 20px;
+    font-size: 0.625rem;
+    box-sizing: border-box;
+    border: none;
+    color: white;
+    background: #5928E5;
+    cursor:pointer;
+    position: absolute;
+    bottom:0.5rem;
+    right:0.75rem;
+    }}

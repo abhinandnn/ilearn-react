@@ -27,7 +27,7 @@ function WhyIlearn() {
             }
           },
           {
-            breakpoint: 750,
+            breakpoint: 620,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,

@@ -7,7 +7,7 @@ import './home.css'
 function PopularCourses({courseName,course}) {
         var settings = {
           dots: false,
-          infinite: true,
+          infinite: false,
           arrows:true,
           speed: 500,
           slidesToShow: 4,
@@ -25,6 +25,14 @@ function PopularCourses({courseName,course}) {
             {
               breakpoint: 800,
               settings: {
+                slidesToShow: 2.5,
+                slidesToScroll: 1,
+                initialSlide: 0
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
                 slidesToShow: 2,
                 slidesToScroll: 1,
                 initialSlide: 0
@@ -33,7 +41,7 @@ function PopularCourses({courseName,course}) {
             {
               breakpoint: 480,
               settings: {
-                slidesToShow: 1,
+                slidesToShow: 1.5,
                 slidesToScroll: 1
               }
             }

@@ -8,7 +8,7 @@ function Card({imgSrc,title,creator,rating,cost,link,index}) {
   }
   return (
     <div className='cardCont' key={index}>
-        <img id='cardImg' src={"https://picsum.photos/200/150"}/>
+        <div id='cardI'><img id='cardImg' src={"https://picsum.photos/200/150"}/></div>
         <div id='tite'>{title}</div>
         <div className='creatorName'>
             {creator}
