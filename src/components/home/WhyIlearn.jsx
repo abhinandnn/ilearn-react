@@ -8,6 +8,8 @@ import ans1 from '../../assets/ans1.svg'
 import ans2 from '../../assets/ans2.svg'
 import ans3 from '../../assets/ans3.svg'
 import edu1 from '../../assets/educator.svg'
+import circle from '../../assets/progressbar.svg'
+
 function WhyIlearn() {
     var settings = {
         dots: false,
@@ -114,7 +116,42 @@ function WhyIlearn() {
       </button>
             </div>
             </div>
-        </div>
+            <div className='stepBar'>
+              <div className='step'>
+                <div className='stepT'><img className='dot' src={circle}/>
+step 1</div>
+                <div className='stepT'> <img className='dot' src={circle}/>step 2</div>
+                <div className='stepT'> <img className='dot' src={circle}/>step 3</div><i class="arrowU"/>
+              </div>
+            <div className='stepText'>
+            <div className='stepT'>Log in/Sign up to your 
+account</div>
+                <div className='stepT'>Create a educators 
+profile</div>
+                <div className='stepT'>Start uploading courses 
+and reach millions</div>
+
+            </div>
+            </div>
+
+            
+            <div className='stepBarPhone' >
+            <div className='stepBar'id='stepPh'>
+              <div className='step' id='stepP'>
+                <div className='stepT'><img className='dot' src={circle}/>
+step 1
+<div className='stepText'>Log in/Sign up to your 
+account</div></div>
+                <div className='stepT'> <img className='dot' src={circle}/>step 2
+                <div className='stepText'>Create a educators 
+profile</div></div>
+                <div className='stepT'> <img className='dot' src={circle}/>step 3<div className='stepText'>Start uploading courses 
+and reach millions
+</div><i class="arrowD"/></div>
+              </div>
+            </div>
+            </div>
+            </div>
   )
 }
 

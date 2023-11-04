@@ -44,6 +44,15 @@ function PopularCourses({courseName,course}) {
                 slidesToShow: 1.5,
                 slidesToScroll: 1
               }
+
+            },
+            {
+              breakpoint: 345,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+              
             }
           ]
         }
