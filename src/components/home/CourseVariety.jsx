@@ -68,14 +68,6 @@ function CourseVariety() {
               rating: 4.7,
               cost: 999
             },
-            {
-              id: 202,
-              courseTitle: "Graphic Design Masterclass",
-              courseImage: "graphic-design.jpg",
-              creator: "Bob Wilson",
-              rating: 4.6,
-              cost: 1499
-            }
           ]
         },
       ];

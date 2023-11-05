@@ -75,14 +75,14 @@ return (
                 />
             ))}
             </div>
-            <div>
-            {/* <div className='slid'>
+            <div className="phoneCat">
+            <div className='slid'>
     <Slider className=''{...settings}>
      {category.courses.map(course=>(
      <Card key={course.id} imgSrc={course.courseImage} title={course.courseTitle} creator={course.creator} rating={course.rating} cost={course.cost}/>
      ))}
 </Slider>
-</div> */}
+</div>
             </div>
         </div>
         </div>
