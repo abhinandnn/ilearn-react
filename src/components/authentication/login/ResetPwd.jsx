@@ -67,7 +67,7 @@ function ResetPwd() {
                   {
                     setLoading(false);
                     toast.success("Password updated!")
-                  Navigate('/')
+                  Navigate("/login")
                   console.log(response.data.message);}
           }catch(err){
             setLoading(false)

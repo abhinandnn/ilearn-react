@@ -79,7 +79,7 @@ function Signup_form() {
   <circle cx="50" cy="50" r="45"/>
 </svg>)
     :("Sign up")}</button>
-  <div className='authFooter'>Already have an account? <Link to={"/"}className='fort'>Log in</Link></div>
+  <div className='authFooter'>Already have an account? <Link to={"/login"}className='fort'>Log in</Link></div>
   </div>
 
 </div>

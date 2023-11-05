@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import CourseDisplay from './CourseDisplay';
-function CourseVariety() {
+function CourseVariety() {                                                                                               
     const categories = [
         "Development",
         "Business",
@@ -37,7 +37,23 @@ function CourseVariety() {
               creator: "Jane Smith",
               rating: 4.8,
               cost: 2499
-            }
+            },
+            {
+                id: 103,
+                courseTitle: "JavaScript Basics",
+                courseImage: "javascript-basics.jpg",
+                creator: "John Doe",
+                rating: 4.5,
+                cost: 1999
+              },
+              {
+                id: 104,
+                courseTitle: "React Fundamentals",
+                courseImage: "react-fundamentals.jpg",
+                creator: "Jane Smith",
+                rating: 4.8,
+                cost: 2499
+              }
           ]
         },
         {
@@ -62,7 +78,6 @@ function CourseVariety() {
             }
           ]
         },
-        // Add more categories and courses as needed
       ];
       
       

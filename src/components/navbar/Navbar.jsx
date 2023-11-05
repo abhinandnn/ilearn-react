@@ -23,10 +23,10 @@ function Navbar() {
                     <input type='textarea'
                     placeholder='What do you want to Learn'></input>
                 </div>
-                <div className="popular-courses">Popular courses</div>
+                <div className="popular-courses"><NavLink style={{color:'black', textDecoration:'none'}}to='courses'>Popular courses</NavLink></div>
                 <div className="teach">Teach on ilearn</div>
                 <div className="sign-up" >{isSignup ? (
-            <NavLink className={"navLink"} to="/">Log in</NavLink>
+            <NavLink className={"navLink"} to="/login">Log in</NavLink>
           ) : (
             <NavLink className={"navLink"} to="/signup">Sign up</NavLink>
           )}

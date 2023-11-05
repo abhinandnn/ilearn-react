@@ -14,7 +14,8 @@ const allowedPaths=["/forgot","/signup"]
 const router=createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<App />}>
-        <Route path='' element={<Login/>}/>
+            <Route index element={<Home />} />
+        <Route path='login' element={<Login/>}/>
         <Route path='forgot/otp' element={<LoginOTP/>}/>
         <Route path='signup/otp' element={<LoginOTP/>}/>
         <Route path='signup' element={<Signup />}/>
