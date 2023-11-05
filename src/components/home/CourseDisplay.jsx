@@ -20,7 +20,7 @@ function CourseDisplay({ categories }) {
             }
           },
           {
-            breakpoint: 800,
+            breakpoint: 750,
             settings: {
               slidesToShow: 2.5,
               slidesToScroll: 1,
@@ -36,7 +36,7 @@ function CourseDisplay({ categories }) {
             }
           },
           {
-            breakpoint: 480,
+            breakpoint: 450,
             settings: {
               slidesToShow: 1.5,
               slidesToScroll: 1
@@ -44,7 +44,7 @@ function CourseDisplay({ categories }) {
 
           },
           {
-            breakpoint: 360,
+            breakpoint: 320,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1

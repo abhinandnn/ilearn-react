@@ -23,7 +23,7 @@ function PopularCourses({courseName,course}) {
               }
             },
             {
-              breakpoint: 800,
+              breakpoint: 750,
               settings: {
                 slidesToShow: 2.5,
                 slidesToScroll: 1,
@@ -39,7 +39,7 @@ function PopularCourses({courseName,course}) {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 450,
               settings: {
                 slidesToShow: 1.5,
                 slidesToScroll: 1
@@ -47,7 +47,7 @@ function PopularCourses({courseName,course}) {
 
             },
             {
-              breakpoint: 345,
+              breakpoint: 325,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1

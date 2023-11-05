@@ -95,7 +95,7 @@ function WhyIlearn() {
             </div>
         </div>
         <div id='reviewSlide'>
-        <Slider className='slide' {...settings}>
+        <Slider className='revieSlide' {...settings}>
         <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
         <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>
         <Card2 text={"I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered."}userName={"Marl Watson"} courseTitle={"Python and AI: Building Intelligent Systems"} creator={"Karl Marx"}/>

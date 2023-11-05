@@ -68,6 +68,30 @@ function CourseVariety() {
               rating: 4.7,
               cost: 999
             },
+            {
+              id: 202,
+              courseTitle: "Graphic Design Masterclass",
+              courseImage: "graphic-design.jpg",
+              creator: "Bob Wilson",
+              rating: 4.6,
+              cost: 1499
+            },
+            {
+                id: 201,
+                courseTitle: "UI/UX Design Principles",
+                courseImage: "ui-ux-design.jpg",
+                creator: "Alice Johnson",
+                rating: 4.7,
+                cost: 999
+              },
+              {
+                id: 202,
+                courseTitle: "Graphic Design Masterclass",
+                courseImage: "graphic-design.jpg",
+                creator: "Bob Wilson",
+                rating: 4.6,
+                cost: 1499
+              }
           ]
         },
       ];
