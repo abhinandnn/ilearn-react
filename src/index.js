@@ -13,6 +13,7 @@ import CourseVariety from './components/home/CourseVariety.jsx';
 import { AuthProvider } from './components/utils/AuthContext.jsx';
 import { AuthProcessProvider } from './components/utils/AuthProcessContext.jsx';
 import ProtectedRoute1 from './components/utils/ProtectedRoute1.jsx';
+import CoursePage from './components/CoursePage/CoursePage.jsx';
 
 const router = (
     <Routes>
@@ -27,6 +28,7 @@ const router = (
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="home" element={<Home />} />
           <Route path="courses" element={<CourseVariety />} />
+          <Route path="coursePage" element={<CoursePage img1={"gfg"} courseTitle={"loda"}/>}/>
         </Route>
       </Routes>
 )

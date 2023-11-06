@@ -4,7 +4,26 @@ import Card from './Card';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import './home.css'
-function PopularCourses({courseName,course}) {
+import { useState,useEffect } from 'react';
+import axios from '../../api/axios';
+const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
+function PopularCourses({categoryName}) {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await  axios.get(C_URL);
+
+        const categoryData = response.data.data.categories.find(category => category.name === categoryName);
+        setCourses(categoryData ? categoryData.courses : []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData();
+  }, [categoryName]);
+
         var settings = {
           dots: false,
           infinite: false,
@@ -55,87 +74,20 @@ function PopularCourses({courseName,course}) {
               
             }
           ]
-        }
-        const pythonCourses = [
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Python Fundamentals: A Beginner's Guide",
-            creator: "John Smith",
-            rating: 4.7,
-            cost: 999,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Advanced Python Programming: Beyond Basics",
-            creator: "Emily Johnson",
-            rating: 4.9,
-            cost: 1299,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Python Web Development: Flask and Django",
-            creator: "Michael Davis",
-            rating: 4.8,
-            cost: 1499,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Python for Data Analysis and Visualization",
-            creator: "Alice Brown",
-            rating: 4.6,
-            cost: 1199,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Machine Learning with Python: Hands-on Guide",
-            creator: "David Wilson",
-            rating: 4.5,
-            cost: 1599,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Python for Network Security and Ethical Hacking",
-            creator: "Sophia Lee",
-            rating: 4.7,
-            cost: 1399,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Game Development with Python and Pygame",
-            creator: "Matthew Robinson",
-            rating: 4.6,
-            cost: 1099,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150",
-            courseTitle: "Python Scripting for Automation and DevOps",
-            creator: "Emma White",
-            rating: 4.8,
-            cost: 1199,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150/100",
-            courseTitle: "Python and AI: Building Intelligent Systems",
-            creator: "Oliver Harris",
-            rating: 4.9,
-            cost: 1699,
-          },
-          {
-            courseImage: "https://via.placeholder.com/150/100",
-            courseTitle: "Python for IoT (Internet of Things) Applications",
-            creator: "Lily Turner",
-            rating: 4.7,
-            cost: 1299,
-          }
-        ];        
+        }     
   return (
     <div className='popularCourse'>
-    <div className='subHeadingHome'>Top selling {courseName} courses</div>
+    <div className='subHeadingHome'>Top selling {categoryName} courses</div>
     <button className='popularButton'>Explore all</button>
     <div className='slid'>
     <Slider className=''{...settings}>
-     {pythonCourses.map(course=>(
-     <Card imgSrc={course.courseImage} title={course.courseTitle} creator={course.creator} rating={course.rating} cost={course.cost}/>))}
+     {courses.map(course => (
+            <Card
+              key={course._id} imgSrc={course.courseImage}
+              title={course.title} creator={course.createdBy.username}
+                        rating={course.rating}
+      cost={course.price}
+            />))}
 </Slider>
 </div>
     </div>

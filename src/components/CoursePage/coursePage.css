@@ -1,0 +1,48 @@
+.coursePage{
+    padding: 4rem 0vw;
+    /* background-color: ; */
+}
+.topBanner1{
+    background-color: #0E0035;
+    height: 16rem;
+    width:78vw;
+    padding:4rem 11vw;
+    padding-bottom: 2rem;
+    font-size: 2.8rem;
+    font-family: Sofia Sans;
+    color: white;
+    display: flex;
+    gap: 2rem;
+    font-weight: 500;
+}
+
+.bannerText1{
+    width:50vw
+}
+.imageDiv1{
+    align-items: center;
+    height: 14rem;
+}
+.bannerImg1{
+    width:28vw;
+    height:14rem;
+    border-radius: 10px;
+}
+.ratingStar1{
+    font-size: 1rem;
+    color: #F89D07;
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    height: 3rem;
+}
+.starOP{
+    display: flex;
+    gap: 0.45rem;
+}
+.creatorName1{
+font-size: 0.85rem;
+font-weight: 300;
+display: flex;
+gap: 1.8rem;
+}

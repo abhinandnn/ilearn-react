@@ -134,15 +134,17 @@ right:0.75rem;
     align-items:flex-end;
 }
 .catItem{
-    font-size: 1.2rem;
+    
     list-style-type: none;
 }
 .catLink{
     text-decoration: none;
     color:black;
     background-color: white;
+    cursor:pointer;
     border-bottom:2px solid transparent ;
     position: relative;
+    outline: none;
 }
   .catLink:hover::before, .catLink:focus::before{
     content: '';
@@ -151,6 +153,16 @@ right:0.75rem;
     left: 2.8%;
     border-bottom: 2px solid black;
     width: 95%;
+    outline: none;
+ }
+ .active{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2.8%;
+    border-bottom: 2px solid black;
+    width: 95%;
+    color: #5928E5;
  }
  .catLink:hover, .catLink:focus{
     color: #5928E5;}
