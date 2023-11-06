@@ -121,7 +121,7 @@ function WhyIlearn() {
                 <div className='stepT'><img className='dot' src={circle}/>
 step 1</div>
                 <div className='stepT'> <img className='dot' src={circle}/>step 2</div>
-                <div className='stepT'> <img className='dot' src={circle}/>step 3</div><i class="arrowU"/>
+                <div className='stepT'> <img className='dot' src={circle}/>step 3</div><i className="arrowU"/>
               </div>
             <div className='stepText'>
             <div className='stepT'>Log in/Sign up to your 
@@ -147,7 +147,7 @@ account</div></div>
 profile</div></div>
                 <div className='stepT'> <img className='dot' src={circle}/>step 3<div className='stepText'>Start uploading courses 
 and reach millions
-</div><i class="arrowD"/></div>
+</div><i className="arrowD"/></div>
               </div>
             </div>
             </div>

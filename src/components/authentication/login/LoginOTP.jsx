@@ -15,7 +15,6 @@ function LoginOTP() {
   const location = useLocation();
   const navigate = useNavigate();
   const [error,setError]=useState("");
-  console.log("lolol")
   if(location.pathname==='/forgot/otp')
   { 
     em=localStorage.getItem("forgetEmail");

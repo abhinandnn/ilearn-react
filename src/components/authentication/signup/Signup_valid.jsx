@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import PasswordStrength from "./passwordStrength";
 import { toast } from "react-toastify";
+import { useAuthProcess } from "../../utils/AuthProcessContext";
 const SIGNUP_URL ='https://udemy-nx1v.onrender.com/sign-up'
 
 const Signup_valid = () => {
   const {strength,calculateStrength}=PasswordStrength();
   let success=false;
+  const {doSubmit,isSubmit}=useAuthProcess();
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
   const [name,setName]  =  useState("");
@@ -74,15 +76,18 @@ const Signup_valid = () => {
 
     if (!hasErrors) {
     console.log("Form submitted:");
+    console.log("helo",isSubmit);
     localStorage.setItem("username",username)
     localStorage.setItem("name",name)
     localStorage.setItem("signupEmail",email);
     localStorage.setItem("signupPassword",password);
+    
     try{
       setLoading(true);
       const response = await axios.post(SIGNUP_URL,{username:username,name:name,email:email,password:password},
         {headers:{'Content-Type':'application/json; charset=utf-8'},
           withCredentials: false});
+          doSubmit();
           console.log("signup success");
           toast.info("Verify your email");
           success=response.data.success;
@@ -91,7 +96,7 @@ const Signup_valid = () => {
   console.log('Server responded');
   if(err.response.data.message==="User with the same email already exists"||err.response.data.message===`"email" must be a valid email`)
   setErrorEmail(err.response.data.message);
-else if(`"password" must only contain alpha-numeric characters`)
+else if(err.response.data.message===`"password" must only contain alpha-numeric characters`)
 setErrorPassword(err.response.data.message);
 else
 setErrorUsername(err.response.data.message);

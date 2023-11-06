@@ -1,6 +1,7 @@
+
 import React from 'react';
-import {Route,RouterProvider,createBrowserRouter, createRoutesFromElements} from 'react-router-dom'
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './components/App.jsx';
 import Login from './components/authentication/login/Login.jsx';
 import Signup from './components/authentication/signup/Signup.jsx';
@@ -9,26 +10,34 @@ import ResetPwd from './components/authentication/login/ResetPwd.jsx';
 import LoginOTP from './components/authentication/login/LoginOTP.jsx';
 import Home from './components/home/Home.jsx';
 import CourseVariety from './components/home/CourseVariety.jsx';
-// import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
-const allowedPaths=["/forgot","/signup"]
-const router=createBrowserRouter(
-    createRoutesFromElements(
-        <Route path='/' element={<App />}>
-            <Route index element={<Home />} />
-        <Route path='login' element={<Login/>}/>
-        <Route path='forgot/otp' element={<LoginOTP/>}/>
-        <Route path='signup/otp' element={<LoginOTP/>}/>
-        <Route path='signup' element={<Signup />}/>
-        <Route path='forgot' element={<ForgotPassword/>}/>
-        <Route path='resetpwd' element={<ResetPwd/>}/>
-        <Route path='home' element={<Home/>}/>
-        <Route path='courses' element={<CourseVariety/>}/>
-          </Route>
-    )
+import { AuthProvider } from './components/utils/AuthContext.jsx';
+import { AuthProcessProvider } from './components/utils/AuthProcessContext.jsx';
+import ProtectedRoute1 from './components/utils/ProtectedRoute1.jsx';
+
+const router = (
+    <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+            <Route path="forgot/otp" element={<ProtectedRoute1 element={<LoginOTP/>}/>} />
+          <Route path="signup/otp" element={<ProtectedRoute1 element={<LoginOTP/>} />} />
+          <Route path="resetpwd" element={<ProtectedRoute1 element={<ResetPwd/>} />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="forgot" element={<ForgotPassword />} />
+          <Route path="home" element={<Home />} />
+          <Route path="courses" element={<CourseVariety />} />
+        </Route>
+      </Routes>
 )
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <RouterProvider router={router}/>
-    </React.StrictMode>
-)
-
+  <React.StrictMode>
+    <Router>
+    <AuthProcessProvider>
+        <AuthProvider>
+      {router}
+      </AuthProvider>
+    </AuthProcessProvider>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

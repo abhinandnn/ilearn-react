@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useAuth } from "../../utils/AuthContext";
 import axios from "../../../api/axios";
 import { ToastContainer,toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'
 const LOGIN_URL ='https://udemy-nx1v.onrender.com/sign-in'
 
 const Login_valid = () =>{
+  const { login } = useAuth();
+  const navigate = useNavigate();
 const[email,setEmail]=useState("");
 const[password,setPwd]=useState("");
 const [error,setError]  =  useState("");
@@ -55,6 +59,8 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
         localStorage.setItem("authId",response.data.data.token);
         localStorage.setItem("LoggedinUsername",response.data.data.username);
         localStorage.setItem("role",response.data.data.role);
+        login(response.data.data.token, response.data.data.username, response.data.data.role);
+        navigate('/home');
         setLoading(false);
 }catch(err){
 if(err.response){
