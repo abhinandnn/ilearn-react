@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useAuthProcess } from "../../utils/AuthProcessContext";
 const FORGOT_URL ='https://udemy-nx1v.onrender.com/forget-password'
 const ForgotPassword = () =>{
-  const {setSubmit,isSubmit}=useAuthProcess();
+  const {isSubmit,doSubmit}=useAuthProcess();
   const [loading,setLoading]=useState(false);
 const[email,setEmail]=useState("");
 const [error,setError]  =  useState("");
@@ -37,7 +37,7 @@ const navigate=useNavigate();
       {headers:{'Content-Type':'application/json; charset=utf-8',
     'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2NlYmU5NTRjNjBhMzViMGFmYTNmZSIsInVpZCI6IndUVDdRWGx6bCIsImlhdCI6MTY5ODQ5MjA5MCwiZXhwIjoxNjk4NjY0ODkwfQ.lrvu9UW2gdCSgDGL9mYFXCHtfurhXN72_xZHQIVuciI'},
         withCredentials: false});
-        setSubmit(true);
+        doSubmit();
         console.log(isSubmit);
         if(response.data.success)
         {

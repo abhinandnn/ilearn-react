@@ -7,7 +7,7 @@ import Fahid from '../../../assets/fa-hidden.svg';
 import PasswordStrength from '../signup/passwordStrength';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../../api/axios';
-import { ToastContainer,toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 const RESET_URL = 'https://udemy-nx1v.onrender.com/change-password'
 function ResetPwd() {
   const[loading,setLoading]=useState(false);
@@ -59,7 +59,6 @@ function ResetPwd() {
             localStorage.setItem("resetPassword",password);
             try{
               setLoading(true);
-              console.log(password);
               const response = await axios.post(RESET_URL,{password:password},
                 {headers:{'Authorization':`Bearer ${Ftoken}`},
                   withCredentials: false});

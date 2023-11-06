@@ -1,15 +1,14 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Navigate,useLocation } from 'react-router-dom';
 import {useAuthProcess} from './AuthProcessContext'
-import LoginOTP from '../authentication/login/LoginOTP';
-const ProtectedRoute1 = ({ element:Element,...props}) => {
-  const { isSubmit } = useAuthProcess();
-  
-  return isSubmit ? (
-    <Element/>
-  ) : (
-    <Navigate to="/login" replace />
-  );
-};
 
+const ProtectedRoute1 = ({children}) => {
+    const { isSubmit } = useAuthProcess();
+    let location = useLocation();
+
+    if(!isSubmit) {
+        return <Navigate to="/login" state={{ from: location}} replace />
+    }
+ return children
+}
 export default ProtectedRoute1;

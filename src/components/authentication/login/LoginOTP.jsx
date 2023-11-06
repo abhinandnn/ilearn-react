@@ -5,12 +5,13 @@ import logImg from '../../../assets/log.svg';
 import OTP from './OTP.jsx'
 import InputOTP from './InputOTP'
 import axios from "../../../api/axios";
-import { ToastContainer,toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import ResendOtp from './ResendOtp';
+import { useAuthProcess } from '../../utils/AuthProcessContext.jsx';
 let OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
-
 function LoginOTP() {
   let token,em,sign=false;
+  const {unSubmit,doSubmit}=useAuthProcess();
   const [loading,setLoading]=useState();
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,12 +43,13 @@ sign=true}
         toast.success("OTP verified!")
           if(!sign)
         {token=response.data.data.token;
-        localStorage.setItem("Ftoken",token);}
-          console.log(response.data.message);
+        localStorage.setItem("Ftoken",token);
+        }
           if(sign)
           navigate("/login");
         else
-            navigate('/resetpwd')          
+           { 
+             navigate('/resetpwd')  }        
 
 }}catch(err){
   setLoading(false)

@@ -19,9 +19,10 @@ const router = (
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-            <Route path="forgot/otp" element={<ProtectedRoute1 element={<LoginOTP/>}/>} />
-          <Route path="signup/otp" element={<ProtectedRoute1 element={<LoginOTP/>} />} />
-          <Route path="resetpwd" element={<ProtectedRoute1 element={<ResetPwd/>} />} />
+          <Route path="forgot/otp" element={
+          <ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
+          <Route path="signup/otp" element={<ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
+          <Route path="resetpwd" element={<ProtectedRoute1><ResetPwd /></ProtectedRoute1>} />
           <Route path="signup" element={<Signup />} />
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="home" element={<Home />} />
