@@ -202,6 +202,11 @@
     font-weight: 600;
     color: white;
   }
+  #logoMob{
+    color: black;
+    left: 4%;
+    top: 2%;
+  }
 
   body {
     overflow-x: hidden;

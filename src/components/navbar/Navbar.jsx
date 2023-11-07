@@ -1,6 +1,9 @@
 import React from 'react';
 import './navbar.css'
 import searchIcon from '../../assets/search.svg'
+import heart from '../../assets/heart.svg'
+import cart from '../../assets/cart.svg'
+import notification from '../../assets/notification.svg'
 import { NavLink, useLocation } from 'react-router-dom';
 function Navbar() {
     const location = useLocation();

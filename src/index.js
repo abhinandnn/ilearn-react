@@ -28,7 +28,7 @@ const router = (
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="home" element={<Home />} />
           <Route path="courses" element={<CourseVariety />} />
-          <Route path="coursePage" element={<CoursePage img1={"gfg"} courseTitle={"loda"}/>}/>
+          <Route path="coursePage" element={<CoursePage img1={"gfg"} courseTitle={"l"}/>}/>
         </Route>
       </Routes>
 )

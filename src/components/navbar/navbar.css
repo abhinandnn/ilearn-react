@@ -1,22 +1,24 @@
 
 .navbar-box {
-    width: 94%;
-    min-height: 3rem;
-    padding: 0.5rem 4vw;
+    min-height: 4rem;
+    padding: 0.5rem 10vw;
+    padding-right: 5vw;
     background: white;
     justify-content: center;
     align-items: center;
     display: flex;
-    max-width: 100%;
+    width: 100%;
     position: fixed;
     top:0;
     z-index:2;
+    box-sizing: border-box;
   }
   
   .innerbox {
     align-items: center;
-    gap: 2.7vw;
+    gap: 3.2vw;
     display: flex;
+    width:100%
   }
   
   .logo {
@@ -29,7 +31,7 @@
     align-items: center;
     gap: 0.4vw;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: Sofia Sans;
     font-weight: 400;
   }
@@ -44,7 +46,7 @@
   .search-bar {
     width: 25vw;
     padding: 0.4rem 0.8rem;
-    border-radius: 16px;
+    border-radius: 20px;
     border: 2px #5928E5 solid;
     display: flex;
     gap: 1.4vw;
@@ -56,7 +58,7 @@
     position: absolute;
     width: 1rem;
     height: 1rem;
-    left:3.5%;
+    left:0.75rem;
   }
   
   .search-bar>input {
@@ -74,14 +76,18 @@
   }
   
   .popular-courses,.teach,.sign-up {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: Sofia Sans;
     font-weight: 400;
+    min-width: 7.7rem;
+  }
+  .teach{
+    min-width: 7.3rem;
   }
   .sign-up{
     color:#5928E5;
     text-align: center;
-    width:4rem;
+    min-width:4rem;
   }
   .navLink{
   text-decoration: none;

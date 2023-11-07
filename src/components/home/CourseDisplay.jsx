@@ -16,11 +16,11 @@ function CourseDisplay({ categories }) {
             settings: {
               slidesToShow: 3,
               slidesToScroll: 1,
-              infinite: true,
+              initialSlide:0
             }
           },
           {
-            breakpoint: 750,
+            breakpoint: 800,
             settings: {
               slidesToShow: 2.5,
               slidesToScroll: 1,
@@ -39,7 +39,8 @@ function CourseDisplay({ categories }) {
             breakpoint: 450,
             settings: {
               slidesToShow: 1.5,
-              slidesToScroll: 1
+              slidesToScroll: 1,
+              initialSlide:0
             }
 
           },
@@ -47,7 +48,8 @@ function CourseDisplay({ categories }) {
             breakpoint: 320,
             settings: {
               slidesToShow: 1,
-              slidesToScroll: 1
+              slidesToScroll: 1,
+              initialSlide:0
             }
             
           }
@@ -58,7 +60,7 @@ return (
     {categories.map((category) => (
         <div key={category._id}>
         <div className="popularCourse" id="popularCourse1">
-            <div className="subHeadingHome" id="subHead2">
+            <div className="subHeadingHome">
             Top selling courses in{" "}
             <span className="cateName">{category.name}</span>
             </div>
@@ -67,8 +69,8 @@ return (
                 <Card
                 key={course._id}
                 imgSrc={course.courseImage}
-                title={course.title}
-                creator={course.createdBy.name}
+            title={course.title}
+                        creator={course.createdBy.name}
                 rating={course.rating}
                 cost={course.price}
               />

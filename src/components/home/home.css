@@ -14,21 +14,25 @@
 }
 #cardImg{
     width: 100%;
-    min-width: 10rem;
+    min-width: 9rem;
 height: 7.5rem;
 border-radius: 0.8rem ;
 
+
 }
 #cardI{
-    width:96%;
-    padding: 0 2%;
+    width:100%
+}
+.card36{
+    padding:0.7rem;
+    min-width: 10rem;
 }
 .cardCont{
     font-family:Sofia Sans;
     font-size:1.2rem;
     font-weight: 800;
     width: 100%;
-    min-width: 12rem;
+    min-width: 10rem;
 height: 17rem;
 display: flex;
 flex-direction: column;
@@ -37,8 +41,8 @@ box-sizing: border-box;
 position:relative;
 gap:0.2rem;
 align-items: center;
-/* text-align: left; */
-/* flex-shrink: 0; */
+border-radius: 10px;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
 .creatorName{
     font-weight: 400;
@@ -56,6 +60,10 @@ align-items: center;
 position:absolute;
 bottom:0.5rem;
 left:0.75rem
+}
+#tite{
+    width: 100%;
+    justify-content: left;
 }
 .homeButton{
     font-family: Sofia Sans;
@@ -77,48 +85,48 @@ right:0.75rem;
 }
 .topBanner{
     width:80vw;
-    height:21rem;
+    height:auto;
     position : relative;
     display: flex;
-    /* gap:10vw; */
-    padding:0 12vw ;
-    justify-content: space-between;
+    /* gap:3vw; */
+    padding:0 10vw ;
 }
 .bannerText{
-    font-size: 2.7rem;
-    width:25rem;
+    font-size: 3.2rem;
+    width:36vw;
+    min-width: 24rem;
+    line-height: 3.2rem;
     color:#29185B;
     font-family: 'Integral CF';
-    padding-top: 2.5rem;
+    padding-top: 4.8rem;
     /* padding-left:12vw ; */
 }
 .bannerText2{
-    font-size: 1.2rem;
-    width:20rem;
+    font-size: 1.5rem;
+    width:32vw;
     padding-top: 1rem;
-    /* padding-left:12vw ; */
 }
 #bannerButton{
     position: static;
-    width:8rem;
-    height:2.5rem;
-    font-size: 0.85rem;
+    width:9rem;
+    height:2.6rem;
+    font-size: 1rem;
     /* margin-left:12vw ; */
     margin-top: 2rem;
+    border-radius:25px ;
 }
 #bannerImg{
-    width:36vw;
+    width:38vw;
     padding-top: 2rem;
-    padding-right: 4vw;
 }
 .categoriesDisplay{
     font-weight: 400;
     margin-top:5rem;
-    padding-left:12vw ;
+    padding-left:10vw ;
     font-size: 1.2rem;
 }
 .subHeadingHome{
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #29185B;
     font-weight: 700;
 }
@@ -155,15 +163,6 @@ right:0.75rem;
     width: 95%;
     outline: none;
  }
- .active{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 2.8%;
-    border-bottom: 2px solid black;
-    width: 95%;
-    color: #5928E5;
- }
  .catLink:hover, .catLink:focus{
     color: #5928E5;}
     .popularCourse
@@ -185,6 +184,7 @@ border: none;
 color: white;
 background: #5928E5;
 cursor:pointer;
+margin-left: 0.5rem;
 
 
     }
@@ -452,16 +452,17 @@ background-size: contain!important;
         background-color: #5928E5;
         height:16rem;
         display: flex;
-        justify-content: space-around;
+        gap: 6vw;
         padding-right: 8vw;
-        padding-left: 4vw;
+        padding-left: 8vw;
+        font-size: 0.92rem;
     }
     .footer{
         
         color:white;
         display: flex;
         padding:4rem 0;
-        gap:8vw;
+        gap:6vw;
         padding-top: 5rem;
         
     }
@@ -505,6 +506,10 @@ color: black;
 background: white;
 cursor:pointer
     }
+    .catChip:active,.catChip:focus{
+        background-color: #5928E5;
+        color: white;
+    }
     .catChips{
         margin:1.8rem 0;
     }
@@ -515,7 +520,7 @@ cursor:pointer
         height:auto;
         display:grid;
         width:80vw;
-        grid-template-columns: repeat(auto-fill,minmax(13rem,1fr));
+        grid-template-columns: repeat(auto-fill,minmax(14rem,1fr));
     }
     #popularCourse1{
         height:auto;
@@ -531,16 +536,23 @@ cursor:pointer
 .phoneCat{
     display: none;
 }
-    @media screen and (max-width: 800px) {
+#shh1{
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
+}
+    @media screen and (max-width: 750px) {
         .topBanner{
             flex-direction: column-reverse;
-            height:28rem;
+            height:auto;
             width: 80vw;
             justify-content: center;
             align-items: center;
             padding-left:10vw;
             padding-right: 10vw;
             gap:1rem
+        }
+        .courseVar{
+            padding-top: 2rem;
         }
         #bannerImg{
             width:80vw;
@@ -550,10 +562,14 @@ cursor:pointer
         .bannerText,.bannerText2{
             padding-left: 0;
             width: 80vw;
+            min-width: none;
+            font-size: 1.2rem;
         }
         .bannerText{
             font-size: 2rem;
             padding-top: 0;
+            line-height: normal;
+            min-width: 12rem;
         }
         #bannerButton{
             margin-left: 0;
@@ -571,9 +587,10 @@ cursor:pointer
         .catLink{
             font-size: 1rem;
         }
-        .subHeadingHome{
+        .subHeadingHome,#shh1{
             font-size:1.2rem;
         }
+
         .catBar{
             gap:5vw;
             margin-top: 1rem;
@@ -742,8 +759,8 @@ cursor:pointer
         top: 42.4% !important;
     }
     #cardImg{
-        width: 100%;
-        min-width: 9.4rem;
+        /* width: 100%; */
+        min-width: 8rem;
     height: 7.5rem;
     border-radius: 0.8rem ;
     }
@@ -785,7 +802,7 @@ cursor:pointer
         width: 5.25rem;
     height: 1.875rem;
     border-radius: 20px;
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     box-sizing: border-box;
     border: none;
     color: white;
@@ -795,4 +812,5 @@ cursor:pointer
     bottom:0.5rem;
     right:0.75rem;
     }}
+
     

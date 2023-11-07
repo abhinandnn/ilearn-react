@@ -3,7 +3,7 @@ import './home.css'
 import Card2 from './Card2'
 import PopularCourses from './PopularCourses'
 import bannerImg from '../../assets/bannerImg.svg'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import WhyIlearn from './WhyIlearn'
 import Footer from './Footer'
 import CoursePage from '../CoursePage/CoursePage'
@@ -19,6 +19,7 @@ function Home() {
   }, []);
   return (
     <div className="homePage">
+      <div className='logoMobile' id='logoMob'><span style={{color:"#5928E5"}}>i</span>Learn</div>
       <div className='topBanner'>
         <div>
         <div className='bannerText'>
@@ -38,12 +39,12 @@ function Home() {
       <span className='subHeadingHome' id='phoneSubHeading'>Variety of courses to build up your skills</span>
       <p>Choose from over 210,000 online video courses</p>
       <ul className='catBar'>
-        <li className='catItem'><Link ref={linkRef} className='catLink' autoFocus onClick={() => handleCategoryClick('Python')}>Python</Link></li>
-        <li className='catItem'><Link className='catLink' onClick={() => handleCategoryClick('UI/UX')}>UI/UX</Link></li>
-        <li className='catItem'><Link className='catLink' onClick={() => handleCategoryClick('Web Development')}>Web Development</Link></li>
-        <li className='catItem' id='catItem2'><Link className='catLink' onClick={() => handleCategoryClick('Javascript')}>Javascript</Link></li>
-        <li className='catItem' id='catItem2'><Link className='catLink' onClick={() => handleCategoryClick('C++')}>C++</Link></li>
-        <li className='catItem' id='catItem2'><Link className='catLink' onClick={() => handleCategoryClick('Flutter')}>Flutter</Link></li>
+        <li className='catItem'><NavLink ref={linkRef} className='catLink' autoFocus onClick={() => handleCategoryClick('Python')}>Python</NavLink></li>
+        <li className='catItem'><NavLink  className='catLink' onClick={() => handleCategoryClick('UI/UX')}>UI/UX</NavLink></li>
+        <li className='catItem'><NavLink className='catLink' onClick={() => handleCategoryClick('Web Development')}>Web Development</NavLink></li>
+        <li className='catItem' id='catItem2'><NavLink className='catLink' onClick={() => handleCategoryClick('Javascript')}>Javascript</NavLink></li>
+        <li className='catItem' id='catItem2'><NavLink className='catLink' onClick={() => handleCategoryClick('C++')}>C++</NavLink></li>
+        <li className='catItem' id='catItem2'><NavLink className='catLink' onClick={() => handleCategoryClick('Flutter')}>Flutter</NavLink></li>
       </ul>
       <PopularCourses categoryName={selectedCategory}/>
       </div>

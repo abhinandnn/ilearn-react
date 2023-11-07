@@ -9,6 +9,60 @@ import axios from '../../api/axios';
 const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
 function PopularCourses({categoryName}) {
   const token=localStorage.getItem("authId");
+  var settings = {
+    dots: false,
+    infinite: false,
+    arrows:true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide:0
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 0
+        }
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          initialSlide:0
+        }
+
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide:0
+        }
+        
+      }
+    ]
+  }  
+
   const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
   const [courses, setCourses] = useState([]);
   useEffect(() => {
@@ -16,9 +70,9 @@ function PopularCourses({categoryName}) {
       try {
         console.log("loading")
         const response = await  axios.get(C_URL,config);
-        const categoryData = response.data.data.categories.find(category => category.name === categoryName);
+        console.log("lol",response.data.value.data)
+        const categoryData = response.data.value.data.categories.find(category => category.name === categoryName);
         setCourses(categoryData ? categoryData.courses : []);
-        console.log(response.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -26,61 +80,9 @@ function PopularCourses({categoryName}) {
 
     getData();
   }, [categoryName]);
-
-        var settings = {
-          dots: false,
-          infinite: false,
-          arrows:true,
-          speed: 500,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          initialSlide: 0,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 750,
-              settings: {
-                slidesToShow: 2.5,
-                slidesToScroll: 1,
-                initialSlide: 0
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                initialSlide: 0
-              }
-            },
-            {
-              breakpoint: 450,
-              settings: {
-                slidesToShow: 1.5,
-                slidesToScroll: 1
-              }
-
-            },
-            {
-              breakpoint: 325,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-              
-            }
-          ]
-        }     
   return (
     <div className='popularCourse'>
-    <div className='subHeadingHome'>Top selling {categoryName} courses</div>
+    <div className='subHeadingHome' id='shh1'>Top selling {categoryName} courses</div>
     <button className='popularButton'>Explore all</button>
     <div className='slid'>
     <Slider className=''{...settings}>
