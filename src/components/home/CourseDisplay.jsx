@@ -56,31 +56,36 @@ function CourseDisplay({ categories }) {
 return (
     <div>
     {categories.map((category) => (
-        <div key={category.id}>
+        <div key={category._id}>
         <div className="popularCourse" id="popularCourse1">
             <div className="subHeadingHome" id="subHead2">
             Top selling courses in{" "}
-            <span className="cateName">{category.categoryName}</span>
+            <span className="cateName">{category.name}</span>
             </div>
             <div className="slid" id="slid1">
             {category.courses.map((course) => (
                 <Card
-                style={"cardC"}
-                key={course.id}
+                key={course._id}
                 imgSrc={course.courseImage}
-                title={course.courseTitle}
-                creator={course.creator}
+                title={course.title}
+                creator={course.createdBy.name}
                 rating={course.rating}
-                cost={course.cost}
-                />
+                cost={course.price}
+              />
             ))}
             </div>
             <div className="phoneCat">
             <div className='slid'>
     <Slider className=''{...settings}>
      {category.courses.map(course=>(
-     <Card key={course.id} imgSrc={course.courseImage} title={course.courseTitle} creator={course.creator} rating={course.rating} cost={course.cost}/>
-     ))}
+      <Card
+                      key={course._id}
+                      imgSrc={course.courseImage}
+                      title={course.title}
+                      creator={course.createdBy.name}
+                      rating={course.rating}
+                      cost={course.price}
+                    />     ))}
 </Slider>
 </div>
             </div>

@@ -8,14 +8,17 @@ import { useState,useEffect } from 'react';
 import axios from '../../api/axios';
 const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
 function PopularCourses({categoryName}) {
+  const token=localStorage.getItem("authId");
+  const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await  axios.get(C_URL);
-
+        console.log("loading")
+        const response = await  axios.get(C_URL,config);
         const categoryData = response.data.data.categories.find(category => category.name === categoryName);
         setCourses(categoryData ? categoryData.courses : []);
+        console.log(response.data.data);
       } catch (error) {
         console.log(error);
       }

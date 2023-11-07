@@ -4,16 +4,17 @@
 }
 .topBanner1{
     background-color: #0E0035;
-    height: 16rem;
-    width:78vw;
-    padding:4rem 11vw;
-    padding-bottom: 2rem;
+    height: 20rem;
+    width:100vw;
+    padding:3.4rem 11vw;
+    padding-bottom:2rem ;
     font-size: 2.8rem;
     font-family: Sofia Sans;
     color: white;
     display: flex;
     gap: 2rem;
     font-weight: 500;
+    box-sizing: border-box;
 }
 
 .bannerText1{
@@ -45,4 +46,22 @@ font-size: 0.85rem;
 font-weight: 300;
 display: flex;
 gap: 1.8rem;
+}
+.courseDetails{
+    width:100vw;
+    padding: 3rem 11vw;
+    padding-left: 15vw;
+    padding-bottom: 2rem;
+    height:11.4rem;
+    background: #5928E5;
+    display: flex;
+    gap:3vw;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+.detailSec{
+    width:10vw;
+    height:5.8rem;
+    background-color: black;
 }

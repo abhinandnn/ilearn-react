@@ -34,8 +34,7 @@ const navigate=useNavigate();
   try{
     setLoading(true)
     const response = await axios.post(FORGOT_URL,{email:email},
-      {headers:{'Content-Type':'application/json; charset=utf-8',
-    'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2NlYmU5NTRjNjBhMzViMGFmYTNmZSIsInVpZCI6IndUVDdRWGx6bCIsImlhdCI6MTY5ODQ5MjA5MCwiZXhwIjoxNjk4NjY0ODkwfQ.lrvu9UW2gdCSgDGL9mYFXCHtfurhXN72_xZHQIVuciI'},
+      {headers:{'Content-Type':'application/json; charset=utf-8'},
         withCredentials: false});
         doSubmit();
         console.log(isSubmit);

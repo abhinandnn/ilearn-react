@@ -13,6 +13,13 @@ function CoursePage(props) {
             <div className='creatorName1'>Course by:{props.creator}
             <span>{props.date}</span></div>
         </div>
+        </div>
+        <div className='courseDetails'>
+        <div className='detailSec'>{props.learners < 10 ? `0${props.learner}` : `${props.learner}`}</div>
+        <div className='detailSec'></div>
+        <div className='detailSec'></div>
+        <div>
+        </div>
     </div>
     </div>
   )

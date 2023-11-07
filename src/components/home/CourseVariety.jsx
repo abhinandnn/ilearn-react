@@ -1,6 +1,9 @@
 import React from 'react'
 import Card from './Card'
 import CourseDisplay from './CourseDisplay';
+import { useState,useEffect } from 'react';
+import axios from '../../api/axios';
+const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
 function CourseVariety() {                                                                                               
     const categories = [
         "Development",
@@ -17,84 +20,23 @@ function CourseVariety() {
         "Music",
         "Teaching & Academics"
       ];
-      const categories1 = [
-        {
-          id: 1,
-          categoryName: "Development",
-          courses: [
-            {
-              id: 101,
-              courseTitle: "JavaScript Basics",
-              courseImage: "javascript-basics.jpg",
-              creator: "John Doe",
-              rating: 4.5,
-              cost: 1999
-            },
-            {
-              id: 102,
-              courseTitle: "React Fundamentals",
-              courseImage: "react-fundamentals.jpg",
-              creator: "Jane Smith",
-              rating: 4.8,
-              cost: 2499
-            },
-            {
-                id: 103,
-                courseTitle: "JavaScript Basics",
-                courseImage: "javascript-basics.jpg",
-                creator: "John Doe",
-                rating: 4.5,
-                cost: 1999
-              },
-              {
-                id: 104,
-                courseTitle: "React Fundamentals",
-                courseImage: "react-fundamentals.jpg",
-                creator: "Jane Smith",
-                rating: 4.8,
-                cost: 2499
-              }
-          ]
-        },
-        {
-          id: 2,
-          categoryName: "Design",
-          courses: [
-            {
-              id: 201,
-              courseTitle: "UI/UX Design Principles",
-              courseImage: "ui-ux-design.jpg",
-              creator: "Alice Johnson",
-              rating: 4.7,
-              cost: 999
-            },
-            {
-              id: 202,
-              courseTitle: "Graphic Design Masterclass",
-              courseImage: "graphic-design.jpg",
-              creator: "Bob Wilson",
-              rating: 4.6,
-              cost: 1499
-            },
-            {
-                id: 201,
-                courseTitle: "UI/UX Design Principles",
-                courseImage: "ui-ux-design.jpg",
-                creator: "Alice Johnson",
-                rating: 4.7,
-                cost: 999
-              },
-              {
-                id: 202,
-                courseTitle: "Graphic Design Masterclass",
-                courseImage: "graphic-design.jpg",
-                creator: "Bob Wilson",
-                rating: 4.6,
-                cost: 1499
-              }
-          ]
-        },
-      ];
+      const token=localStorage.getItem("authId");
+  const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
+  const [categories1, setCategories] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        console.log("loading")
+        const response = await  axios.get(C_URL,config);
+        const categoryData = response.data.data.categories
+        setCategories(categoryData);
+        console.log(response.data.data.categories);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
       
       
   return (
