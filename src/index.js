@@ -18,7 +18,7 @@ import CoursePage from './components/CoursePage/CoursePage.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
+          <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="forgot/otp" element={
           <ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
@@ -28,7 +28,7 @@ const router = (
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="home" element={<Home />} />
           <Route path="courses" element={<CourseVariety />} />
-          <Route path="coursePage" element={<CoursePage img1={"gfg"} courseTitle={""} learner={8} />}/>
+          <Route path="coursePage" element={<CoursePage img1={"https://picsum.photos/300/200"} star={4.8} creator={"Harsh"} date={"21 Nov 23"} courseTitle={"Complete Web Design: from Figma to Webflow to Freelancing "} learner={8} />}/>
         </Route>
       </Routes>
 )
