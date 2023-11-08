@@ -97,3 +97,19 @@
   .navLink:active{
     color:#5928E5
   }
+  .navIcons{
+    display: flex;
+    gap:1rem;
+    min-width: 8.6rem;
+  }
+  .pfpNav{
+    font-family: Sofia Sans;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:1.8rem;
+    min-width:1.8rem;
+    color: white;
+    background-color: black;
+    border-radius: 100%;
+  }

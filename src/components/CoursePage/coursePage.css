@@ -1,11 +1,13 @@
 .coursePage{
     padding: 4rem 0vw;
-    /* background-color: ; */
+    height:auto;
+    min-height: 50rem;
+    background-color: #D9D9D9;
 }
 .topBanner1{
     background-color: #0E0035;
     height: 20rem;
-    width:100vw;
+    width:100%;
     padding:3.4rem 11vw;
     padding-bottom:2rem ;
     font-size: 2.8rem;
@@ -48,7 +50,7 @@ display: flex;
 gap: 1.8rem;
 }
 .courseDetails{
-    width:100vw;
+    width:100%;
     padding: 3rem 11vw;
     padding-left: 15vw;
     padding-bottom: 2rem;
@@ -61,7 +63,78 @@ gap: 1.8rem;
 
 }
 .detailSec{
-    width:10vw;
+    font-family:Sofia Sans;
+    width:14vw;
     height:5.8rem;
-    font-size: 2.8rem;
+    font-size: 5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+   min-width: 10rem;
+   font-weight: 800;
+   line-height: 4.2rem;
+   border-top: 4px solid transparent;
+   position: relative;
 }
+.detailSec>span{
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.detailSec::before{
+    content: '';
+    position: absolute;
+    top:-15%;
+    left: -2.8%;
+    border-top: 4px solid #00FF84;
+    width: 2.5rem;
+    outline: none;
+    border-radius: 20px;
+ }
+ #ds1{
+    width:8vw;
+    min-width:6rem;}
+    #ds2{
+        min-width:4rem;
+    }
+    .topSec{
+        position: relative;
+        /* height: 50rem; */
+    }
+    .fixedCard{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top:51.5%;
+        right:10%;
+        min-width:16rem;
+        height:35rem;
+        gap:1rem;
+    }
+    .drawE{
+        position: absolute;
+        width:24rem;
+        left:-16%;
+        top:-14%
+
+    }
+    .fixCard1{
+        display: flex;
+        flex-direction: column;
+        width:20vw;
+        min-width: 16rem;
+        height:18rem;
+        border-radius: 10px;
+        z-index: 1;
+        background-color: white;
+    }
+    .fixCard2{
+        display: flex;
+        flex-direction: column;
+        width:20vw;
+        min-width: 16rem;
+        height:14rem;
+        border-radius: 10px;
+        z-index: 1;
+        background-color: white;
+    }

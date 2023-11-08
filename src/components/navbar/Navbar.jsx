@@ -5,11 +5,13 @@ import heart from '../../assets/heart.svg'
 import cart from '../../assets/cart.svg'
 import notification from '../../assets/notification.svg'
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../utils/AuthContext';
 function Navbar() {
     const location = useLocation();
+    const {loginStatus}=useAuth()
   const isSignup = (location.pathname === '/signup');
   return (
-   <div className="navbar-box">
+   <div style={!loginStatus?{paddingRight:'2rem'}:{}} className="navbar-box">
             <div className="innerbox">
                 <div className="logo-container">
                     <div className="logo">
@@ -28,12 +30,20 @@ function Navbar() {
                 </div>
                 <div className="popular-courses"><NavLink style={{color:'black', textDecoration:'none'}}to='courses'>Popular courses</NavLink></div>
                 <div className="teach">Teach on ilearn</div>
+{loginStatus?
                 <div className="sign-up" >{isSignup ? (
             <NavLink className={"navLink"} to="/login">Log in</NavLink>
           ) : (
             <NavLink className={"navLink"} to="/signup">Sign up</NavLink>
           )}
-</div>
+</div>:<div className='navIcons'>
+    <img src={notification}/>
+    <img src={cart} />
+    <img src={heart} alt="" />
+    <div className='pfpNav'>
+        A
+    </div>
+      </div>}
             </div>
         </div>
   )

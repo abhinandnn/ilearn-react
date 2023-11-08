@@ -530,9 +530,7 @@ cursor:pointer
         text-decoration: underline;
         color: #5928E5;
     }
-    #subHead2{
-        font-size: 1.5rem;
-    }
+    
 .phoneCat{
     display: none;
 }
@@ -594,6 +592,9 @@ cursor:pointer
         .catBar{
             gap:5vw;
             margin-top: 1rem;
+        }
+#subHead2{
+            font-size: 1.5rem;
         }
         .popularCourse{
             width:80vw;

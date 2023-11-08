@@ -85,15 +85,17 @@ function PopularCourses({categoryName}) {
     <div className='subHeadingHome' id='shh1'>Top selling {categoryName} courses</div>
     <button className='popularButton'>Explore all</button>
     <div className='slid'>
-    <Slider className=''{...settings}>
-     {courses.map(course => (
-            <Card
-              key={course._id} imgSrc={course.courseImage}
-              title={course.title} creator={course.createdBy.username}
-                        rating={course.rating}
-      cost={course.price}
-            />))}
-</Slider>
+    {courses.length>0 && <Slider className=''{...settings}>
+     {courses.map(course=>(
+      <Card
+                      key={course._id}
+                      imgSrc={course.courseImage}
+                      title={course.title}
+                      creator={course.createdBy.name}
+                      rating={course.rating}
+                      cost={course.price}
+                    />     ))}
+</Slider>}
 </div>
     </div>
   )

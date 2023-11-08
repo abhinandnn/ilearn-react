@@ -58,6 +58,7 @@ function CourseDisplay({ categories }) {
 return (
     <div>
     {categories.map((category) => (
+      category.courses.length>0 &&
         <div key={category._id}>
         <div className="popularCourse" id="popularCourse1">
             <div className="subHeadingHome">
