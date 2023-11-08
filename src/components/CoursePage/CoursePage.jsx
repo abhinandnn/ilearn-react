@@ -11,6 +11,7 @@ import files from '../../assets/files.svg'
 import cert from '../../assets/certificate.svg'
 import subt from '../../assets/subtitle.svg'
 import access from '../../assets/access.svg'
+import TeachFooter from '../utils/TeachFooter';
 
 
 function CoursePage(props) {
@@ -23,7 +24,7 @@ function CoursePage(props) {
             <div className='bannerText1'>{props.courseTitle}
             <div className='ratingStar1'>{props.star}
               <Stars stars={props.star}/></div>
-            <div className='creatorName1'>Course by:{props.creator}
+            <div className='creatorName1'>Course by : {props.creator}
             <span>{props.date}</span></div>
         </div>
         </div>
@@ -67,9 +68,12 @@ function CoursePage(props) {
         </div>
       </div>
       </div>
-      <Review/>
+      <div style={{paddingLeft:'10vw'}}>
+      <Review avgRating={4.8} name={'Abhinandan'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
       </div>
-    {/* <Footer/> */}
+      </div>
+      <TeachFooter/>
+    <Footer/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 .coursePage{
-    padding: 4rem 0vw;
+    padding-top: 4rem;
     height:auto;
-    min-height: 120rem;
+    min-height: auto;
     background-color: #F4F4F4;
     font-family: Sofia Sans;
     position: relative;
@@ -101,13 +101,15 @@ gap: 1.8rem;
  }
     .topSec{
         position: relative;
-        height: 100rem;
+        height: 96.25rem;
+        margin-bottom: 20rem;
     }
     .fixCar{
         position: absolute;
-        top:19%;
+        top:16.8%;
         height: 100%;
-        right:10%
+        width: 100%;
+        right:9%
     }
     .fixedCard{
         display: flex;
@@ -138,7 +140,7 @@ gap: 1.8rem;
         width:23vw;
         min-width: 17rem;
         height:19rem;
-        border-radius: 10px;
+        border-radius: 15px;
         z-index: 1;
         background-color: white;
         padding:1.6rem 1rem;
@@ -151,7 +153,7 @@ gap: 1.8rem;
         width:23vw;
         min-width: 17rem;
         height:14rem;
-        border-radius: 10px;
+        border-radius: 15px;
         z-index: 1;
         background-color: white;
         box-sizing: border-box;
@@ -248,7 +250,7 @@ outline: none;
     width:42vw;
     min-width: 26rem;
     font-weight: 600;
-    margin-bottom: 3rem;
+    min-height: 10rem;
 }
 .creatorIntro{
     color: black;
@@ -270,4 +272,120 @@ font-weight: 600;}
     font-size: 1.8rem;
     margin: 0;
     font-weight: 600;
+}
+.reviewBox{
+    background-color: #FFF8ED;
+    width:52vw;
+    min-width:32rem ;
+    height:44rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    position: relative;
+}
+.reviewHeading{
+    font-size: 5rem;
+    font-weight: bolder;
+    color:#5928E5;
+    height:5rem;
+    width:10rem;
+    display: flex;
+    align-items: center;
+}
+.reviewHeading>img{
+    width:3.6rem
+}
+.reviewHeading2{
+font-size: 1.45rem;
+font-weight: 600;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 4rem;
+}
+.reviewHeading2>span{
+    color: #5928E5;
+}
+.reviewBox1{
+    margin-top: 1.5rem;
+}
+.reviewDetail{
+    display: flex;
+    margin-bottom: 1.5rem;
+    justify-content: space-between;
+}
+.reviewRating{
+    display: flex;
+    flex-direction: column;
+    gap:0.2rem
+}
+.reviewDet{
+    display: flex;
+gap:1rem
+}
+.dateRev{
+}
+.reviewRating>p{
+    display: flex;
+    gap:0.4rem;
+    align-items: center;
+    /* line-height: 0; */
+    /* height: 2rem; */
+}
+
+.RButton{
+    min-height: 2.5rem;
+border-radius: 20px;
+font-size: 1rem;
+font-weight: 600;
+font-family: Sofia Sans;
+padding: 0.5rem 1.15rem;
+margin: 0.2rem 0;
+border: 2px solid #5928E5;
+color: #5928E5;
+background: transparent;
+cursor:pointer;
+outline: none;
+position: absolute;
+bottom:3%;
+left:5%;
+width:47vw;
+min-width: 28rem;
+}
+.RButton:active{
+    background-color: #5928E5;
+    color: #FFF8ED;
+
+}
+.reviewBox1>p{
+    height:8rem;
+}
+.teachFooter{
+padding:1rem 10vw;
+background: #0E0035;
+font-size: 1.2rem;
+color:white;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.footButton{
+    min-height: 2.5rem;
+border-radius: 20px;
+font-size: 1rem;
+font-weight: 600;
+font-family: Sofia Sans;
+padding: 0.5rem 1.15rem;
+margin: 0.2rem 0;
+border: 2px solid white;
+color: white;
+background: transparent;
+cursor:pointer;
+outline: none;
+}
+.footButton:active{
+    background-color: white;
+color: #0E0035;
+    
+
 }

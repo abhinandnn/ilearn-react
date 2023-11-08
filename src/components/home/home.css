@@ -454,7 +454,7 @@ background-size: contain!important;
         display: flex;
         gap: 6vw;
         padding-right: 8vw;
-        padding-left: 8vw;
+        padding-left: 10vw;
         font-size: 0.92rem;
         font-family: Sofia Sans;
     }
@@ -466,6 +466,9 @@ background-size: contain!important;
         gap:6vw;
         padding-top: 5rem;
         
+    }
+    .footerColumn>p{
+        line-height: 1.5rem;
     }
     .footerColumn{
         width:16vw
@@ -479,6 +482,7 @@ background-size: contain!important;
     flex-direction: column;
     align-items:center ;
     justify-content: center;
+    letter-spacing: 0.1rem;
     /* padding-right: 14vw; */
     }
     .footIcon{
@@ -660,6 +664,7 @@ cursor:pointer
         }
         .foot{
             display: none;
+            color: white;
         }
         .stepBar{
             display: none;
