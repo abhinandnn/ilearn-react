@@ -1,6 +1,7 @@
 import React from 'react'
 import './coursePage.css'
 import Stars from './Stars'
+import Review from './Review'
 import { useState,useEffect,useRef } from 'react';
 import draw from '../../assets/draw.svg'
 import Footer from '../home/Footer';
@@ -13,25 +14,7 @@ import access from '../../assets/access.svg'
 
 
 function CoursePage(props) {
-  const fixedCardRef = useRef(null);
-  const [isFixed, setIsFixed] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const topSec = document.querySelector('.topSec');
-      const topSecTop = topSec.offsetTop;
-      const topSecHeight = topSec.offsetHeight;
-      const scrollY = window.scrollY;
-
-      if (scrollY > topSecTop && scrollY < topSecHeight) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-  }, []);
+  
   return (
     <div className='coursePage'>
       <div className='topSec'>
@@ -47,10 +30,12 @@ function CoursePage(props) {
         <div className='courseDetails'>
         <div className='detailSec'>{props.learner < 10 ? `0${props.learner}` : `${props.learner}`}
         <span >Active learners</span></div>
-        <div className='detailSec' id='ds1'>41<span>Lectures</span></div>
+        <div className='detailSec' id='ds1'>415<span>Lectures</span></div>
         <div className='detailSec' id='ds2'>40<span>Hours</span></div>
-        </div>
-        <div className='fixedCard'><img className='drawE' src={draw}/><div className='fixCard1'>
+        
+        <div className='fixCar'>
+        <div className='fixedCard'>
+        <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
          <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹456</div><img src={heart}/></div>
          <button className='courseCButton' id='C2'>Buy now</button>
@@ -67,14 +52,22 @@ function CoursePage(props) {
           </div>
         </div>
         </div>
+        </div>
     </div>
     <div className='aboutCourse'>
       <h1>About this course</h1>
       <p>By the end of the course you will create simple and complex 20 3D animation You will learn the programer Effects am how to work with shapes, keyframes, etc. You! be able to animate characters logos infographics and typography You wil work such soft products Adobe A Media Encoder, Trapcode and others </p>
       <h1>Your Tutor</h1>
-      <div>
-        <img src={props.img1} style={{borderRadius:''}}/>
+      <div className='creatorIntro'>
+        <img src={props.img1} style={{borderRadius:'100%'}}/>
+        <div className='creatorInt'>
+          <h1>Abhinandan</h1>
+          <p>Web Developer</p>
+          <p>8 years+ experience</p>
+        </div>
       </div>
+      </div>
+      <Review/>
       </div>
     {/* <Footer/> */}
     </div>

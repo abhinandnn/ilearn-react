@@ -248,11 +248,13 @@ p{
   cursor:not-allowed;
 }
 
+
+
 .logoMobile{
   position: absolute;
   display:none;
 }
-svg {
+button>svg {
   animation: 2s linear infinite svg-animation;
   max-width: 100px;
 }

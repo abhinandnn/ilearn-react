@@ -61,7 +61,7 @@ return (
       category.courses.length>0 &&
         <div key={category._id}>
         <div className="popularCourse" id="popularCourse1">
-            <div className="subHeadingHome">
+            <div className="subHeadingHome" style={{fontSize:'2rem'}}>
             Top selling courses in{" "}
             <span className="cateName">{category.name}</span>
             </div>
