@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import './home.css'
 import { useState,useEffect } from 'react';
 import axios from '../../api/axios';
-const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
 function PopularCourses({categoryName}) {
   const token=localStorage.getItem("authId");
   var settings = {
@@ -69,7 +68,7 @@ function PopularCourses({categoryName}) {
     const getData = async () => {
       try {
         console.log("loading")
-        const response = await  axios.get(C_URL,config);
+        const response = await  axios.get('/getCategoriesData',config);
         console.log("lol",response.data.value.data)
         const categoryData = response.data.value.data.categories.find(category => category.name === categoryName);
         setCourses(categoryData ? categoryData.courses : []);
@@ -77,7 +76,6 @@ function PopularCourses({categoryName}) {
         console.log(error);
       }
     };
-
     getData();
   }, [categoryName]);
   return (
@@ -87,8 +85,8 @@ function PopularCourses({categoryName}) {
     <div className='slid'>
     {courses.length>0 && <Slider className=''{...settings}>
      {courses.map(course=>(
-      <Card
-                      key={course._id}
+      <Card  
+                      ke={course._id}
                       imgSrc={course.courseImage}
                       title={course.title}
                       creator={course.createdBy.name}

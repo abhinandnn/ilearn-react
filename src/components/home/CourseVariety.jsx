@@ -3,8 +3,6 @@ import Card from './Card'
 import CourseDisplay from './CourseDisplay';
 import { useState,useEffect } from 'react';
 import axios from '../../api/axios';
-const C_URL='https://udemy-nx1v.onrender.com/getCategoriesData'
-const CN_URL='https://udemy-nx1v.onrender.com/getCategoriesName'
 function CourseVariety() {                                                                                               
     const [categories,setCategories]=useState([]);
       const token=localStorage.getItem("authId");
@@ -14,7 +12,7 @@ function CourseVariety() {
     const getData = async () => {
       try {
         console.log("loading")
-        const response = await  axios.get(C_URL,config);
+        const response = await  axios.get('/getCategoriesData',config);
         const categoryData = response.data.value.data.categories
         setCategories1(categoryData);
         console.log(response.data.value.data.categories);
@@ -25,7 +23,7 @@ function CourseVariety() {
     const getCat = async () => {
       try {
         console.log("loadingCat")
-        const response = await  axios.get(CN_URL,config);
+        const response = await  axios.get('/getCategoriesName',config);
         setCategories(response.data.value.data.categories);
         console.log(response.data.value.data.categories);
       } catch (error) {

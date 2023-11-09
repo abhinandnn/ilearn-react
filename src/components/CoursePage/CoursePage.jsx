@@ -2,43 +2,79 @@ import React from 'react'
 import './coursePage.css'
 import Stars from './Stars'
 import Review from './Review'
-import { useState,useEffect,useRef } from 'react';
+import { useState,useEffect } from 'react';
 import draw from '../../assets/draw.svg'
 import Footer from '../home/Footer';
 import playB from '../../assets/playB.svg'
 import heart from '../../assets/heart1.svg'
 import files from '../../assets/files.svg'
-import cert from '../../assets/certificate.svg'
+import cert from '../../assets/certificate.svg';
 import subt from '../../assets/subtitle.svg'
 import access from '../../assets/access.svg'
 import TeachFooter from '../utils/TeachFooter';
-
-
-function CoursePage(props) {
+import AppPromote from '../utils/AppPromote';
+import axios from '../../api/axios';
+import { useLocation } from "react-router-dom";
+function CoursePage() {
+  const token=localStorage.getItem("authId");
+  const location = useLocation();
+  const id = location.state.id;
+  const [course, setCourse] = useState(
+    {category: null,
+      createdAt: null,
+      createdBy: null,
+      description: null,
+      duration: null,
+      isPublished: null,
+      ownedBy: null,
+      price: null,
+      rating: null,
+      ratings: null,
+      reviews: null,
+      title: null,
+      totalStudents: null,
+      updatedAt: null,
+      videos: null
+    }
+  );
+  const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
+  useEffect(() => {
+    console.log(`/getCourseById/${id}`);
+    const getData = async () => {
+      try {
+        console.log("loading")
+        const response = await  axios.get(`/getCourseById/${id}`,config);
+        setCourse(response.data.data.course)
+console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  getData();},[])
   
   return (
     <div className='coursePage'>
       <div className='topSec'>
         <div className='topBanner1'>
-            <div className='imageDiv1'><img className='bannerImg1'src={props.img1}/></div>
-            <div className='bannerText1'>{props.courseTitle}
-            <div className='ratingStar1'>{props.star}
-              <Stars stars={props.star}/></div>
-            <div className='creatorName1'>Course by : {props.creator}
-            <span>{props.date}</span></div>
+            <div className='imageDiv1'><img className='bannerImg1'src={"https://picsum.photos/150/150"}/></div>
+            <div className='bannerText1'>{course.title??null}
+            <div className='ratingStar1'>{course.rating??null}
+              <Stars stars={course.rating??null}/></div>
+            <div className='creatorName1'>Course by : {course.creator>>null}
+            <span>{course.createdAt}</span></div>
         </div>
         </div>
         <div className='courseDetails'>
-        <div className='detailSec'>{props.learner < 10 ? `0${props.learner}` : `${props.learner}`}
+        <div className='detailSec'>{course.totalStudents < 10 ? `0${course.totalStudents}` : `${course.totalStudents}`??null}
         <span >Active learners</span></div>
         <div className='detailSec' id='ds1'>415<span>Lectures</span></div>
-        <div className='detailSec' id='ds2'>40<span>Hours</span></div>
+        <div className='detailSec' id='ds2'>{course.duration??null}<span>Hours</span></div>
         
         <div className='fixCar'>
         <div className='fixedCard'>
         <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
-         <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹456</div><img src={heart}/></div>
+         <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price??null}</div><img src={heart}/></div>
          <button className='courseCButton' id='C2'>Buy now</button>
          <button className='courseCButton'>Add to cart</button>
          </div>
@@ -57,12 +93,12 @@ function CoursePage(props) {
     </div>
     <div className='aboutCourse'>
       <h1>About this course</h1>
-      <p>By the end of the course you will create simple and complex 20 3D animation You will learn the programer Effects am how to work with shapes, keyframes, etc. You! be able to animate characters logos infographics and typography You wil work such soft products Adobe A Media Encoder, Trapcode and others </p>
+      <p>{course.description}</p>
       <h1>Your Tutor</h1>
       <div className='creatorIntro'>
-        <img src={props.img1} style={{borderRadius:'100%'}}/>
+        <img src={"https://picsum.photos/150/150"} style={{borderRadius:'100%'}}/>
         <div className='creatorInt'>
-          <h1>Abhinandan</h1>
+          <h1>Abhinav Mishra</h1>
           <p>Web Developer</p>
           <p>8 years+ experience</p>
         </div>
@@ -72,6 +108,7 @@ function CoursePage(props) {
       <Review avgRating={4.8} name={'Abhinandan'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
       </div>
       </div>
+      <AppPromote/>
       <TeachFooter/>
     <Footer/>
     </div>

@@ -1,0 +1,45 @@
+.appPromote{
+    height:34rem;
+    position: relative;
+    padding-top: 2.6rem;
+    box-sizing: border-box;
+}
+.mobiS{
+    position: absolute;
+    top:1%;
+    right:7.6vw;
+
+}
+.appBox{
+    display: flex;
+height:22.5rem;
+background: #EEE8FF;
+font-size: 2.4rem;
+font-weight: 700;
+box-sizing: border-box;
+padding: 4rem 10vw;
+padding-bottom:4.4rem ;
+padding-right: 32vw;
+gap:1.8rem;
+
+}
+.appTex{
+    min-width:11rem;
+    width:22vw;
+    font-size: 1.2rem;
+font-weight: 600;
+color:#2A2832;
+line-height: 150%;
+}
+.bord{
+    height:8rem;
+border:3px solid #5928E5;
+border-radius: 20px;
+}
+.getApp{
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-top: 1rem;
+}

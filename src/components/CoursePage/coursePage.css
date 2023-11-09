@@ -96,17 +96,14 @@ gap: 1.8rem;
  #ds1,#ds2{
     width:2.5rem;
  }
- #ds2{
-
- }
     .topSec{
         position: relative;
-        height: 96.25rem;
+        height: 96.65rem;
         margin-bottom: 20rem;
     }
     .fixCar{
         position: absolute;
-        top:16.8%;
+        top:16.4%;
         height: 100%;
         width: 100%;
         right:9%

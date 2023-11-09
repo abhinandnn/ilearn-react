@@ -59,7 +59,7 @@ return (
     <div>
     {categories.map((category) => (
       category.courses.length>0 &&
-        <div key={category._id}>
+        <div ke={category._id}>
         <div className="popularCourse" id="popularCourse1">
             <div className="subHeadingHome" style={{fontSize:'2rem'}}>
             Top selling courses in{" "}
@@ -68,7 +68,7 @@ return (
             <div className="slid" id="slid1">
             {category.courses.map((course) => (
                 <Card
-                key={course._id}
+                ke={course._id}
                 imgSrc={course.courseImage}
             title={course.title}
                         creator={course.createdBy.name}
@@ -82,7 +82,7 @@ return (
     <Slider className=''{...settings}>
      {category.courses.map(course=>(
       <Card
-                      key={course._id}
+                      ke={course._id}
                       imgSrc={course.courseImage}
                       title={course.title}
                       creator={course.createdBy.name}

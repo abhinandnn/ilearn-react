@@ -1,13 +1,16 @@
 import React from 'react'
 import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
-function Card({imgSrc,title,creator,rating,cost,link,key,style}) {
+function Card({ke,imgSrc,title,creator,rating,cost,link,style}) {
   const navigate=useNavigate();
+
+  const data= {id:ke};
+  console.log(ke,creator,rating)
   const navigateTo=()=>{
-  navigate('/signup');
+  navigate('/coursePage',{state:data});
   }
   return (
-    <div className='card36' key={key}>
+    <div className='card36'>
     <div className='cardCont' id={style} >
         <div id='cardI'><img id='cardImg' src={"https://picsum.photos/200/150"}/></div>
         <div id='tite'>{title}</div>
