@@ -5,7 +5,6 @@ function Card({ke,imgSrc,title,creator,rating,cost,link,style}) {
   const navigate=useNavigate();
 
   const data= {id:ke};
-  console.log(ke,creator,rating)
   const navigateTo=()=>{
   navigate('/coursePage',{state:data});
   }

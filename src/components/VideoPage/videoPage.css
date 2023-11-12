@@ -1,0 +1,11 @@
+.videoPage{
+    /* background-color: black; */
+    height:100rem;
+    position: relative;
+    font-family: Sofia Sans;
+    padding:4rem
+}
+.ply{
+    position: absolute;
+    top:5rem;
+}

@@ -254,7 +254,7 @@ p{
   position: absolute;
   display:none;
 }
-button>svg {
+.sv>svg {
   animation: 2s linear infinite svg-animation;
   max-width: 100px;
 }

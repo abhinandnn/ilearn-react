@@ -14,6 +14,7 @@ import { AuthProvider } from './components/utils/AuthContext.jsx';
 import { AuthProcessProvider } from './components/utils/AuthProcessContext.jsx';
 import ProtectedRoute1 from './components/utils/ProtectedRoute1.jsx';
 import CoursePage from './components/CoursePage/CoursePage.jsx';
+import VideoPage from './components/VideoPage/VideoPage.jsx';
 
 const router = (
     <Routes>
@@ -29,6 +30,7 @@ const router = (
           <Route path="home" element={<Home />} />
           <Route path="courses" element={<CourseVariety />} />
           <Route path="coursePage" element={<CoursePage img1={"https://picsum.photos/150/150"} star={4.8} creator={"Harsh"} date={"21 Nov 23"} courseTitle={"Complete Web Design: from Figma to Webflow to Freelancing "} learner={8} />}/>
+          <Route path="videoPage" element={<VideoPage/>}/>
         </Route>
       </Routes>
 )

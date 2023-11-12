@@ -8,6 +8,7 @@ import WhyIlearn from './WhyIlearn'
 import Footer from './Footer'
 import CoursePage from '../CoursePage/CoursePage'
 import { useState,useEffect,useRef } from 'react'
+import VideoPlayer from '../utils/VideoPlayer'
 function Home() {
   const [selectedCategory, setCategory] = useState('Python');
   const linkRef = useRef(null)
@@ -49,7 +50,9 @@ function Home() {
       <PopularCourses categoryName={selectedCategory}/>
       </div>
         <WhyIlearn/>
+        <VideoPlayer/>
         <Footer/>
+
     </div>
   )
 }

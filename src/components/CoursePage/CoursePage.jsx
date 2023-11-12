@@ -37,6 +37,10 @@ function CoursePage() {
       videos: null
     }
   );
+  const [creator, setCreator]=useState(
+    {}
+  )
+  
   const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
   useEffect(() => {
     console.log(`/getCourseById/${id}`);
@@ -44,6 +48,7 @@ function CoursePage() {
       try {
         console.log("loading")
         const response = await  axios.get(`/getCourseById/${id}`,config);
+        setCreator(response.data.data.course.createdBy)
         setCourse(response.data.data.course)
 console.log(response);
       } catch (error) {
@@ -68,7 +73,7 @@ console.log(response);
         <div className='detailSec'>{course.totalStudents < 10 ? `0${course.totalStudents}` : `${course.totalStudents}`??null}
         <span >Active learners</span></div>
         <div className='detailSec' id='ds1'>415<span>Lectures</span></div>
-        <div className='detailSec' id='ds2'>{course.duration??null}<span>Hours</span></div>
+        <div className='detailSec' id='ds2'>10<span>Hours</span></div>
         
         <div className='fixCar'>
         <div className='fixedCard'>
@@ -98,14 +103,14 @@ console.log(response);
       <div className='creatorIntro'>
         <img src={"https://picsum.photos/150/150"} style={{borderRadius:'100%'}}/>
         <div className='creatorInt'>
-          <h1>Abhinav Mishra</h1>
+          <h1>{creator.name}</h1>
           <p>Web Developer</p>
           <p>8 years+ experience</p>
         </div>
       </div>
       </div>
       <div style={{paddingLeft:'10vw'}}>
-      <Review avgRating={4.8} name={'Abhinandan'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+      <Review avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
       </div>
       </div>
       <AppPromote/>

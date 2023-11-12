@@ -69,7 +69,6 @@ function PopularCourses({categoryName}) {
       try {
         console.log("loading")
         const response = await  axios.get('/getCategoriesData',config);
-        console.log("lol",response.data.value.data)
         const categoryData = response.data.value.data.categories.find(category => category.name === categoryName);
         setCourses(categoryData ? categoryData.courses : []);
       } catch (error) {
