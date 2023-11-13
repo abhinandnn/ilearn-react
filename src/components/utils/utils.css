@@ -43,6 +43,49 @@ border-radius: 20px;
     padding: 0;
     margin-top: 1rem;
 }
+button {
+  cursor: pointer;
+}
+
+.menuItems{
+  position: absolute;
+  padding: 0.8rem 0.4rem;
+  width: 6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  bottom: 55%;
+  background-color: black;
+  animation: dropUp 0.3s ease-in-out;
+  cursor: pointer;
+
+}
+.menuItem:hover{
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.menuItem {
+  color: white;
+  padding: 0.25rem;
+  padding-left: 1rem;
+
+  border: 1px solid transparent;
+
+}
+input{
+  outline: none;
+}
+.selected{
+  color: #5928E5;
+}
+@keyframes dropUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 
 .videoContainer {
@@ -85,7 +128,9 @@ background: transparent;
     transition: opacity 150ms ease-in-out;
     
   }
-  
+  .leftControl>button{
+    outline: none;
+  }
   .videoCont::before {
     content: "";
     position: absolute;
@@ -96,17 +141,10 @@ background: transparent;
     z-index: -1;
     pointer-events: none;
     border-radius: 16px;
-  }
-  
-  .videoContainer:hover .videoCont,
-  .videoContainer:focus-within,
-  .videoContainer.paused .videoCont{
-    opacity: 1!important;
-  }
-  
+  }  
   .videoCont .controls {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
     padding: 0.5rem;
     padding-top: 0.25rem;
     padding-bottom: 0.75rem;
@@ -116,6 +154,10 @@ background: transparent;
     height: 3rem;
     align-items: center;
   }
+  .leftControl{
+    display: flex;
+    gap:1rem
+  }
   
   .videoCont .controls button {
     background: none;
@@ -124,12 +166,8 @@ background: transparent;
     cursor: pointer;
     opacity: .85;
     transition: opacity 150ms ease-in-out;
+    outline: none;
   }
-  
-  .videoCont .controls button:hover {
-    opacity: 1;
-  }
-  
   .volumeContainer {
     display: flex;
     align-items: center;
@@ -138,21 +176,20 @@ background: transparent;
     width: 3rem;
     height:2.5rem
   }
-  .volumeSlider {
+  .volumeSlider{
     width: 0;
     transform-origin: left;
     transform: scaleX(0);
     transition: width 150ms ease-in-out, transform 150ms ease-in-out;
   }
-  
-  
   .volumeContainer:hover .volumeSlider,
   .volumeSlider:focus-within {
-    /* background-color: #5928E5; */
-    width: 100px;
+    width: 6rem;
     transform: scaleX(1);
   }
   
+  
+
   .durationContainer {
     display: flex;
     align-items: center;
@@ -211,7 +248,24 @@ background: transparent;
     border-radius:50px;
     cursor: pointer;
   }
-
+  
+  .subt{
+    border-bottom:2px solid transparent ;
+  }
+  .subt1{
+    border-bottom: 2px solid #5928E5;
+  }
+  .videoContainer:hover .videoCont,
+  .videoContainer.paused .videoCont{
+    opacity: 1;
+  }
+  .videoCont.fullscreen{
+    opacity: 0!important;
+  }
+  .videoCont.fullscreen:hover,
+  .videoContainer.paused .videoCont.fullscreen{
+    opacity: 1!important;
+  }
   
   
   
