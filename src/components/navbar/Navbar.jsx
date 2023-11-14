@@ -30,7 +30,7 @@ function Navbar() {
                 </div>
                 <div className="popular-courses"><NavLink style={{color:'black', textDecoration:'none'}}to='courses'>Popular courses</NavLink></div>
                 <div className="teach">Teach on ilearn</div>
-{loginStatus?
+{!loginStatus?
                 <div className="sign-up" >{isSignup ? (
             <NavLink className={"navLink"} to="/login">Log in</NavLink>
           ) : (
@@ -38,8 +38,8 @@ function Navbar() {
           )}
 </div>:<div className='navIcons'>
     <img src={notification}/>
-    <img src={cart} />
-    <img src={heart} alt="" />
+    <img src={cart} alt="" />
+    <NavLink style={{height:'18px'}} to={'/learning/wishlist'}><img src={heart} /></NavLink>
     <div className='pfpNav'>
         A
     </div>

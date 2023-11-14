@@ -32,7 +32,7 @@ const router = (
           <Route path="courses" element={<CourseVariety />} />
           <Route path="coursePage" element={<CoursePage img1={"https://picsum.photos/150/150"} star={4.8} creator={"Harsh"} date={"21 Nov 23"} courseTitle={"Complete Web Design: from Figma to Webflow to Freelancing "} learner={8} />}/>
           <Route path="videoPage" element={<VideoPage/>}/>
-          <Route path="learning" element={<Learning/>}/>
+          <Route path="learning/:navOptFromUrl" element={<Learning/>}/>
         </Route>
       </Routes>
 )

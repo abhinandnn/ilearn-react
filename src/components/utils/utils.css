@@ -360,3 +360,48 @@ gap:0.2rem
  bottom: 8%;
  left:8%
 }
+.learningCard{
+  max-width: 28rem;
+height: 16rem;
+border-radius: 0.75rem;
+background: #F4F4F4;
+box-sizing: border-box;
+padding: 1.5rem 1.25rem;
+font-family: Sofia Sans;
+display: flex;
+flex-direction: column;
+gap:2rem;
+margin: 0.5rem 0;
+}
+.learningCardTop{
+  display: flex;
+  gap:2rem
+}
+.lCardTitle{
+  width: 15.5rem;
+max-height: 6rem;
+color: #29185B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+font-family: Sofia Sans;
+font-size: 1.75rem;
+font-weight: 700;
+display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+line-height: 120%;
+}
+.learningDet{
+  display: flex;
+  justify-content: space-between;
+}
+.resumeLearning{
+  display: flex;
+  gap:1rem;
+  align-items: center;
+  font-weight: 700;
+}
+.resumeLearning>span{
+  color: #5928E5;
+  font-size: 1.7rem;
+}

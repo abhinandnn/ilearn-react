@@ -38,5 +38,18 @@ height: 2rem;
     outline: none;
  }
  .learningContent{
-    height:50rem
+    min-height: 50rem;
+    padding: 4rem 10vw;
+    padding-right: 6vw;
  }
+ .contentGrid {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .contentGrid > * {
+    /* flex: 1 0 28rem; */
+  }
+  

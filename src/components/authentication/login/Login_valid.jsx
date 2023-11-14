@@ -45,10 +45,6 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
       }
   
       if (!hasErrors) {
-        console.log(email,password);
-        localStorage.setItem("loginEmail",email);
-        localStorage.setItem("loginPassword",password);
-
   try{
     setLoading(true)
     const response = await axios.post(LOGIN_URL,{email:email,password:password},
@@ -56,10 +52,7 @@ const email_valid= /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]{2,}$/;
         withCredentials: false});
         console.log("login success",response.data.data.token)
         toast.success("Login Successful")
-        localStorage.setItem("authId",response.data.data.token);
-        localStorage.setItem("LoggedinUsername",response.data.data.username);
-        localStorage.setItem("role",response.data.data.role);
-        login(response.data.data.token, response.data.data.username, response.data.data.role);
+        login(response.data.data.token);
         navigate('/home');
         setLoading(false);
 }catch(err){
