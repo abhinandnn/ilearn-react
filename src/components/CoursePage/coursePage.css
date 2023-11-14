@@ -272,11 +272,13 @@ font-weight: 600;}
 }
 .reviewBox{
     background-color: #FFF8ED;
-    width:52vw;
-    min-width:32rem ;
-    height:44rem;
+    width:48vw;
+    min-width:25rem ;
+    /* height:44rem; */
     padding: 2rem;
     box-sizing: border-box;
+    padding-bottom: 4.5rem;
+
     border-radius: 15px;
     position: relative;
 }
@@ -346,8 +348,8 @@ outline: none;
 position: absolute;
 bottom:3%;
 left:5%;
-width:47vw;
-min-width: 28rem;
+width:43vw;
+min-width: 21rem;
 }
 .RButton:active{
     background-color: #5928E5;
@@ -355,7 +357,7 @@ min-width: 28rem;
 
 }
 .reviewBox1>p{
-    height:8rem;
+    /* height:8rem; */
 }
 .teachFooter{
 padding:1rem 10vw;

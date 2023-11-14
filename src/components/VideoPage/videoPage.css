@@ -1,11 +1,103 @@
-.videoPage{
-    /* background-color: black; */
-    height:100rem;
-    position: relative;
+*{
     font-family: Sofia Sans;
-    padding:4rem
 }
-.ply{
-    position: absolute;
-    top:5rem;
+.videoPage{
+    height:120rem;
+    font-family: Sofia Sans;
+    padding:5rem 10vw;
+    padding-right: 6vw;
+}
+.videoPageStatement{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight:600;
+}
+.videoPlayerSec{
+    display: flex;
+    gap:1.5rem;
+}
+.filesTutor{
+    margin-top: 2rem;
+    margin-left: 1.5vw;
+    min-height: 32rem;
+    margin-bottom: 2rem;
+}
+.filesStatement{
+font-size:1.23rem
+}
+.filesGrid{
+    height:auto;
+        display:grid;
+        width:50vw;
+        grid-template-columns: repeat(auto-fill,minmax(19.5rem,1fr));
+        gap:1.2rem;
+        margin-top: 1.2rem;
+        margin-left: 2vw;
+        font-weight: 500;
+  }
+.fileCard{
+    width:18rem;
+    /* height:4.5rem; */
+    display: flex;
+    gap:1rem
+
+}
+.fileCard>button{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+.pdfDet
+{
+  display: flex;
+  flex-direction: column;
+  gap:0.5rem;
+  width:9rem;
+  font-size: 0.87rem;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+.pdfDet>span{
+  font-size: 0.74rem;
+}
+.underVideo{
+width:54vw
+}
+.videoNav{
+height: 3rem;
+display: flex;
+align-items: center;
+}
+.FileTut{
+    width:27vw;
+    height: 3rem;
+    display: flex;
+    gap:0.5rem;
+    align-items:center;
+    justify-content: center;
+    border-bottom: 2px solid transparent;
+    cursor:pointer;
+}
+.community{
+    cursor:pointer;
+
+    height: 3rem;
+    width:27vw;
+    display: flex;
+    gap:0.5rem;
+    align-items:center;
+    justify-content: center;
+    border-bottom: 2px solid transparent;
+
+}
+.selectedNav.community,
+.FileTut.selectedNav{
+border-bottom: 2px solid #5928E5;
+}
+.videoPlay{
+    display:flex;
+    flex-direction: column;
+    gap:2rem
 }

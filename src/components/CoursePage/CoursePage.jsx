@@ -1,7 +1,7 @@
 import React from 'react'
 import './coursePage.css'
-import Stars from './Stars'
-import Review from './Review'
+import Stars from '../utils/Stars'
+import Review from '../utils/Review'
 import { useState,useEffect } from 'react';
 import draw from '../../assets/draw.svg'
 import Footer from '../home/Footer';
