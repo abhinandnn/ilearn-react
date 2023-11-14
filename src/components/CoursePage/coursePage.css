@@ -278,7 +278,6 @@ font-weight: 600;}
     padding: 2rem;
     box-sizing: border-box;
     padding-bottom: 4.5rem;
-
     border-radius: 15px;
     position: relative;
 }
@@ -328,8 +327,7 @@ gap:1rem
     display: flex;
     gap:0.4rem;
     align-items: center;
-    /* line-height: 0; */
-    /* height: 2rem; */
+    
 }
 
 .RButton{

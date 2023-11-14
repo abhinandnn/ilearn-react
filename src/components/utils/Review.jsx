@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import star1 from '../../assets/star1.svg'
 import Stars from './Stars'
 
 
 function Review(props) {
+    // const [isVideoPage, setPage]=useState(false)
+    // const setP=(val)=>setPage(val);
+    // setP(props.isVideoPage);
   return (
-    <div className='reviewBox'>
-        <div className='reviewHeading'>{props.avgRating}{<img src={star1} />}</div>
+    <div className='reviewBox' style={{background:`${props.isVideoPage?'transparent':''}`}}>
+        {props.isVideoPage? <></> :<div className='reviewHeading'>{props.avgRating}{<img src={star1} />}</div>}
         <div className='reviewHeading2'><p>User reviews</p>
         <span>See all</span>
         </div>

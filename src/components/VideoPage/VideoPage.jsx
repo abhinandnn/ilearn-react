@@ -7,6 +7,8 @@ import FilesTutor from './FilesTutor'
 import Footer from '../home/Footer'
 import AppPromote from '../utils/AppPromote'
 import Review from '../utils/Review'
+import CircularProgress from '../utils/CircularProgress'
+import GiveRating from '../utils/GiveRating'
 function VideoPage(props) {
   const [isFiles,setFiles]=useState(true);
   const commun=()=>{
@@ -57,11 +59,16 @@ Files by Tutor</div>
       ]
     }/>:<></>}
     </div></div>
+    <div className='upNextSec'>
     <UpNext/>
+    <CircularProgress totalLect={14} completedLect={8}/>
+    <GiveRating reviewNo={1200} avgRating={4.8}/>
     </div>
-    <Review avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+    </div>
+    <Review isVideoPage={true} avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
 
     </div>
+    
     <AppPromote/>
     <Footer/>
     </div>

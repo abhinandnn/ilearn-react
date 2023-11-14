@@ -1,0 +1,42 @@
+.learning{
+    padding-top:4rem;
+}
+.learningBanner{
+    height:10rem;
+    background: #0E0035;
+    color:white;
+    font-size: 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding:3.2rem 10vw;
+    padding-bottom: 0rem;
+    font-family: Sofia Sans;
+}
+.learningNav{
+display: flex;
+gap:3rem;
+font-size: 1.4rem;
+height: 2rem;
+}
+.learningOpt{
+    text-decoration: none;
+    cursor:pointer;
+    border-bottom:3px solid transparent ;
+    position: relative;
+    outline: none;
+}
+
+  .learnSelected::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2.8%;
+    border-bottom: 3px solid white;
+    width: 95%;
+    outline: none;
+ }
+ .learningContent{
+    height:50rem
+ }
