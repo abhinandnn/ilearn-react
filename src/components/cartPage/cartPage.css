@@ -1,0 +1,123 @@
+.cartPage{
+    padding-top:4rem;
+    font-family: Sofia Sans;
+}
+.cartBanner{
+    height:10rem;
+    background: #0E0035;
+    color:white;
+    font-size: 2.8rem;
+    display: flex;
+    font-family: Sofia Sans;
+    box-sizing: border-box;
+    padding:3.2rem 10vw;
+    align-items: center;
+}
+.cartSection{
+    padding: 2rem 10vw;
+    padding-right: 7vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-height:30rem
+}
+.cartCard{
+    border-radius: 0.75rem;
+background: #FFF;
+box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.15);
+width: 58vw;
+min-width: 40rem;
+height: 10.5rem;
+display: flex;
+gap:1rem;
+padding: 1.5rem;
+box-sizing: border-box;
+color: #0E0035;
+align-items: center;
+position: relative;
+}
+.cartCardDet{
+display: flex;
+flex-direction: column;
+gap:0.3rem
+}
+.cartCardDet>span{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.cartCardImg{
+    min-width:12rem;
+    height:7rem;
+    border-radius: 0.75rem;
+}
+.cartCardText{
+    display: flex;
+    font-size: 1.4rem;
+    gap:1.5rem;
+    font-weight: 700;
+    width: 29vw;
+    min-width: 20rem;
+}
+.cartCardText>span{
+    font-size: 1.9rem;
+    position: absolute;
+    right:3%;
+top:14%
+}
+.cartCardOpts{
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+}
+.cartCardStars{
+    color: #F89D07;
+    display: flex;
+    gap:0.2rem;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+}
+.cartCardWishlist{
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.875rem;
+font-weight: 400;
+}
+.cartCardTrash{
+    color: red;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.875rem;
+font-weight: 400;
+}
+.cartSec{
+    padding-top: 1.8rem;
+    display: flex;
+    gap:2rem
+}
+.cartCost{
+    font-size: 2.8rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 2.2rem;
+    margin: 1rem 0 2rem 0;
+}
+.cartCost>span{
+    font-size: 0.7rem;
+    line-height: normal;
+}
+.cartButton{
+    border-radius: 3.05rem;
+    font-size: 1.5rem;
+    font-family: Sofia Sans;
+    font-weight: 500;
+    padding: 0.7rem 6vw;
+    border: 2px solid #5928E5;
+    color: white;
+    background: #5928E5;
+    cursor:pointer;
+    outline: none;
+}

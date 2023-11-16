@@ -16,6 +16,7 @@ import ProtectedRoute1 from './components/utils/ProtectedRoute1.jsx';
 import CoursePage from './components/CoursePage/CoursePage.jsx';
 import VideoPage from './components/VideoPage/VideoPage.jsx';
 import Learning from './components/learnings/Learning.jsx';
+import CartPage from './components/cartPage/CartPage.jsx';
 
 const router = (
     <Routes>
@@ -33,6 +34,7 @@ const router = (
           <Route path="coursePage" element={<CoursePage img1={"https://picsum.photos/150/150"} star={4.8} creator={"Harsh"} date={"21 Nov 23"} courseTitle={"Complete Web Design: from Figma to Webflow to Freelancing "} learner={8} />}/>
           <Route path="videoPage" element={<VideoPage/>}/>
           <Route path="learning/:navOptFromUrl" element={<Learning/>}/>
+          <Route path="cartPage" element={<CartPage/>}/>
         </Route>
       </Routes>
 )
