@@ -44,7 +44,7 @@ function Login_form() {
     <span className="error-message">{errorPassword}</span>
   </div>
   <div className='belowButton'>
-    <div><img id='checkbox' src={show?uncheck:check} onClick={Show}/>Remember me</div>
+    <div className='checkB'><img id='checkbox' src={show?uncheck:check} onClick={Show}/>Remember me</div>
   <Link to="/forgot" className='fort'>Forgot Password?</Link>
   </div>
   <button className='logButton'

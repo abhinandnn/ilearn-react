@@ -17,12 +17,12 @@ import CoursePage from './components/CoursePage/CoursePage.jsx';
 import VideoPage from './components/VideoPage/VideoPage.jsx';
 import Learning from './components/learnings/Learning.jsx';
 import CartPage from './components/cartPage/CartPage.jsx';
-
+import ProfilePage from './components/profile/ProfilePage.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
-          <Route path="login" element={<Login />} />
+          <Route path="logqin" element={<Login />} />
           <Route path="forgot/otp" element={
           <ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
           <Route path="signup/otp" element={<ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
@@ -35,6 +35,7 @@ const router = (
           <Route path="videoPage" element={<VideoPage/>}/>
           <Route path="learning/:navOptFromUrl" element={<Learning/>}/>
           <Route path="cartPage" element={<CartPage/>}/>
+          <Route path='profilePage' element={<ProfilePage/>}/>
         </Route>
       </Routes>
 )

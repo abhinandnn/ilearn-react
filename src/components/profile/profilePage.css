@@ -1,0 +1,127 @@
+.profilePage{
+    font-family: Sofia Sans;
+display: flex;
+padding-top: 4rem;
+
+}
+.sideStripP{
+    background-image: url('../../assets/bg.svg');
+    /* float:left; */
+    width:30vw;
+    height:37.4rem;
+    box-sizing: border-box;
+}
+.profileNav{
+    display: flex;
+    flex-direction: column;
+    margin:4.4rem 2rem 0 10vw;
+    color: white;
+    font-size: 1.4rem;
+    width:16vw;
+    min-width: 9rem;
+    gap:0.5rem
+}
+#profileN,.profileNavItem:hover{
+    border-radius: 0.5rem;
+background: rgba(0, 0, 0, 0.30);
+padding: 0.5rem;
+padding-right: 0;
+
+}
+.profileNavItem{
+    padding: 0.5rem;
+    padding-right: 0;
+    cursor: pointer;
+}
+.profileNavItem>a{
+text-decoration: none;
+color: white;}
+
+.profileSec{
+    padding:4rem 7vw;
+    padding-right: 2vw;
+width:70vw;
+box-sizing: border-box;
+}
+.profileIntro{
+display: flex;
+gap:2rem;
+align-items: center;
+
+}
+.circleImg{
+height: 10rem;
+min-width:10rem;
+border-radius: 100%;
+}
+.profileIntroText{
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+}
+.profileIntroText>span{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.editButton{
+    min-width: 7.5rem;
+    height: 2.8rem;
+    border-radius: 3.1rem;
+    box-sizing: border-box;
+    border: 2px solid #5928E5;
+    color: white;
+    background: #5928E5;
+    cursor:pointer;
+    font-size: 1.12rem;
+    margin-right: 3vw;
+ 
+}
+.profileIntroDet{
+    display: flex;
+    justify-content: space-between;
+    width: 44vw;
+    gap:1rem
+}
+.profileCard{
+    border-radius: 1.5rem;
+border: 2px solid #E5E5E5;
+width: 23.5rem;
+height: 12rem;
+padding: 0.9rem 1.5rem;
+box-sizing: border-box;
+}
+.profileCardDet{
+    padding-top: 1.1rem;
+    display: flex;
+    gap:1rem
+}
+.profileCardImg{
+    min-width: 4.125rem;
+height: 4.125rem;
+border-radius: 0.75rem;
+background: #D9D9D9;
+}
+.profileCardText{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+   
+}
+.profileCardText>p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.profileCardText>span{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.profileCert{
+    margin-top: 2.5rem;
+}

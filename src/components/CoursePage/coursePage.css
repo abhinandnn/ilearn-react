@@ -365,6 +365,7 @@ color:white;
 display: flex;
 justify-content: space-between;
 align-items: center;
+box-sizing: border-box;
 }
 .footButton{
     min-height: 2.5rem;
