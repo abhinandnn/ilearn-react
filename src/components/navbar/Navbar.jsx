@@ -9,16 +9,19 @@ import { useAuth } from '../utils/AuthContext';
 function Navbar() {
     const location = useLocation();
     const {loginStatus}=useAuth()
+    const eduStatus=1;
   const isSignup = (location.pathname === '/signup');
   return (
-   <div style={!loginStatus?{paddingRight:'2rem'}:{}} className="navbar-box">
-            <div className="innerbox">
+   <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
+            <div style={!loginStatus?{marginRight:'2rem'}:{}} className={eduStatus?"eduInnerbox":"innerbox"}>
                 <div className="logo-container">
                     <div className="logo">
-                        <span style={{ color: '#5928E5' }}>i</span>
-                        Learn
+                        <span style={eduStatus?{color:'#00FF84'}:{ color:'#5928E5'}}>i</span>
+                        <span style={eduStatus?{color:'#FFF'}:{}}>Learn</span>
                     </div>
                 </div>
+                {!eduStatus?
+                <>
                 <div className="categories">
                     <div>Categories</div>
                     <div className="arrow"></div>
@@ -44,7 +47,13 @@ function Navbar() {
         A
     </div>
       </div>}
-            </div>
+            </>:<div className='secEdu'>
+            <div className='uploadCourses'>Upload courses</div>
+            <div style={{border:'2px solid #00FF84'}} className='pfpNav'>
+        A
+    </div>
+                </div>}
+        </div>
         </div>
   )
 }

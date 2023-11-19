@@ -40,6 +40,8 @@ function CoursePage() {
   const [creator, setCreator]=useState(
     {}
   )
+  const[videoOk,setVideo]=useState([])
+  const[review,setReview]=useState({});
   
   const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
   useEffect(() => {
@@ -50,39 +52,51 @@ function CoursePage() {
         const response = await  axios.get(`/getCourseById/${id}`,config);
         setCreator(response.data.data.course.createdBy)
         setCourse(response.data.data.course)
+        setVideo(response.data.data.course.videos)
 console.log(response);
       } catch (error) {
         console.log(error);
       }
     };
-  getData();},[])
+    const getData1=async()=>{
+      try {
+        console.log("loading Review")
+        const response = await  axios.get(`/get-review/${id}`,config);
+        setReview(response);
+console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  getData();
+getData1();
+},[])
   
   return (
     <div className='coursePage'>
       <div className='topSec'>
         <div className='topBanner1'>
             <div className='imageDiv1'><img className='bannerImg1'src={"https://picsum.photos/150/150"}/></div>
-            <div className='bannerText1'>{course.title??null}
-            <div className='ratingStar1'>{course.rating??null}
-              <Stars stars={course.rating??null}/></div>
-            <div className='creatorName1'>Course by : {course.creator>>null}
-            <span>{course.createdAt}</span></div>
+            <div className='bannerText1'>{course.title}
+            <div className='ratingStar1'>{course.rating}
+              <Stars stars={course.rating}/></div>
+            <div className='creatorName1'>Course by : {creator.name}
+            <span>{course.createdAt?course.createdAt.slice(0,10):''}</span></div>
         </div>
         </div>
         <div className='courseDetails'>
         <div className='detailSec'>{course.totalStudents < 10 ? `0${course.totalStudents}` : `${course.totalStudents}`??null}
         <span >Active learners</span></div>
-        <div className='detailSec' id='ds1'>415<span>Lectures</span></div>
+        <div className='detailSec' id='ds1'>{videoOk?videoOk.length:''}<span>Lectures</span></div>
         <div className='detailSec' id='ds2'>10<span>Hours</span></div>
-        
         <div className='fixCar'>
         <div className='fixedCard'>
         <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
-         <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price??null}</div><img src={heart}/></div>
-         <button className='courseCButton' id='C2'>Buy now</button>
-         <button className='courseCButton'>Add to cart</button>
-         </div>
+        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={heart}/></div>
+        <button className='courseCButton' id='C2'>Buy now</button>
+        <button className='courseCButton'>Add to cart</button>
+        </div>
         <div className='fixCard2'>
           <p>Additional</p>
           <div className='fc1'>
@@ -90,7 +104,6 @@ console.log(response);
             <div className='fc2'><img src={subt}/>Subtitles: English/Hindi</div>
             <div className='fc2'><img src={files}/>Files: 10 additional files</div>
             <div className='fc2'><img src={access}/>Access: Lifetime Acces</div>
-
           </div>
         </div>
         </div>
@@ -110,7 +123,7 @@ console.log(response);
       </div>
       </div>
       <div style={{paddingLeft:'10vw'}}>
-      <Review isVideoPage={false} avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+      <Review isVideoPage={false} avgRating={course.rating} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
       </div>
       </div>
       <AppPromote/>

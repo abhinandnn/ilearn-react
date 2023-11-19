@@ -2,15 +2,18 @@ import React from 'react'
 import Linkin from '../../assets/linkedin.svg'
 import insta from '../../assets/insta.svg'
 import x from '../../assets/x.svg'
-function Footer() {
+function Footer(props) {
+  const eduStatus=props.eduStatus;
   return (
-    <div className='foot'>
+    <div className='foot' style={eduStatus?{backgroundColor:'#0E0035'}:{}}>
     <div className='footer'>
         <div className='footerColumn'>
             <p>About</p>
 <p>Follow the creator</p>
 <p>Contact us</p>
+<p>Get the app</p>
 </div>
+{!eduStatus?<>
 <div className='footerColumn'>
             <p>Categories</p>
 <p>Popular courses</p>
@@ -25,9 +28,10 @@ function Footer() {
 <p>Sitemap</p>
 <p>Accessibility statement</p>
 </div>
+</>:<></>}
     </div>
     <div className='footLogo'>
-        iLearn
+        <div><span style={eduStatus?{color:'#00FF84'}:{ color:'#FFF'}}>i</span>Learn</div>
         <div className='footIcon'>
             <img src={x}/>
             <img src={insta}/>
@@ -37,5 +41,7 @@ function Footer() {
     </div>
   )
 }
-
+Footer.defaultProps={
+  eduStatus:false
+}
 export default Footer

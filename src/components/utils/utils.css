@@ -3,12 +3,14 @@
     position: relative;
     padding-top: 2.6rem;
     box-sizing: border-box;
+    font-family: Sofia Sans;
 }
 .mobiS{
     position: absolute;
     top:1%;
-    right:7.6vw;
-
+    left:0;
+    margin-left: 66vw;
+    margin-right:15vw
 }
 .appBox{
     display: flex;

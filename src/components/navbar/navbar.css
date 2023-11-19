@@ -20,7 +20,15 @@
     display: flex;
     width:100%
   }
-  
+  .eduInnerbox
+  {
+    align-items: center;
+    gap: 3.2vw;
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    margin-right: 3vw;
+  }
   .logo {
     font-size: 1.8rem;
     font-family: Poppins;
@@ -113,4 +121,13 @@
     color: white;
     background-color: black;
     border-radius: 100%;
+  }
+  .secEdu{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+  }
+  .uploadCourses{
+    color: white;
+    font-family: Sofia Sans;
   }

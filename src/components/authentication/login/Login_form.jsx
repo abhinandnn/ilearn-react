@@ -48,11 +48,11 @@ function Login_form() {
   <Link to="/forgot" className='fort'>Forgot Password?</Link>
   </div>
   <button className='logButton'
-   disabled={loading}>
-   {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
- <circle cx="50" cy="50" r="45"/>
+  disabled={loading}>
+  {loading? (<svg className='sv' width="40"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="45"/>
 </svg>)
-   :("Log in")}</button>
+  :("Log in")}</button>
   <div className='authFooter'>Need an account? <Link to={"/signup"}className='fort'>Sign up</Link></div>
   </div>
   </form>

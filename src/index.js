@@ -18,6 +18,7 @@ import VideoPage from './components/VideoPage/VideoPage.jsx';
 import Learning from './components/learnings/Learning.jsx';
 import CartPage from './components/cartPage/CartPage.jsx';
 import ProfilePage from './components/profile/ProfilePage.jsx';
+import EduHome from './components/EducatorSection.jsx/EduHome.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
@@ -36,6 +37,8 @@ const router = (
           <Route path="learning/:navOptFromUrl" element={<Learning/>}/>
           <Route path="cartPage" element={<CartPage/>}/>
           <Route path='profilePage' element={<ProfilePage/>}/>
+          <Route path='educator/home' element={<EduHome/>}/>
+
         </Route>
       </Routes>
 )

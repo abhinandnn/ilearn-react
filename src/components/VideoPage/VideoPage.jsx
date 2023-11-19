@@ -1,5 +1,5 @@
 import {React,useState} from 'react'
-import play from '../../assets/play pause.svg'
+import { useEffect } from 'react'
 import './videoPage.css'
 import VideoPlayer from '../utils/VideoPlayer'
 import UpNext from '../utils/UpNext'
@@ -9,13 +9,22 @@ import AppPromote from '../utils/AppPromote'
 import Review from '../utils/Review'
 import CircularProgress from '../utils/CircularProgress'
 import GiveRating from '../utils/GiveRating'
-function VideoPage(props) {
+import videoL from '../../assets/Video.mp4';
+import axios from '../../api/axios'
+function VideoPage() {
   const [isFiles,setFiles]=useState(true);
+
   const commun=()=>{
     setFiles(false);
   }
+  const token=localStorage.getItem("authId");
+  const headers = {
+    'Authorization':`Bearer ${token}`,
+            'Content-Type': 'video/mp4',
+  };
   const filesNav=()=>setFiles(true)
-  return (
+  // const videoLink = `https://udemy-nx1v.onrender.com/video/${courseId}/lecture/${lectureId}?path=${videoPath}?${new URLSearchParams(headers).toString()}`
+return (
     <div>
     <div className='videoPage'>
     <div className='videoPageStatement'>
@@ -23,7 +32,7 @@ function VideoPage(props) {
     </div>
     <div className='videoPlayerSec'>
     <div className='videoPlay'>
-    <VideoPlayer/>
+    <VideoPlayer videoUrl={''}/>
     <div className='underVideo'>
       <div className='videoNav'>
     <div className={`FileTut ${isFiles?'selectedNav':''}`} onClick={filesNav}><svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,9 +75,7 @@ Files by Tutor</div>
     </div>
     </div>
     <Review isVideoPage={true} avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
-
     </div>
-    
     <AppPromote/>
     <Footer/>
     </div>

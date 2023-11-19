@@ -1,4 +1,4 @@
-::root{
+:root{
     --primary:#5928E5;
 }
 @font-face {
@@ -17,8 +17,6 @@
     min-width: 9rem;
 height: 7.5rem;
 border-radius: 0.8rem ;
-
-
 }
 #cardI{
     width:100%
@@ -88,7 +86,6 @@ right:0.75rem;
     height:auto;
     position : relative;
     display: flex;
-    /* gap:3vw; */
     padding:0 10vw ;
 }
 .bannerText{
@@ -99,7 +96,6 @@ right:0.75rem;
     color:#29185B;
     font-family: 'Integral CF';
     padding-top: 4.8rem;
-    /* padding-left:12vw ; */
 }
 .bannerText2{
     font-size: 1.5rem;
@@ -111,7 +107,6 @@ right:0.75rem;
     width:9rem;
     height:2.6rem;
     font-size: 1rem;
-    /* margin-left:12vw ; */
     margin-top: 2rem;
     border-radius:25px ;
 }
@@ -135,7 +130,6 @@ right:0.75rem;
     margin:0;
     display: flex;
     gap:3rem;
-    
     font-weight: 700;
     margin-top: 2rem;
     height:1.8rem;
@@ -154,7 +148,7 @@ right:0.75rem;
     position: relative;
     outline: none;
 }
-  .catLink:hover::before, .catLink:focus::before{
+  .catLink:hover::before, .catLink.catLinkActivated::before{
     content: '';
     position: absolute;
     bottom: 0;
@@ -162,9 +156,9 @@ right:0.75rem;
     border-bottom: 2px solid black;
     width: 95%;
     outline: none;
- }
- .catLink:hover, .catLink:focus{
-    color: #5928E5;}
+}
+.catLink:hover, .catLink.catLinkActivated
+{color: #5928E5;}
     .popularCourse
     {
         margin-top: 2rem;
@@ -197,22 +191,22 @@ margin-left: 0.5rem;
     .slick-slider.slick-initialized {
         width: 100%;
         position: relative;
-      }
-      button.slick-next {
+    }
+    button.slick-next {
         height:3rem;
         width:3rem;
         background-image: url('../../assets/nextButton.svg')!important;
 background-position: center center!important;
 background-repeat: no-repeat!important;
 background-size: contain!important;
-      }
-      button.slick-next:active{
+    }
+    button.slick-next:active{
         height:3rem;
         width:3rem;
         background: url('../../assets/nextButtonC.svg')!important;
         background-position: center center!important;
         background-repeat: no-repeat!important;
-background-size: contain!important;
+        background-size: contain!important;
     }
         .slick-next::before {
         display: none;
@@ -457,6 +451,7 @@ background-size: contain!important;
         padding-left: 10vw;
         font-size: 0.92rem;
         font-family: Sofia Sans;
+        justify-content: space-between;
     }
     .footer{
         

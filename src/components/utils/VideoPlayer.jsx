@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './utils.css';
-import video from '../../assets/Video.mp4';
 import play from '../../assets/play pause 2.svg'
 import pause from '../../assets/play pause.svg'
 import forw10 from '../../assets/goforward.10.svg'
@@ -12,7 +11,7 @@ import speaker2 from '../../assets/volume 50.svg'
 import speedicon from '../../assets/speedometer.svg'
 import full from '../../assets/full-screen-svgrepo-com 1.svg'
 import subt from '../../assets/subtitle.svg'
-const VideoPlayer = () => {
+const VideoPlayer = (props) => {
   const videoRef = useRef(null);
   const timelineRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -227,7 +226,9 @@ const VideoPlayer = () => {
          </div>
         </div>
       </div>
-      <video ref={videoRef} src={video}>
+      <video ref={videoRef}>
+      <source src={props.videoUrl} 
+        type="video/mp4"/>
       {subtitleTrack && (
           <track
           />
