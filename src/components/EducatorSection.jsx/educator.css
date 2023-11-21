@@ -101,6 +101,144 @@ h4{
 .w1Img{
 min-height: 12.775rem;
 display: flex;
- align-items: flex-end;
+align-items: flex-end;
+}
+.uploadCourses1{
+padding:6rem 10vw;;
+font-family: 'SF Pro';
+
+font-weight: 800;
+}
+.uploadCoursesStatement1{
+    font-size: 2.25rem;
+    color:#0E0035;
+}
+.uploadSec{
+    display: flex;
+    gap:2rem;
+    padding-top: 5rem;
+}
+.uploadVertSec{
+display: flex;
+flex-direction: column;
+gap:1rem;
+font-size: 1.5rem;
+}
+.uploadThumb1{
+    width: 24rem;
+    height: 12.5rem;
+    border-radius: 0.75rem;
+background: #D9D9D9;
+margin-bottom: 1rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap:1rem;
+box-sizing: border-box;
+padding:1rem
+}
+.uploadCat{
+    width: 24rem;
+height: 3.875rem;
+border-radius: 0.75rem;
+background: #D9D9D9;
+text-align: center;
+padding: 1rem;
+box-sizing: border-box;
+position: relative;
+cursor: pointer;
+font-size: 1.37rem;
+font-weight: 500;
 }
 
+.catMenuItems{
+    position: absolute;
+    padding: 0.8rem 0.4rem;
+    width: 24rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    bottom: 18%;
+    background-color: #0E0035;
+    animation: dropUp 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    box-sizing: border-box;
+  
+  }
+  .catMenuItem:hover{
+    border: 1px solid #3EFFA2;
+    border-radius: 8px;
+  }
+  
+  .catMenuItem {
+    color: white;
+    padding: 0.25rem;
+    padding-left: 1rem;
+  box-sizing: border-box;
+    border: 1px solid transparent;
+  
+  }
+.uploadTitle{
+    width: 31.875rem;
+height: 3.875rem;
+border-radius: 0.75rem;
+background: #D9D9D9;
+border: none;
+margin-bottom: 1rem;
+font-size: 1.37rem;
+padding: 1rem;
+box-sizing: border-box;
+}
+.uploadDescrip{
+    width: 31.875rem;
+height: 12.8125rem;
+border-radius: 0.75rem;
+background: #D9D9D9;
+border: none;
+outline: none;
+resize: none;
+box-sizing: border-box;
+padding: 1.2rem;
+font-size: 1.37rem;
+font-family: 'SF Pro';
+}
+.selectedCat1{
+    color:#3EFFA2
+}
+.customLabel{
+    border-radius: 1rem;
+    font-size: 1.12rem;
+    font-family: 'SF Pro';
+    font-weight: 900;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid #3EFFA2;
+    color: #0E0035;
+    background: #3EFFA2;
+    cursor:pointer;
+    outline: none;
+}
+input[type='file']{
+    display: none;
+}
+.uploadStepButtons{
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    /* float: right; */
+}
+.uploadStep{
+    font-size: 2.25rem;
+    position: absolute;
+    right:10vw;
+    top:6rem;
+    font-weight: 800;
+    color:#0E0035;
+}
+.uploadStep1{
+    position: relative;
+}
+.paintStep{
+    position: absolute;
+    bottom:10%
+}

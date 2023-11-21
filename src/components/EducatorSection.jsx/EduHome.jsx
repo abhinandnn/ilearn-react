@@ -42,7 +42,6 @@ function EduHome() {
 </div>
 <Footer eduStatus={true} />
     </div>
-    
   )
 }
 

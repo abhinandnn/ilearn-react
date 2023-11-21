@@ -19,6 +19,7 @@ import Learning from './components/learnings/Learning.jsx';
 import CartPage from './components/cartPage/CartPage.jsx';
 import ProfilePage from './components/profile/ProfilePage.jsx';
 import EduHome from './components/EducatorSection.jsx/EduHome.jsx';
+import UploadCourses from './components/EducatorSection.jsx/UploadCourses.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
@@ -38,7 +39,7 @@ const router = (
           <Route path="cartPage" element={<CartPage/>}/>
           <Route path='profilePage' element={<ProfilePage/>}/>
           <Route path='educator/home' element={<EduHome/>}/>
-
+<Route path='educator/uploadCourses' element={<UploadCourses/>}/>
         </Route>
       </Routes>
 )
