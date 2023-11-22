@@ -41,7 +41,7 @@ function Navbar() {
           )}
 </div>:<div className='navIcons'>
     <img src={notification}/>
-    <img src={cart} alt="" />
+    <NavLink style={{height:'18px'}} to={'/cartPage'}><img src={cart} alt="" /></NavLink>
     <NavLink style={{height:'18px'}} to={'/learning/3'}><img src={heart} /></NavLink>
     <div className='pfpNav'>
         A

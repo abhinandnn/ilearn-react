@@ -11,9 +11,66 @@ import CircularProgress from '../utils/CircularProgress'
 import GiveRating from '../utils/GiveRating'
 import videoL from '../../assets/Video.mp4';
 import axios from '../../api/axios'
+import { useLocation } from 'react-router-dom'
 function VideoPage() {
+  const location = useLocation();
+  const _id = location.state.id;
   const [isFiles,setFiles]=useState(true);
-
+  const [lectureId,setLecture]=useState()
+  const [vidPath,setPath]=useState()
+  const [course, setCourse] = useState(
+    {category: null,
+      createdAt: null,
+      createdBy: null,
+      description: null,
+      duration: null,
+      isPublished: null,
+      ownedBy: null,
+      price: null,
+      rating: null,
+      ratings: null,
+      reviews: null,
+      title: null,
+      totalStudents: null,
+      updatedAt: null,
+      videos: []
+    }
+  );
+  const [creator, setCreator]=useState({})
+  const[videoOk,setVideo]=useState([])
+  const[review,setReview]=useState({});
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+  useEffect(() => {
+    console.log(`/getCourseById/${_id}`);
+    const getData = async () => {
+      try {
+        console.log("loading")
+        const response = await  axios.get(`/getCourseById/${_id}`,config);
+        console.log(config);
+        setCreator(response.data.data.course.createdBy);
+        setCourse(response.data.data.course);
+        setVideo(response.data.data.course.videos);
+        console.log(response.data.data.course.videos)
+        setLecture(response.data.data.course.videos[0].video._id);
+        setPath(response.data.data.course.videos[0].video.videoUrl_720p);
+console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const getData1=async()=>{
+      try {
+        console.log("loading Review")
+        const response = await  axios.get(`/get-reviews/${_id}`,config);
+        setReview(response);
+console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  getData();
+getData1();
+},[])
   const commun=()=>{
     setFiles(false);
   }
@@ -23,16 +80,21 @@ function VideoPage() {
             'Content-Type': 'video/mp4',
   };
   const filesNav=()=>setFiles(true)
-  // const videoLink = `https://udemy-nx1v.onrender.com/video/${courseId}/lecture/${lectureId}?path=${videoPath}?${new URLSearchParams(headers).toString()}`
+  const videoLink = `https://udemy-nx1v.onrender.com/video/${_id}/lecture/${lectureId}?path=${vidPath}?${new URLSearchParams(headers).toString()}`
+  console.log('link',videoLink)
+  const changeVideo = (videoId, videoUrl) => {
+    setLecture(videoId);
+    setPath(videoUrl);
+  };
 return (
     <div>
     <div className='videoPage'>
     <div className='videoPageStatement'>
-     Complete Web Dev courses
+     {course.title}
     </div>
     <div className='videoPlayerSec'>
     <div className='videoPlay'>
-    <VideoPlayer videoUrl={''}/>
+    <VideoPlayer videoUrl={videoLink}/>
     <div className='underVideo'>
       <div className='videoNav'>
     <div className={`FileTut ${isFiles?'selectedNav':''}`} onClick={filesNav}><svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +131,7 @@ Files by Tutor</div>
     }/>:<></>}
     </div></div>
     <div className='upNextSec'>
-    <UpNext/>
+    <UpNext videos={videoOk} thumb={`https://udemy-nx1v.onrender.com/${course.thumbnail}`} changeVideo={changeVideo}/>
     <CircularProgress totalLect={14} completedLect={8}/>
     <GiveRating reviewNo={1200} avgRating={4.8}/>
     </div>
@@ -80,6 +142,6 @@ Files by Tutor</div>
     <Footer/>
     </div>
   )
-}
-
+  
+  }
 export default VideoPage

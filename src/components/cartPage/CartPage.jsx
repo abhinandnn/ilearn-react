@@ -9,12 +9,13 @@ import axios from '../../api/axios'
 import { toast } from 'react-toastify'
 import { useAuth } from '../utils/AuthContext'
 import useRazorpay from 'react-razorpay'
+import { useNavigate } from 'react-router-dom'
 function CartPage() {
+  const navigateTo=useNavigate();
   const BaseUrl='https://udemy-nx1v.onrender.com/'
 const {user}=useAuth();
-  const [cartTotal,setTotal]=useState(0);
   const [cartItem,setCart]=useState([]);
-  const[key1,setKey]=useState({});
+  // const[key1,setKey]=useState({});
   let total=0;
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false };
   useEffect(()=>
@@ -37,33 +38,34 @@ const {user}=useAuth();
       total=total+parseInt(cartItem[i].price);
     }
   const handlePayment = async () => {
+    let key1;
     try {
       const response = await axios.post(
-        `createOrder/${cartItem[0]._id}`,
-        config
+        `createOrderCart/${total}`,null,
+        { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
       );
+    key1=response.data;
       console.log(response.data);
-      setKey(response.data);
     } catch (error) {
       console.error("Error creating order:", error.response.data);
       return null;
     }
-  const options = await getRazorpayOptions();
+  const options = await getRazorpayOptions(key1);
     const rzp1 = new Razorpay(options);
     console.log(rzp1);
-    rzp1.on("payment.failed", function (response) {
+    rzp1.on("payment.failed", async function (response) {
       console.log(response.error);})
-      rzp1.open();
+      await rzp1.open();
     };
    
   const [Razorpay] = useRazorpay();
-  const getRazorpayOptions = async () => {
+  const getRazorpayOptions = async (key1) => {
     return {
       key: key1.key_id,
-      amount: key1.order.amount,
+      amount: total,
       currency: "INR",
       name: "iLearn",
-      description: "Online Course",
+      description: "Online Courses",
       image: '',
       order_id: key1.order_id,
       handler: function (response) {
@@ -106,8 +108,10 @@ const {user}=useAuth();
         { order_id, payment_id, signature},
         config
       );
-      console.log("hellyeh");
+      toast('Payment Successful')
+      navigateTo('/learning/1');
       return response.data;
+
     } catch (error) {
       console.error("Error checking payment status:", error);
     }
@@ -120,8 +124,8 @@ const {user}=useAuth();
         Your cart {}
       </div>
       <div className='cartSection'>
-        {cartItem.length?cartItem.length:''} courses in cart
-        {0?<div className='emptySec'>
+        {cartItem.length?cartItem.length:'No'} courses in cart
+        {!cartItem.length?<div className='emptySec'>
           <img src={empty} />
         <Link to='/courses'><button className='cartButton'>Explore Course now</button></Link>
         </div>:
@@ -132,7 +136,7 @@ const {user}=useAuth();
 
         </div>
         <div className='cartTotal'>
-        Total <div className='cartCost'>{total}<span>&#40;incl. of all taxes&#41;</span></div>
+        Total <div className='cartCost'>₹{total}<span>&#40;incl. of all taxes&#41;</span></div>
         <button className='cartButton' onClick={handlePayment}>Checkout</button>
         </div>
         </div>}

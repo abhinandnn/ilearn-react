@@ -5,13 +5,41 @@ import Footer from '../home/Footer';
 import LearningCard from '../utils/LearningCard';
 import { useParams } from 'react-router-dom';
 import Card from '../home/Card';
+import axios from '../../api/axios';
 function Learning() {
     const { navOptFromUrl } = useParams();
     const [navOpt, setNav] = useState(navOptFromUrl);
-    const [wishlist,setWish]=useState({});
+    const [wishlist,setWish]=useState([]);
+    const [owned,setOwned]=useState([]);
+    useEffect(()=>
+  {
+      const getWish = async () => {
+        try {
+          const response = await  axios.get('/get-wishlist',config);
+          setWish(response.data.data.wishlist)
+          console.log('ok',response.data.data)
+
+        } catch (error) {
+        //   console.log('err_',error.response.status);
+        
+      };}
+    getWish();    
+  },[])
     useEffect(() => {
         setNav(navOptFromUrl);
       }, [navOptFromUrl]);
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+      useEffect(()=>{const getData = async () => {
+        try {
+          console.log("loading")
+          const response = await  axios.get('/get-ownedCourses',config);
+          setOwned(response.data.data.ownedCourse);
+          console.log(response.data.data.ownedCourse);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    getData();},[])
   return (
     <div className='learning'>
         <div className='learningBanner'>
@@ -27,9 +55,8 @@ function Learning() {
         <div className='learningContent'>
         {navOpt==='1'&&
         <div className='contentGrid'>
-            <LearningCard totalLect={16} completedLect={9} title={'Complete Web Design: from Figma to Webflow to Freelancing '} category={'Development'}/>
-            <LearningCard totalLect={16} completedLect={5} title={'Complete Web Design: from Figma to Webflow to Freelancing '} category={'Development'}/>
-            <LearningCard totalLect={16} completedLect={9} title={'Complete Web Design: from Figma to Webflow to Freelancing '} category={'Development'}/>
+            {owned.map(own=>
+            <LearningCard _id={own.courseid} totalLect={10} completedLect={own.completedVideo} title={own.title} category={own.category}/>)}
             </div>}
             {navOpt==='2'&&
         <div className='contentGrid'>
@@ -37,7 +64,7 @@ function Learning() {
             </div>}
             {navOpt==='3'&&
             <div className="slid" id="slid1">
-            {/* {wishlist.map((course) => (
+            {wishlist.map((course) => (
                 <Card
                 ke={course._id}
                 imgSrc={course.courseImage}
@@ -46,7 +73,7 @@ function Learning() {
                 rating={course.rating}
                 cost={course.price}
               />
-            ))} */}
+            ))}
             </div>
             }
         </div>

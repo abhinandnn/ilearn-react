@@ -1,52 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './utils.css'
-function UpNext() {
+function UpNext(props) {
   return (
+
     <div className='upNext'>
         <p>Up Next</p>
         <div className='upNextList'>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
+        {props.videos.map((videoF, index) => (
+            <div className='upNextVideo' key={index} onClick={() => props.changeVideo(videoF.video._id, videoF.video.videoUrl_720p)}>
+              <img className='upNextThumbnail' src={props.thumb} alt='Thumbnail' />
+              <div className='videoDet'>
+                {videoF.video.videoTitle}
+                <span>{videoF.video.videoDuration}</span>
             </div>
-        </div>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
-            </div>
-        </div>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
-            </div>
-        </div>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
-            </div>
-        </div>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
-            </div>
-        </div>
-        <div className='upNextVideo'>
-            <img className='upNextThumbnail' src='https://picsum.photos/150/150'/>
-            <div className='videoDet'>
-            This video
-            <span>10 min</span>
-            </div>
-        </div>
+        </div>))}
         </div>
     </div>
   )

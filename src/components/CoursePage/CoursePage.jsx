@@ -16,9 +16,11 @@ import AppPromote from '../utils/AppPromote';
 import axios from '../../api/axios';
 import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
+import useRazorpay from 'react-razorpay'
+import { useAuth } from '../utils/AuthContext';
 function CoursePage() {
-  const token=localStorage.getItem("authId");
   const location = useLocation();
+const {user}=useAuth();
   const _id = location.state.id;
   const [course, setCourse] = useState(
     {category: null,
@@ -47,14 +49,22 @@ function CoursePage() {
 
   const addCart = async () => {
     try {
-      console.log("adding to cart")
-      console.log("Reques--------------------------------------")
       console.log(config);
-      const response = await  axios.post(`/add-cart/${_id}`,config);
-      
+      const response = await  axios.post(`/add-cart/${_id}`,null,config);
       toast.success('course added successfully');
     } catch (error) {
-      console.log(error);
+      console.log('hi',error);
+      toast.info(error.response.data.message);
+    }
+  }
+  const addWish = async () => {
+    try {
+      console.log(config);
+      const response = await  axios.post(`/add-wishlist/${_id}`,null,config);
+      toast.success('course added to wishlist');
+    } catch (error) {
+      console.log('hi',error);
+      toast.info(error.response.data.message);
     }
   }
   useEffect(() => {
@@ -86,7 +96,84 @@ console.log(response);
   getData();
 getData1();
 },[])
-  
+const handlePayment = async () => {
+  let key1;
+  try {
+    const response = await axios.post(
+      `createOrder/${_id}`,null,
+      config
+    );
+    console.log(response.data);
+    key1=response.data;
+  } catch (error) {
+    console.error("Error creating order:", error.response.data);
+    return null;
+  }
+const options = await getRazorpayOptions(key1);
+  const rzp1 = new Razorpay(options);
+  console.log(rzp1);
+  rzp1.on("payment.failed", function (response) {
+    console.log(response.error);})
+    rzp1.open();
+  }
+ 
+const [Razorpay] = useRazorpay();
+const getRazorpayOptions = async (key1) => {
+  return {
+    key: key1.key_id,
+    amount: key1.order.amount,
+    currency: "INR",
+    name: "iLearn",
+    description: "Online Course",
+    image: '',
+    order_id: key1.order_id,
+    handler: function (response) {
+      console.log("response", response);
+      console.log();
+      checkPaymentStatus(
+        response.razorpay_order_id,
+        response.razorpay_payment_id,
+        response.razorpay_signature,
+      )
+        .then((result) => {
+          console.log("Payment Status:", result);
+        })
+        .catch((error) => {
+          console.error("Error checking payment status:", error);
+        });
+    },
+    prefill: {
+      name: user.name,
+      email: user.email,
+    },
+    notes: {
+      address: "iLearn Pvt.",
+    },
+    theme: {
+      color: "#5928E6",
+    },
+  };
+}
+const checkPaymentStatus = async (
+  order_id,
+  payment_id,
+  signature,
+  subscriptionType
+) => {
+  console.log(order_id, payment_id, signature, subscriptionType);
+  try {
+    const response = await axios.post(
+      `/checkPayment/${_id}`,
+      { order_id, payment_id, signature},
+      config
+    );
+    console.log("hellyeh");
+    return response.data;
+  } catch (error) {
+    console.error("Error checking payment status:", error);
+  }
+};
+
   return (
     <div className='coursePage'>
       <div className='topSec'>
@@ -108,8 +195,8 @@ getData1();
         <div className='fixedCard'>
         <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
-        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={heart}/></div>
-        <button className='courseCButton' id='C2'>Buy now</button>
+        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={heart} onClick={addWish}/></div>
+        <button className='courseCButton' id='C2' onClick={handlePayment}>Buy now</button>
         <button className='courseCButton' onClick={addCart}>Add to cart</button>
         </div>
         <div className='fixCard2'>

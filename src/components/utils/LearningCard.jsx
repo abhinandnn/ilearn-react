@@ -1,11 +1,16 @@
 import React from 'react'
 import playB from '../../assets/playB.svg'
-
+import { useNavigate } from 'react-router-dom';
 import { CircularProgressbar } from 'react-circular-progressbar';
 function LearningCard(props) {
     const percentage=Math.floor((props.completedLect/props.totalLect)*100);
+    const _id=props._id;
+    const navigate=useNavigate();
+  const data= {id:_id};
+  const navigateTo=()=>{
+  navigate('/videoPage',{state:data});
+  }
   return (
-   
         <div className='learningCard'>
              <div className='learningCardTop'>
             <div className='circularProgress'>
@@ -38,7 +43,7 @@ function LearningCard(props) {
             </div>
         </div>
         <div className='learningDet'>
-            <div className='resumeLearning'>
+            <div className='resumeLearning' onClick={navigateTo}>
                 <img src={playB}/>
                 <span>Resume</span>
             </div>
