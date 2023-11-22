@@ -8,7 +8,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [loginStatus,setLogin]=useState(false)
   const getData = async (config) => {
     try {

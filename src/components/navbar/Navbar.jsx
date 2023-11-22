@@ -9,7 +9,7 @@ import { useAuth } from '../utils/AuthContext';
 function Navbar() {
     const location = useLocation();
     const {loginStatus}=useAuth()
-    const eduStatus=1;
+    const eduStatus=0;
   const isSignup = (location.pathname === '/signup');
   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">

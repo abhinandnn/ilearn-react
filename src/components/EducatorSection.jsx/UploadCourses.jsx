@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useRef } from 'react'
 import thumbPhoto from '../../assets/thumbPhoto.svg'
 import { useState } from 'react';
+import axios from '../../api/axios';
+
 function UploadCourses() {
     const [category,setCategory]=useState("")
   const [isOpen, setIsOpen] = useState(false);
-  const [step,setStep]=useState(1);
+  const [step,setStep]=useState(2);
     const toggleOpen = () => setIsOpen(!isOpen);
     const menuItems = [
         "Web Development",
@@ -24,10 +26,12 @@ const setCategory1 =(item)=>{
 }
 const [fileName, setFileName] = useState('');
 const [file, setFile] = useState('');
+const [fileUrl,setFileUrl]=useState('')
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
+    setFileUrl(URL.createObjectURL(file));
     setFileName(selectedFile.name);
   };
 //   useEffect(()=>{
@@ -36,7 +40,43 @@ const [file, setFile] = useState('');
     e.preventDefault();
     setStep(2);
   }
-
+    const [vidfile, setVidFile] = useState();
+    const uploadRef = useRef();
+    const statusRef = useRef();
+    const progressRef = useRef();
+  
+    const UploadVideo = async () => {
+      const file = uploadRef.current.files[0];
+      setVidFile(file);
+      const formData = new FormData();
+      formData.append("video", file);
+      try {
+        const response = await axios.post("/fileupload", formData, {
+          onUploadProgress: ProgressHandler
+        });
+  
+        SuccessHandler(response);
+      } catch (error) {
+        ErrorHandler(error);
+      }
+    };
+  
+    const ProgressHandler = (progressEvent) => {
+      const percent = (progressEvent.loaded / progressEvent.total) * 100;
+      progressRef.current.value = Math.round(percent);
+      statusRef.current.innerHTML = `${Math.round(percent)}% uploaded...`;
+    };
+  
+    const SuccessHandler = (response) => {
+      statusRef.current.innerHTML = response.data;
+      progressRef.current.value = 0;
+    };
+  
+    const ErrorHandler = (error) => {
+      statusRef.current.innerHTML = "upload failed!!";
+      console.error("Error uploading file:", error);
+    };
+  
   return (
     <div style={{background:'#F4F4F4'}}>
         <div className='uploadCourses1'>
@@ -52,12 +92,12 @@ const [file, setFile] = useState('');
             <div className='uploadSec'>
                 <div className='uploadVertSec'>
                     <span>Upload Thumbnail</span>
-<div className='uploadThumb1'>
+<div className={`uploadThumb1`}>
     {fileName?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{fileName}</div></>:
     <>
 <img src={thumbPhoto}/>
 <label className='customLabel' for="fileInput">Choose file</label>
-    <input required type="file" id="fileInput" name="fileInput" onChange={handleFileChange}/></>}
+    <input type="file" id="fileInput" name="fileInput" onChange={handleFileChange}/></>}
 </div>
 <span>Category</span>
 <div className='uploadCat' onClick={toggleOpen}>
@@ -88,7 +128,19 @@ explains your course.' rows={10} cols={7} maxLength={100}/>
                 <button className='uploadCourseButton'>Next</button>
                 </div>
                 </form>
-                </>:<></>}
+                </>:<>
+                <div className='uploadSec'>
+                <div className='uploadVertSec'>
+                {vidfile?<div><progress ref={progressRef} value="0" max="100" /><p ref={statusRef}></p></div>:<>
+                <label className='customLabel' for="fileInput">Upload Video</label>
+    <input type="file" id="fileInput" name="fileInput" ref={uploadRef} onChange={UploadVideo}/>
+    </>}
+                    </div>
+                    <div className='uploadVertSec'>
+                    <button className='uploadCourseButton'>Upload file</button>
+                    </div>
+                    </div>
+                </>}
             </div>
     </div>
   )

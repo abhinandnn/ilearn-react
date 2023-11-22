@@ -48,6 +48,7 @@ gap:0.3rem
     min-width:12rem;
     height:7rem;
     border-radius: 0.75rem;
+    aspect-ratio: inherit;
 }
 .cartCardText{
     display: flex;
@@ -92,6 +93,7 @@ font-weight: 400;
     gap: 0.2rem;
     font-size: 0.875rem;
 font-weight: 400;
+cursor: pointer;
 }
 .cartSec{
     padding-top: 1.8rem;
@@ -127,4 +129,9 @@ margin-right: 10vw;
 }
 .emptySec button{
     margin-top: 2.2rem;
+}
+.cartCards{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
 }

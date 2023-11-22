@@ -15,10 +15,11 @@ import TeachFooter from '../utils/TeachFooter';
 import AppPromote from '../utils/AppPromote';
 import axios from '../../api/axios';
 import { useLocation } from "react-router-dom";
+import { toast } from 'react-toastify';
 function CoursePage() {
   const token=localStorage.getItem("authId");
   const location = useLocation();
-  const id = location.state.id;
+  const _id = location.state.id;
   const [course, setCourse] = useState(
     {category: null,
       createdAt: null,
@@ -42,14 +43,28 @@ function CoursePage() {
   )
   const[videoOk,setVideo]=useState([])
   const[review,setReview]=useState({});
-  
-  const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+
+  const addCart = async () => {
+    try {
+      console.log("adding to cart")
+      console.log("Reques--------------------------------------")
+      console.log(config);
+      const response = await  axios.post(`/add-cart/${_id}`,config);
+      
+      toast.success('course added successfully');
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
-    console.log(`/getCourseById/${id}`);
+    console.log(`/getCourseById/${_id}`);
     const getData = async () => {
       try {
         console.log("loading")
-        const response = await  axios.get(`/getCourseById/${id}`,config);
+        const response = await  axios.get(`/getCourseById/${_id}`,config);
+        console.log("InitReques--------------------------------------")
+      console.log(config);
         setCreator(response.data.data.course.createdBy)
         setCourse(response.data.data.course)
         setVideo(response.data.data.course.videos)
@@ -61,7 +76,7 @@ console.log(response);
     const getData1=async()=>{
       try {
         console.log("loading Review")
-        const response = await  axios.get(`/get-review/${id}`,config);
+        const response = await  axios.get(`/get-review/${_id}`,config);
         setReview(response);
 console.log(response);
       } catch (error) {
@@ -95,7 +110,7 @@ getData1();
           <div className='preve'><img src={playB}/>Preview this course</div>
         <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={heart}/></div>
         <button className='courseCButton' id='C2'>Buy now</button>
-        <button className='courseCButton'>Add to cart</button>
+        <button className='courseCButton' onClick={addCart}>Add to cart</button>
         </div>
         <div className='fixCard2'>
           <p>Additional</p>
