@@ -178,7 +178,7 @@ const checkPaymentStatus = async (
     <div className='coursePage'>
       <div className='topSec'>
         <div className='topBanner1'>
-            <div className='imageDiv1'><img className='bannerImg1'src={"https://picsum.photos/150/150"}/></div>
+            <div className='imageDiv1'><img className='bannerImg1' src={`https://udemy-nx1v.onrender.com/${course.thumbnail}`}/></div>
             <div className='bannerText1'>{course.title}
             <div className='ratingStar1'>{course.rating}
               <Stars stars={course.rating}/></div>
@@ -216,11 +216,11 @@ const checkPaymentStatus = async (
       <p>{course.description}</p>
       <h1>Your Tutor</h1>
       <div className='creatorIntro'>
-        <img src={"https://picsum.photos/150/150"} style={{borderRadius:'100%'}}/>
+        <img src={`https://udemy-nx1v.onrender.com${creator.profileimg}`} style={{height:'10rem',width:'10rem',borderRadius:'100%'}}/>
         <div className='creatorInt'>
           <h1>{creator.name}</h1>
-          <p>Web Developer</p>
-          <p>8 years+ experience</p>
+          <p>{creator.domain}</p>
+          <p>{creator.bio}</p>
         </div>
       </div>
       </div>
