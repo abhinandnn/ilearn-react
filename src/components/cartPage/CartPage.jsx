@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { useAuth } from '../utils/AuthContext'
 import useRazorpay from 'react-razorpay'
 import { useNavigate } from 'react-router-dom'
+import logo from '../../assets/logoI.svg'
 function CartPage() {
   const navigateTo=useNavigate();
   const BaseUrl='https://udemy-nx1v.onrender.com/'
@@ -66,7 +67,7 @@ const {user}=useAuth();
       currency: "INR",
       name: "iLearn",
       description: "Online Courses",
-      image: '',
+      image: {},
       order_id: key1.order_id,
       handler: function (response) {
         console.log("response", response);

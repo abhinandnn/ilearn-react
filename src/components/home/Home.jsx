@@ -8,7 +8,9 @@ import WhyIlearn from './WhyIlearn'
 import Footer from './Footer'
 import CoursePage from '../CoursePage/CoursePage'
 import { useState,useEffect,useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 function Home() {
+  const navigate=useNavigate()
   const [selectedCategory, setCategory] = useState('Python');
   const handleCategoryClick = (categoryName) => {
     setCategory(categoryName);
@@ -25,7 +27,7 @@ function Home() {
       <div className='bannerText2'>
       Explore our online courses and find the perfect course for your goals.
       </div>
-      <button className='homeButton' id='bannerButton'>
+      <button className='homeButton' id='bannerButton' onClick={()=>navigate('/courses')}>
         Explore Courses
       </button>
       </div>

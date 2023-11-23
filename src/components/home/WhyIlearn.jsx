@@ -9,8 +9,11 @@ import ans2 from '../../assets/ans2.svg'
 import ans3 from '../../assets/ans3.svg'
 import edu1 from '../../assets/educator.svg'
 import circle from '../../assets/progressbar.svg'
+import { useNavigate } from 'react-router-dom'
+
 
 function WhyIlearn() {
+  const navigate=useNavigate()
     var settings = {
         dots: false,
         infinite: true,
@@ -111,7 +114,7 @@ function WhyIlearn() {
             Turn what you know into an opportunity
             and reach millions around the world.
             </div>
-            <button className='homeButton' id='eduButton'>
+            <button className='homeButton' id='eduButton' onClick={()=>navigate('/educator/home')}>
         Learn more
       </button>
             </div>

@@ -6,7 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import './home.css'
 import { useState,useEffect } from 'react';
 import axios from '../../api/axios';
+import { useNavigate } from 'react-router-dom'
+
 function PopularCourses({categoryName}) {
+  const navigate=useNavigate()
   const token=localStorage.getItem("authId");
   var settings = {
     dots: false,
@@ -80,7 +83,7 @@ function PopularCourses({categoryName}) {
   return (
     <div className='popularCourse'>
     <div className='subHeadingHome' id='shh1'>Top selling {categoryName} courses</div>
-    <button className='popularButton'>Explore all</button>
+    <button className='popularButton' onClick={()=>navigate('/courses')}>Explore all</button>
     <div className='slid'>
     {courses.length>0 && <Slider className=''{...settings}>
      {courses.map(course=>(
