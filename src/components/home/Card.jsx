@@ -1,7 +1,7 @@
 import React from 'react'
 import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
-function Card({ke,imgSrc,title,creator,rating,cost,link,style}) {
+function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
   const navigate=useNavigate();
 
   const data= {id:ke};
