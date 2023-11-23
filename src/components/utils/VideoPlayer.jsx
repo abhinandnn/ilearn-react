@@ -11,7 +11,7 @@ import speaker2 from '../../assets/volume 50.svg'
 import speedicon from '../../assets/speedometer.svg'
 import full from '../../assets/full-screen-svgrepo-com 1.svg'
 import subt from '../../assets/subtitle.svg'
-const VideoPlayer = (props) => {
+const VideoPlayer = () => {
   const videoRef = useRef(null);
   const timelineRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -227,8 +227,7 @@ const VideoPlayer = (props) => {
         </div>
       </div>
       <video ref={videoRef}>
-      <source src={props.videoUrl} 
-        type="video/mp4"/>
+      <source src={'https://'}  type="video/mp4"/>
       {subtitleTrack && (
           <track
           />

@@ -6,6 +6,11 @@ import Footer from "../home/Footer";
 import cam1 from "../../assets/camera1.svg";
 import trash from "../../assets/trash.svg";
 import { useState } from "react";
+import axios from "../../api/axios";
+import { useAuth } from "../utils/AuthContext";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 function ProfilePage() {
 const validUsername = /^[a-z_.\d]{1,30}$/;
 const validText = /^[a-zA-Z]+([\s][a-zA-Z]+)*$/;
@@ -15,15 +20,48 @@ const [username, setUsername] = useState("");
 const [errorName, setErrorName] = useState("");
 const [errorUserName, setErrorUsername] = useState("");
 const [loading,setLoading] = useState("");
+const [nameP,setNameP]=useState();
+const [usernameP,setUserNameP]=useState();
+
+const [profile,setProfile]=useState({
+  profileimg:''
+})
+const [editProfile,setEdit]=useState(0)
+const [id,setId]=useState()
+const {user,logout}= useAuth('');
+const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+useEffect(()=>
+  {
+    user&&setId(user._id);
+      const getProfile = async () => {
+        try {
+          const response = await  axios.get(`/get-user/${id}`,config);
+          setProfile(response.data.data.user)
+          console.log('ok',response.data.data.user)
+
+        } catch (error) {
+          console.log('err_',error.response.status);
+        
+      };
+    setNameP(profile.name);
+  setUserNameP(profile.username)}
+    getProfile();    
+  },[user,editProfile])
+ 
 const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
     if (name === "name") {
+    setName(value);
+    setNameP(e.target.value);
     if (!validText.test(value.trim()) && value !== "") {
         errorMessage = "Name should only contain letters";
     }
     setErrorName(errorMessage);
     } else if (name === "username") {
+  setUsername(value);
+  setUserNameP(e.target.value);
+
     if (!validUsername.test(value) && invalidUsername.test(value)) {
         errorMessage = "Capital letters not allowed";
     } else if (
@@ -47,7 +85,22 @@ const handleChange = (e) => {
     {hasErrors=false}
 
     if (!hasErrors) {
-    console.log("Form submitted:");}}
+    console.log("Form submitted:");
+  
+    try {
+      const response = await axios.patch('/update-profile', {
+        username: username,
+        name: name
+      },config);
+      toast.info('Profile updated');
+      console.log(response.data);
+      setEdit(0);
+    } catch (error) {
+      toast.error('');
+      console.error('Error updating profile:', error);
+    }
+  
+  }}
   return (
     <div>
     <div className="profilePage">
@@ -56,39 +109,39 @@ const handleChange = (e) => {
             <div className="profileNavItem" id="profileN">
             Profile
             </div>
-            <div className="profileNavItem">Your learnings</div>
-            <div className="profileNavItem">Wishlist</div>
-            <div className="profileNavItem">Your cart</div>
-            <div className="profileNavItem">Notification</div>
-            <div className="profileNavItem">Help</div>
-            <div className="profileNavItem">Log out</div>
+            <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Your learnings</div></Link>
+            <Link to={'/learning/3'} style={{textDecoration:'none'}}><div className="profileNavItem">Wishlist</div></Link>
+            <Link to={'cartPage'} style={{textDecoration:'none'}}><div className="profileNavItem">Your cart</div></Link>
+            <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Notification</div></Link>
+            <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Help</div></Link>
+            <div className="profileNavItem" onClick={logout}>Log out</div>
         </div>
         </div>
         <div className="profileSec">
-        {0 ? (
+        {!editProfile ? (
             <div className="profileSec1">
             {" "}
               <div className="profileIntro">
                 <img
                   className="circleImg"
-                  src="https://picsum.photos/200/300"
+                  src={profile&&!profile.profileimg?'https://upload.wikimedia.org/wikipedia/commons/b/b1/Grey_background.jpg':`https://udemy-nx1v.onrender.com/${profile.profileimg}`}
                 />
                 <div className="profileIntroDet">
                   <div className="profileIntroText">
-                    Abhinandan Pandey
-                    <span>@abhinandn</span>
-                    <span id="profileEmail">hellyeah@gmail.com</span>
+                    {profile&&profile.name}
+                    <span>@{profile&&profile.username}</span>
+                    <span id="profileEmail">{user&&user.email}</span>
                   </div>
-                  <button className="editButton">Edit profile</button>
+                  <button className="editButton" onClick={()=>setEdit(1)}>Edit profile</button>
                 </div>
               </div>
               <div className="profileCert">
                 <div className="profileCert">Your certificates</div>
-                <ProfileCards
+                {/* <ProfileCards
                   title="This course by abhinandan pandey is very good"
                   createdBy="Abhinandan pandety"
                   date="8 Nov 2023"
-                />
+                /> */}
               </div>
             </div>
           ) : (
@@ -122,6 +175,7 @@ const handleChange = (e) => {
                     name="name"
                     maxLength={50}
                     placeholder="Enter Name"
+                    value={nameP}
                     onChange={handleChange}
                     style={{
                     border: errorName ? "2px solid red" : "2px solid black",
@@ -138,6 +192,7 @@ const handleChange = (e) => {
                     maxLength={30}
                     placeholder="Enter Username"
                     onChange={handleChange}
+                    value={usernameP}
                     style={{
                     border: errorUserName
                         ? "2px solid red"

@@ -14,12 +14,14 @@ function Navbar() {
   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
             <div style={!loginStatus?{marginRight:'2rem'}:{}} className={eduStatus?"eduInnerbox":"innerbox"}>
+                <NavLink style={{textDecoration:'none',color:'black'}} to={loginStatus?'/home':'/login'}>
                 <div className="logo-container">
                     <div className="logo">
                         <span style={eduStatus?{color:'#00FF84'}:{ color:'#5928E5'}}>i</span>
                         <span style={eduStatus?{color:'#FFF'}:{}}>Learn</span>
                     </div>
                 </div>
+                </NavLink>
                 {!eduStatus?
                 <>
                 <div className="categories">
@@ -43,9 +45,11 @@ function Navbar() {
     <img src={notification}/>
     <NavLink style={{height:'18px'}} to={'/cartPage'}><img src={cart} alt="" /></NavLink>
     <NavLink style={{height:'18px'}} to={'/learning/3'}><img src={heart} /></NavLink>
+    <NavLink to={'/profilePage'} style={{textDecoration:'none'}}>
     <div className='pfpNav'>
         A
     </div>
+    </NavLink>
       </div>}
             </>:<div className='secEdu'>
             <div className='uploadCourses'>Upload courses</div>

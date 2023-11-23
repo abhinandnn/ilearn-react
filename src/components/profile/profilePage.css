@@ -26,12 +26,13 @@ padding-top: 4rem;
 background: rgba(0, 0, 0, 0.30);
 padding: 0.5rem;
 padding-right: 0;
-
+color:white;
 }
 .profileNavItem{
     padding: 0.5rem;
     padding-right: 0;
     cursor: pointer;
+    color: white;
 }
 .profileNavItem>a{
 text-decoration: none;

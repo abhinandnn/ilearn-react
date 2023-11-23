@@ -1,13 +1,15 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import axios from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext();
-
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
 export const AuthProvider = ({ children }) => {
+const navigate=useNavigate();
+
   const [user, setUser] = useState();
   const [loginStatus,setLogin]=useState(false)
   const getData = async (config) => {
@@ -19,7 +21,7 @@ export const AuthProvider = ({ children }) => {
       console.log(response.data.user);
     } catch (error) {
       console.log('err_',error.response.status);
-      if(error.response&&error.response.status==401)
+      if(error.response)
       logout();
     }
   };
@@ -33,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setLogin(false);
     localStorage.removeItem('authId')
+    navigate('/login')
   };
   const confi = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
  

@@ -24,7 +24,7 @@ const router = (
     <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
-          <Route path="logqin" element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route path="forgot/otp" element={
           <ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />
           <Route path="signup/otp" element={<ProtectedRoute1><LoginOTP /></ProtectedRoute1>} />

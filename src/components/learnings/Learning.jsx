@@ -69,7 +69,7 @@ function Learning() {
                 ke={course._id}
                 imgSrc={course.courseImage}
             title={course.title}
-                        creator={course.createdBy.name}
+                        creator={course.category}
                 rating={course.rating}
                 cost={course.price}
               />
