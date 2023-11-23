@@ -89,6 +89,7 @@ return (
                       creator={course.createdBy.name}
                       rating={course.rating}
                       cost={course.price}
+                      thumb={course.thumbnail}
                     />     ))}
 </Slider>
 </div>
