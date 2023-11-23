@@ -17,7 +17,7 @@ function Review(props) {
         <div className='reviewDetail'>
         <div className='reviewDet'>
         <div style={{minWidth:'2.6rem',minHeight:'2.6rem'}}className='pfpNav'>
-        A
+        {props.name.charAt(0).toUpperCase()}
         </div>
             <div className='reviewRating'>
             <p style={{fontSize:'1.1rem',fontWeight:'600'}}>{props.name}</p>
@@ -33,7 +33,7 @@ function Review(props) {
         <div className='reviewDetail'>
         <div className='reviewDet'>
         <div style={{minWidth:'2.6rem',minHeight:'2.6rem'}}className='pfpNav'>
-        A
+        {props.name.charAt(0).toUpperCase()}
         </div>
             <div className='reviewRating'>
             <p style={{fontSize:'1.1rem',fontWeight:'600'}}>{props.name}</p>

@@ -35,12 +35,12 @@ useEffect(()=>
     user&&setId(user._id);
       const getProfile = async () => {
         try {
-          const response = await  axios.get(`/get-user/${id}`,config);
+          const response = await  axios.get(`/get-user/${user._id}`,config);
           setProfile(response.data.data.user)
           console.log('ok',response.data.data.user)
 
         } catch (error) {
-          console.log('err_',error.response.status);
+          console.log('err_',error.response);
         
       };
     setNameP(profile.name);
@@ -52,14 +52,13 @@ const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
     if (name === "name") {
-    setName(value);
+    
     setNameP(e.target.value);
     if (!validText.test(value.trim()) && value !== "") {
         errorMessage = "Name should only contain letters";
     }
     setErrorName(errorMessage);
     } else if (name === "username") {
-  setUsername(value);
   setUserNameP(e.target.value);
 
     if (!validUsername.test(value) && invalidUsername.test(value)) {
@@ -78,7 +77,9 @@ const handleChange = (e) => {
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
-   
+    setName(nameP);
+  setUsername(usernameP);
+
   console.log(username)
     let hasErrors = true;
     if(!(errorUserName||errorName))
@@ -148,9 +149,9 @@ const handleChange = (e) => {
             <div className="editProfile">
               <div className="editStatement">Edit profile</div>
               <div className="editProfile1">
-                <img
+              <img
                   className="circleImg"
-                  src="https://picsum.photos/200/300"
+                  src={profile&&!profile.profileimg?'https://upload.wikimedia.org/wikipedia/commons/b/b1/Grey_background.jpg':`https://udemy-nx1v.onrender.com/${profile.profileimg}`}
                 />
                 <div className="profileIntroText" id="editProfileText">
                 <div>

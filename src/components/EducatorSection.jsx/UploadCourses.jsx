@@ -6,7 +6,7 @@ import axios from '../../api/axios';
 function UploadCourses() {
     const [category,setCategory]=useState("")
   const [isOpen, setIsOpen] = useState(false);
-  const [step,setStep]=useState(2);
+  const [step,setStep]=useState(1);
     const toggleOpen = () => setIsOpen(!isOpen);
     const menuItems = [
         "Web Development",

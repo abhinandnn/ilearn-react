@@ -5,6 +5,7 @@ import React from 'react'
 
 function CircularProgress(props) {
     const percentage=Math.floor((props.completedLect/props.totalLect)*100);
+    console.log(props)
   return (
     <div className='progressCard'>
         <div className='progressCardStatement'>Your Progress</div>

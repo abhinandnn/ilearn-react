@@ -4,6 +4,7 @@ import w1 from '../../assets/whyTeach1.svg'
 import w2 from '../../assets/whyTeach2.svg'
 import w3 from '../../assets/whyTeach3.svg'
 import Footer from '../home/Footer'
+import { Link, useNavigate } from 'react-router-dom'
 
 function EduHome() {
   return (
@@ -13,7 +14,8 @@ function EduHome() {
         <span className='uploadCourseText'>
         Turn what you know in an opportunity and reach <span className='paintEffect'>millions.</span>
         </span>
-        <button className='uploadCourseButton'>Upload a course</button>
+  <Link to={'/educator/uploadCourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
+
     </div>
 </div>
 <div className='whyTeach'>
@@ -37,7 +39,7 @@ function EduHome() {
   </div>
   </div>
   <h1>Record your first course and get started.</h1>
-  <button className='uploadCourseButton'>Upload a course</button>
+  <Link to={'/educator/uploadCourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
 
 </div>
 <Footer eduStatus={true} />

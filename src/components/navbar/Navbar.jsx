@@ -8,8 +8,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 function Navbar() {
     const location = useLocation();
-    const {loginStatus}=useAuth()
-    const eduStatus=0;
+    const {loginStatus,user}=useAuth()
+    console.log(user);
+    const eduStatus = (location.pathname === '/educator/home'||location.pathname === '/educator/uploadCourses');
   const isSignup = (location.pathname === '/signup');
   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
@@ -25,7 +26,7 @@ function Navbar() {
                 {!eduStatus?
                 <>
                 <div className="categories">
-                    <div>Categories</div>
+                <NavLink style={{color:'black', textDecoration:'none'}}to='courses'><div>Categories</div></NavLink>
                     <div className="arrow"></div>
                 </div>
                 <div className="search-bar">
@@ -34,7 +35,7 @@ function Navbar() {
                     placeholder='What do you want to Learn'></input>
                 </div>
                 <div className="popular-courses"><NavLink style={{color:'black', textDecoration:'none'}}to='courses'>Popular courses</NavLink></div>
-                <div className="teach">Teach on ilearn</div>
+                <NavLink to={'educator/home'} style={{color:'black', textDecoration:'none'}}><div className="teach">Teach on ilearn</div></NavLink>
 {!loginStatus?
                 <div className="sign-up" >{isSignup ? (
             <NavLink className={"navLink"} to="/login">Log in</NavLink>
@@ -47,14 +48,14 @@ function Navbar() {
     <NavLink style={{height:'18px'}} to={'/learning/3'}><img src={heart} /></NavLink>
     <NavLink to={'/profilePage'} style={{textDecoration:'none'}}>
     <div className='pfpNav'>
-        A
+    {user&&user.name.charAt(0).toUpperCase()}
     </div>
     </NavLink>
       </div>}
             </>:<div className='secEdu'>
-            <div className='uploadCourses'>Upload courses</div>
+            <NavLink to={'/educator/uploadCourses'}  style={{textDecoration:'none'}}><div className='uploadCourses'>Upload courses</div></NavLink>
             <div style={{border:'2px solid #00FF84'}} className='pfpNav'>
-        A
+            {user&&user.name.charAt(0).toUpperCase()}
     </div>
                 </div>}
         </div>

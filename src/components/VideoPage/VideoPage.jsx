@@ -46,8 +46,8 @@ function VideoPage() {
       videos: []
     }
   );
-  let lectureId1,_id1,vidPath1;
   const [creator, setCreator]=useState({})
+  const[compVid,setComp]=useState([])
   const[videoOk,setVideo]=useState([])
   const[review,setReview]=useState({});
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
@@ -62,6 +62,7 @@ function VideoPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [subtitleTrack, setSubtitleTrack] = useState(false);
+
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -198,24 +199,23 @@ function VideoPage() {
         setSubtitleTrack(!subtitleTrack);
       };
   useEffect(() => {
-    console.log(`/getCourseById/${_id}`);
     const getData = async () => {
       try {
-        console.log("loading")
         const response = await  axios.get(`/getCourseById/${_id}`,config);
-        console.log(config);
         setCreator(response.data.data.course.createdBy);
         setCourse(response.data.data.course);
+        setComp(response.data.data.completedVideo)
         setVideo(response.data.data.course.videos);
-        console.log(response.data.data.course.videos)
         setLecture(response.data.data.course.videos[0].video._id);
         setPath(response.data.data.course.videos[0].video.videoUrl_720p);
-console.log(response);
+console.log('hehe',response);
       } catch (error) {
         console.log(error);
       }
     };
     const getData1=async()=>{
+      console.log("loading Review")
+
       try {
         console.log("loading Review")
         const response = await  axios.get(`/get-reviews/${_id}`,config);
@@ -365,11 +365,11 @@ Files by Tutor</div>
     </div></div>
     <div className='upNextSec'>
     <UpNext videos={videoOk} thumb={`https://udemy-nx1v.onrender.com/${course.thumbnail}`} changeVideo={changeVideo}/>
-    <CircularProgress totalLect={14} completedLect={8}/>
+    {compVid&&<CircularProgress totalLect={videoOk.length} completedLect={compVid}/>}
     <GiveRating reviewNo={1200} avgRating={4.8}/>
     </div>
     </div>
-    <Review isVideoPage={true} avgRating={4.8} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+    <Review isVideoPage={true} avgRating={4.8} name={'sbhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
     </div>
     <AppPromote/>
     <Footer/>

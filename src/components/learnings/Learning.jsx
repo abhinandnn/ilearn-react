@@ -11,6 +11,7 @@ function Learning() {
     const [navOpt, setNav] = useState(navOptFromUrl);
     const [wishlist,setWish]=useState([]);
     const [owned,setOwned]=useState([]);
+    const [completed,setCompleted]=useState([])
     useEffect(()=>
   {
       const getWish = async () => {
@@ -40,6 +41,17 @@ function Learning() {
         }
       }
     getData();},[])
+    useEffect(()=>{const getCompleted = async () => {
+      try {
+        console.log("loading")
+        const response = await  axios.get('/completed-course',config);
+        setCompleted(response.data.data.completedCourse);
+        console.log(response.data.data.ownedCourse);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  getCompleted();},[])
   return (
     <div className='learning'>
         <div className='learningBanner'>
@@ -55,12 +67,14 @@ function Learning() {
         <div className='learningContent'>
         {navOpt==='1'&&
         <div className='contentGrid'>
-            {owned.map(own=>
-            <LearningCard _id={own.courseid} totalLect={10} completedLect={own.completedVideo} title={own.title} category={own.category}/>)}
+            {owned&&owned.map(own=>
+            {!(own.totalVideos===own.completedVideo)?
+            <LearningCard _id={own.courseid} totalLect={own.totalVideos} completedLect={own.completedVideo} title={own.title} category={own.category}/>:<></>})}
             </div>}
             {navOpt==='2'&&
         <div className='contentGrid'>
-            <LearningCard totalLect={16} completedLect={16} title={'Complete Web Design: from Figma to Webflow to Freelancing '} category={'Development'}/>
+          {completed&&completed.map(own=>
+            <LearningCard _id={own.courseid} totalLect={10} completedLect={10} title={own.title} category={own.category}/>)}
             </div>}
             {navOpt==='3'&&
             <div className="slid" id="slid1">

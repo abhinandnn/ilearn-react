@@ -4,7 +4,7 @@ function UpNext(props) {
   return (
 
     <div className='upNext'>
-        <p>Up Next</p>
+        <p>Lectures</p>
         <div className='upNextList'>
         {props.videos.map((videoF, index) => (
             <div className='upNextVideo' key={index} onClick={() => props.changeVideo(videoF.video._id, videoF.video.videoUrl_720p)}>
