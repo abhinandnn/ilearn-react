@@ -54,13 +54,14 @@ const handleChange = (e) => {
     if (name === "name") {
     
     setNameP(e.target.value);
+    setName(value);
     if (!validText.test(value.trim()) && value !== "") {
         errorMessage = "Name should only contain letters";
     }
     setErrorName(errorMessage);
     } else if (name === "username") {
   setUserNameP(e.target.value);
-
+  setUsername(value);
     if (!validUsername.test(value) && invalidUsername.test(value)) {
         errorMessage = "Capital letters not allowed";
     } else if (
@@ -77,8 +78,6 @@ const handleChange = (e) => {
   };
   const handleSubmit = async(e) => {
     e.preventDefault();
-    setName(nameP);
-  setUsername(usernameP);
 
   console.log(username)
     let hasErrors = true;
