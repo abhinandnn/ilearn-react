@@ -11,7 +11,7 @@ function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
   return (
     <div className='card36'>
     <div className='cardCont' id={style} >
-        <div id='cardI'><img id='cardImg' src={"https://picsum.photos/200/150"}/></div>
+        <div id='cardI'>{thumb&&<img id='cardImg' src={thumb?`https://udemy-nx1v.onrender.com/${thumb}`:"https://picsum.photos/200/150"}/>}</div>
         <div id='tite'>{title}</div>
         <div className='creatorName'>
             {creator}
