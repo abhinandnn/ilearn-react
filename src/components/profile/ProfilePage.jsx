@@ -15,8 +15,6 @@ function ProfilePage() {
 const validUsername = /^[a-z_.\d]{1,30}$/;
 const validText = /^[a-zA-Z]+([\s][a-zA-Z]+)*$/;
 const invalidUsername = /^(?=.*[A-Z])[A-Za-z_.\d]{1,}$/;
-const [name, setName] = useState("");
-const [username, setUsername] = useState("");
 const [errorName, setErrorName] = useState("");
 const [errorUserName, setErrorUsername] = useState("");
 const [loading,setLoading] = useState("");
@@ -54,14 +52,12 @@ const handleChange = (e) => {
     if (name === "name") {
     
     setNameP(e.target.value);
-    setName(value);
     if (!validText.test(value.trim()) && value !== "") {
         errorMessage = "Name should only contain letters";
     }
     setErrorName(errorMessage);
     } else if (name === "username") {
   setUserNameP(e.target.value);
-  setUsername(value);
     if (!validUsername.test(value) && invalidUsername.test(value)) {
         errorMessage = "Capital letters not allowed";
     } else if (
@@ -79,7 +75,6 @@ const handleChange = (e) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-  console.log(username)
     let hasErrors = true;
     if(!(errorUserName||errorName))
     {hasErrors=false}
@@ -89,8 +84,8 @@ const handleChange = (e) => {
   
     try {
       const response = await axios.patch('/update-profile', {
-        username: username,
-        name: name
+        username: usernameP,
+        name: nameP
       },config);
       toast.info('Profile updated');
       console.log(response.data);
