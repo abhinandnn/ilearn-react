@@ -1,7 +1,7 @@
 import React from 'react'
 import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
-function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
+function Card({ke,imgSrc,title,creator,rating,cost,link,thumb}) {
   const navigate=useNavigate();
 
   const data= {id:ke};
@@ -11,7 +11,7 @@ function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
   return (
     <div className='card36'>
     <div className='cardCont' id={style} >
-        <div id='cardI'>{thumb&&<img id='cardImg' src={thumb?`https://udemy-nx1v.onrender.com/${thumb}`:"https://picsum.photos/200/150"}/>}</div>
+        <div id='cardI'>{thumb&&<img id='cardImg' src={`https://udemy-nx1v.onrender.com/${thumb}`}/>}</div>
         <div id='tite'>{title}</div>
         <div className='creatorName'>
             {creator}
