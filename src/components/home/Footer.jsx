@@ -2,6 +2,7 @@ import React from 'react'
 import Linkin from '../../assets/linkedin.svg'
 import insta from '../../assets/insta.svg'
 import x from '../../assets/x.svg'
+import { Link } from 'react-router-dom';
 function Footer(props) {
   const eduStatus=props.eduStatus;
   return (

@@ -6,6 +6,7 @@ import cart from '../../assets/cart.svg'
 import notification from '../../assets/notification.svg'
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
+import arrowpic from '../../assets/arrow.svg'
 function Navbar() {
     const location = useLocation();
     const {loginStatus,user}=useAuth()
@@ -27,7 +28,9 @@ function Navbar() {
                 <>
                 <div className="categories">
                 <NavLink style={{color:'black', textDecoration:'none'}}to='courses'><div>Categories</div></NavLink>
-                    <div className="arrow"></div>
+                    <div className="arrow">
+                      <img src={arrowpic}/>
+                    </div>
                 </div>
                 <div className="search-bar">
                     <img className={"search-icon"} src={searchIcon}/>
