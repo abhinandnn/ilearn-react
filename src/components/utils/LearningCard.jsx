@@ -5,6 +5,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 function LearningCard(props) {
     const percentage=Math.floor((props.completedLect/props.totalLect)*100);
     const _id=props._id;
+    console.log(_id);
     const navigate=useNavigate();
   const data= {id:_id};
   const navigateTo=()=>{

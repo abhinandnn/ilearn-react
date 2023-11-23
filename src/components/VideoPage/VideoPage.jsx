@@ -227,7 +227,8 @@ console.log(response);
     }
   getData();
 getData1();
-},[])
+},[_id])
+console.log('some',_id);
 useEffect(()=>{
   setVideoLink(`https://udemy-nx1v.onrender.com/video/${_id}/lecture/${lectureId}?path=${vidPath}&token=${token}`)
 },[lectureId,vidPath])
@@ -346,7 +347,7 @@ Files by Tutor</div>
 </svg>
         Community</div>
         </div>
-   {isFiles? <FilesTutor filesNum={4} files={
+   {0? <FilesTutor filesNum={4} files={
       [
         {
           title:'helloworld',

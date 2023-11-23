@@ -68,8 +68,7 @@ function Learning() {
         {navOpt==='1'&&
         <div className='contentGrid'>
             {owned&&owned.map(own=>
-            {!(own.totalVideos===own.completedVideo)?
-            <LearningCard _id={own.courseid} totalLect={own.totalVideos} completedLect={own.completedVideo} title={own.title} category={own.category}/>:<></>})}
+            <LearningCard _id={own.courseid} totalLect={own.totalVideos} completedLect={own.completedVideo} title={own.title} category={own.category}/>)}
             </div>}
             {navOpt==='2'&&
         <div className='contentGrid'>
