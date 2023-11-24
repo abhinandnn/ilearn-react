@@ -18,9 +18,11 @@ import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import useRazorpay from 'react-razorpay'
 import { useAuth } from '../utils/AuthContext';
+import heartfill from '../../assets/heartfill.svg'
 function CoursePage() {
   const location = useLocation();
 const {user}=useAuth();
+const[wish1,setwish1]=useState(false);
   const _id = location.state.id;
   const [course, setCourse] = useState(
     {category: null,
@@ -59,12 +61,15 @@ const {user}=useAuth();
   }
   const addWish = async () => {
     try {
-      console.log(config);
+      if(!wish1)
+      {console.log(config);
       const response = await  axios.post(`/add-wishlist/${_id}`,null,config);
       toast.success('course added to wishlist');
+      setwish1(true);}
     } catch (error) {
       console.log('hi',error);
       toast.info(error.response.data.message);
+      setwish1(true);
     }
   }
   useEffect(() => {
@@ -195,7 +200,7 @@ const checkPaymentStatus = async (
         <div className='fixedCard'>
         <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
-        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={heart} onClick={addWish}/></div>
+        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={wish1?heartfill:heart} onClick={addWish}/></div>
         <button className='courseCButton' id='C2' onClick={handlePayment}>Buy now</button>
         <button className='courseCButton' onClick={addCart}>Add to cart</button>
         </div>

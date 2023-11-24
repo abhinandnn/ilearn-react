@@ -86,6 +86,7 @@ function Learning() {
                 rating={course.rating}
                 cost={course.price}
                 thumb={course.thumbnail}
+                trash={true}
               />
             ))}
             </div>

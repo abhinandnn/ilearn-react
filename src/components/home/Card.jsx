@@ -1,13 +1,24 @@
 import React from 'react'
 import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
-function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
+import trash1 from '../../assets/trash.svg'
+import axios from '../../api/axios'
+function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style,trash}) {
   const navigate=useNavigate();
-
   const data= {id:ke};
   const navigateTo=()=>{
   navigate('/coursePage',{state:data});
   }
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+  const delWish = async () => {
+      try {
+        console.log("loading")
+        const response = await axios.delete(`/delete-wishlist/${ke}`,config);
+        console.log(response);
+        window.location.reload();
+      } catch (error) {
+        console.log('err',error.response);
+    };}
   return (
     <div className='card36'>
     <div className='cardCont' id={style} >
@@ -19,6 +30,7 @@ function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style}) {
         </div>
         <p className='costCard'>₹{cost}</p>
         <button className='homeButton' onClick={navigateTo}>Know more</button>
+        {trash?<img className='trashBut' src={trash1} onClick={delWish}/>:<></>}
     </div>
     </div>
   )
