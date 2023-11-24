@@ -31,11 +31,9 @@ const [fileUrl,setFileUrl]=useState('')
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-    setFileUrl(URL.createObjectURL(file));
+    setFileUrl(URL.createObjectURL(selectedFile));
     setFileName(selectedFile.name);
   };
-//   useEffect(()=>{
-//   },[step]);
   const handleSubmit=async(e)=>{
     e.preventDefault();
     setStep(2);
@@ -97,7 +95,7 @@ const [fileUrl,setFileUrl]=useState('')
     <>
 <img src={thumbPhoto}/>
 <label className='customLabel' for="fileInput">Choose file</label>
-    <input type="file" id="fileInput" name="fileInput" onChange={handleFileChange}/></>}
+    <input type="file" id="fileInput" name="fileInput" accept='.jpg,.jpeg,.png,.heic' onChange={handleFileChange}/></>}
 </div>
 <span>Category</span>
 <div className='uploadCat' onClick={toggleOpen}>
@@ -121,7 +119,6 @@ const [fileUrl,setFileUrl]=useState('')
 <textarea required className='uploadDescrip' placeholder='Type description that well 
 explains your course.' rows={10} cols={7} maxLength={100}/>
                 </div>
-        
                 </div>
                 <div className='uploadStepButtons'>
                 <button className='uploadCourseButton'>Cancel</button>
