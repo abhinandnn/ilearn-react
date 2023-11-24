@@ -22,11 +22,12 @@ const [nameP,setNameP]=useState();
 const [usernameP,setUserNameP]=useState();
 
 const [profile,setProfile]=useState({
-  profileimg:''
+  profileimg:'',
+  name:''
 })
 const [editProfile,setEdit]=useState(0)
 const [id,setId]=useState()
-const {user,logout}= useAuth('');
+const {user,logout}= useAuth();
 const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
 useEffect(()=>
   {
@@ -43,7 +44,7 @@ useEffect(()=>
       };
     setNameP(profile.name);
   setUserNameP(profile.username)}
-    getProfile();    
+    getProfile();  
   },[user,editProfile])
  
 const handleChange = (e) => {
@@ -115,12 +116,14 @@ const handleChange = (e) => {
         <div className="profileSec">
         {!editProfile ? (
             <div className="profileSec1">
-            {" "}
               <div className="profileIntro">
-                <img
+              {profile&&(profile.profileimg?
+                (<img
                   className="circleImg"
-                  src={profile&&!profile.profileimg?'https://upload.wikimedia.org/wikipedia/commons/b/b1/Grey_background.jpg':`https://udemy-nx1v.onrender.com/${profile.profileimg}`}
-                />
+                  src={`https://ilearn.varankit.tech/${profile.profileimg}`}
+                />):(<div className='circleImg' style={{background:'black',color:'white'}}>
+                  {profile.name.charAt(0).toUpperCase()}
+                  </div>))}
                 <div className="profileIntroDet">
                   <div className="profileIntroText">
                     {profile&&profile.name}
@@ -143,10 +146,13 @@ const handleChange = (e) => {
             <div className="editProfile">
               <div className="editStatement">Edit profile</div>
               <div className="editProfile1">
-              <img
+              {profile&&(profile.profileimg?
+                (<img
                   className="circleImg"
-                  src={profile&&!profile.profileimg?'https://upload.wikimedia.org/wikipedia/commons/b/b1/Grey_background.jpg':`https://udemy-nx1v.onrender.com/${profile.profileimg}`}
-                />
+                  src={`https://ilearn.varankit.tech/${profile.profileimg}`}
+                />):(<div className='circleImg' style={{background:'black',color:'white'}}>
+                  {profile.name.charAt(0).toUpperCase()}
+                  </div>))}
                 <div className="profileIntroText" id="editProfileText">
                 <div>
                     <img src={cam1} />

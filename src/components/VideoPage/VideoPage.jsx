@@ -62,7 +62,7 @@ function VideoPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [subtitleTrack, setSubtitleTrack] = useState(false);
-
+ 
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -72,7 +72,11 @@ function VideoPage() {
     }
     setIsPlaying(!video.paused)
   };
-
+  useEffect(()=>{
+    setIsPlaying(false)
+    setProgress(0);
+    setCurrentTime(0)
+  },[lectureId])
   const toggleMute = () => {
     const video = videoRef.current;
     video.muted = !video.muted;
@@ -95,6 +99,7 @@ function VideoPage() {
       setIsMuted(false);
     }
   };
+
   useEffect(() => {
     const video = videoRef.current;
     const handleTimeUpdate = () => {
@@ -114,12 +119,14 @@ function VideoPage() {
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('keydown',handleKeyDown);
+      video.removeEventListener('loadedmetadata', handleDurationUpdate);
     };
   }, []);
   useEffect(() => {
   const video = videoRef.current;
     video.src = videoLink;
     video.load();
+    video.currentTime=0;
   }, [videoLink,lectureId]);
   const handleSkipClick = () => {
     const video = videoRef.current;
@@ -208,19 +215,16 @@ function VideoPage() {
         setVideo(response.data.data.course.videos);
         setLecture(response.data.data.course.videos[0].video._id);
         setPath(response.data.data.course.videos[0].video.videoUrl_720p);
-console.log('hehe',response);
       } catch (error) {
         console.log(error);
       }
     };
     const getData1=async()=>{
-      console.log("loading Review")
-
       try {
         console.log("loading Review")
         const response = await  axios.get(`/get-reviews/${_id}`,config);
         setReview(response);
-console.log(response);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
@@ -228,9 +232,8 @@ console.log(response);
   getData();
 getData1();
 },[_id])
-console.log('some',_id);
 useEffect(()=>{
-  setVideoLink(`https://udemy-nx1v.onrender.com/video/${_id}/lecture/${lectureId}?path=${vidPath}&token=${token}`)
+  setVideoLink(`https://ilearn.varankit.tech/video/${_id}/lecture/${lectureId}?path=${vidPath}&token=${token}`)
 },[lectureId,vidPath])
   const commun=()=>{
     setFiles(false);
@@ -238,7 +241,6 @@ useEffect(()=>{
   const token=localStorage.getItem("authId");
  
   const filesNav=()=>setFiles(true)
-  console.log(videoLink)
   const changeVideo = (videoId, videoUrl) => {
     setLecture(videoId);
     setPath(videoUrl);
@@ -365,7 +367,7 @@ Files by Tutor</div>
     }/>:<></>}
     </div></div>
     <div className='upNextSec'>
-    <UpNext videos={videoOk} thumb={`https://udemy-nx1v.onrender.com/${course.thumbnail}`} changeVideo={changeVideo}/>
+    <UpNext videos={videoOk} thumb={`https://ilearn.varankit.tech/${course.thumbnail}`} changeVideo={changeVideo}/>
     {compVid&&<CircularProgress totalLect={videoOk.length} completedLect={compVid}/>}
     <GiveRating reviewNo={1200} avgRating={4.8}/>
     </div>

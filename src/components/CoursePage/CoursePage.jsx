@@ -22,26 +22,30 @@ import heartfill from '../../assets/heartfill.svg'
 function CoursePage() {
   const location = useLocation();
 const {user}=useAuth();
-const[wish1,setwish1]=useState(false);
+const [courseData,setCourseData]=useState({
+  in_wishlist:false,
+  in_cart:false
+})
+const [course, setCourse] = useState(
+  {category: null,
+    createdAt: null,
+    createdBy: null,
+    description: null,
+    duration: null,
+    isPublished: null,
+    ownedBy: null,
+    price: null,
+    rating: null,
+    ratings: null,
+    reviews: null,
+    title: null,
+    totalStudents: null,
+    updatedAt: null,
+    videos: null,
+  }
+);
   const _id = location.state.id;
-  const [course, setCourse] = useState(
-    {category: null,
-      createdAt: null,
-      createdBy: null,
-      description: null,
-      duration: null,
-      isPublished: null,
-      ownedBy: null,
-      price: null,
-      rating: null,
-      ratings: null,
-      reviews: null,
-      title: null,
-      totalStudents: null,
-      updatedAt: null,
-      videos: null
-    }
-  );
+  
   const [creator, setCreator]=useState(
     {}
   )
@@ -49,40 +53,16 @@ const[wish1,setwish1]=useState(false);
   const[review,setReview]=useState({});
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
 
-  const addCart = async () => {
-    try {
-      console.log(config);
-      const response = await  axios.post(`/add-cart/${_id}`,null,config);
-      toast.success('course added successfully');
-    } catch (error) {
-      console.log('hi',error);
-      toast.info(error.response.data.message);
-    }
-  }
-  const addWish = async () => {
-    try {
-      if(!wish1)
-      {console.log(config);
-      const response = await  axios.post(`/add-wishlist/${_id}`,null,config);
-      toast.success('course added to wishlist');
-      setwish1(true);}
-    } catch (error) {
-      console.log('hi',error);
-      toast.info(error.response.data.message);
-      setwish1(true);
-    }
-  }
   useEffect(() => {
     console.log(`/getCourseById/${_id}`);
     const getData = async () => {
       try {
         console.log("loading")
         const response = await  axios.get(`/getCourseById/${_id}`,config);
-        console.log("InitReques--------------------------------------")
-      console.log(config);
         setCreator(response.data.data.course.createdBy)
         setCourse(response.data.data.course)
         setVideo(response.data.data.course.videos)
+        setCourseData(response.data.data)
 console.log(response);
       } catch (error) {
         console.log(error);
@@ -101,6 +81,56 @@ console.log(response);
   getData();
 getData1();
 },[])
+  const addCart = async () => {
+    try {
+      console.log(config);
+      const response = await  axios.post(`/add-cart/${_id}`,null,config);
+      toast.success('course added successfully');
+      setcart1(true)
+    } catch (error) {
+      console.log('hi',error);
+      toast.info(error.response.data.message);
+    }
+  }
+  const delCart = async () => {
+    try {
+      console.log(config);
+      const response = await  axios.delete(`/delete-cart/${_id}`,config);
+      setcart1(false)
+    } catch (error) {
+      console.log('hi',error);
+      toast.info(error.response.data.message);
+    }
+  }
+  const addWish = async () => {
+    try {
+      if(!wish1)
+      {console.log(config);
+      const response = await  axios.post(`/add-wishlist/${_id}`,null,config);
+      toast.success('course added to wishlist');
+      setwish1(true);}
+    } catch (error) {
+      console.log('hi',error);
+      toast.info(error.response.data.message);
+      setwish1(true);
+    }
+  }
+  const delWish = async () => {
+    try {
+      console.log("loading")
+      const response = await axios.delete(`/delete-wishlist/${_id}`,config);
+      console.log(response);
+      setwish1(false);
+    } catch (error) {
+      console.log('err',error.response);
+  };}
+  const[wish1,setwish1]=useState(false);
+  const[cart1,setcart1]=useState(false);
+
+  useEffect(()=>{
+    setwish1(courseData.in_wishlist)
+    setcart1(courseData.in_cart)
+  },[courseData.in_wishlist,courseData.in_cart])
 const handlePayment = async () => {
   let key1;
   try {
@@ -183,7 +213,7 @@ const checkPaymentStatus = async (
     <div className='coursePage'>
       <div className='topSec'>
         <div className='topBanner1'>
-            <div className='imageDiv1'><img className='bannerImg1' src={`https://udemy-nx1v.onrender.com/${course.thumbnail}`}/></div>
+            <div className='imageDiv1'><img className='bannerImg1' src={`https://ilearn.varankit.tech/${course.thumbnail}`}/></div>
             <div className='bannerText1'>{course.title}
             <div className='ratingStar1'>{course.rating}
               <Stars stars={course.rating}/></div>
@@ -200,9 +230,9 @@ const checkPaymentStatus = async (
         <div className='fixedCard'>
         <div className='fixCard1'>
           <div className='preve'><img src={playB}/>Preview this course</div>
-        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img src={wish1?heartfill:heart} onClick={addWish}/></div>
+        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img style={{cursor:'pointer'}} src={wish1?heartfill:heart} onClick={!wish1?addWish:delWish}/></div>
         <button className='courseCButton' id='C2' onClick={handlePayment}>Buy now</button>
-        <button className='courseCButton' onClick={addCart}>Add to cart</button>
+        <button className='courseCButton' onClick={!cart1?addCart:delCart}>{!cart1?'Add to cart':'Remove from cart'}</button>
         </div>
         <div className='fixCard2'>
           <p>Additional</p>
@@ -221,7 +251,7 @@ const checkPaymentStatus = async (
       <p>{course.description}</p>
       <h1>Your Tutor</h1>
       <div className='creatorIntro'>
-        <img src={`https://udemy-nx1v.onrender.com${creator.profileimg}`} style={{height:'10rem',width:'10rem',borderRadius:'100%'}}/>
+        <img src={`https://ilearn.varankit.tech${creator.profileimg}`} style={{height:'10rem',width:'10rem',borderRadius:'100%'}}/>
         <div className='creatorInt'>
           <h1>{creator.name}</h1>
           <p>{creator.domain}</p>

@@ -4,7 +4,7 @@ import axios from "../../../api/axios";
 import PasswordStrength from "./passwordStrength";
 import { toast } from "react-toastify";
 import { useAuthProcess } from "../../utils/AuthProcessContext";
-const SIGNUP_URL ='https://udemy-nx1v.onrender.com/sign-up'
+const SIGNUP_URL ='https://ilearn.varankit.tech/sign-up'
 
 const Signup_valid = () => {
   const {strength,calculateStrength}=PasswordStrength();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './navbar.css'
 import searchIcon from '../../assets/search.svg'
 import heart from '../../assets/heart.svg'
@@ -7,12 +7,38 @@ import notification from '../../assets/notification.svg'
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import arrowpic from '../../assets/arrow.svg'
+import { useState } from 'react';
+import axios from '../../api/axios';
 function Navbar() {
+  let menuCloseTimeout;
     const location = useLocation();
+    const [categories,setCategories]=useState([]);
     const {loginStatus,user}=useAuth()
     console.log(user);
-    const eduStatus = (location.pathname === '/educator/home'||location.pathname === '/educator/uploadCourses');
+    const eduStatus = (location.pathname === '/educator/home'||location.pathname === '/educator/uploadCourses'||location.pathname === '/educator/Profile');
   const isSignup = (location.pathname === '/signup');
+  const [isOpen, setIsOpen] = useState(false);
+    const openMenu = () => {setIsOpen(true);
+      clearTimeout(menuCloseTimeout);
+    }
+    const closeMenu = () => {
+      menuCloseTimeout = setTimeout(() => {
+        setIsOpen(false);
+      }, 300);
+    };
+    const config = { headers: {'Authorization':`Bearer ${localStorage.getItem("authId")}`}, withCredentials: false }
+    useEffect(()=>{
+    const getCat = async () => {
+      try {
+        console.log("loadingCat")
+        const response = await  axios.get('/getCategoriesName',config);
+        setCategories(response.data.value.data.categories);
+        console.log(response.data.value.data.categories);
+      } catch (error) {
+        console.log("catNameError",error);
+      }
+    };
+    getCat();},[])
   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
             <div style={!loginStatus?{marginRight:'2rem'}:{}} className={eduStatus?"eduInnerbox":"innerbox"}>
@@ -26,12 +52,23 @@ function Navbar() {
                 </NavLink>
                 {!eduStatus?
                 <>
-                <div className="categories">
+                <div className="categories" onMouseEnter={openMenu}
+      onMouseLeave={closeMenu}>
                 <NavLink style={{color:'black', textDecoration:'none'}}to='courses'><div>Categories</div></NavLink>
                     <div className="arrow">
                       <img src={arrowpic}/>
                     </div>
-                </div>
+    {isOpen && (
+        <div className="catMenuItems1" onMouseEnter={openMenu}
+        onMouseLeave={closeMenu}>
+          {categories.map((item, index) => (
+            <div key={index} className={`catMenuItem1`}>
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
                 <div className="search-bar">
                     <img className={"search-icon"} src={searchIcon}/>
                     <input type='textarea'

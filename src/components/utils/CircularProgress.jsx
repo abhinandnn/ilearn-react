@@ -1,11 +1,10 @@
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 import React from 'react'
 
 function CircularProgress(props) {
     const percentage=Math.floor((props.completedLect/props.totalLect)*100);
-    console.log(props)
   return (
     <div className='progressCard'>
         <div className='progressCardStatement'>Your Progress</div>

@@ -13,7 +13,7 @@ const delCart = async () => {
       console.log("loading")
       const response = await axios.delete(`/delete-cart/${props.id}`,config);
       console.log(response);
-      window.location.reload();
+      props.reload();
     } catch (error) {
       console.log('err',error.response);
   };}

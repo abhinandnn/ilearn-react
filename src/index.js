@@ -20,6 +20,7 @@ import CartPage from './components/cartPage/CartPage.jsx';
 import ProfilePage from './components/profile/ProfilePage.jsx';
 import EduHome from './components/EducatorSection.jsx/EduHome.jsx';
 import UploadCourses from './components/EducatorSection.jsx/UploadCourses.jsx';
+import EduProfile from './components/EducatorSection.jsx/EduProfile.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
@@ -40,6 +41,8 @@ const router = (
           <Route path='profilePage' element={<ProfilePage/>}/>
           <Route path='educator/home' element={<EduHome/>}/>
 <Route path='educator/uploadCourses' element={<UploadCourses/>}/>
+<Route path='educator/profile' element={<EduProfile/>}/>
+
         </Route>
       </Routes>
 )

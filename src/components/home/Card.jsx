@@ -3,7 +3,7 @@ import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
 import trash1 from '../../assets/trash.svg'
 import axios from '../../api/axios'
-function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style,trash}) {
+function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style,trash,reload}) {
   const navigate=useNavigate();
   const data= {id:ke};
   const navigateTo=()=>{
@@ -15,14 +15,14 @@ function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style,trash}) {
         console.log("loading")
         const response = await axios.delete(`/delete-wishlist/${ke}`,config);
         console.log(response);
-        window.location.reload();
+        reload();
       } catch (error) {
         console.log('err',error.response);
     };}
   return (
     <div className='card36'>
     <div className='cardCont' id={style} >
-        <div id='cardI'>{thumb&&<img id='cardImg' src={`https://udemy-nx1v.onrender.com/${thumb}`}/>}</div>
+        <div id='cardI'>{thumb&&<img id='cardImg' src={`https://ilearn.varankit.tech/${thumb}`}/>}</div>
         <div id='tite'>{title}</div>
         <div className='creatorName'>
             {creator}

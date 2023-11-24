@@ -12,20 +12,21 @@ function Learning() {
     const [wishlist,setWish]=useState([]);
     const [owned,setOwned]=useState([]);
     const [completed,setCompleted]=useState([])
+    const getWish = async () => {
+      try {
+        const response = await  axios.get('/get-wishlist',config);
+        setWish(response.data.data.wishlist)
+        console.log('ok',response.data.data)
+
+      } catch (error) {
+      //   console.log('err_',error.response.status);
+      
+    };}
     useEffect(()=>
   {
-      const getWish = async () => {
-        try {
-          const response = await  axios.get('/get-wishlist',config);
-          setWish(response.data.data.wishlist)
-          console.log('ok',response.data.data)
-
-        } catch (error) {
-        //   console.log('err_',error.response.status);
-        
-      };}
     getWish();    
   },[])
+
     useEffect(() => {
         setNav(navOptFromUrl);
       }, [navOptFromUrl]);
@@ -87,6 +88,7 @@ function Learning() {
                 cost={course.price}
                 thumb={course.thumbnail}
                 trash={true}
+                reload={getWish}
               />
             ))}
             </div>

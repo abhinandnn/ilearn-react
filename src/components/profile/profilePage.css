@@ -61,9 +61,15 @@ align-items: center;
 
 }
 .circleImg{
+    min-height: 10rem;
 height: 10rem;
 min-width:10rem;
+width: 10rem;
 border-radius: 100%;
+font-size: 4.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .profileIntroText{
     font-size: 2rem;

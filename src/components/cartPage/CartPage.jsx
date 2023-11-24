@@ -13,26 +13,25 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/logoI.svg'
 function CartPage() {
   const navigateTo=useNavigate();
-  const BaseUrl='https://udemy-nx1v.onrender.com/'
+  const BaseUrl='https://ilearn.varankit.tech/'
 const {user}=useAuth();
   const [cartItem,setCart]=useState([]);
   // const[key1,setKey]=useState({});
   let total=0;
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false };
+  const getCart = async () => {
+    try {
+      console.log("loading")
+      const response = await  axios.get('/get-cart',config);
+      setCart(response.data.data.courses)
+    } catch (error) {
+      console.log('err_',error.response.status);
+    
+  };}
   useEffect(()=>
   {
-      const getCart = async () => {
-        try {
-          console.log("loading")
-          const response = await  axios.get('/get-cart',config);
-          setCart(response.data.data.courses)
-        } catch (error) {
-          console.log('err_',error.response.status);
-        
-      };}
     getCart();
     console.log(cartItem)
-    
   },[])
     for(let i=0;i<cartItem.length;i++)
     {
@@ -132,7 +131,7 @@ const {user}=useAuth();
         </div>:
         <div className='cartSec'>
         <div className='cartCards'>
-        {cartItem.map(item=>(<CartCard img={`${BaseUrl}${item.thumbnail}`} title={item.title} cost={item.price} createdBy={item.createdBy} rating={item.rating} id={item._id} />))}
+        {cartItem.map(item=>(<CartCard img={`${BaseUrl}${item.thumbnail}`} title={item.title} cost={item.price} createdBy={item.createdBy} rating={item.rating} id={item._id} reload={getCart} />))}
         
 
         </div>

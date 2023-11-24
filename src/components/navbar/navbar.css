@@ -42,6 +42,7 @@
     font-size: 1.1rem;
     font-family: Sofia Sans;
     font-weight: 400;
+    position: relative;
   }
 
   
@@ -128,4 +129,34 @@
   .uploadCourses{
     color: white;
     font-family: Sofia Sans;
+  }
+  .catMenuItems1{
+    position: absolute;
+    padding: 0.4rem 0.4rem;
+    width: 14rem;
+    border-radius: 0.5rem;
+    font-size: 1.12rem;
+    top:180%;
+    left:0%;
+    background-color: white;
+    animation: dropUp 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: 400;
+    box-sizing: border-box;
+    z-index: 5;
+    /* height:30rem; */
+    font-family: Sofia Sans;
+  
+  }
+  .catMenuItem1:hover{
+    border: 1px solid #5928E5;
+    border-radius: 0.5rem;
+  }
+  
+  .catMenuItem1 {
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+  
   }

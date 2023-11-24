@@ -9,10 +9,10 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
 const navigate=useNavigate();
-
+const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
   const [user, setUser] = useState();
   const [loginStatus,setLogin]=useState(false)
-  const getData = async (config) => {
+  const getData = async () => {
     try {
       console.log("loading")
       const response = await  axios.get('/',config);
@@ -27,8 +27,6 @@ const navigate=useNavigate();
   };
   const login = (token) => {
   localStorage.setItem("authId",token);
-  const config = { headers: {'Authorization':`Bearer ${token}`}, withCredentials: false }
-        getData(config);
   };
 
   const logout = () => {
@@ -37,12 +35,10 @@ const navigate=useNavigate();
     localStorage.removeItem('authId')
     navigate('/login')
   };
-  const confi = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
  
   useEffect(() => {
-    getData(confi);
+    getData();
   },[]);
-  console.log('hi',user);
 
   return (
     <AuthContext.Provider value={{ user, login, logout, loginStatus}}>

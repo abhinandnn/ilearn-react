@@ -6,7 +6,7 @@ import axios from "../../../api/axios";
 import { ToastContainer,toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 import { useAuthProcess } from "../../utils/AuthProcessContext";
-const FORGOT_URL ='https://udemy-nx1v.onrender.com/forget-password'
+const FORGOT_URL ='https://ilearn.varankit.tech/forget-password'
 const ForgotPassword = () =>{
   const {isSubmit,doSubmit}=useAuthProcess();
   const [loading,setLoading]=useState(false);

@@ -1,7 +1,7 @@
 import React, { useState ,useEffect } from 'react'
 import axios from '../../../api/axios';
 import { ToastContainer ,toast} from 'react-toastify';
-let RESEND_URL ='https://udemy-nx1v.onrender.com/resend-otp'
+let RESEND_URL ='https://ilearn.varankit.tech/resend-otp'
 function ResendOtp({email}) {
     const [otp, setOtp] = useState("");
 const [seconds, setSeconds] = useState(59);

@@ -8,7 +8,7 @@ import PasswordStrength from '../signup/passwordStrength';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../../api/axios';
 import { toast } from 'react-toastify';
-const RESET_URL = 'https://udemy-nx1v.onrender.com/change-password'
+const RESET_URL = 'https://ilearn.varankit.tech/change-password'
 function ResetPwd() {
   const[loading,setLoading]=useState(false);
     const Navigate=useNavigate();

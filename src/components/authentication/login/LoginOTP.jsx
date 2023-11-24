@@ -8,7 +8,7 @@ import axios from "../../../api/axios";
 import { toast } from 'react-toastify';
 import ResendOtp from './ResendOtp';
 import { useAuthProcess } from '../../utils/AuthProcessContext.jsx';
-let OTP_URL ='https://udemy-nx1v.onrender.com/verify-email'
+let OTP_URL ='https://ilearn.varankit.tech/verify-email'
 function LoginOTP() {
   let token,em,sign=false;
   const {unSubmit,doSubmit}=useAuthProcess();
@@ -19,7 +19,7 @@ function LoginOTP() {
   if(location.pathname==='/forgot/otp')
   { 
     em=localStorage.getItem("forgetEmail");
-OTP_URL='https://udemy-nx1v.onrender.com/verify-otp'}
+OTP_URL='https://ilearn.varankit.tech/verify-otp'}
   else
   {
   console.log(location)
