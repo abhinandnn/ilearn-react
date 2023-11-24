@@ -402,6 +402,7 @@ line-height: 120%;
   gap:1rem;
   align-items: center;
   font-weight: 700;
+  cursor:pointer;
 }
 .resumeLearning>span{
   color: #5928E5;
