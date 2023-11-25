@@ -289,11 +289,12 @@ font-weight: 500;
   }
   .upNextVideo{
   display: flex;
-  gap:0.5rem
+  gap:0.5rem;
+  cursor: pointer;
   
   }
   .upNextThumbnail{
-    width:7rem;
+    min-width:7rem;
 height: 4rem;
 border-radius: 8px;
   }
