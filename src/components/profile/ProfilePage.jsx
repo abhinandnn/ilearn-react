@@ -26,7 +26,7 @@ const [profile,setProfile]=useState({
 })
 const [editProfile,setEdit]=useState(0)
 const [id,setId]=useState()
-const {user,logout}= useAuth();
+const {user,logout,reload}= useAuth();
 const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
 useEffect(()=>
   {
@@ -89,6 +89,7 @@ const handleChange = (e) => {
       },config);
       toast.info('Profile updated');
       console.log(response.data);
+      reload();
       setEdit(0);
     } catch (error) {
       toast.error('');

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login_form from './Login_form';
 import './login.css';
 import logImg from '../../../assets/log.svg'
+import { useAuth } from '../../utils/AuthContext';
+import { useNavigate } from 'react-router-dom';
 function Login() {
-  
+  const {loginStatus}=useAuth();
+  const navigate=useNavigate();
+  useEffect(()=>{
+    if(loginStatus)
+    navigate('/home')
+  },[loginStatus])
   return (
     <div>
     <div className='sidestrip'>

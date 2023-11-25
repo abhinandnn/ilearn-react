@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './educator.css'
 import w1 from '../../assets/whyTeach1.svg'
 import w2 from '../../assets/whyTeach2.svg'
 import w3 from '../../assets/whyTeach3.svg'
 import Footer from '../home/Footer'
 import { Link, useNavigate } from 'react-router-dom'
-
+import axios from '../../api/axios'
+import { toast } from 'react-toastify'
 function EduHome() {
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+  const beEdu=async()=>{
+    try {
+      const response = await axios.patch('/become-instructor/', {},config);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
+  }
+  useEffect(()=>{
+beEdu();
+  },[])
   return (
     <div className='eduHome'>
 <div className='eduTopBanner'>

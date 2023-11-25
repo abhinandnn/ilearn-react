@@ -28,7 +28,7 @@ function EduProfile() {
   })
   const [editProfile,setEdit]=useState(0)
   const [id,setId]=useState()
-  const {user,logout}= useAuth('');
+  const {user,reload}= useAuth('');
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
   useEffect(()=>
     {
@@ -100,6 +100,7 @@ setBioP(profile.bio)}
         },config);
         toast.info('Profile updated');
         console.log(response.data);
+        reload();
         setEdit(0);
       } catch (error) {
         toast.error('');
@@ -107,25 +108,39 @@ setBioP(profile.bio)}
       }
     
     }}
-const [changePfp,setPfp]=useState(false)
-    const [file, setFile] = useState('');
-const [fileUrl,setFileUrl]=useState('')
-  const handleFileChange = async(event) => {
-    const selectedFile = event.target.files[0];
-    console.log('some',selectedFile)
-    setFile(selectedFile);
-    setFileUrl(URL.createObjectURL(selectedFile));
-    setPfp(true)
-    try {
-      const formData = new FormData();
-      formData.append('image', selectedFile);
-      const response = await axios.patch('/update-profileImg', formData,config);
-      console.log(response.data);
-      toast.success(response.data.message)
-    } catch (error) {
-      console.error('Error creating course:', error.response);
-    }
-  };
+    const [changePfp,setPfp]=useState(false)
+    useEffect(()=>(
+      setPfp(profile.profileimg)
+    ),[editProfile])
+      const [file, setFile] = useState('');
+    const [fileUrl,setFileUrl]=useState('')
+      const handleFileChange = async(event) => {
+        const selectedFile = event.target.files[0];
+        console.log('some',selectedFile)
+        setFile(selectedFile);
+        setFileUrl(URL.createObjectURL(selectedFile));
+        try {
+          const formData = new FormData();
+          formData.append('image', selectedFile);
+          const response = await axios.patch('/update-profileImg', formData,config);
+          console.log(response.data);
+        setPfp(true)
+          toast.success(response.data.message)
+        } catch (error) {
+          console.error(error.response);
+        }
+      };
+      const delPfp=async()=>{
+        try {
+          const response = await axios.delete('/delete-profileImg',config);
+          console.log(response.data);
+          toast.success(response.data.message)
+        setPfp(false)
+    
+        } catch (error) {
+          console.error(error.response);
+        }
+      }
   return (
     <>
     <div className='profilePageEdu'>
@@ -170,10 +185,10 @@ const [fileUrl,setFileUrl]=useState('')
         <div>
         <div className='eduProfileUpper'>
           <div className='profileImgEdit'>
-          {profile&&((profile.profileimg||file)?
+          {profile&&((changePfp&&(profile.profileimg||file))?
                 (<img
                   className="circleImg"
-                  src={(profile.profileimg&&!changePfp)?`https://ilearn.varankit.tech/${profile.profileimg}`:fileUrl}
+                  src={(profile.profileimg&&changePfp)?`https://ilearn.varankit.tech/${profile.profileimg}`:fileUrl}
                 />):(<div className='circleImg' style={{background:'black',color:'white'}}>
                   {profile.name.charAt(0).toUpperCase()}
                   </div>))}
@@ -181,12 +196,12 @@ const [fileUrl,setFileUrl]=useState('')
                   <label for="fileInput">
                 <div className="upImg1">
                     <img src={cam1} />
-                    {profile&&(profile.profileimg||file||changePfp)?'Change':'Add a'} profile picture
+                    {profile&&(changePfp)?'Change':'Add a'} profile picture
                 </div>
                 </label>
                 <input type="file" id="fileInput" name="fileInput" accept='.jpg,.jpeg,.png,.heic' onChange={handleFileChange}/>
-                {profile&&(profile.profileimg||file)?
-                <div className="upImg1" style={{ color: "red" }} onClick={''}>
+                {changePfp&&profile?
+                <div className="upImg1" style={{ color: "red" }} onClick={delPfp}>
                     <img
                     className="trashProfile"
                     src={trash}

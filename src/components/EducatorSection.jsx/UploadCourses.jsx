@@ -3,6 +3,9 @@ import thumbPhoto from '../../assets/thumbPhoto.svg'
 import { useState } from 'react';
 import axios from '../../api/axios';
 import { toast } from 'react-toastify';
+import videoThumb from '../../assets/videoThum.svg'
+import pdfThumb from '../../assets/addpdffile.svg'
+import pdfThumb1 from '../../assets/pdfThumb.svg'
 
 function UploadCourses() {
     const [category,setCategory]=useState("")
@@ -21,7 +24,7 @@ function UploadCourses() {
         "AR/VR",
         "Personality Development",
         "Photography",
-        "others"
+        "Others"
       ];
 const setCategory1 =(item)=>{
     setCategory(item);
@@ -61,42 +64,118 @@ const [fileUrl,setFileUrl]=useState('')
       toast.success(response.data.message);
       setCourseId(response.data.data.courseId)
       setStep(2);
-    } catch (error) {
+      } catch (error) {
       console.error('Error creating course:', error.response);
     }
   };
-
-    const [vidfile, setVidFile] = useState();
-    const uploadRef = useRef();
+  const handlePublish=async(e)=>{
+    e.preventDefault();
+    try{
+    const response = await axios.post(`/publish-course/${courseId}`,
+   {
+    price:price,
+    category:category,
+    duration:duration
+   } ,config);
+      console.log(response.data);
+      toast.success(response.data.message);
+      setStep(4);
+      } catch (error) {
+      console.error('Error publish course:', error.response);
+    }
+  }
+    const [uploadVid,setUploadVid]=useState();
+    const [vidfile, setVidFile] = useState(); 
+    const [pdfFile,setPdfFile]=useState();
+    const[vidTitle,setVidTitle]=useState()
+    const [price,setPrice]=useState();
+    const[duration,setDuration]=useState()
+    const[pdfFileName,setPdfFileName]=useState();
+    const uploadRef1 = useRef();
+    const uploadRef0 = useRef();
     const statusRef = useRef();
     const progressRef = useRef();
   
     const UploadVideo = async () => {
-      const fileVid = uploadRef.current.files[0];
+      const fileVid = uploadRef0.current.files[0];
       setVidFile(fileVid);
-      const formData = new FormData();
-      formData.append("video", fileVid);
-      formData.append("videoTitle",'Video OP')
+    setFileName(fileVid.name);
+    };
+    const UploadFiles = async()=>{
+      const fFile = uploadRef1.current.files[0];
+      setPdfFile(fFile);
+    setPdfFileName(fFile.name);
+    }
+    const uploadNex = async(e)=>{
+    if(!vidfile)
+    {
+      toast.error('Select a video');
+    }
+    if(!vidTitle)
+    {
+      toast.error('Add a video title')
+    }
+    else{
+    const formData = new FormData();
+      formData.append("video", vidfile);
+      formData.append("videoTitle", vidTitle);
+      if(pdfFile)
+      formData.append("notes", pdfFile);
+      setUploadVid(true)
       try {
         const response = await axios.post(`/upload-video/${courseId}`, formData, {
           headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, 
           withCredentials: false,
           onUploadProgress: ProgressHandler
         });
-        console.log(response);
+      setUploadVid(false)
+        console.log('up',response);
+      toast.success(response.data.message);
+      setVidTitle('');
+      setVidFile('');
+      setPdfFile('');
+      } catch (error) {
+        toast.error(error.response.message);
+      }}
+    }
+  const UploadIt = async(e)=>{
+    e.preventDefault();
+    if(!vidfile)
+    {
+      toast.error('Select a video');
+    }
+    if(!vidTitle)
+    {
+      toast.error('Add a video title')
+    }
+    else{
+    const formData = new FormData();
+      formData.append("video", vidfile);
+      formData.append("videoTitle", vidTitle);
+      if(pdfFile)
+      formData.append("notes", pdfFile);
+      setUploadVid(true)
+      try {
+        const response = await axios.post(`/upload-video/${courseId}`, formData, {
+          headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, 
+          withCredentials: false,
+          onUploadProgress: ProgressHandler
+        });
+        console.log('up',response);
+      toast.success(response.data.message);
+      setStep(3);
 
       } catch (error) {
         toast.error(error);
-      }
-    };
-  
+      }}}
     const ProgressHandler = (progressEvent) => {
+      if(vidfile&&vidTitle)
+      {
       const percent = (progressEvent.loaded / progressEvent.total) * 100;
       progressRef.current.value = Math.round(percent);
-      statusRef.current.innerHTML = `${Math.round(percent)}% uploaded...`;
-    };
-  
-    
+      statusRef.current.innerHTML = `${Math.round(percent)}%`;
+    }}
+   
   
   return (
     <div style={{background:'#F4F4F4'}}>
@@ -108,8 +187,8 @@ const [fileUrl,setFileUrl]=useState('')
                 <span style={{fontSize:'9rem',lineHeight:"8rem"}}>{step}</span>/3
                 </div>
             </div>
-           {step===1? <>
-                       <form onSubmit={handleSubmit}>
+          {step===1? <>
+                      <form onSubmit={handleSubmit}>
             <div className='uploadSec'>
                 <div className='uploadVertSec'>
                     <span>Upload Thumbnail</span>
@@ -137,7 +216,7 @@ const [fileUrl,setFileUrl]=useState('')
                 <div className='uploadVertSec'>
                     <span>Upload Title</span>
 <input required className='uploadTitle' placeholder='Choose a catchy title.'value={title}
-onChange={(e) => setTitle(e.target.value)}/>
+onChange={(e) => setTitle(e.target.value)}  />
 <span>Upload Description</span>
 
 <textarea required className='uploadDescrip' placeholder='Type description that well 
@@ -151,19 +230,71 @@ onChange={(e) => setDescription(e.target.value)}/>
                 <button className='uploadCourseButton'>Next</button>
                 </div>
                 </form>
-                </>:<>
-                <div className='uploadSec'>
+                </>:(step===2?<>
+                <form onSubmit={UploadIt}>
+                <div className='uploadSec2' style={{paddingTop:'5rem'}}>
+                {uploadVid?<><div className='uploadProg'><span>Your video is being uploaded</span><div style={{display:'flex',gap:'1rem',alignItems:'center'}}><progress className='custom-progress-bar' ref={progressRef} value="0" max="100" /><p ref={statusRef}></p></div></div></>:
+                <>
+                <span>Upload Title</span>
+<input required style={{width:'49.6rem'}} className='uploadTitle' placeholder='Choose a catchy title.'value={vidTitle}
+onChange={(e) => setVidTitle(e.target.value)}  />
+                <div className='uploadSec' style={{paddingTop:'0'}}>
                 <div className='uploadVertSec'>
-                {vidfile?<div><progress ref={progressRef} value="0" max="100" /><p ref={statusRef}></p></div>:<>
-                <label className='customLabel' for="fileInput">Upload Video</label>
-    <input type="file" id="fileInput" name="fileInput" ref={uploadRef} onChange={UploadVideo}/>
+                {<>
+    <span>Upload Video</span>
+                <label for="fileInput0"><div className={`uploadThumb1`} style={vidfile?{background:`url(${fileUrl})`,backgroundColor:'#D9D9D9',backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center'}:{}}>
+    {vidfile?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{fileName}</div></>:
+    <>
+<img src={videoThumb}/>
+<input type="file" id="fileInput0" name="fileInput" ref={uploadRef0} accept=".mp4,.webm,.3gp,.mkv" onChange={UploadVideo}/></>}
+</div></label>
+   
     </>}
                     </div>
                     <div className='uploadVertSec'>
-                    <button className='uploadCourseButton'>Upload file</button>
+                    {<>
+    <span>Upload File</span>
+                <label for="fileInput"><div className={`uploadThumb1`} style={pdfFile?{background:`url(${pdfThumb1})`,backgroundColor:'#D9D9D9',backgroundRepeat:'no-repeat',backgroundPosition:'center'}:{}}>
+    {pdfFile?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{pdfFileName}</div></>:
+    <>
+<img src={pdfThumb}/>
+<input type="file" id="fileInput" name="fileInput1" ref={uploadRef1} accept=".pdf" onChange={UploadFiles}/></>}
+</div></label>
+   
+    </>}
                     </div>
                     </div>
-                </>}
+                    </>
+}
+                    </div>
+                    
+                    <div className='uploadStepButtons'>
+                    <button className='uploadCourseButton' type='button' onClick={uploadNex}>Add Another Lecture</button>
+                    <button className='uploadCourseButton'>Next</button>
+                </div>
+
+                    </form>
+
+                </>:<>
+                <div>
+                <form onSubmit={handlePublish}>
+            <div className='uploadSec'>
+                <div className='uploadVertSec'>
+                    <span>Set course price</span>
+<input required type='number' className='uploadTitle' placeholder='Enter price in INR' value={price}
+onChange={(e) => setPrice(e.target.value)}  />
+<span>Set course duration</span>
+
+<input required type='number' className='uploadTitle' placeholder='Enter duration in hours'value={duration}
+onChange={(e) => setDuration(e.target.value)}  />
+                </div>
+                </div>
+                <div className='uploadStepButtons'>
+                <button className='uploadCourseButton'>Publish</button>
+                </div>
+                </form>
+                </div>
+                </>)}
             </div>
     </div>
   )

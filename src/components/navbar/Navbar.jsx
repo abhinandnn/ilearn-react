@@ -87,16 +87,17 @@ function Navbar() {
     <NavLink style={{height:'18px'}} to={'/cartPage'}><img src={cart} alt="" /></NavLink>
     <NavLink style={{height:'18px'}} to={'/learning/3'}><img src={heart} /></NavLink>
     <NavLink to={'/profilePage'} style={{textDecoration:'none'}}>
-    <div className='pfpNav'>
+    {user&&user.profileimg?<img style={{height:'1.8rem',width:'1.8rem',borderRadius:'100%'}} src={`https://ilearn.varankit.tech/${user.profileimg}`} />:<div className='pfpNav'>
     {user&&user.name.charAt(0).toUpperCase()}
-    </div>
+    </div>}
     </NavLink>
       </div>}
             </>:<div className='secEdu'>
             <NavLink to={'/educator/uploadcourses'}  style={{textDecoration:'none'}}><div className='uploadCourses'>Upload courses</div></NavLink>
-            <NavLink to={'/educator/profile'}  style={{textDecoration:'none'}}><div style={{border:'2px solid #00FF84'}} className='pfpNav'>
-            {user&&user.name.charAt(0).toUpperCase()}
-    </div></NavLink>
+            <NavLink to={'/educator/profile'}  style={{textDecoration:'none'}}>
+            {user&&user.profileimg?<img style={{height:'1.8rem',width:'1.8rem',borderRadius:'100%',border:'2px solid #00FF84'}} src={`https://ilearn.varankit.tech/${user.profileimg}`} />:<div style={{border:'2px solid #00FF84'}} className='pfpNav'>
+    {user&&user.name.charAt(0).toUpperCase()}
+    </div>}</NavLink>
                 </div>}
         </div>
         </div>

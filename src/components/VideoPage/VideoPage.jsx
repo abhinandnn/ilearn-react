@@ -214,7 +214,7 @@ function VideoPage() {
         setComp(response.data.data.completedVideo)
         setVideo(response.data.data.course.videos);
         setLecture(response.data.data.course.videos[0].video._id);
-        setPath(response.data.data.course.videos[0].video.videoUrl_720p);
+        setPath(response.data.data.course.videos[0].video.videoUrl);
       } catch (error) {
         console.log(error);
       }

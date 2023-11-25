@@ -41,7 +41,7 @@ const router = (
           <Route path="cartPage" element={<CartPage/>}/>
           <Route path='profilePage' element={<ProfilePage/>}/>
           <Route path='educator/home' element={<EduHome/>}/>
-<Route path='educator/uploadcourses' element={<UploadCourses/>}/>
+<Route path='educator/uploadCourses' element={<UploadCourses/>}/>
 <Route path='educator/profile' element={<EduProfile/>}/>
 
         </Route>

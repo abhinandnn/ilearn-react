@@ -42,10 +42,13 @@ const navigate=useNavigate();
   useEffect(() => {
     getData(config);
   },[]);
+  const reload=()=>{
+    getData(config);
+  }
   console.log('hi',user);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loginStatus}}>
+    <AuthContext.Provider value={{ user, login, logout, loginStatus,reload}}>
       {children}
     </AuthContext.Provider>
   );
