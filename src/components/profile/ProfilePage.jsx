@@ -20,7 +20,6 @@ const [errorUserName, setErrorUsername] = useState("");
 const [loading,setLoading] = useState("");
 const [nameP,setNameP]=useState();
 const [usernameP,setUserNameP]=useState();
-
 const [profile,setProfile]=useState({
   profileimg:'',
   name:''
@@ -97,8 +96,42 @@ const handleChange = (e) => {
     }
   
   }}
+const [changePfp,setPfp]=useState(false)
+useEffect(()=>(
+  setPfp(profile.profileimg)
+),[editProfile])
+  const [file, setFile] = useState('');
+const [fileUrl,setFileUrl]=useState('')
+  const handleFileChange = async(event) => {
+    const selectedFile = event.target.files[0];
+    console.log('some',selectedFile)
+    setFile(selectedFile);
+    setFileUrl(URL.createObjectURL(selectedFile));
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedFile);
+      const response = await axios.patch('/update-profileImg', formData,config);
+      console.log(response.data);
+    setPfp(true)
+      toast.success(response.data.message)
+    } catch (error) {
+      console.error(error.response);
+    }
+  };
+  const delPfp=async()=>{
+    try {
+      const response = await axios.delete('/delete-profileImg',config);
+      console.log(response.data);
+      toast.success(response.data.message)
+    setPfp(false)
+
+    } catch (error) {
+      console.error(error.response);
+    }
+  }
   return (
     <div>
+
     <div className="profilePage">
         <div className="sideStripP">
         <div className="profileNav">
@@ -117,7 +150,7 @@ const handleChange = (e) => {
         {!editProfile ? (
             <div className="profileSec1">
               <div className="profileIntro">
-              {profile&&(profile.profileimg?
+              {profile&&((profile.profileimg)?
                 (<img
                   className="circleImg"
                   src={`https://ilearn.varankit.tech/${profile.profileimg}`}
@@ -146,19 +179,23 @@ const handleChange = (e) => {
             <div className="editProfile">
               <div className="editStatement">Edit profile</div>
               <div className="editProfile1">
-              {profile&&(profile.profileimg?
+              {profile&&((changePfp&&(profile.profileimg||file))?
                 (<img
                   className="circleImg"
-                  src={`https://ilearn.varankit.tech/${profile.profileimg}`}
+                  src={(profile.profileimg&&changePfp)?`https://ilearn.varankit.tech/${profile.profileimg}`:fileUrl}
                 />):(<div className='circleImg' style={{background:'black',color:'white'}}>
                   {profile.name.charAt(0).toUpperCase()}
                   </div>))}
                 <div className="profileIntroText" id="editProfileText">
-                <div>
+                <label for="fileInput">
+                <div className="upImg1">
                     <img src={cam1} />
-                    Change profile picture
+                    {profile&&(changePfp)?'Change':'Add a'} profile picture
                 </div>
-                <div style={{ color: "red" }}>
+                </label>
+                <input type="file" id="fileInput" name="fileInput" accept='.jpg,.jpeg,.png,.heic' onChange={handleFileChange}/>
+                {changePfp&&profile?
+                <div className="upImg1" style={{ color: "red" }} onClick={delPfp}>
                     <img
                     className="trashProfile"
                     src={trash}
@@ -166,6 +203,7 @@ const handleChange = (e) => {
                     />
                     Remove profile picture
                 </div>
+                :<></>}
                 </div>
             </div>
             <form onSubmit={handleSubmit}>

@@ -37,6 +37,7 @@ const [fileUrl,setFileUrl]=useState('')
     setFileUrl(URL.createObjectURL(selectedFile));
     setFileName(selectedFile.name);
   };
+  const[courseId,setCourseId]=useState();
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false };
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -57,7 +58,8 @@ const [fileUrl,setFileUrl]=useState('')
 
       const response = await axios.post('/create-course', formData,config);
       console.log(response.data);
-      toast.success(response.data.message)
+      toast.success(response.data.message);
+      setCourseId(response.data.data.courseId)
       setStep(2);
     } catch (error) {
       console.error('Error creating course:', error.response);
@@ -70,18 +72,21 @@ const [fileUrl,setFileUrl]=useState('')
     const progressRef = useRef();
   
     const UploadVideo = async () => {
-      const file = uploadRef.current.files[0];
-      setVidFile(file);
+      const fileVid = uploadRef.current.files[0];
+      setVidFile(fileVid);
       const formData = new FormData();
-      formData.append("video", file);
+      formData.append("video", fileVid);
+      formData.append("videoTitle",'Video OP')
       try {
-        const response = await axios.post("/fileupload", formData, {
+        const response = await axios.post(`/upload-video/${courseId}`, formData, {
+          headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, 
+          withCredentials: false,
           onUploadProgress: ProgressHandler
         });
-  
-        SuccessHandler(response);
+        console.log(response);
+
       } catch (error) {
-        ErrorHandler(error);
+        toast.error(error);
       }
     };
   
@@ -91,15 +96,7 @@ const [fileUrl,setFileUrl]=useState('')
       statusRef.current.innerHTML = `${Math.round(percent)}% uploaded...`;
     };
   
-    const SuccessHandler = (response) => {
-      statusRef.current.innerHTML = response.data;
-      progressRef.current.value = 0;
-    };
-  
-    const ErrorHandler = (error) => {
-      statusRef.current.innerHTML = "upload failed!!";
-      console.error("Error uploading file:", error);
-    };
+    
   
   return (
     <div style={{background:'#F4F4F4'}}>

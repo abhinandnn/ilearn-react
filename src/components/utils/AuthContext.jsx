@@ -16,9 +16,9 @@ const navigate=useNavigate();
     try {
       console.log("loading")
       const response = await  axios.get('/',config);
-      setUser(response.data.user);
+      setUser(response.data.data.user);
       setLogin(true);
-      console.log(response.data.user);
+      console.log(response);
     } catch (error) {
       console.log('err_',error.response.status);
       if(error.response)

@@ -15,7 +15,7 @@ function Navbar() {
     const [categories,setCategories]=useState([]);
     const {loginStatus,user}=useAuth()
     console.log(user);
-    const eduStatus = (location.pathname === '/educator/home'||location.pathname === '/educator/uploadCourses'||location.pathname === '/educator/Profile');
+    const eduStatus = (location.pathname === '/educator/home'||location.pathname === '/educator/uploadcourses'||location.pathname === '/educator/profile');
   const isSignup = (location.pathname === '/signup');
   const [isOpen, setIsOpen] = useState(false);
     const openMenu = () => {setIsOpen(true);
@@ -93,10 +93,10 @@ function Navbar() {
     </NavLink>
       </div>}
             </>:<div className='secEdu'>
-            <NavLink to={'/educator/uploadCourses'}  style={{textDecoration:'none'}}><div className='uploadCourses'>Upload courses</div></NavLink>
-            <div style={{border:'2px solid #00FF84'}} className='pfpNav'>
+            <NavLink to={'/educator/uploadcourses'}  style={{textDecoration:'none'}}><div className='uploadCourses'>Upload courses</div></NavLink>
+            <NavLink to={'/educator/profile'}  style={{textDecoration:'none'}}><div style={{border:'2px solid #00FF84'}} className='pfpNav'>
             {user&&user.name.charAt(0).toUpperCase()}
-    </div>
+    </div></NavLink>
                 </div>}
         </div>
         </div>
