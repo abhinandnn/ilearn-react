@@ -194,9 +194,10 @@ setBioP(profile.bio)}
               <div className='profilePageEduText'>
               Your Courses
         </div>
-              {owned?owned.map(own=>
-            <EduCard _id={own._id} title={own.title} price={own.price} updatedOn={own.updatedAt} students={own.totalStudents} thumb={own.thumbnail}/>):''}
-        </div></>):<>
+        <div className='eduCards'>
+              {owned&&owned.map(own=>
+            <EduCard _id={own._id} title={own.title} price={own.price} updatedOn={own.updatedAt} students={own.totalStudents} thumb={own.thumbnail}/>)}
+        </div></div></>):<>
         <div>
         <div className='eduProfileUpper'>
           <div className='profileImgEdit'>

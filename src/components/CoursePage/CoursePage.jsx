@@ -19,6 +19,7 @@ import { toast } from 'react-toastify';
 import useRazorpay from 'react-razorpay'
 import { useAuth } from '../utils/AuthContext';
 import heartfill from '../../assets/heartfill.svg'
+import GiveRating from './GiveRating';
 function CoursePage() {
   const location = useLocation();
 const {user}=useAuth();
@@ -208,8 +209,16 @@ const checkPaymentStatus = async (
     console.error("Error checking payment status:", error);
   }
 };
+const[showReview,setShowReview]=useState(true)
+const openReview = () => {
+  setShowReview(true);
+};
 
+const closeReview = () => {
+  setShowReview(false);
+};
   return (
+    <>
     <div className='coursePage'>
       <div className='topSec'>
         <div className='topBanner1'>
@@ -273,6 +282,8 @@ const checkPaymentStatus = async (
       <TeachFooter/>
     <Footer/>
     </div>
+    {showReview&&<GiveRating onClose={closeReview} id={_id}/>}
+</>
   )
 }
 

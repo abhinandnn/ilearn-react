@@ -384,6 +384,57 @@ outline: none;
 .footButton:active{
     background-color: white;
 color: #0E0035;
-    
-
+}
+.giveRating{
+    width: 29.8rem;
+height: 34rem;
+padding: 2rem;
+background: white;
+border-radius: 0.75rem;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+gap:2rem
+}
+.giveRating1>span{
+font-size: 1.75rem;
+}
+.giveRating1{
+    display: flex;
+flex-direction: column;
+    gap: 1.2rem;
+}
+.clickRate{
+    display: flex;
+    gap:0.5rem;
+    height:3.8rem;
+}
+.revComment{
+    border-radius: 0.5rem;
+border: 1px solid #F89D07;
+background: #FFF5E5;
+width: 25rem;
+height: 15rem;
+resize:none;
+outline: none;
+padding: 1.2rem;
+font-size: 1.37rem;
+box-sizing: border-box;
+font-family: Sofia Sans;
+}
+#postRev{
+    position: static!important;
+    min-width: none;
+    width:fit-content;
+    color: #fff;
+    background-color: #5928E5;
+    font-weight: 500;
+}
+.modR{
+    z-index: 1000!important;
+    background:rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }

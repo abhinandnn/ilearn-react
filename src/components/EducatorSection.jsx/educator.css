@@ -258,6 +258,7 @@ input[type='file']{
 display: flex;
 flex-direction: column;
 padding:6rem 10vw;
+padding-right: 6vw;
 /* padding-bottom: 0rem; */
 gap:2.5rem;
 background: #EAEAEA;
@@ -355,7 +356,6 @@ background: white;
 display: flex;
 flex-direction: column;
 gap:0.5rem;
-justify-content: center;
   }
   .eduCard{
     position: relative;
@@ -389,5 +389,14 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
 width: 20rem;
+  }
+  .eduCards{
+    margin-top: 3rem;
+    display: flex;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  
   }
   
