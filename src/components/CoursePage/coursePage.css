@@ -397,7 +397,7 @@ flex-direction: column;
 gap:2rem
 }
 .giveRating1>span{
-font-size: 1.75rem;
+font-size: 1.6rem;
 }
 .giveRating1{
     display: flex;
@@ -418,7 +418,7 @@ height: 15rem;
 resize:none;
 outline: none;
 padding: 1.2rem;
-font-size: 1.37rem;
+font-size: 1.3rem;
 box-sizing: border-box;
 font-family: Sofia Sans;
 }
@@ -431,10 +431,13 @@ font-family: Sofia Sans;
     font-weight: 500;
 }
 .modR{
-    z-index: 1000!important;
-    background:rgba(0, 0, 0, 0.3);
+    z-index: 40;
+    background:rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0
 }

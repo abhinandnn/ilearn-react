@@ -16,7 +16,7 @@ const GiveRating = ({id, onClose}) => {
       try {
         const response = await axios.post('/rate-course', {
           courseId:id,
-          rating:rating,
+          rating:rating.toString(),
           comment:description
         },config);
         console.log('Review submitted:', response.data);
