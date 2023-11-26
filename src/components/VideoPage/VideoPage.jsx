@@ -5,7 +5,8 @@ import Footer from '../home/Footer'
 import AppPromote from '../utils/AppPromote'
 import Review from '../utils/Review'
 import CircularProgress from '../utils/CircularProgress'
-import GiveRating from '../utils/GiveRating'
+import GiveRate from '../utils/GiveRate'
+import GiveRating from '../CoursePage/GiveRating'
 import axios from '../../api/axios'
 import { useLocation } from 'react-router-dom'
 import React, { useRef, useState, useEffect } from 'react';
@@ -63,6 +64,7 @@ function VideoPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [subtitleTrack, setSubtitleTrack] = useState(false);
+const[revPage,setRevPage]=useState(1)
   
   const togglePlayPause = () => {
     const video = videoRef.current;
@@ -209,6 +211,7 @@ function VideoPage() {
         const response = await  axios.get(`/getCourseById/${_id}`,config);
         setCreator(response.data.data.course.createdBy);
         setCourse(response.data.data.course);
+        setCourseData(response.data.data)
         setComp(response.data.data.completedVideo)
         setVideo(response.data.data.course.videos);
         setLecture(response.data.data.course.videos[0].video._id);
@@ -364,20 +367,23 @@ Files by Tutor</div>
         },
       ]
     }/>:<div className='gapOP'></div>}
-    <Review isVideoPage={true} avgRating={4.8} name={'sbhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+    
 
     </div></div>
     <div className='upNextSec'>
     <UpNext videos={videoOk} thumb={`https://ilearn.varankit.tech/${course.thumbnail}`} changeVideo={changeVideo}/>
     {compVid&&<CircularProgress totalLect={videoOk.length} completedLect={compVid}/>}
-    <GiveRating reviewNo={1200} avgRating={4.8}/>
+    <GiveRate reviewNo={1200} avgRating={4.8}/>
     </div>
+    {courseData.review&&<Review owned={courseData.owned} isVideoPage={true} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
     
     </div>
     </div>
     <AppPromote/>
     <Footer/>
+    {showReview&&<GiveRating onClose={closeReview} id={_id}/>}
     </div>
+
   )
   
   }

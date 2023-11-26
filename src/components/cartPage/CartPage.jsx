@@ -37,91 +37,105 @@ const {user}=useAuth();
     {
       total=total+parseInt(cartItem[i].price);
     }
-  const handlePayment = async () => {
-    let key1;
+    const handlePayment1 = async () => {
     try {
       const response = await axios.post(
-        `createOrderCart/${total}`,null,
+        `buyCourseCart/${total}`,null,
         { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
       );
-    key1=response.data;
+      toast.success(response.data.message)
+      navigateTo('/learning/1');
       console.log(response.data);
     } catch (error) {
       console.error("Error creating order:", error.response.data);
-      return null;
-    }
-  const options = await getRazorpayOptions(key1);
-    const rzp1 = new Razorpay(options);
-    console.log(rzp1);
-    rzp1.on("payment.failed", async function (response) {
-      console.log(response.error);})
-      await rzp1.open();
-    };
+      toast.error(error.response.data.message)
+    }}
+  // const handlePayment = async () => {
+  //   let key1;
+  //   try {
+  //     const response = await axios.post(
+  //       `createOrderCart/${total}`,null,
+  //       { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+  //     );
+  //   key1=response.data;
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error("Error creating order:", error.response.data);
+  //     return null;
+  //   }
+  // const options = await getRazorpayOptions(key1);
+  //   const rzp1 = new Razorpay(options);
+  //   console.log(rzp1);
+  //   rzp1.on("payment.failed", async function (response) {
+  //     console.log(response.error);})
+  //     await rzp1.open();
+  //   };
    
-  const [Razorpay] = useRazorpay();
-  const getRazorpayOptions = async (key1) => {
-    return {
-      key: key1.key_id,
-      amount: total,
-      currency: "INR",
-      name: "iLearn",
-      description: "Online Courses",
-      image: {},
-      order_id: key1.order_id,
-      handler: function (response) {
-        console.log("response", response);
-        console.log();
-        checkPaymentStatus(
-          response.razorpay_order_id,
-          response.razorpay_payment_id,
-          response.razorpay_signature,
-        )
-          .then((result) => {
-            console.log("Payment Status:", result);
-          })
-          .catch((error) => {
-            console.error("Error checking payment status:", error);
-          });
-      },
-      prefill: {
-        name: user.name,
-        email: user.email,
-      },
-      notes: {
-        address: "iLearn Pvt.",
-      },
-      theme: {
-        color: "#5928E6",
-      },
-    };
-  }
-  const checkPaymentStatus = async (
-    order_id,
-    payment_id,
-    signature,
-    subscriptionType
-  ) => {
-    console.log(order_id, payment_id, signature, subscriptionType);
-    try {
-      const response = await axios.post(
-        `/checkPayment/${cartItem[0]._id}`,
-        { order_id, payment_id, signature},
-        config
-      );
-      toast('Payment Successful')
-      navigateTo('/learning/1');
-      return response.data;
+  // const [Razorpay] = useRazorpay();
+  // const getRazorpayOptions = async (key1) => {
+  //   return {
+  //     key: key1.key_id,
+  //     amount: total,
+  //     currency: "INR",
+  //     name: "iLearn",
+  //     description: "Online Courses",
+  //     image: {},
+  //     order_id: key1.order_id,
+  //     handler: function (response) {
+  //       console.log("response", response);
+  //       console.log();
+  //       checkPaymentStatus(
+  //         response.razorpay_order_id,
+  //         response.razorpay_payment_id,
+  //         response.razorpay_signature,
+  //       )
+  //         .then((result) => {
+  //           console.log("Payment Status:", result);
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error checking payment status:", error);
+  //         });
+  //     },
+  //     prefill: {
+  //       name: user.name,
+  //       email: user.email,
+  //     },
+  //     notes: {
+  //       address: "iLearn Pvt.",
+  //     },
+  //     theme: {
+  //       color: "#5928E6",
+  //     },
+  //   };
+  // }
+  // const checkPaymentStatus = async (
+  //   order_id,
+  //   payment_id,
+  //   signature,
+  //   subscriptionType
+  // ) => {
+  //   console.log(order_id, payment_id, signature, subscriptionType);
+  //   try {
+  //     const response = await axios.post(
+  //       `/checkPayment/${cartItem[0]._id}`,
+  //       { order_id, payment_id, signature},
+  //       config
+  //     );
+  //     toast('Payment Successful')
+  //     navigateTo('/learning/1');
+  //     return response.data;
 
-    } catch (error) {
-      console.error("Error checking payment status:", error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error checking payment status:", error);
+  //   }
+  // };
+
 
   return (
     <div>
       <div className='cartPage'>
       <div className='cartBanner'>
-        Your cart {}
+        Your cart
       </div>
       <div className='cartSection'>
         {cartItem.length?cartItem.length:'No'} courses in cart
@@ -137,7 +151,7 @@ const {user}=useAuth();
         </div>
         <div className='cartTotal'>
         Total <div className='cartCost'>₹{total}<span>&#40;incl. of all taxes&#41;</span></div>
-        <button className='cartButton' onClick={handlePayment}>Checkout</button>
+        <button className='cartButton' onClick={handlePayment1}>Checkout</button>
         </div>
         </div>}
       </div>

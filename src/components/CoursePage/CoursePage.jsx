@@ -137,6 +137,19 @@ getData1();
     setwish1(courseData.in_wishlist)
     setcart1(courseData.in_cart)
   },[courseData.in_wishlist,courseData.in_cart])
+  const handlePayment1 = async () => {
+    try {
+      const response = await axios.post(
+        `buyCourse/${_id}`,null,
+        { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
+      );
+      toast.success(response.data.message)
+      navigateTo('/learning/1');
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error creating order:", error.response.data);
+      toast.error(error.response.data.message)
+    }}
 const handlePayment = async () => {
   let key1;
   try {
@@ -245,7 +258,7 @@ const closeReview = () => {
         <div className='fixCard1' style={courseData.owned?{height:'6rem'}:{}}>
           <div className='preve' onClick={()=>navigateTo(courseData.owned?'/videoPage':'/coursePage')}><img src={playB}/>{!courseData.owned?'Preview this course':'Watch the lectures'}</div>
        {!courseData.owned? <> <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img style={{cursor:'pointer'}} src={wish1?heartfill:heart} onClick={!wish1?addWish:delWish}/></div>
-        <button className='courseCButton' id='C2' onClick={handlePayment}>Buy now</button>
+        <button className='courseCButton' id='C2' onClick={handlePayment1}>Buy now</button>
         <button className='courseCButton' onClick={!cart1?addCart:delCart}>{!cart1?'Add to cart':'Remove from cart'}</button></>:''}
         </div>
         <div className='fixCard2'>

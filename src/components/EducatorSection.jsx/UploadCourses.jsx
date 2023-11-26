@@ -81,7 +81,7 @@ const [fileUrl,setFileUrl]=useState('')
    } ,config);
       console.log(response.data);
       toast.success(response.data.message);
-      setStep(4);
+      navigate('/educator/profile')
       } catch (error) {
       toast.error(error.response.data.message);
       console.error('Error publish course:', error.response);

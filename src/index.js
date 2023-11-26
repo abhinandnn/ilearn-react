@@ -23,6 +23,7 @@ import UploadCourses from './components/EducatorSection.jsx/UploadCourses.jsx';
 import EduProfile from './components/EducatorSection.jsx/EduProfile.jsx';
 import ProtectedRoute from './components/utils/ProtectedRoute.jsx';
 import CatCourses from './components/home/CatCourses.jsx';
+import Wallet from './components/wallet/Wallet.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
@@ -45,7 +46,7 @@ const router = (
           <Route path='educator/home' element={<EduHome/>}/>
 <Route path='educator/uploadCourses' element={<UploadCourses/>}/>
 <Route path='educator/profile' element={<EduProfile/>}/>
-
+<Route path='wallet' element={<Wallet/>}/>
         </Route>
       </Routes>
 )

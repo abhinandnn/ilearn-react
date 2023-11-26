@@ -1,7 +1,7 @@
 import React from 'react'
 import star1 from '../../assets/star1.svg'
 
-function GiveRating(props) {
+function GiveRate(props) {
   return (
     <div className='rateCard'>
         <div className='reviewHeading'>{props.avgRating}{<img src={star1} />}</div>
@@ -12,4 +12,4 @@ function GiveRating(props) {
   )
 }
 
-export default GiveRating
+export default GiveRate

@@ -1,0 +1,15 @@
+.walletAmt{
+    font-size: 1.7rem;
+    color:#0E0035;
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    min-width:12rem
+}
+.walletSec{
+    padding:4rem 10vw;
+    font-weight: 700;
+    display: flex;
+    gap:8rem
+   
+}
