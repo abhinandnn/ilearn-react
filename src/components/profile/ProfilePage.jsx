@@ -141,7 +141,7 @@ const [fileUrl,setFileUrl]=useState('')
             </div>
             <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Your learnings</div></Link>
             <Link to={'/learning/3'} style={{textDecoration:'none'}}><div className="profileNavItem">Wishlist</div></Link>
-            <Link to={'cartPage'} style={{textDecoration:'none'}}><div className="profileNavItem">Your cart</div></Link>
+            <Link to={'/cartPage'} style={{textDecoration:'none'}}><div className="profileNavItem">Your cart</div></Link>
             <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Notification</div></Link>
             <Link to={'/learning/1'} style={{textDecoration:'none'}}><div className="profileNavItem">Help</div></Link>
             <div className="profileNavItem" onClick={logout}>Log out</div>

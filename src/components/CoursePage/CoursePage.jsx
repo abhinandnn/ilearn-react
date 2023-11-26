@@ -63,7 +63,7 @@ const [course, setCourse] = useState(
         setCourse(response.data.data.course)
         setVideo(response.data.data.course.videos)
         setCourseData(response.data.data)
-console.log(response);
+        console.log(response)
       } catch (error) {
         console.log(error);
       }
@@ -80,7 +80,7 @@ console.log(response);
     }
   getData();
 getData1();
-},[])
+},[_id])
   const addCart = async () => {
     try {
       console.log(config);
@@ -135,7 +135,7 @@ const handlePayment = async () => {
   let key1;
   try {
     const response = await axios.post(
-      `createOrder/${_id}`,null,
+      `createOrder/${course.price}`,null,
       config
     );
     console.log(response.data);
@@ -225,7 +225,7 @@ const checkPaymentStatus = async (
         <div className='detailSec'>{course.totalStudents < 10 ? `0${course.totalStudents}` : `${course.totalStudents}`??null}
         <span >Active learners</span></div>
         <div className='detailSec' id='ds1'>{videoOk?videoOk.length:''}<span>Lectures</span></div>
-        <div className='detailSec' id='ds2'>10<span>Hours</span></div>
+        <div className='detailSec' id='ds2'>{course.duration}<span>Hours</span></div>
         <div className='fixCar'>
         <div className='fixedCard'>
         <div className='fixCard1'>
@@ -251,7 +251,13 @@ const checkPaymentStatus = async (
       <p>{course.description}</p>
       <h1>Your Tutor</h1>
       <div className='creatorIntro'>
-        <img src={`https://ilearn.varankit.tech${creator.profileimg}`} style={{height:'10rem',width:'10rem',borderRadius:'100%'}}/>
+      {creator&&((creator.profileimg)?
+                (<img
+                  className="circleImg"
+                  src={`https://ilearn.varankit.tech/${creator.profileimg}`}
+                />):(<div className='circleImg' style={{background:'black',color:'white'}}>
+                  {creator.name&&creator.name.charAt(0).toUpperCase()}
+                  </div>))}
         <div className='creatorInt'>
           <h1>{creator.name}</h1>
           <p>{creator.domain}</p>

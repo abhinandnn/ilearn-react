@@ -4,12 +4,14 @@ import searchIcon from '../../assets/search.svg'
 import heart from '../../assets/heart.svg'
 import cart from '../../assets/cart.svg'
 import notification from '../../assets/notification.svg'
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import arrowpic from '../../assets/arrow.svg'
 import { useState } from 'react';
 import axios from '../../api/axios';
 function Navbar() {
+  const navigate=useNavigate();
+
   let menuCloseTimeout;
     const location = useLocation();
     const [categories,setCategories]=useState([]);
@@ -39,6 +41,24 @@ function Navbar() {
       }
     };
     getCat();},[])
+    const[search,setSearch]=useState();
+    const[isOpen1,setOpen1]=useState(false);
+    const searchIt = async (e) => {
+      try {
+        const response = await  axios.get(`/search-course/?coursetitle=${e.target.value}&page=1&pagesize=5`,config);
+      setSearch(response.data.data.courses);
+      setOpen1(true);
+
+      } catch (error) {
+        console.log("catNameError",error);
+      setOpen1(false);
+
+      }
+    };
+  const navigateTo=(ke)=>{
+  const data= {id:ke};
+  navigate('/coursePage',{state:data});
+setOpen1(false)}
   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
             <div style={!loginStatus?{marginRight:'2rem'}:{}} className={eduStatus?"eduInnerbox":"innerbox"}>
@@ -72,7 +92,17 @@ function Navbar() {
                 <div className="search-bar">
                     <img className={"search-icon"} src={searchIcon}/>
                     <input type='textarea'
-                    placeholder='What do you want to Learn'></input>
+                    placeholder='What do you want to Learn'
+                    onChange={searchIt}/>
+                    {isOpen1 && (
+        <div className="catMenuItems2">
+          {search.map((item, index) => (
+            <div key={index} className={`catMenuItem2`} onClick={()=>navigateTo(item._id)}>
+              {item.title}
+            </div>
+          ))}
+        </div>
+      )}
                 </div>
                 <div className="popular-courses"><NavLink style={{color:'black', textDecoration:'none'}}to='courses'>Popular courses</NavLink></div>
                 <NavLink to={'educator/home'} style={{color:'black', textDecoration:'none'}}><div className="teach">Teach on ilearn</div></NavLink>

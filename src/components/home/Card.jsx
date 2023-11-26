@@ -3,7 +3,7 @@ import star from "../../assets/star.svg"
 import { useNavigate } from 'react-router-dom'
 import trash1 from '../../assets/trash.svg'
 import axios from '../../api/axios'
-function Card({ke,imgSrc,title,creator,rating,cost,link,thumb,style,trash,reload}) {
+function Card({ke,title,creator,rating,cost,link,thumb,style,trash,reload}) {
   const navigate=useNavigate();
   const data= {id:ke};
   const navigateTo=()=>{

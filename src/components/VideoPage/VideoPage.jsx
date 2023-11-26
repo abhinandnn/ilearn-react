@@ -189,7 +189,7 @@ function VideoPage() {
             video.currentTime -= 10;
             break;
           case ' ':
-            e.preventDefault();
+            e.preventDefault()
             togglePlayPause();
             break;
             case 'Escape':
@@ -349,30 +349,24 @@ Files by Tutor</div>
 </svg>
         Community</div>
         </div>
-   {0? <FilesTutor filesNum={4} files={
+   {1? <FilesTutor filesNum={1} files={
       [
         {
-          title:'helloworld',
+          title:`helloworld`,
           size:'20'
         },
-        {
-          title:'helloworld',
-          size:'20'
-        },
-        {
-          title:'helloworld',
-          size:'20'
-        }
       ]
-    }/>:<></>}
+    }/>:<div className='gapOP'></div>}
+    <Review isVideoPage={true} avgRating={4.8} name={'sbhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+
     </div></div>
     <div className='upNextSec'>
     <UpNext videos={videoOk} thumb={`https://ilearn.varankit.tech/${course.thumbnail}`} changeVideo={changeVideo}/>
     {compVid&&<CircularProgress totalLect={videoOk.length} completedLect={compVid}/>}
     <GiveRating reviewNo={1200} avgRating={4.8}/>
     </div>
+    
     </div>
-    <Review isVideoPage={true} avgRating={4.8} name={'sbhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
     </div>
     <AppPromote/>
     <Footer/>

@@ -9,13 +9,29 @@ import Footer from './Footer'
 import CoursePage from '../CoursePage/CoursePage'
 import { useState,useEffect,useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from '../../api/axios'
 function Home() {
   const navigate=useNavigate()
-  const [selectedCategory, setCategory] = useState('Python');
+  const [categories,setCategories]=useState([]);
+  const [selectedCategory, setCategory] = useState();
   const handleCategoryClick = (categoryName) => {
     setCategory(categoryName);
   };
-  
+  const config = { headers: {'Authorization':`Bearer ${localStorage.getItem("authId")}`}, withCredentials: false }
+  useEffect(()=>{
+  const getCat = async () => {
+    try {
+      console.log("loadingCat")
+      const response = await  axios.get('/getCategoriesName',config);
+      setCategories(response.data.value.data.categories);
+      setCategory(response.data.value.data.categories[0]);
+      console.log(response.data.value.data.categories);
+    } catch (error) {
+      console.log("catNameError",error);
+    }
+  };
+  getCat();
+},[])
   return (
     <div className="homePage">
       <div className='logoMobile' id='logoMob'><span style={{color:"#5928E5"}}>i</span>Learn</div>
@@ -37,12 +53,16 @@ function Home() {
       <span className='subHeadingHome' id='phoneSubHeading'>Variety of courses to build up your skills</span>
       <p>Choose from over 210,000 online video courses</p>
       <ul className='catBar'>
-        <li className='catItem'><NavLink  className={`catLink ${selectedCategory==='Python'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('Python')}>Python</NavLink></li>
-        <li className='catItem'><NavLink  className={`catLink ${selectedCategory==='UI/UX'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('UI/UX')}>UI/UX</NavLink></li>
-        <li className='catItem'><NavLink className={`catLink ${selectedCategory==='Web Development'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('Web Development')}>Web Development</NavLink></li>
-        <li className='catItem' id='catItem2'><NavLink className={`catLink ${selectedCategory==='Javascript'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('Javascript')}>Javascript</NavLink></li>
-        <li className='catItem' id='catItem2'><NavLink className={`catLink ${selectedCategory==='C++'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('C++')}>C++</NavLink></li>
-        <li className='catItem' id='catItem2'><NavLink className={`catLink ${selectedCategory==='Flutter'?'catLinkActivated':''}`} onClick={() => handleCategoryClick('Flutter')}>Flutter</NavLink></li>
+      {categories.map((category, index) => (
+        <li key={index} className='catItem'>
+          <NavLink
+            className={`catLink ${selectedCategory === category ? 'catLinkActivated' : ''}`}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category}
+          </NavLink>
+        </li>
+      ))}
       </ul>
       <PopularCourses categoryName={selectedCategory}/>
       </div>
