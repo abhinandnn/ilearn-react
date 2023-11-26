@@ -16,6 +16,7 @@
 .cartSection{
     padding: 2rem 10vw;
     padding-right: 7vw;
+    padding-bottom: 5rem;
     font-size: 1.5rem;
     font-weight: 600;
     min-height:20rem
@@ -67,7 +68,7 @@ top:14%
 .cartCardOpts{
     margin-top: 0.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 0.6rem;
 }
 .cartCardStars{
     color: #F89D07;
@@ -85,6 +86,7 @@ top:14%
     gap: 0.2rem;
     font-size: 0.875rem;
 font-weight: 400;
+width: max-content;
 }
 .cartCardTrash{
     color: red;

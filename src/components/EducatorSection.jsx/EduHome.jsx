@@ -27,7 +27,7 @@ beEdu();
         <span className='uploadCourseText'>
         Turn what you know in an opportunity and reach <span className='paintEffect'>millions.</span>
         </span>
-  <Link to={'/educator/uploadCourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
+  <Link to={'/educator/uploadcourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
 
     </div>
 </div>
@@ -52,7 +52,7 @@ beEdu();
   </div>
   </div>
   <h1>Record your first course and get started.</h1>
-  <Link to={'/educator/uploadCourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
+  <Link to={'/educator/uploadcourses'}><button className='uploadCourseButton'>Upload a course</button></Link>
 
 </div>
 <Footer eduStatus={true} />

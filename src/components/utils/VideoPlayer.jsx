@@ -136,10 +136,6 @@ const VideoPlayer = () => {
             e.preventDefault();
             video.currentTime -= 10;
             break;
-          case ' ':
-            e.preventDefault();
-            togglePlayPause();
-            break;
             case 'Escape':
               e.preventDefault();
               if (document.fullscreenElement) {

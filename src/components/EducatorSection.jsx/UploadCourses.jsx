@@ -6,8 +6,10 @@ import { toast } from 'react-toastify';
 import videoThumb from '../../assets/videoThum.svg'
 import pdfThumb from '../../assets/addpdffile.svg'
 import pdfThumb1 from '../../assets/pdfThumb.svg'
-
+import videoBack from '../../assets/videoBack.svg'
+import { useNavigate } from 'react-router-dom';
 function UploadCourses() {
+  const navigate=useNavigate()
     const [category,setCategory]=useState("")
   const [isOpen, setIsOpen] = useState(false);
   const [step,setStep]=useState(1);
@@ -81,6 +83,7 @@ const [fileUrl,setFileUrl]=useState('')
       toast.success(response.data.message);
       setStep(4);
       } catch (error) {
+      toast.error(error.response.data.message);
       console.error('Error publish course:', error.response);
     }
   }
@@ -148,7 +151,7 @@ const [fileUrl,setFileUrl]=useState('')
     {
       toast.error('Add a video title')
     }
-    else{
+    if(vidfile&&vidTitle){
     const formData = new FormData();
       formData.append("video", vidfile);
       formData.append("videoTitle", vidTitle);
@@ -175,7 +178,12 @@ const [fileUrl,setFileUrl]=useState('')
       progressRef.current.value = Math.round(percent);
       statusRef.current.innerHTML = `${Math.round(percent)}%`;
     }}
-   
+  const back2=()=>{
+    setUploadVid(false);
+    setVidFile('');
+    setPdfFile('');
+  setVidTitle('');
+setStep(2)  }
   
   return (
     <div style={{background:'#F4F4F4'}}>
@@ -193,7 +201,8 @@ const [fileUrl,setFileUrl]=useState('')
                 <div className='uploadVertSec'>
                     <span>Upload Thumbnail</span>
 <div className={`uploadThumb1`} style={fileName?{background:`url(${fileUrl})`,backgroundColor:'#D9D9D9',backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center'}:{}}>
-    {fileName?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{fileName}</div></>:
+    
+    {fileName?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{fileName}</div><label className='customLabel' for="fileInput">Choose another file</label><input type="file" id="fileInput" name="fileInput" accept='.jpg,.jpeg,.png,.heic' onChange={handleFileChange}/></>:
     <>
 <img src={thumbPhoto}/>
 <label className='customLabel' for="fileInput">Choose file</label>
@@ -242,8 +251,8 @@ onChange={(e) => setVidTitle(e.target.value)}  />
                 <div className='uploadVertSec'>
                 {<>
     <span>Upload Video</span>
-                <label for="fileInput0"><div className={`uploadThumb1`} style={vidfile?{background:`url(${fileUrl})`,backgroundColor:'#D9D9D9',backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center'}:{}}>
-    {vidfile?<><span>File selected:</span><div style={{fontSize:'1rem',wordWrap:'break-word',maxWidth:'20rem'}}>{fileName}</div></>:
+                <label for="fileInput0"><div className={`uploadThumb1`} style={vidfile?{background:`url(${videoBack})`,backgroundColor:'#D9D9D9',backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center'}:{}}>
+    {vidfile?<></>:
     <>
 <img src={videoThumb}/>
 <input type="file" id="fileInput0" name="fileInput" ref={uploadRef0} accept=".mp4,.webm,.3gp,.mkv" onChange={UploadVideo}/></>}
@@ -269,13 +278,18 @@ onChange={(e) => setVidTitle(e.target.value)}  />
                     </div>
                     
                     <div className='uploadStepButtons'>
-                    <button className='uploadCourseButton' type='button' onClick={uploadNex}>Add Another Lecture</button>
-                    <button className='uploadCourseButton'>Next</button>
-                </div>
+                <button className='uploadCourseButton' type='button' disabled={uploadVid} onClick={()=>navigate('/educator/home')}>Back</button>
 
+                    <button className='uploadCourseButton' style={uploadVid?{paddingTop:'0.06rem',paddingBottom:'0.06rem',width:'10rem'}:{}} type='button' onClick={uploadNex}
+                     disabled={uploadVid}>{uploadVid? (<svg className='sv' width="29"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                     <circle cx="50" cy="50" r="45"/>
+                     </svg>)
+                       :("Add another lecture")}</button>
+                    <button className='uploadCourseButton' disabled={uploadVid}>Next</button>
+                </div>
                     </form>
 
-                </>:<>
+                </>:(step===3?<>
                 <div>
                 <form onSubmit={handlePublish}>
             <div className='uploadSec'>
@@ -290,11 +304,13 @@ onChange={(e) => setDuration(e.target.value)}  />
                 </div>
                 </div>
                 <div className='uploadStepButtons'>
+                <button className='uploadCourseButton' type='button' onClick={()=>back2()}>Back</button>
                 <button className='uploadCourseButton'>Publish</button>
                 </div>
                 </form>
                 </div>
-                </>)}
+                </>:<>
+                </>))}
             </div>
     </div>
   )

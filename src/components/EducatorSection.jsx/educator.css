@@ -55,6 +55,8 @@ font-weight: 900;
     background: #3EFFA2;
     cursor:pointer;
     outline: none;
+    height:min-content;
+    width: max-content;
 }
 .whyTeach>h1{
     font-size: 2.25rem;
@@ -340,3 +342,52 @@ background: #00FF84;
   .uploadSec2>span{
     font-size: 1.5rem;
   }
+  button:disabled{
+    cursor: not-allowed;
+  }
+  .eduCard{
+    width: 22rem;
+height: 15.375rem;
+box-sizing: border-box;
+padding: 1rem;
+border-radius: 0.75rem;
+background: white;
+display: flex;
+flex-direction: column;
+gap:0.5rem;
+justify-content: center;
+  }
+  .eduCard{
+    position: relative;
+  }
+  .eduCard1>img{
+    width: 8.77494rem;
+height: 5rem;
+border-radius: 0.5rem;
+  }
+  .viewCore{
+    position: absolute;
+    text-decoration: underline;
+    top:4%;
+    font-size: 1.12rem;
+    color:#1D7AE8;
+    right:5%
+  }
+  .prise{
+    position: absolute;
+    top:28%;
+    font-size: 1.7rem;
+    right:5%;
+font-weight: 600;
+    
+  }
+  .eduCardTitle{
+    color: #000;
+font-family: 'SF Pro';
+font-size: 1.375rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+width: 20rem;
+  }
+  

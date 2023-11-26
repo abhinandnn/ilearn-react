@@ -10,6 +10,7 @@ import trash from "../../assets/trash.svg";
 import TeachFooter from '../utils/TeachFooter';
 import Footer from '../home/Footer';
 import { useNavigate } from 'react-router-dom';
+import EduCard from './EduCard';
 function EduProfile() {
   const navigate=useNavigate()
   const validUsername = /^[a-z_.\d]{1,30}$/;
@@ -49,7 +50,18 @@ function EduProfile() {
 setBioP(profile.bio)}
       getProfile();    
     },[user,editProfile])
-   
+  const[owned,setOwned]=useState([])
+
+    useEffect(()=>{const getData = async () => {
+      try {
+        const response = await  axios.get('/created-course?page=1&pagesize=10',config);
+        setOwned(response.data.data.courses);
+        console.log(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  getData();},[])
   const handleChange = (e) => {
       const { name, value } = e.target;
       let errorMessage = "";
@@ -178,9 +190,12 @@ setBioP(profile.bio)}
               <div className='eduButFlex'>
               <button className="uploadCourseButton" onClick={()=>setEdit(1)}>Edit profile</button>
               <button className="uploadCourseButton" style={{background:'#5928E5',border:'2px solid #5928E5',color:'white',fontWeight:'500'}} onClick={()=>navigate('/profilePage')}>Switch to student's view</button>
-              </div>
+              </div><div>
               <div className='profilePageEduText'>
-            Your Courses
+              Your Courses
+        </div>
+              {owned?owned.map(own=>
+            <EduCard _id={own._id} title={own.title} price={own.price} updatedOn={own.updatedAt} students={own.totalStudents} thumb={own.thumbnail}/>):''}
         </div></>):<>
         <div>
         <div className='eduProfileUpper'>

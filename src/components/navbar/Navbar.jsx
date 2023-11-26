@@ -59,7 +59,11 @@ function Navbar() {
   const data= {id:ke};
   navigate('/coursePage',{state:data});
 setOpen1(false)}
-  return (
+const navigateTo1=(name)=>{
+  const data= {name:name};
+  navigate('/categoryCourses',{state:data});
+  } 
+   return (
    <div style={eduStatus?{background:'#0E0035'}:{}} className="navbar-box">
             <div style={!loginStatus?{marginRight:'2rem'}:{}} className={eduStatus?"eduInnerbox":"innerbox"}>
                 <NavLink style={{textDecoration:'none',color:'black'}} to={loginStatus?'/home':'/login'}>
@@ -82,7 +86,7 @@ setOpen1(false)}
         <div className="catMenuItems1" onMouseEnter={openMenu}
         onMouseLeave={closeMenu}>
           {categories.map((item, index) => (
-            <div key={index} className={`catMenuItem1`}>
+            <div key={index} className={`catMenuItem1`} onClick={()=>navigateTo1(item)}>
               {item}
             </div>
           ))}

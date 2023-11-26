@@ -3,6 +3,8 @@ import Card from './Card'
 import CourseDisplay from './CourseDisplay';
 import { useState,useEffect } from 'react';
 import axios from '../../api/axios';
+import Footer from './Footer';
+import TeachFooter from '../utils/TeachFooter';
 function CourseVariety() {                                                                                               
     const [categories,setCategories]=useState([]);
       const token=localStorage.getItem("authId");
@@ -35,6 +37,7 @@ function CourseVariety() {
   }, []);
       
   return (
+    <div>
     <div className='courseVar'>
       <div className='logoMobile' id='logoMob'><span style={{color:"#5928E5"}}>i</span>Learn</div>
 
@@ -48,6 +51,9 @@ function CourseVariety() {
         <div>
         <CourseDisplay categories={categories1}/>
         </div>
+        </div>
+        <TeachFooter/>
+        <Footer/>
     </div>
   )
 }

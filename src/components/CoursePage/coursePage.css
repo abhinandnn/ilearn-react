@@ -369,7 +369,7 @@ box-sizing: border-box;
 }
 .footButton{
     min-height: 2.5rem;
-border-radius: 20px;
+border-radius: 1rem;
 font-size: 1rem;
 font-weight: 600;
 font-family: Sofia Sans;

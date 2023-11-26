@@ -46,6 +46,7 @@ function VideoPage() {
       videos: []
     }
   );
+  const[title,setTitle]=useState()
   const [creator, setCreator]=useState({})
   const[compVid,setComp]=useState([])
   const[videoOk,setVideo]=useState([])
@@ -62,7 +63,7 @@ function VideoPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [subtitleTrack, setSubtitleTrack] = useState(false);
- 
+  
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -188,10 +189,7 @@ function VideoPage() {
             e.preventDefault();
             video.currentTime -= 10;
             break;
-          case ' ':
-            e.preventDefault()
-            togglePlayPause();
-            break;
+         
             case 'Escape':
               e.preventDefault();
               if (document.fullscreenElement) {
@@ -215,6 +213,9 @@ function VideoPage() {
         setVideo(response.data.data.course.videos);
         setLecture(response.data.data.course.videos[0].video._id);
         setPath(response.data.data.course.videos[0].video.videoUrl);
+        setTitle(response.data.data.course.videos[0].video.videoTitle)
+        console.log(response.data.data.course.videos[0].video);
+
       } catch (error) {
         console.log(error);
       }
@@ -241,9 +242,10 @@ useEffect(()=>{
   const token=localStorage.getItem("authId");
  
   const filesNav=()=>setFiles(true)
-  const changeVideo = (videoId, videoUrl) => {
+  const changeVideo = (videoId, videoUrl,title) => {
     setLecture(videoId);
     setPath(videoUrl);
+    setTitle(title);
   };
 return (
     <div>
@@ -254,6 +256,11 @@ return (
     <div className='videoPlayerSec'>
     <div className='videoPlay'>
     <div className={`videoContainer ${isPlaying? '' : 'paused'} ${!isOpen?'':'paused'}`}> 
+    <div className={`titleCont ${isFullScreen ? 'fullscreen' : ''}`}>
+      <div style={{padding:'1.5rem',color:'white'}}>
+        {title}
+      </div>
+      </div>
       <div className={`videoCont ${isFullScreen ? 'fullscreen' : ''}`}>
       <div className='contContainer'>
       <div className="durationContainer">

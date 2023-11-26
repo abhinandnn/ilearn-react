@@ -22,6 +22,7 @@ import EduHome from './components/EducatorSection.jsx/EduHome.jsx';
 import UploadCourses from './components/EducatorSection.jsx/UploadCourses.jsx';
 import EduProfile from './components/EducatorSection.jsx/EduProfile.jsx';
 import ProtectedRoute from './components/utils/ProtectedRoute.jsx';
+import CatCourses from './components/home/CatCourses.jsx';
 const router = (
     <Routes>
         <Route path="/" element={<App />}>
@@ -35,6 +36,7 @@ const router = (
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="home" element={<Home />} />
           <Route path="courses" element={<CourseVariety />} />
+          <Route path="categoryCourses" element={<CatCourses/>}/>
           <Route path="coursePage" element={<CoursePage />}/>
           <Route path="videoPage" element={<VideoPage/>}/>
           <Route path="learning/:navOptFromUrl" element={<Learning/>}/>

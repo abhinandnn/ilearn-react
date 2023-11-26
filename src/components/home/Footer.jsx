@@ -31,7 +31,7 @@ function Footer(props) {
 </div>
 </>:<></>}
     </div>
-    <div className='footLogo'>
+    <div className='footLogo' style={{marginRight:'2.8vw'}}>
         <div><span style={eduStatus?{color:'#00FF84'}:{ color:'#FFF'}}>i</span>Learn</div>
         <div className='footIcon'>
             <img src={x}/>
