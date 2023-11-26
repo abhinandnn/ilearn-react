@@ -14,19 +14,21 @@ import access from '../../assets/access.svg'
 import TeachFooter from '../utils/TeachFooter';
 import AppPromote from '../utils/AppPromote';
 import axios from '../../api/axios';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import useRazorpay from 'react-razorpay'
 import { useAuth } from '../utils/AuthContext';
 import heartfill from '../../assets/heartfill.svg'
 import GiveRating from './GiveRating';
 function CoursePage() {
+  const navigate=useNavigate()
   const location = useLocation();
 const {user}=useAuth();
 const [courseData,setCourseData]=useState({
   in_wishlist:false,
   in_cart:false
 })
+
 const [course, setCourse] = useState(
   {category: null,
     createdAt: null,
@@ -46,14 +48,17 @@ const [course, setCourse] = useState(
   }
 );
   const _id = location.state.id;
-  
+  const data= {id:_id};
+const navigateTo=(path)=>{
+navigate(path,{state:data});
+}
   const [creator, setCreator]=useState(
     {}
   )
   const[videoOk,setVideo]=useState([])
-  const[review,setReview]=useState({});
+  const[review,setReview]=useState([]);
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
-
+const[revPage,setRevPage]=useState(1)
   useEffect(() => {
     console.log(`/getCourseById/${_id}`);
     const getData = async () => {
@@ -72,9 +77,9 @@ const [course, setCourse] = useState(
     const getData1=async()=>{
       try {
         console.log("loading Review")
-        const response = await  axios.get(`/get-review/${_id}`,config);
-        setReview(response);
-console.log(response);
+        const response = await  axios.get(`/get-reviews/${_id}?page=${revPage}&pagesize=2`,config);
+        setReview(response.data.data.reviews);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
@@ -237,11 +242,11 @@ const closeReview = () => {
         <div className='detailSec' id='ds2'>{course.duration}<span>Hours</span></div>
         <div className='fixCar'>
         <div className='fixedCard'>
-        <div className='fixCard1'>
-          <div className='preve'><img src={playB}/>Preview this course</div>
-        <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img style={{cursor:'pointer'}} src={wish1?heartfill:heart} onClick={!wish1?addWish:delWish}/></div>
+        <div className='fixCard1' style={courseData.owned?{height:'6rem'}:{}}>
+          <div className='preve' onClick={()=>navigateTo(courseData.owned?'/videoPage':'/coursePage')}><img src={playB}/>{!courseData.owned?'Preview this course':'Watch the lectures'}</div>
+       {!courseData.owned? <> <div className='pSec'> <div className='pricingCard'><span>Course pricing</span>₹{course.price}</div><img style={{cursor:'pointer'}} src={wish1?heartfill:heart} onClick={!wish1?addWish:delWish}/></div>
         <button className='courseCButton' id='C2' onClick={handlePayment}>Buy now</button>
-        <button className='courseCButton' onClick={!cart1?addCart:delCart}>{!cart1?'Add to cart':'Remove from cart'}</button>
+        <button className='courseCButton' onClick={!cart1?addCart:delCart}>{!cart1?'Add to cart':'Remove from cart'}</button></>:''}
         </div>
         <div className='fixCard2'>
           <p>Additional</p>
@@ -275,7 +280,7 @@ const closeReview = () => {
       </div>
       </div>
       <div style={{paddingLeft:'10vw'}}>
-      <Review isVideoPage={false} avgRating={course.rating} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`} revClick={()=>openReview()}/>
+      {review&&<Review owned={courseData.owned} isVideoPage={false} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
       </div>
       </div>
       <AppPromote/>
