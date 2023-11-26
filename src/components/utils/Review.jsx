@@ -45,7 +45,7 @@ function Review(props) {
         </div>
         <p style={{fontSize:'1.1rem',fontWeight:'400'}}>{props.text}</p>
         </div>
-        <button className='RButton'>Write a review</button>
+        <button className='RButton' onClick={()=>props.revClick()}>Write a review</button>
     </div>
   )
 }

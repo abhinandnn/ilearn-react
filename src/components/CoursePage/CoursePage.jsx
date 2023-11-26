@@ -209,7 +209,7 @@ const checkPaymentStatus = async (
     console.error("Error checking payment status:", error);
   }
 };
-const[showReview,setShowReview]=useState(true)
+const[showReview,setShowReview]=useState(false)
 const openReview = () => {
   setShowReview(true);
 };
@@ -275,7 +275,7 @@ const closeReview = () => {
       </div>
       </div>
       <div style={{paddingLeft:'10vw'}}>
-      <Review isVideoPage={false} avgRating={course.rating} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`}/>
+      <Review isVideoPage={false} avgRating={course.rating} name={'Abhi'} rating1={4} date={'21 Nov 2023'} text={`I really liked the course, everything is clear and understandable. A lot of useful information that you can't find on the Internet. On the course you will learn what 3D motion design is, how to work with 3D programs, learn how to create animated models, as well as create and animate videos.`} revClick={()=>openReview()}/>
       </div>
       </div>
       <AppPromote/>
