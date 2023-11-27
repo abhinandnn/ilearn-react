@@ -246,12 +246,13 @@ useEffect(()=>{
     setFiles(false);
   }
   const token=localStorage.getItem("authId");
- 
+  const [notes,setNotes]=useState()
   const filesNav=()=>setFiles(true)
-  const changeVideo = (videoId, videoUrl,title) => {
+  const changeVideo = (videoId, videoUrl,title,notes) => {
     setLecture(videoId);
     setPath(videoUrl);
     setTitle(title);
+    setNotes(notes);
   };
 const openReview = () => {
   setShowReview(true);

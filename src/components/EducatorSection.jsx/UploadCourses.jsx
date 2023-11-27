@@ -173,6 +173,7 @@ const [fileUrl,setFileUrl]=useState('')
           withCredentials: false,
           onUploadProgress: ProgressHandler
         });
+        setDuration(response.data.data.duration);
         console.log('up',response);
       toast.success(response.data.message);
       setStep(3);
