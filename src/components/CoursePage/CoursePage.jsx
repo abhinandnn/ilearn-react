@@ -211,10 +211,9 @@ const getRazorpayOptions = async (key1) => {
 const checkPaymentStatus = async (
   order_id,
   payment_id,
-  signature,
-  subscriptionType
+  signature
 ) => {
-  console.log(order_id, payment_id, signature, subscriptionType);
+  console.log(order_id, payment_id, signature);
   try {
     const response = await axios.post(
       `/checkPayment/${_id}`,
@@ -293,7 +292,7 @@ const closeReview = () => {
       </div>
       </div>
       <div style={{paddingLeft:'10vw'}}>
-      {review&&<Review owned={courseData.owned} isVideoPage={false} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
+      {review.length&&<Review avgRating={course.rating} owned={courseData.owned} isVideoPage={false} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
       </div>
       </div>
       <AppPromote/>

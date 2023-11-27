@@ -54,6 +54,15 @@ const [fileUrl,setFileUrl]=useState('')
       toast.info('Title must be at least 5 characters long.');
       return;
     }
+    if (!file) {
+      toast.info('Select a thumbnail file');
+      return;
+    }
+    if (!category) {
+      toast.info('Select a category');
+      return;
+    }
+    if(title.length>4&&description>9&&file&&category)
     try {
       const formData = new FormData();
       formData.append('image', file);
@@ -278,13 +287,10 @@ onChange={(e) => setVidTitle(e.target.value)}  />
                     </div>
                     
                     <div className='uploadStepButtons'>
-                <button className='uploadCourseButton' type='button' disabled={uploadVid} onClick={()=>navigate('/educator/home')}>Back</button>
+                <button className='uploadCourseButton' type='button' disabled={uploadVid} onClick={()=>navigate('/educator/home')}>Cancel</button>
 
                     <button className='uploadCourseButton' style={uploadVid?{paddingTop:'0.06rem',paddingBottom:'0.06rem',width:'10rem'}:{}} type='button' onClick={uploadNex}
-                     disabled={uploadVid}>{uploadVid? (<svg className='sv' width="29"viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                     <circle cx="50" cy="50" r="45"/>
-                     </svg>)
-                       :("Add another lecture")}</button>
+                     disabled={uploadVid}>Add another lecture</button>
                     <button className='uploadCourseButton' disabled={uploadVid}>Next</button>
                 </div>
                     </form>

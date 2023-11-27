@@ -7,7 +7,7 @@ function GiveRate(props) {
         <div className='reviewHeading'>{props.avgRating}{<img src={star1} />}</div>
         <span>&#40;{props.reviewNo} reviews&#41;
 </span>
-        <button className='RButton' id='RaButton'>Leave a rating</button>
+        <button className='RButton' id='RaButton' onClick={()=>props.revClick()}>Leave a rating</button>
     </div>
   )
 }

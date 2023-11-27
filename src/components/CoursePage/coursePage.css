@@ -181,6 +181,7 @@ width: 1.4rem;
         gap:0.8rem;
         align-items: center;
         height:3rem;
+        cursor: pointer;
     }
     .pSec{
     display: flex;
@@ -279,6 +280,7 @@ font-weight: 600;}
     border-radius: 15px;
     position: relative;
     margin-left: 2vw;
+    border:1px solid #FFF8ED;
 }
 .reviewHeading{
     font-size: 5rem;

@@ -51,7 +51,9 @@ function VideoPage() {
   const [creator, setCreator]=useState({})
   const[compVid,setComp]=useState([])
   const[videoOk,setVideo]=useState([])
-  const[review,setReview]=useState({});
+  const[review,setReview]=useState([]);
+  const[review1,setReview1]=useState();
+
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
   const videoRef = useRef(null);
   const timelineRef = useRef(null);
@@ -65,7 +67,7 @@ function VideoPage() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [subtitleTrack, setSubtitleTrack] = useState(false);
 const[revPage,setRevPage]=useState(1)
-  
+const [courseData,setCourseData]=useState()
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -209,9 +211,9 @@ const[revPage,setRevPage]=useState(1)
     const getData = async () => {
       try {
         const response = await  axios.get(`/getCourseById/${_id}`,config);
+        setCourseData(response.data.data)
         setCreator(response.data.data.course.createdBy);
         setCourse(response.data.data.course);
-        setCourseData(response.data.data)
         setComp(response.data.data.completedVideo)
         setVideo(response.data.data.course.videos);
         setLecture(response.data.data.course.videos[0].video._id);
@@ -226,8 +228,8 @@ const[revPage,setRevPage]=useState(1)
     const getData1=async()=>{
       try {
         console.log("loading Review")
-        const response = await  axios.get(`/get-reviews/${_id}`,config);
-        setReview(response);
+        const response = await  axios.get(`/get-reviews/${_id}?page=${revPage}&pagesize=2`,config);
+        setReview(response.data.data.reviews);
         console.log(response);
       } catch (error) {
         console.log(error);
@@ -250,6 +252,14 @@ useEffect(()=>{
     setPath(videoUrl);
     setTitle(title);
   };
+  const[showReview,setShowReview]=useState(false)
+const openReview = () => {
+  setShowReview(true);
+};
+
+const closeReview = () => {
+  setShowReview(false);
+};
 return (
     <div>
     <div className='videoPage'>
@@ -372,12 +382,13 @@ Files by Tutor</div>
     </div></div>
     <div className='upNextSec'>
     <UpNext videos={videoOk} thumb={`https://ilearn.varankit.tech/${course.thumbnail}`} changeVideo={changeVideo}/>
-    {compVid&&<CircularProgress totalLect={videoOk.length} completedLect={compVid}/>}
-    <GiveRate reviewNo={1200} avgRating={4.8}/>
+    {courseData&&<CircularProgress totalLect={videoOk.length} completedLect={courseData.completedVideo}/>}
+    {course.reviews&&<GiveRate reviewNo={(course.reviews).length} avgRating={course.rating} revClick={()=>openReview()}/>}
     </div>
-    {courseData.review&&<Review owned={courseData.owned} isVideoPage={true} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
     
     </div>
+    {review.length&&courseData&&<Review owned={courseData.owned} isVideoPage={true} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
+
     </div>
     <AppPromote/>
     <Footer/>
