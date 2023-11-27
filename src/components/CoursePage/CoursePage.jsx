@@ -86,7 +86,7 @@ const[revPage,setRevPage]=useState(1)
     }
   getData();
 getData1();
-},[_id])
+},[_id,showReview])
   const addCart = async () => {
     try {
       console.log(config);
