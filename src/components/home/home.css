@@ -828,5 +828,9 @@ right:0.75rem;
     font-family: Sofia Sans;
 
    }
+   img::before{
+    background-color: hsl(0,0%,93.3%);
+    
+   }
 
     

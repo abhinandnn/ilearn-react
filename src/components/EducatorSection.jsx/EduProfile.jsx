@@ -51,16 +51,16 @@ setBioP(profile.bio)}
       getProfile();    
     },[user,editProfile])
   const[owned,setOwned]=useState([])
-
-    useEffect(()=>{const getData = async () => {
-      try {
-        const response = await  axios.get('/created-course?page=1&pagesize=10',config);
-        setOwned(response.data.data.courses);
-        console.log(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
+  const getData = async () => {
+    try {
+      const response = await  axios.get('/created-course?page=1&pagesize=10',config);
+      setOwned(response.data.data.courses);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
+    useEffect(()=>{
   getData();},[])
   const handleChange = (e) => {
       const { name, value } = e.target;
@@ -195,8 +195,8 @@ setBioP(profile.bio)}
               Your Courses
         </div>
         <div className='eduCards'>
-              {owned&&owned.map(own=>
-            <EduCard _id={own._id} title={own.title} price={own.price} updatedOn={own.updatedAt} students={own.totalStudents} thumb={own.thumbnail}/>)}
+              {owned.length?owned.map(own=>
+            <EduCard reload={getData} _id={own._id} title={own.title} price={own.price} updatedOn={own.updatedAt} students={own.totalStudents} thumb={own.thumbnail}/>):<span className='nocore'>You haven’t published any courses yet</span>}
         </div></div></>):<>
         <div>
         <div className='eduProfileUpper'>
