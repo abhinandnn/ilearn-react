@@ -52,8 +52,7 @@ function VideoPage() {
   const[compVid,setComp]=useState([])
   const[videoOk,setVideo]=useState([])
   const[review,setReview]=useState([]);
-  const[showReview,setShowReview]=useState(false)
-
+  const[review1,setReview1]=useState();
 
   const config = { headers: {'Authorization':`Bearer ${localStorage.getItem('authId')}`}, withCredentials: false }
   const videoRef = useRef(null);
@@ -246,14 +245,14 @@ useEffect(()=>{
     setFiles(false);
   }
   const token=localStorage.getItem("authId");
-  const [notes,setNotes]=useState()
+ 
   const filesNav=()=>setFiles(true)
-  const changeVideo = (videoId, videoUrl,title,notes) => {
+  const changeVideo = (videoId, videoUrl,title) => {
     setLecture(videoId);
     setPath(videoUrl);
     setTitle(title);
-    setNotes(notes);
   };
+  const[showReview,setShowReview]=useState(false)
 const openReview = () => {
   setShowReview(true);
 };
@@ -393,7 +392,7 @@ Files by Tutor</div>
     </div>
     <AppPromote/>
     <Footer/>
-    {showReview&<GiveRating onClose={closeReview} id={_id}/>}
+    {showReview&&<GiveRating onClose={closeReview} id={_id}/>}
     </div>
 
   )
