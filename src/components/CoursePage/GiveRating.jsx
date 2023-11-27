@@ -23,6 +23,7 @@ const GiveRating = ({id, onClose}) => {
 toast.success('Review Submitted')
       onClose();
     } catch (error) {
+      toast.info('Select Rating')
       console.error('Error submitting review:', error.response.data);
     }}
   return (
@@ -45,7 +46,7 @@ toast.success('Review Submitted')
       </div>
       <div className='giveRating1'>
         <span>Write a review</span>
-        <textarea className='revComment' rows={10} cols={7} maxLength={100} minLength={10}
+        <textarea className='revComment' rows={10} cols={7} maxLength={80}
 value={description}
 onChange={(e) => setDescription(e.target.value)}
 />

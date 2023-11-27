@@ -18,7 +18,7 @@ function Review(props) {
             <div className='reviewDet'>
               <div style={{ minWidth: '2.6rem', minHeight: '2.6rem' }} className='pfpNav'>
                 {review.user.profileimg ? (
-                  <img src={`https://ilearn.varankit.tech/${review.user.profileimg}`}/>
+                  <img  style={{ minWidth: '2.6rem', minHeight: '2.6rem' }} src={`https://ilearn.varankit.tech/${review.user.profileimg}`}/>
                 ) : (
                   review.user.name.charAt(0).toUpperCase()
                 )}

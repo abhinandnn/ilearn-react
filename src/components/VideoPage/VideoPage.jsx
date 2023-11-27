@@ -387,7 +387,7 @@ Files by Tutor</div>
     </div>
     
     </div>
-    {review.length&&courseData&&<Review owned={courseData.owned} isVideoPage={true} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>}
+    {review.length&&courseData?<Review owned={courseData.owned} isVideoPage={true} review={review} nextRev={setRevPage} revClick={()=>openReview()}/>:''}
 
     </div>
     <AppPromote/>
