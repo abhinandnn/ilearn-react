@@ -372,8 +372,8 @@ Files by Tutor</div>
    {1? <FilesTutor filesNum={1} files={
       [
         {
-          title:`helloworld`,
-          size:'20'
+          title:`lecture 1 - notes`,
+          size:'2'
         },
       ]
     }/>:<div className='gapOP'></div>}
