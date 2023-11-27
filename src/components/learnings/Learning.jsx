@@ -47,7 +47,6 @@ function Learning() {
         console.log("loading")
         const response = await  axios.get('/completed-course',config);
         setCompleted(response.data.data.completedCourse);
-        console.log(response.data.data.ownedCourse);
       } catch (error) {
         console.log(error);
       }
@@ -74,7 +73,7 @@ function Learning() {
             {navOpt==='2'&&
         <div className='contentGrid'>
           {completed&&completed.map(own=>
-            <LearningCard _id={own.courseid} totalLect={10} completedLect={10} title={own.title} category={own.category}/>)}
+            <LearningCard _id={own._id} totalLect={10} completedLect={10} title={own.title} category={own.category}/>)}
             </div>}
             {navOpt==='3'&&
             <div className="slid" id="slid1">

@@ -127,7 +127,7 @@ const [fileUrl,setFileUrl]=useState('')
     {
       toast.error('Add a video title')
     }
-    else{
+    if(vidfile&&vidTitle){
     const formData = new FormData();
       formData.append("video", vidfile);
       formData.append("videoTitle", vidTitle);
@@ -173,7 +173,7 @@ const [fileUrl,setFileUrl]=useState('')
           withCredentials: false,
           onUploadProgress: ProgressHandler
         });
-        setDuration(response.data.data.duration);
+        setDuration(parseInt((response.data.data.duration)/60));
         console.log('up',response);
       toast.success(response.data.message);
       setStep(3);
@@ -290,7 +290,7 @@ onChange={(e) => setVidTitle(e.target.value)}  />
                     <div className='uploadStepButtons'>
                 <button className='uploadCourseButton' type='button' disabled={uploadVid} onClick={()=>navigate('/educator/home')}>Cancel</button>
 
-                    <button className='uploadCourseButton' style={uploadVid?{paddingTop:'0.06rem',paddingBottom:'0.06rem',width:'10rem'}:{}} type='button' onClick={uploadNex}
+                    <button className='uploadCourseButton' type='button' onClick={uploadNex}
                      disabled={uploadVid}>Add another lecture</button>
                     <button className='uploadCourseButton' disabled={uploadVid}>Next</button>
                 </div>
@@ -304,10 +304,10 @@ onChange={(e) => setVidTitle(e.target.value)}  />
                     <span>Set course price</span>
 <input required type='number' className='uploadTitle' placeholder='Enter price in INR' value={price}
 onChange={(e) => setPrice(e.target.value)}  />
-<span>Set course duration</span>
+<span>Course duration</span>
 
 <input required type='number' className='uploadTitle' placeholder='Enter duration in hours'value={duration}
-onChange={(e) => setDuration(e.target.value)}  />
+onChange={(e) => setDuration(e.target.value)} disabled={true} />
                 </div>
                 </div>
                 <div className='uploadStepButtons'>

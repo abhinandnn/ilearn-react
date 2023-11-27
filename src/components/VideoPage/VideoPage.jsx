@@ -228,7 +228,7 @@ const [courseData,setCourseData]=useState()
     const getData1=async()=>{
       try {
         console.log("loading Review")
-        const response = await  axios.get(`/get-reviews/${_id}?page=${revPage}&pagesize=2`,config);
+        const response = await  axios.get(`/get-reviews/${_id}?page=${revPage}&pagesize=3`,config);
         setReview(response.data.data.reviews);
         console.log(response);
       } catch (error) {

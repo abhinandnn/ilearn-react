@@ -33,7 +33,7 @@ function Review(props) {
           <p className='dateRev'>{new Date(review.createdAt).toLocaleDateString()}</p>
 
           </div>
-            <p style={{minHeight:'6rem',fontSize: '1.1rem', fontWeight: '400' }}>{review.comment}</p>
+            <p style={{minHeight:'5rem',fontSize: '1.1rem', fontWeight: '400' }}>{review.comment}</p>
       </div>)):''}
         {props.owned?<button className='RButton' onClick={()=>props.revClick()}>Write a review</button>:''}
     </div>

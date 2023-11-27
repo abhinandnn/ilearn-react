@@ -87,6 +87,7 @@ top:14%
     font-size: 0.875rem;
 font-weight: 400;
 width: max-content;
+cursor: pointer;
 }
 .cartCardTrash{
     color: red;
