@@ -117,7 +117,7 @@ const navigateTo1=(name)=>{
             <NavLink className={"navLink"} to="/signup">Sign up</NavLink>
           )}
 </div>:<div className='navIcons'>
-    <img src={notification}/>
+<NavLink style={{height:'18px'}} to={'/wallet'}><img src={notification}/></NavLink>
     <NavLink style={{height:'18px'}} to={'/cartPage'}><img src={cart} alt="" /></NavLink>
     <NavLink style={{height:'18px'}} to={'/learning/3'}><img src={heart} /></NavLink>
     <NavLink to={'/profilePage'} style={{textDecoration:'none'}}>

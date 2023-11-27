@@ -15,7 +15,7 @@ function FilesTutor(props) {
 <div className='pdfDet'>
     {file.title}
     <span>{file.size}</span>
-</div><button>
+</div><button >
 <img src={downloadIcon}/>
 </button>
     </div>

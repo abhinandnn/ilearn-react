@@ -62,7 +62,7 @@ const [fileUrl,setFileUrl]=useState('')
       toast.info('Select a category');
       return;
     }
-    if(title.length>4&&description>9&&file&&category)
+    if(title.length>4&&description.length>9&&file&&category)
     try {
       const formData = new FormData();
       formData.append('image', file);
