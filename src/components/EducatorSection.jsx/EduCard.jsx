@@ -11,7 +11,7 @@ function EduCard(props) {
     <div className='eduCard'>
         <div className='eduCard1'>
             <img src={`https://ilearn.varankit.tech/${props.thumb}`}/>
-            <span onClick={()=>navigateTo()} className='viewCore'>View course</span>
+            <span onClick={()=>navigateTo('/coursePage')} className='viewCore'>View course</span>
             <span className='prise'>₹{props.price}</span>
         </div>
         <div className='eduCardTitle'>

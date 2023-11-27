@@ -251,7 +251,7 @@ const closeReview = () => {
         <div className='detailSec'>{course.totalStudents < 10 ? `0${course.totalStudents}` : `${course.totalStudents}`??null}
         <span >Active learners</span></div>
         <div className='detailSec' id='ds1'>{videoOk?videoOk.length:''}<span>Lectures</span></div>
-        <div className='detailSec' id='ds2'>{course.duration}<span>Hours</span></div>
+        <div className='detailSec' id='ds2'>{parseInt(course.duration)}<span>Hours</span></div>
         <div className='fixCar'>
         <div className='fixedCard'>
         <div className='fixCard1' style={courseData.owned?{height:'6rem'}:{}}>

@@ -371,7 +371,8 @@ border-radius: 0.5rem;
     top:4%;
     font-size: 1.12rem;
     color:#1D7AE8;
-    right:5%
+    right:5%;
+    cursor:pointer;
   }
   .prise{
     position: absolute;
