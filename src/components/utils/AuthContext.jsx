@@ -21,7 +21,7 @@ const navigate=useNavigate();
       console.log(response);
     } catch (error) {
       console.log('err_',error.response.status);
-      if(error.response)
+      if(error.response.status===401)
       logout();
     }
   };
