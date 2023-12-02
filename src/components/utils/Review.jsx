@@ -16,7 +16,7 @@ function Review(props) {
        
           <div key={review._id} className='reviewDetail'>
             <div className='reviewDet'>
-              <div style={{ minWidth: '2.6rem', minHeight: '2.6rem' }} className='pfpNav'>
+              <div style={{ minWidth: '2.6rem', minHeight: '2.6rem',height:'2.6rem',width:'2.6rem'}} className='pfpNav'>
                 {review.user.profileimg ? (
                   <img  style={{ minWidth: '2.6rem', minHeight: '2.6rem',height:'2.6rem',width:'2.6rem'}} src={`https://ilearn.varankit.tech/${review.user.profileimg}`}/>
                 ) : (
